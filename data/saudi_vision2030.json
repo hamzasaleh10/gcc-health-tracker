@@ -1,0 +1,7 @@
+[
+  {"kpi": "life_exp", "series": "official", "year": 2025, "value": 79.7, "source": "Ministry of Health: Health Sector Transformation Program 2025 report (news release, 20 Jun 2026)", "url": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/news-2026-06-20-001.aspx"},
+  {"kpi": "life_exp", "series": "target", "year": 2030, "value": 80, "source": "Health Sector Transformation Program 2023 Achievements Report, p. 69", "url": "https://vision2030.gov.sa/media/c3ld5ltz/hstp-annual-report-2023-en.pdf"},
+  {"kpi": "road_deaths", "series": "official", "year": 2016, "value": 28.41, "source": "Health Sector Transformation Program 2023 Achievements Report, pp. 22 and 80 (baseline)", "url": "https://vision2030.gov.sa/media/c3ld5ltz/hstp-annual-report-2023-en.pdf"},
+  {"kpi": "road_deaths", "series": "official", "year": 2023, "value": 13.06, "source": "Health Sector Transformation Program 2023 Achievements Report, pp. 22 and 80", "url": "https://vision2030.gov.sa/media/c3ld5ltz/hstp-annual-report-2023-en.pdf"},
+  {"kpi": "road_deaths", "series": "target", "year": 2023, "value": 13.23, "source": "Health Sector Transformation Program 2023 Achievements Report, p. 80", "url": "https://vision2030.gov.sa/media/c3ld5ltz/hstp-annual-report-2023-en.pdf"}
+]

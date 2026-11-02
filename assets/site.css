@@ -1,0 +1,122 @@
+/* Site shell and design tokens. The page's own styles are in index.html. */
+:root {
+  color-scheme: light;
+  --font-anthropic-sans: "IBM Plex Sans Arabic", "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-anthropic-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+  --color-bg: #f7f6f2;
+  --color-panel: #ffffff;
+  --color-fg: #1d1f21;
+  --color-fg-muted: #5f6368;
+  --color-border-line: #e2e0d9;
+  --color-ok: #1e7a46;
+  --color-warn: #9a6400;
+  --color-bad: #b3261e;
+
+  --chart-1: #1f5fa8;
+  --chart-2: #c2571a;
+  --chart-3: #2e8540;
+  --chart-4: #7b4fa0;
+  --chart-5: #b0882a;
+  --chart-6: #3a8fa3;
+  --chart-7: #a4426b;
+  --chart-8: #6d6d6d;
+
+  --cds-chart-muted: #b9bcc2;
+  --cds-chart-grid: #ecebe6;
+  --cds-chart-axis: #9aa0a6;
+  --cds-chart-reference: #6f747a;
+  --cds-text-secondary: #5f6368;
+  --cds-surface-popover: #ffffff;
+  --cds-border: #d9d7cf;
+  --cds-shadow-popover: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  --cds-font-size-caption: 0.8125rem;
+  --cds-font-size-body: 0.95rem;
+  --cds-font-size-heading: 1.125rem;
+  --cds-font-size-title: 1.9rem;
+  --cds-font-weight-medium: 600;
+
+  --cds-gap-xs: 0.25rem;
+  --cds-gap-sm: 0.5rem;
+  --cds-gap-md: 1rem;
+  --cds-gap-lg: 1.5rem;
+  --cds-gap-xl: 2.25rem;
+  --cds-pad-xs: 0.25rem;
+  --cds-pad-sm: 0.5rem;
+  --cds-pad-md: 1rem;
+  --cds-pad-lg: 1.25rem;
+  --cds-radius: 8px;
+  --cds-dur-slow: 0.3s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: #121416;
+    --color-panel: #1b1e21;
+    --color-fg: #e8eaed;
+    --color-fg-muted: #a0a6ad;
+    --color-border-line: #2d3136;
+    --color-ok: #6fcf97;
+    --color-warn: #e5b45a;
+    --color-bad: #f28b82;
+    --chart-1: #7fb0ec;
+    --chart-2: #f0a06a;
+    --chart-3: #7fd18f;
+    --chart-4: #c3a2e3;
+    --chart-5: #dcc070;
+    --chart-6: #7cc8d8;
+    --chart-7: #e48fb2;
+    --chart-8: #b0b0b0;
+    --cds-chart-muted: #4b5157;
+    --cds-chart-grid: #262a2e;
+    --cds-chart-axis: #6b7177;
+    --cds-chart-reference: #9aa0a6;
+    --cds-text-secondary: #a0a6ad;
+    --cds-surface-popover: #23272b;
+    --cds-border: #3a3f45;
+    --cds-shadow-popover: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-anthropic-sans);
+  font-size: var(--cds-font-size-body);
+  line-height: 1.5;
+}
+.site {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding: 28px max(16px, env(safe-area-inset-left)) 48px max(16px, env(safe-area-inset-right));
+}
+.site b, .site strong { font-weight: 600; }
+.site a { color: var(--chart-1); }
+.site-foot {
+  margin-top: var(--cds-gap-xl);
+  padding-top: var(--cds-pad-md);
+  border-top: 1px solid var(--color-border-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cds-gap-xs) var(--cds-gap-lg);
+  font-size: var(--cds-font-size-caption);
+  color: var(--color-fg-muted);
+}
+.site-foot .sep { flex: 1 1 auto; }
+
+/* Loading placeholder */
+.dash-skeleton {
+  background: linear-gradient(90deg, var(--color-border-line) 0%, var(--color-panel) 50%, var(--color-border-line) 100%);
+  background-size: 200% 100%;
+  border-radius: var(--cds-radius);
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dash-skeleton { animation: gx-shimmer 1.4s ease-in-out infinite; }
+}
+@keyframes gx-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }

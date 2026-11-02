@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GCC Health System Tracker</title>
+<meta name="description" content="Bilingual (English/Arabic) dashboard benchmarking the six GCC health systems on outcomes, chronic disease, financing and workforce, with Saudi Vision 2030 figures. World Bank and WHO data, refreshed monthly.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GCC Health System Tracker">
+<meta property="og:description" content="How the six Gulf health systems compare on outcomes, chronic disease, financing and workforce. English and Arabic. Refreshed monthly from World Bank and WHO data.">
+<meta property="og:url" content="https://hamzasaleh10.github.io/gcc-health-tracker/">
+<meta property="og:image" content="https://hamzasaleh10.github.io/gcc-health-tracker/assets/preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5fa8'/%3E%3Cpath d='M9 22V14M16 22V9M23 22V17' stroke='white' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.gx{display:grid;gap:var(--cds-gap-xl);font-family:var(--font-anthropic-sans);color:var(--color-fg)}
+.gx h1{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);margin:0;line-height:1.15}
+.gx-take{margin:var(--cds-gap-xs) 0 0;font-size:var(--cds-font-size-body);color:var(--color-fg-muted);max-width:60rem}
+.gx-take b{color:var(--color-fg);font-weight:600;font-variant-numeric:tabular-nums}
+.gx-focus{display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs);align-items:center}
+.gx-focus span.lbl{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-inline-end:var(--cds-gap-xs)}
+.gx-focus button{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer}
+.gx-focus button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
+.gx-sec{display:grid;gap:var(--cds-gap-md)}
+.gx-sec>h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:0}
+.gx-sec>p.gx-lede{margin:0;color:var(--color-fg-muted);font-size:var(--cds-font-size-body);max-width:60rem}
+.gx-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10.5rem),1fr));gap:var(--cds-gap-md)}
+.gx-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start}
+.gx-tile .t{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gx-tile .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;line-height:1.1}
+.gx-tile .u{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gx-tile .r{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums}
+.gx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:var(--cds-gap-md)}
+.gx-card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);display:grid;gap:var(--cds-gap-sm);align-content:start;min-width:0}
+.gx-card h3{margin:0;font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium)}
+.gx-card .n{margin:0;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gx-chart{position:relative;min-height:260px;min-width:0}
+.gx-chart.short{min-height:220px}
+.gx-chart svg{display:block;overflow:visible}
+.gx-chart text{font-family:var(--gx-font);font-size:var(--cds-font-size-caption)}
+.gx-tip{position:absolute;pointer-events:none;background:var(--cds-surface-popover);border:1px solid var(--cds-border);border-radius:var(--cds-radius);box-shadow:var(--cds-shadow-popover);padding:var(--cds-pad-xs) var(--cds-pad-sm);font-size:var(--cds-font-size-caption);white-space:nowrap;z-index:2;display:none}
+.gx-tip .h{color:var(--cds-text-secondary);margin-bottom:2px}
+.gx-tip .row{display:flex;gap:6px;align-items:center;font-variant-numeric:tabular-nums}
+.gx-tip .sw{width:8px;height:8px;border-radius:2px;flex:none}
+.gx-tip .row .val{margin-inline-start:auto;padding-inline-start:12px;font-weight:600}
+.gx-fail{display:flex;align-items:center;justify-content:center;gap:6px;min-height:inherit;height:100%;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.gx-fail i{width:.375rem;height:.375rem;border-radius:50%;background:var(--color-bad);display:inline-block}
+.gx-tablewrap{overflow-x:auto}
+.gx table{width:100%;border-collapse:collapse;font-size:var(--cds-font-size-caption);font-variant-numeric:tabular-nums}
+.gx th{text-align:end;vertical-align:bottom;font-weight:var(--cds-font-weight-medium);color:var(--color-fg-muted);padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);white-space:normal;min-width:3.5rem}
+.gx td{text-align:end;padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);white-space:nowrap}
+.gx th:first-child,.gx td:first-child{text-align:start}
+.gx tr.is-focus td{font-weight:600;background:color-mix(in srgb,var(--color-fg) 5%,transparent)}
+.gx tr.is-ref td{color:var(--color-fg-muted)}
+.gx td.ok{color:var(--color-ok)}
+.gx td.bad{color:var(--color-bad)}
+.gx-vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8rem),1fr));gap:var(--cds-gap-md)}
+.gx-vs .t{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gx-vs .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;line-height:1.1}
+.gx-vs .y{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gx-note{margin:0;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);max-width:60rem}
+.gx-foot{display:grid;gap:var(--cds-gap-xs);border-top:1px solid var(--color-border-line);padding-top:var(--cds-pad-md)}
+.gx{--gx-font:var(--font-anthropic-sans),"Noto Sans Arabic","Segoe UI","Geeza Pro",Tahoma,sans-serif;font-family:var(--gx-font)}
+.gx:not(.is-ar) [lang="ar"]{display:none!important}
+.gx.is-ar [lang="en"]{display:none!important}
+.gx.is-ar{direction:rtl}
+.gx.is-ar .gx-take,.gx.is-ar .gx-lede,.gx.is-ar .n,.gx.is-ar .gx-note{line-height:1.7}
+.gx-chart{direction:ltr}
+.gx.is-ar .gx-tip{direction:rtl}
+.gx-lang{display:flex;gap:var(--cds-gap-xs);justify-content:flex-end}
+.gx-lang button{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer}
+.gx-lang button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
+[data-dash-source-state=empty]{color:transparent}
+[data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="assets/runtime.js"></script>
+</head>
+<body>
+<main class="site">
+<div class="gx">
+  <div class="gx-lang" role="group" aria-label="Language / اللغة">
+    <button type="button" data-lang="en" aria-pressed="true">English</button>
+    <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
+  </div>
+
+  <header id="top">
+    <h1><span lang="en">GCC health system tracker</span><span lang="ar">متتبع الأنظمة الصحية في دول مجلس التعاون الخليجي</span></h1>
+    <p class="gx-take" lang="en">Gulf states now live about as long as people in high-income countries, but chronic disease is the open problem. Adult obesity across the six states averages <b data-draw="avg" data-source="gcc_avg" data-field="gcc_mean" data-where="indicator=obesity">—</b> against <b data-draw="avg" data-source="gcc_avg" data-field="world" data-where="indicator=obesity">—</b> worldwide, and diabetes <b data-draw="avg" data-source="gcc_avg" data-field="gcc_mean" data-where="indicator=diabetes_prev">—</b> against <b data-draw="avg" data-source="gcc_avg" data-field="world" data-where="indicator=diabetes_prev">—</b>.</p>
+    <p class="gx-take" lang="ar">بلغ متوسط العمر المتوقع في دول الخليج مستوى الدول مرتفعة الدخل تقريبًا، لكن الأمراض المزمنة تبقى التحدي الأكبر. يبلغ متوسط معدل السمنة لدى البالغين في الدول الست <b data-draw="avg" data-source="gcc_avg" data-field="gcc_mean" data-where="indicator=obesity">—</b> مقابل <b data-draw="avg" data-source="gcc_avg" data-field="world" data-where="indicator=obesity">—</b> عالميًا، ومعدل السكري <b data-draw="avg" data-source="gcc_avg" data-field="gcc_mean" data-where="indicator=diabetes_prev">—</b> مقابل <b data-draw="avg" data-source="gcc_avg" data-field="world" data-where="indicator=diabetes_prev">—</b>.</p>
+  </header>
+
+  <div class="gx-focus" role="group" aria-label="Focus country / الدولة المختارة">
+    <span class="lbl"><span lang="en">Focus country</span><span lang="ar">الدولة المختارة</span></span>
+    <button type="button" data-iso="SAU" aria-pressed="false"><span lang="en">Saudi Arabia</span><span lang="ar">السعودية</span></button>
+    <button type="button" data-iso="ARE" aria-pressed="false"><span lang="en">UAE</span><span lang="ar">الإمارات</span></button>
+    <button type="button" data-iso="QAT" aria-pressed="false"><span lang="en">Qatar</span><span lang="ar">قطر</span></button>
+    <button type="button" data-iso="KWT" aria-pressed="false"><span lang="en">Kuwait</span><span lang="ar">الكويت</span></button>
+    <button type="button" data-iso="OMN" aria-pressed="false"><span lang="en">Oman</span><span lang="ar">عُمان</span></button>
+    <button type="button" data-iso="BHR" aria-pressed="false"><span lang="en">Bahrain</span><span lang="ar">البحرين</span></button>
+  </div>
+
+  <section class="gx-sec" id="snapshot">
+    <h2><span lang="en">Snapshot:</span><span lang="ar">لمحة:</span> <span data-draw="focusname">—</span></h2>
+    <div class="gx-tiles">
+      <div class="gx-tile">
+        <span class="t"><span lang="en">Life expectancy at birth</span><span lang="ar">العمر المتوقع عند الولادة</span></span>
+        <span class="v" data-draw="tv" data-ind="life_exp" data-fmt=".1f" data-source="latest" data-field="value">—</span>
+        <span class="u"><span lang="en">years, </span><span lang="ar">سنة، </span><span data-draw="ty" data-ind="life_exp" data-source="latest" data-field="year">—</span></span>
+        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="life_exp" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span></span>
+      </div>
+      <div class="gx-tile">
+        <span class="t"><span lang="en">Premature chronic-disease deaths</span><span lang="ar">الوفيات المبكرة بالأمراض المزمنة</span></span>
+        <span class="v" data-draw="tv" data-ind="ncd_mort_30_70" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
+        <span class="u"><span lang="en">chance of dying 30–70, </span><span lang="ar">احتمال الوفاة بين 30 و70 عامًا، </span><span data-draw="ty" data-ind="ncd_mort_30_70" data-source="latest" data-field="year">—</span></span>
+        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="ncd_mort_30_70" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
+      </div>
+      <div class="gx-tile">
+        <span class="t"><span lang="en">Adult obesity</span><span lang="ar">السمنة لدى البالغين</span></span>
+        <span class="v" data-draw="tv" data-ind="obesity" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
+        <span class="u"><span lang="en">age-standardized, </span><span lang="ar">معيارية حسب العمر، </span><span data-draw="ty" data-ind="obesity" data-source="latest" data-field="year">—</span></span>
+        <span class="r"><span lang="en">World:</span><span lang="ar">العالم:</span> <span data-draw="tr" data-ind="obesity" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
+      </div>
+      <div class="gx-tile">
+        <span class="t"><span lang="en">Diabetes</span><span lang="ar">السكري</span></span>
+        <span class="v" data-draw="tv" data-ind="diabetes_prev" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
+        <span class="u"><span lang="en">of adults 20–79, </span><span lang="ar">من البالغين بين 20 و79 عامًا، </span><span data-draw="ty" data-ind="diabetes_prev" data-source="latest" data-field="year">—</span></span>
+        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="diabetes_prev" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
+      </div>
+      <div class="gx-tile">
+        <span class="t"><span lang="en">Health spending</span><span lang="ar">الإنفاق الصحي</span></span>
+        <span class="v" data-draw="tv" data-ind="che_gdp" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
+        <span class="u"><span lang="en">of GDP, </span><span lang="ar">من الناتج المحلي الإجمالي، </span><span data-draw="ty" data-ind="che_gdp" data-source="latest" data-field="year">—</span></span>
+        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="che_gdp" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
+      </div>
+      <div class="gx-tile">
+        <span class="t"><span lang="en">Physicians</span><span lang="ar">الأطباء</span></span>
+        <span class="v" data-draw="tv" data-ind="physicians_1k" data-fmt=".1f" data-source="latest" data-field="value">—</span>
+        <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="physicians_1k" data-source="latest" data-field="year">—</span></span>
+        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="physicians_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="outcomes">
+    <h2><span lang="en">Outcomes</span><span lang="ar">النتائج الصحية</span></h2>
+    <p class="gx-lede" lang="en">Longevity has climbed toward high-income levels. The harder target is premature death from cardiovascular disease, cancer, diabetes and chronic respiratory disease, which the UN's Sustainable Development Goal 3.4 asks countries to cut by a third between 2015 and 2030.</p>
+    <p class="gx-lede" lang="ar">ارتفع متوسط العمر المتوقع نحو مستويات الدول مرتفعة الدخل. أما الهدف الأصعب فهو خفض الوفيات المبكرة الناجمة عن أمراض القلب والأوعية الدموية والسرطان والسكري وأمراض الجهاز التنفسي المزمنة، إذ يدعو الهدف 3.4 من أهداف الأمم المتحدة للتنمية المستدامة الدول إلى خفضها بمقدار الثلث بين عامي 2015 و2030.</p>
+    <div class="gx-grid">
+      <div class="gx-card" id="life-exp">
+        <h3><span lang="en">Life expectancy at birth</span><span lang="ar">العمر المتوقع عند الولادة</span></h3>
+        <p class="n" lang="en">Years, 2000 onward. Focus country highlighted; dashed lines are benchmarks.</p>
+        <p class="n" lang="ar">بالسنوات منذ عام 2000. الدولة المختارة مميّزة، والخطوط المتقطعة للمقارنة المرجعية.</p>
+        <div class="gx-chart dash-skeleton" data-draw="lechart" data-source="wb"></div>
+      </div>
+      <div class="gx-card" id="ncd">
+        <h3><span lang="en">Premature chronic-disease deaths</span><span lang="ar">الوفيات المبكرة بالأمراض المزمنة</span></h3>
+        <p class="n" lang="en">Chance of dying between 30 and 70 from the four main chronic diseases (%). The ring marks the focus country's 2030 goal under SDG 3.4.</p>
+        <p class="n" lang="ar">احتمال الوفاة بين 30 و70 عامًا بسبب الأمراض المزمنة الأربعة الرئيسية (%). تشير الدائرة إلى هدف الدولة المختارة لعام 2030 وفق الهدف 3.4.</p>
+        <div class="gx-chart dash-skeleton" data-draw="ncdchart" data-source="wb sdg34"></div>
+      </div>
+    </div>
+    <div class="gx-card" id="sdg-table">
+      <h3><span lang="en">On track for SDG 3.4?</span><span lang="ar">هل الدول على المسار الصحيح لتحقيق الهدف 3.4؟</span></h3>
+      <p class="n" lang="en">Projection carries each country's 2015-to-latest yearly change forward to 2030. A country is on track when the projection reaches its goal. Straight-line projections are rough, and the latest WHO year (2021) may still carry pandemic-era deaths.</p>
+      <p class="n" lang="ar">يمدّ الإسقاط متوسط التغير السنوي لكل دولة منذ عام 2015 حتى عام 2030، وتُعدّ الدولة على المسار الصحيح إذا بلغ الإسقاط هدفها. الإسقاطات الخطية تقريبية، وقد تتضمن أحدث بيانات منظمة الصحة العالمية (2021) وفيات مرتبطة بالجائحة.</p>
+      <div class="gx-tablewrap" lang="en">
+        <table data-source="sdg34" data-row-key="country">
+          <thead><tr>
+            <th data-field="country">Country</th>
+            <th data-field="v2015">2015</th>
+            <th data-field="latest">Latest</th>
+            <th data-field="latest_year">Year</th>
+            <th data-field="goal2030">2030 goal</th>
+            <th data-field="proj2030">Projected 2030</th>
+            <th data-field="status">Status</th>
+          </tr></thead>
+          <tbody data-draw="sdgbody"></tbody>
+        </table>
+      </div>
+      <div class="gx-tablewrap" lang="ar">
+        <table data-source="sdg34" data-row-key="country">
+          <thead><tr>
+            <th data-field="country">الدولة</th>
+            <th data-field="v2015">2015</th>
+            <th data-field="latest">الأحدث</th>
+            <th data-field="latest_year">السنة</th>
+            <th data-field="goal2030">هدف 2030</th>
+            <th data-field="proj2030">الإسقاط لعام 2030</th>
+            <th data-field="status_ar">الحالة</th>
+          </tr></thead>
+          <tbody data-draw="sdgbody_ar"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="risk">
+    <h2><span lang="en">Chronic disease risk</span><span lang="ar">عوامل خطر الأمراض المزمنة</span></h2>
+    <p class="gx-lede" lang="en">Obesity and diabetes drive most of the region's chronic disease burden, and every Gulf state sits far above the world average on both.</p>
+    <p class="gx-lede" lang="ar">تقف السمنة والسكري وراء معظم عبء الأمراض المزمنة في المنطقة، وتتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في كليهما.</p>
+    <div class="gx-grid">
+      <div class="gx-card" id="obesity">
+        <h3><span lang="en">Adult obesity</span><span lang="ar">السمنة لدى البالغين</span></h3>
+        <p class="n" lang="en">Share of adults with BMI of 30 or more, age-standardized, latest year (WHO).</p>
+        <p class="n" lang="ar">نسبة البالغين الذين يبلغ مؤشر كتلة الجسم لديهم 30 أو أكثر، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
+        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="obesity" data-source="latest"></div>
+      </div>
+      <div class="gx-card" id="diabetes">
+        <h3><span lang="en">Diabetes</span><span lang="ar">السكري</span></h3>
+        <p class="n" lang="en">Share of adults 20–79 with diabetes, latest year (International Diabetes Federation via World Bank).</p>
+        <p class="n" lang="ar">نسبة البالغين بين 20 و79 عامًا المصابين بالسكري، لأحدث سنة (الاتحاد الدولي للسكري عبر البنك الدولي).</p>
+        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="diabetes_prev" data-source="latest"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="financing">
+    <h2><span lang="en">Financing</span><span lang="ar">التمويل</span></h2>
+    <p class="gx-lede" lang="en">Gulf health systems are mostly government-funded and spend a smaller share of GDP than high-income peers. Reforms such as Saudi Arabia's push for private-sector participation and mandatory insurance would show up as a falling government share.</p>
+    <p class="gx-lede" lang="ar">تعتمد الأنظمة الصحية الخليجية في معظمها على التمويل الحكومي، وتنفق حصة من الناتج المحلي الإجمالي أقل من نظيراتها في الدول مرتفعة الدخل. وستنعكس إصلاحات مثل توجه السعودية نحو مشاركة القطاع الخاص والتأمين الصحي الإلزامي في تراجع الحصة الحكومية.</p>
+    <div class="gx-grid">
+      <div class="gx-card" id="gov-share">
+        <h3><span lang="en">Government share of health spending</span><span lang="ar">الحصة الحكومية من الإنفاق الصحي</span></h3>
+        <p class="n" lang="en">Domestic general government spending as % of current health expenditure, 2000 onward.</p>
+        <p class="n" lang="ar">الإنفاق الحكومي العام المحلي كنسبة مئوية من الإنفاق الصحي الجاري، منذ عام 2000.</p>
+        <div class="gx-chart dash-skeleton" data-draw="govchart" data-source="wb"></div>
+      </div>
+      <div class="gx-card" id="spend-table">
+        <h3><span lang="en">Health spending, latest year</span><span lang="ar">الإنفاق الصحي، أحدث سنة</span></h3>
+        <p class="n" lang="en">Current health expenditure; shares are of that total.</p>
+        <p class="n" lang="ar">الإنفاق الصحي الجاري، والحصص محسوبة من إجماليه.</p>
+        <div class="gx-tablewrap" lang="en">
+          <table data-source="spend" data-row-key="country">
+            <thead><tr>
+              <th data-field="country">Country</th>
+              <th data-field="year">Year</th>
+              <th data-field="che_gdp">% of GDP</th>
+              <th data-field="che_pc_usd">Per person (US$)</th>
+              <th data-field="gov_share_che">Government</th>
+              <th data-field="oop_share_che">Out of pocket</th>
+            </tr></thead>
+            <tbody data-draw="spendbody"></tbody>
+          </table>
+        </div>
+        <div class="gx-tablewrap" lang="ar">
+          <table data-source="spend" data-row-key="country">
+            <thead><tr>
+              <th data-field="country">الدولة</th>
+              <th data-field="year">السنة</th>
+              <th data-field="che_gdp">% من الناتج المحلي</th>
+              <th data-field="che_pc_usd">للفرد (دولار أمريكي)</th>
+              <th data-field="gov_share_che">الحكومة</th>
+              <th data-field="oop_share_che">المدفوعات المباشرة</th>
+            </tr></thead>
+            <tbody data-draw="spendbody_ar"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="workforce">
+    <h2><span lang="en">Workforce and capacity</span><span lang="ar">القوى العاملة والطاقة الاستيعابية</span></h2>
+    <p class="gx-lede" lang="en">Physician supply is close to high-income levels in several states, but nurses and hospital beds lag well behind. The dashed tick marks the high-income average.</p>
+    <p class="gx-lede" lang="ar">يقترب عدد الأطباء من مستويات الدول مرتفعة الدخل في عدة دول، لكن أعداد الممرضين وأسرّة المستشفيات متأخرة كثيرًا. يشير الخط المتقطع إلى متوسط الدول مرتفعة الدخل.</p>
+    <div class="gx-card" id="capacity">
+      <h3><span lang="en">Physicians, nurses and hospital beds per 1,000 people</span><span lang="ar">الأطباء والممرضون وأسرّة المستشفيات لكل 1,000 نسمة</span></h3>
+      <p class="n" lang="en">Latest year each country reported (2020–2023); hover a dot for its year.</p>
+      <p class="n" lang="ar">أحدث سنة أبلغت عنها كل دولة (2020–2023)؛ مرّر المؤشر فوق أي نقطة لمعرفة سنتها.</p>
+      <div class="gx-chart short dash-skeleton" data-draw="strip" data-source="latest"></div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="vision2030">
+    <h2><span lang="en">Saudi Vision 2030: official figures and international estimates</span><span lang="ar">رؤية السعودية 2030: الأرقام الرسمية والتقديرات الدولية</span></h2>
+    <p class="gx-lede" lang="en">The Health Sector Transformation Program reports progress with national figures. International series are modelled for comparability across countries and can tell a different story, so analysts working with Gulf data need to know which one a number comes from.</p>
+    <p class="gx-lede" lang="ar">يرصد برنامج تحول القطاع الصحي التقدم بأرقام وطنية، بينما تُنمذَج السلاسل الدولية لتكون قابلة للمقارنة بين الدول وقد تروي قصة مختلفة؛ لذا يحتاج المحللون العاملون على البيانات الخليجية إلى معرفة مصدر كل رقم.</p>
+    <div class="gx-grid">
+      <div class="gx-card" id="v-le">
+        <h3><span lang="en">Life expectancy</span><span lang="ar">العمر المتوقع</span></h3>
+        <div class="gx-vs">
+          <div><div class="t"><span lang="en">Official</span><span lang="ar">الرقم الرسمي</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=life_exp&amp;series=official&amp;year=2025" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=life_exp&amp;series=official&amp;year=2025">—</div></div>
+          <div><div class="t"><span lang="en">Vision 2030 target</span><span lang="ar">مستهدف رؤية 2030</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=life_exp&amp;series=target&amp;year=2030" data-fmt=".0f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=life_exp&amp;series=target&amp;year=2030">—</div></div>
+          <div><div class="t"><span lang="en">World Bank estimate</span><span lang="ar">تقدير البنك الدولي</span></div><div class="v" data-draw="vv" data-source="latest" data-field="value" data-where="iso3=SAU&amp;indicator=life_exp" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="latest" data-field="year" data-where="iso3=SAU&amp;indicator=life_exp">—</div></div>
+        </div>
+        <p class="gx-note" lang="en">Years at birth. The official figure comes from the Ministry of Health; the World Bank series uses UN population estimates.</p>
+        <p class="gx-note" lang="ar">بالسنوات عند الولادة. الرقم الرسمي صادر عن وزارة الصحة، وتعتمد سلسلة البنك الدولي على تقديرات الأمم المتحدة للسكان.</p>
+      </div>
+      <div class="gx-card" id="v-road">
+        <h3><span lang="en">Road traffic deaths per 100,000 people</span><span lang="ar">وفيات حوادث الطرق لكل 100,000 نسمة</span></h3>
+        <div class="gx-vs">
+          <div><div class="t"><span lang="en">Official baseline</span><span lang="ar">خط الأساس الرسمي</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=road_deaths&amp;series=official&amp;year=2016" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=road_deaths&amp;series=official&amp;year=2016">—</div></div>
+          <div><div class="t"><span lang="en">Official, latest</span><span lang="ar">الرقم الرسمي الأحدث</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=road_deaths&amp;series=official&amp;year=2023" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=road_deaths&amp;series=official&amp;year=2023">—</div></div>
+          <div><div class="t"><span lang="en">WHO estimate</span><span lang="ar">تقدير منظمة الصحة العالمية</span></div><div class="v" data-draw="vv" data-source="latest" data-field="value" data-where="iso3=SAU&amp;indicator=road_deaths" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="latest" data-field="year" data-where="iso3=SAU&amp;indicator=road_deaths">—</div></div>
+        </div>
+        <p class="gx-note" lang="en">WHO models road deaths to correct for under-reporting in national registries, so its estimates usually run above official counts. The two series aren't directly comparable, and the WHO series in the World Bank's data stops at 2019.</p>
+        <p class="gx-note" lang="ar">تُنمذج منظمة الصحة العالمية وفيات الطرق لتصحيح نقص الإبلاغ في السجلات الوطنية، لذا تأتي تقديراتها عادةً أعلى من الأرقام الرسمية. السلسلتان غير قابلتين للمقارنة المباشرة، وتتوقف سلسلة المنظمة في بيانات البنك الدولي عند عام 2019.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="gx-foot" id="method">
+    <p class="gx-note" lang="en">Sources: World Bank World Development Indicators; WHO Global Health Observatory via Our World in Data; Saudi Ministry of Health and Health Sector Transformation Program reports. International series refresh monthly. Each figure shows the latest year a country reported, so years differ across countries and indicators. "High income" and "World" are World Bank aggregates.</p>
+    <p class="gx-note" lang="ar">المصادر: مؤشرات التنمية العالمية للبنك الدولي؛ المرصد الصحي العالمي لمنظمة الصحة العالمية عبر Our World in Data؛ تقارير وزارة الصحة السعودية وبرنامج تحول القطاع الصحي. تُحدَّث السلاسل الدولية شهريًا. يعرض كل رقم أحدث سنة أبلغت عنها الدولة، لذا تختلف السنوات بين الدول والمؤشرات. «الدول مرتفعة الدخل» و«العالم» مجموعتان إجماليتان من البنك الدولي.</p>
+  </footer>
+
+<footer class="site-foot">
+  <span><span lang="en">Built by Hamza Saleh, MPH</span><span lang="ar">إعداد: حمزة صالح، ماجستير الصحة العامة</span></span>
+  <a href="https://github.com/hamzasaleh10/gcc-health-tracker"><span lang="en">Source code and data pipeline</span><span lang="ar">الشيفرة المصدرية ومسار البيانات</span></a>
+  <span class="sep"></span>
+  <span><span lang="en">Data last refreshed</span><span lang="ar">آخر تحديث للبيانات</span> <span data-draw="refreshed">—</span></span>
+</footer>
+</div>
+
+</main>
+<script>
+window.gx = (() => {
+  const GCC = ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'];
+  const NAME_EN = {SAU: 'Saudi Arabia', ARE: 'UAE', QAT: 'Qatar', KWT: 'Kuwait', OMN: 'Oman', BHR: 'Bahrain', WLD: 'World', HIC: 'High income', USA: 'United States'};
+  const NAME_AR = {SAU: 'السعودية', ARE: 'الإمارات', QAT: 'قطر', KWT: 'الكويت', OMN: 'عُمان', BHR: 'البحرين', WLD: 'العالم', HIC: 'الدول مرتفعة الدخل', USA: 'الولايات المتحدة'};
+  const lang = () => (dash.params().lang === 'ar' ? 'ar' : 'en');
+  const T = (en, ar) => (lang() === 'ar' ? ar : en);
+  const nm = (iso) => (lang() === 'ar' ? NAME_AR : NAME_EN)[iso];
+  const NAME = new Proxy({}, {get: (o, iso) => nm(iso)});
+  const focus = () => (GCC.includes(dash.params().focus) ? dash.params().focus : 'SAU');
+  const BAD = new Set(['error', 'connect', 'declined', 'missing']);
+  const status = (ids) => {
+    const st = ids.map((id) => dash.data(id).status);
+    if (st.every((s) => s === 'ok')) return 'ok';
+    if (st.some((s) => BAD.has(s))) return 'error';
+    return 'loading';
+  };
+  // Box (chart) readiness: skeleton while loading, failure line on error.
+  const box = (el, ids) => {
+    const s = status(ids);
+    if (s === 'ok') { el.classList.remove('dash-skeleton'); return true; }
+    if (s === 'error') {
+      el.classList.remove('dash-skeleton');
+      const d = document.createElement('div'); d.className = 'gx-fail';
+      const i = document.createElement('i'); const t = document.createElement('span'); t.textContent = 'Failed to load';
+      d.append(i, t); el.replaceChildren(d);
+    } else { el.replaceChildren(); el.classList.add('dash-skeleton'); }
+    return false;
+  };
+  const text = (el, ids) => {
+    if (status(ids) === 'ok') return true;
+    el.textContent = '—';
+    return false;
+  };
+  const fmt = (spec, suffix = '') => (v) => (v == null || isNaN(v) ? '—' : d3.format(spec)(v) + suffix);
+  const tip = (el) => {
+    const t = document.createElement('div'); t.className = 'gx-tip'; el.appendChild(t);
+    return {
+      show(x, y, head, rows) {
+        t.replaceChildren();
+        const h = document.createElement('div'); h.className = 'h'; h.textContent = head; t.appendChild(h);
+        rows.forEach((r) => {
+          const row = document.createElement('div'); row.className = 'row';
+          if (r.color) { const s = document.createElement('span'); s.className = 'sw'; s.style.background = r.color; row.appendChild(s); }
+          const n = document.createElement('span'); n.textContent = r.name;
+          const v = document.createElement('span'); v.className = 'val'; v.textContent = r.value;
+          row.append(n, v); t.appendChild(row);
+        });
+        t.style.display = 'block';
+        const W = el.clientWidth, tw = t.offsetWidth, th = t.offsetHeight;
+        let left = x + 12; if (left + tw > W) left = Math.max(0, x - tw - 12);
+        let top = y - th / 2; top = Math.max(0, Math.min(top, el.clientHeight - th));
+        t.style.left = left + 'px'; t.style.top = top + 'px';
+      },
+      hide() { t.style.display = 'none'; },
+    };
+  };
+  const measure = (svg, strings) => {
+    const t = svg.append('text').attr('visibility', 'hidden');
+    let w = 0; strings.forEach((s) => { t.text(s); w = Math.max(w, t.node().getComputedTextLength()); });
+    t.remove(); return w;
+  };
+  const colorOf = (iso) => (iso === focus() ? dash.colors[0] : GCC.includes(iso) ? 'var(--cds-chart-muted)' : 'var(--cds-chart-reference)');
+
+  // Multi-series line chart over years.
+  function lineChart(el, {series, f, height = 260, extra}) {
+    el.replaceChildren();
+    const W = Math.max(280, el.clientWidth), H = height;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
+    const all = series.flatMap((s) => s.points);
+    const yExt = d3.extent(all.concat(extra ? extra.points : []), (p) => p.y);
+    const y = d3.scaleLinear([yExt[0] - (yExt[1] - yExt[0]) * 0.05, yExt[1] + (yExt[1] - yExt[0]) * 0.05], [H - 24, 8]).nice();
+    const xMax = Math.max(d3.max(all, (p) => p.x), extra ? d3.max(extra.points, (p) => p.x) : 0);
+    const yTicks = y.ticks(5);
+    const ml = measure(svg, yTicks.map((v) => f(v))) + 10;
+    const labelled = series.filter((s) => s.label);
+    const endLabels = labelled.map((s) => { const p = s.points[s.points.length - 1]; return {s, p, txt: `${s.name} \u2066${f(p.y)}\u2069`}; });
+    const mr = Math.min(W * 0.42, measure(svg, endLabels.map((l) => l.txt)) + 12);
+    const x = d3.scaleLinear([d3.min(all, (p) => p.x), xMax], [ml, W - mr]);
+    const g = svg.append('g');
+    g.selectAll('line.grid').data(yTicks).join('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y).attr('y2', y).style('stroke', 'var(--cds-chart-grid)');
+    g.selectAll('text.yt').data(yTicks).join('text').attr('x', ml - 8).attr('y', y).attr('dy', '0.32em').attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').text((v) => f(v));
+    const xt = x.ticks(Math.max(2, Math.min(6, Math.floor((W - ml - mr) / 70)))).filter((v) => Number.isInteger(v));
+    g.selectAll('text.xt').data(xt).join('text').attr('x', x).attr('y', H - 6).attr('text-anchor', 'middle').style('fill', 'var(--color-fg-muted)').text((v) => String(v));
+    const line = d3.line().x((p) => x(p.x)).y((p) => y(p.y)).defined((p) => p.y != null);
+    const order = [...series].sort((a, b) => (a.iso === focus()) - (b.iso === focus()));
+    g.selectAll('path.s').data(order).join('path').attr('fill', 'none').attr('d', (s) => line(s.points))
+      .style('stroke', (s) => colorOf(s.iso)).attr('stroke-width', (s) => (s.iso === focus() ? 2.5 : s.ref ? 1.5 : 1.5))
+      .attr('stroke-dasharray', (s) => (s.ref ? '4 3' : null)).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+    if (extra) extra.draw(g, x, y);
+    // End labels with simple vertical dodge.
+    endLabels.forEach((l) => (l.y = y(l.p.y)));
+    endLabels.sort((a, b) => a.y - b.y);
+    for (let i = 1; i < endLabels.length; i++) if (endLabels[i].y - endLabels[i - 1].y < 13) endLabels[i].y = endLabels[i - 1].y + 13;
+    g.selectAll('text.end').data(endLabels).join('text').attr('x', (l) => x(l.p.x) + 6).attr('y', (l) => l.y).attr('dy', '0.32em')
+      .style('fill', (l) => (l.s.iso === focus() ? 'var(--color-fg)' : 'var(--color-fg-muted)')).attr('font-weight', (l) => (l.s.iso === focus() ? 600 : null)).text((l) => l.txt);
+    // Hover.
+    const tt = tip(el);
+    const rule = g.append('line').attr('y1', 8).attr('y2', H - 24).style('stroke', 'var(--cds-chart-axis)').style('display', 'none');
+    const dot = g.append('circle').attr('r', 4).style('fill', dash.colors[0]).style('display', 'none');
+    const years = [...new Set(all.map((p) => p.x))].sort((a, b) => a - b);
+    svg.append('rect').attr('x', ml).attr('y', 0).attr('width', Math.max(0, W - mr - ml)).attr('height', H - 20).attr('fill', 'transparent')
+      .on('pointermove', (ev) => {
+        const [mx] = d3.pointer(ev);
+        const yr = years[d3.minIndex(years, (v) => Math.abs(x(v) - mx))];
+        rule.style('display', null).attr('x1', x(yr)).attr('x2', x(yr));
+        const rows = series.map((s) => ({s, p: s.points.find((p) => p.x === yr)})).filter((r) => r.p).sort((a, b) => b.p.y - a.p.y);
+        const fp = rows.find((r) => r.s.iso === focus());
+        if (fp) dot.style('display', null).attr('cx', x(yr)).attr('cy', y(fp.p.y)); else dot.style('display', 'none');
+        tt.show(x(yr), fp ? y(fp.p.y) : H / 2, String(yr), rows.map((r) => ({color: colorOf(r.s.iso), name: r.s.name, value: f(r.p.y)})));
+      })
+      .on('pointerleave', () => { rule.style('display', 'none'); dot.style('display', 'none'); tt.hide(); });
+  }
+
+  // Horizontal bars, one per country/benchmark.
+  function hbar(el, rows, f) {
+    el.replaceChildren();
+    const W = Math.max(260, el.clientWidth), bh = 22, gap = 6, H = rows.length * (bh + gap) + 4;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
+    const ml = measure(svg, rows.map((r) => r.name)) + 10;
+    const mr = measure(svg, rows.map((r) => f(r.value))) + 10;
+    const x = d3.scaleLinear([0, d3.max(rows, (r) => r.value)], [ml, W - mr]);
+    const g = svg.selectAll('g.b').data(rows).join('g').attr('transform', (r, i) => `translate(0,${i * (bh + gap) + 2})`);
+    g.append('text').attr('x', ml - 8).attr('y', bh / 2).attr('dy', '0.32em').attr('text-anchor', 'end')
+      .style('fill', (r) => (r.iso === focus() ? 'var(--color-fg)' : 'var(--color-fg-muted)')).attr('font-weight', (r) => (r.iso === focus() ? 600 : null)).text((r) => r.name);
+    g.append('rect').attr('x', ml).attr('y', 0).attr('height', bh).attr('width', (r) => Math.max(1, x(r.value) - ml)).attr('rx', 3)
+      .style('fill', (r) => colorOf(r.iso)).style('opacity', (r) => (GCC.includes(r.iso) ? 1 : 0.55));
+    g.append('text').attr('x', (r) => x(r.value) + 6).attr('y', bh / 2).attr('dy', '0.32em').style('fill', 'var(--color-fg)').style('font-variant-numeric', 'tabular-nums').text((r) => f(r.value));
+    const tt = tip(el);
+    g.on('pointermove', (ev, r) => { const [mx, my] = d3.pointer(ev, el); tt.show(mx, my, r.name, [{name: String(r.year), value: f(r.value)}]); })
+      .on('pointerleave', () => tt.hide());
+  }
+
+  return {GCC, NAME, NAME_AR, lang, T, nm, focus, box, text, fmt, tip, measure, colorOf, lineChart, hbar};
+})();
+</script>
+<script>
+// Calculations readers can inspect in Sources.
+dash.calc('latest', {
+  title: 'Latest value per country',
+  description: 'Most recent reported year for each country and indicator, from the World Bank and WHO obesity files.',
+  inputs: ['wb', 'obesity'],
+  fn: (wb, obesity) => {
+    const rows = wb.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: Number(r.year), value: Number(r.value)}))
+      .concat(obesity.map((r) => ({iso3: r.iso3, indicator: 'obesity', year: Number(r.year), value: Number(r.value)})));
+    const best = new Map();
+    rows.forEach((r) => { const k = r.iso3 + '|' + r.indicator; if (!best.has(k) || best.get(k).year < r.year) best.set(k, r); });
+    return [...best.values()];
+  },
+});
+
+dash.calc('gcc_avg', {
+  title: 'GCC average vs world',
+  description: 'Simple (unweighted) mean of the six GCC states’ latest values, beside the world value, for obesity and diabetes.',
+  inputs: ['latest'],
+  fn: (latest) => ['obesity', 'diabetes_prev'].map((ind) => {
+    const gcc = latest.filter((r) => r.indicator === ind && ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'].includes(r.iso3));
+    const world = latest.find((r) => r.indicator === ind && r.iso3 === 'WLD');
+    return {indicator: ind, gcc_mean: Math.round(gcc.reduce((a, r) => a + r.value, 0) / gcc.length * 10) / 10, world: world ? Math.round(world.value * 10) / 10 : null};
+  }),
+});
+
+dash.calc('sdg34', {
+  title: 'SDG 3.4 progress by country',
+  description: 'Goal = 2015 premature chronic-disease mortality cut by one third. Projection extends the average yearly change since 2015 to 2030.',
+  inputs: ['wb'],
+  fn: (wb) => ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'].map((iso) => {
+    const s = wb.filter((r) => r.iso3 === iso && r.indicator === 'ncd_mort_30_70').map((r) => ({year: Number(r.year), value: Number(r.value), country: r.country}));
+    const b = s.find((r) => r.year === 2015);
+    const last = s.reduce((a, r) => (r.year > a.year ? r : a), s[0]);
+    const goal = b.value * 2 / 3;
+    const proj = last.value + ((last.value - b.value) / (last.year - 2015)) * (2030 - last.year);
+    const r1 = (v) => Math.round(v * 10) / 10;
+    return {iso3: iso, country: b.country, v2015: r1(b.value), latest: r1(last.value), latest_year: last.year, goal2030: r1(goal), proj2030: r1(proj), status: proj <= goal ? 'On track' : 'Off track', status_ar: proj <= goal ? 'على المسار' : 'خارج المسار'};
+  }),
+});
+
+dash.calc('spend', {
+  title: 'Health spending, latest year',
+  description: 'Latest year of each health-spending indicator per country, with World Bank country names.',
+  inputs: ['wb'],
+  fn: (wb) => {
+    const ids = ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR', 'USA', 'HIC', 'WLD'];
+    const inds = ['che_gdp', 'che_pc_usd', 'gov_share_che', 'oop_share_che'];
+    return ids.map((iso) => {
+      const rows = wb.filter((r) => r.iso3 === iso && inds.includes(r.indicator));
+      const yr = Math.max(...rows.map((r) => Number(r.year)));
+      const at = (ind) => { const r = rows.find((x) => x.indicator === ind && Number(x.year) === yr); return r ? Math.round(Number(r.value) * 10) / 10 : null; };
+      return {iso3: iso, country: rows[0].country, year: yr, che_gdp: at('che_gdp'), che_pc_usd: Math.round(at('che_pc_usd')), gov_share_che: at('gov_share_che'), oop_share_che: at('oop_share_che')};
+    });
+  },
+});
+</script>
+<script>
+const {GCC, NAME, NAME_AR, lang, T, nm, focus, box, text, fmt, lineChart, hbar, tip, measure, colorOf} = window.gx;
+
+// Focus buttons.
+document.querySelectorAll('.gx-focus button').forEach((b) => b.addEventListener('click', () => dash.setParams({focus: b.dataset.iso})));
+document.querySelectorAll('.gx-lang button').forEach((b) => b.addEventListener('click', () => dash.setParams({lang: b.dataset.lang})));
+dash.onData(() => {
+  document.querySelectorAll('.gx-focus button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.iso === focus())));
+  document.querySelectorAll('.gx-lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang())));
+  document.querySelectorAll('.gx').forEach((g) => g.classList.toggle('is-ar', lang() === 'ar'));
+});
+
+dash.draw('focusname', (el) => { el.textContent = NAME[focus()]; });
+
+dash.draw('avg', (el) => {
+  if (!text(el, ['gcc_avg'])) return;
+  const [ind] = el.dataset.where.replace('indicator=', '').split('&');
+  const r = dash.data('gcc_avg').data.find((x) => x.indicator === ind);
+  el.textContent = r ? d3.format('.1f')(r[el.dataset.field]) + '%' : '—';
+});
+
+const latestRow = (iso, ind) => dash.data('latest').data.find((r) => r.iso3 === iso && r.indicator === ind);
+dash.draw('tv', (el) => {
+  el.dataset.where = `iso3=${focus()}&indicator=${el.dataset.ind}`;
+  if (!text(el, ['latest'])) return;
+  const r = latestRow(focus(), el.dataset.ind);
+  el.textContent = r ? fmt(el.dataset.fmt, el.dataset.suffix || '')(r.value) : '—';
+});
+dash.draw('ty', (el) => {
+  el.dataset.where = `iso3=${focus()}&indicator=${el.dataset.ind}`;
+  if (!text(el, ['latest'])) return;
+  const r = latestRow(focus(), el.dataset.ind);
+  el.textContent = r ? String(r.year) : '—';
+});
+dash.draw('tr', (el) => {
+  el.dataset.where = `iso3=${el.dataset.ref}&indicator=${el.dataset.ind}`;
+  if (!text(el, ['latest'])) return;
+  const r = latestRow(el.dataset.ref, el.dataset.ind);
+  el.textContent = r ? fmt(el.dataset.fmt, el.dataset.suffix || '')(r.value) : '—';
+});
+
+const seriesFor = (ind, isos) => {
+  const rows = dash.data('wb').data.filter((r) => r.indicator === ind);
+  return isos.map((iso) => ({
+    iso, name: NAME[iso], ref: !GCC.includes(iso),
+    points: rows.filter((r) => r.iso3 === iso).map((r) => ({x: Number(r.year), y: Number(r.value)})).sort((a, b) => a.x - b.x),
+  })).filter((s) => s.points.length).map((s) => ({...s, label: s.iso === focus() || s.ref}));
+};
+
+dash.draw('lechart', (el) => {
+  if (!box(el, ['wb'])) return;
+  lineChart(el, {series: seriesFor('life_exp', [...GCC, 'HIC', 'WLD']), f: d3.format('.1f')});
+});
+
+dash.draw('ncdchart', (el) => {
+  if (!box(el, ['wb', 'sdg34'])) return;
+  const goal = dash.data('sdg34').data.find((r) => r.iso3 === focus());
+  const series = seriesFor('ncd_mort_30_70', [...GCC, 'HIC', 'WLD']);
+  lineChart(el, {
+    series, f: (v) => d3.format('.1f')(v) + '%',
+    extra: goal && {
+      points: [{x: 2030, y: goal.goal2030}],
+      draw: (g, x, y) => {
+        const last = series.find((s) => s.iso === focus()).points.slice(-1)[0];
+        g.append('line').attr('x1', x(last.x)).attr('y1', y(last.y)).attr('x2', x(2030)).attr('y2', y(goal.proj2030))
+          .style('stroke', dash.colors[0]).attr('stroke-width', 1.5).attr('stroke-dasharray', '2 3');
+        g.append('circle').attr('cx', x(2030)).attr('cy', y(goal.goal2030)).attr('r', 5).style('fill', 'none').style('stroke', dash.colors[0]).attr('stroke-width', 2);
+        g.append('text').attr('x', x(2030)).attr('y', y(goal.goal2030) + 16).attr('text-anchor', 'middle').style('fill', 'var(--color-fg-muted)').text(T('2030 goal', 'هدف 2030'));
+      },
+    },
+  });
+});
+
+dash.draw('sdgbody', (tb) => {
+  tb.replaceChildren();
+  if (dash.data('sdg34').status !== 'ok') return;
+  const f = d3.format('.1f');
+  dash.data('sdg34').data.forEach((r) => {
+    const tr = document.createElement('tr'); if (r.iso3 === focus()) tr.className = 'is-focus';
+    [r.country, f(r.v2015) + '%', f(r.latest) + '%', String(r.latest_year), f(r.goal2030) + '%', f(r.proj2030) + '%', r.status].forEach((v, i) => {
+      const td = document.createElement('td'); td.textContent = v; if (i === 6) td.className = r.status === 'On track' ? 'ok' : 'bad'; tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+dash.draw('hbar', (el) => {
+  if (!box(el, ['latest'])) return;
+  const ind = el.dataset.ind;
+  const isos = [...GCC, 'USA', ind === 'obesity' ? null : 'HIC', 'WLD'].filter(Boolean);
+  const rows = isos.map((iso) => { const r = latestRow(iso, ind); return r && {iso, name: NAME[iso], value: r.value, year: r.year}; }).filter(Boolean);
+  const g = rows.filter((r) => GCC.includes(r.iso)).sort((a, b) => b.value - a.value);
+  const refs = rows.filter((r) => !GCC.includes(r.iso)).sort((a, b) => b.value - a.value);
+  hbar(el, g.concat(refs), (v) => d3.format('.1f')(v) + '%');
+});
+
+dash.draw('govchart', (el) => {
+  if (!box(el, ['wb'])) return;
+  lineChart(el, {series: seriesFor('gov_share_che', [...GCC, 'HIC', 'WLD']), f: (v) => d3.format('.0f')(v) + '%'});
+});
+
+dash.draw('spendbody', (tb) => {
+  tb.replaceChildren();
+  if (dash.data('spend').status !== 'ok') return;
+  const p = (v) => (v == null ? '—' : d3.format('.1f')(v) + '%');
+  dash.data('spend').data.forEach((r) => {
+    const tr = document.createElement('tr');
+    tr.className = r.iso3 === focus() ? 'is-focus' : GCC.includes(r.iso3) ? '' : 'is-ref';
+    [r.country, String(r.year), p(r.che_gdp), r.che_pc_usd == null ? '—' : d3.format(',')(r.che_pc_usd), p(r.gov_share_che), p(r.oop_share_che)].forEach((v) => {
+      const td = document.createElement('td'); td.textContent = v; tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+dash.draw('sdgbody_ar', (tb) => {
+  tb.replaceChildren();
+  if (dash.data('sdg34').status !== 'ok') return;
+  const f = d3.format('.1f');
+  dash.data('sdg34').data.forEach((r) => {
+    const tr = document.createElement('tr'); tr.dataset.key = r.country; if (r.iso3 === focus()) tr.className = 'is-focus';
+    [NAME_AR[r.iso3], f(r.v2015) + '%', f(r.latest) + '%', String(r.latest_year), f(r.goal2030) + '%', f(r.proj2030) + '%', r.status_ar].forEach((v, i) => {
+      const td = document.createElement('td'); td.textContent = v; if (i === 6) td.className = r.status === 'On track' ? 'ok' : 'bad'; tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+dash.draw('spendbody_ar', (tb) => {
+  tb.replaceChildren();
+  if (dash.data('spend').status !== 'ok') return;
+  const p = (v) => (v == null ? '—' : d3.format('.1f')(v) + '%');
+  dash.data('spend').data.forEach((r) => {
+    const tr = document.createElement('tr'); tr.dataset.key = r.country;
+    tr.className = r.iso3 === focus() ? 'is-focus' : GCC.includes(r.iso3) ? '' : 'is-ref';
+    [NAME_AR[r.iso3], String(r.year), p(r.che_gdp), r.che_pc_usd == null ? '—' : d3.format(',')(r.che_pc_usd), p(r.gov_share_che), p(r.oop_share_che)].forEach((v) => {
+      const td = document.createElement('td'); td.textContent = v; tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+dash.draw('strip', (el) => {
+  if (!box(el, ['latest'])) return;
+  el.replaceChildren();
+  const M = [{ind: 'physicians_1k', name: T('Physicians', 'الأطباء')}, {ind: 'nurses_1k', name: T('Nurses and midwives', 'الممرضون والقابلات')}, {ind: 'beds_1k', name: T('Hospital beds', 'أسرّة المستشفيات')}];
+  const W = Math.max(280, el.clientWidth), rowH = 62, H = M.length * rowH + 24;
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
+  const vals = M.flatMap((m) => [...GCC, 'HIC'].map((iso) => latestRow(iso, m.ind)).filter(Boolean).map((r) => r.value));
+  const x = d3.scaleLinear([0, d3.max(vals) * 1.05], [12, W - 12]).nice();
+  const tt = tip(el);
+  M.forEach((m, i) => {
+    const g = svg.append('g').attr('transform', `translate(0,${i * rowH})`);
+    g.append('text').attr('x', 12).attr('y', 14).style('fill', 'var(--color-fg)').attr('font-weight', 500).text(m.name);
+    const cy = 38;
+    g.append('line').attr('x1', x.range()[0]).attr('x2', x.range()[1]).attr('y1', cy).attr('y2', cy).style('stroke', 'var(--cds-chart-grid)');
+    const hic = latestRow('HIC', m.ind);
+    if (hic) {
+      g.append('line').attr('x1', x(hic.value)).attr('x2', x(hic.value)).attr('y1', cy - 12).attr('y2', cy + 12).style('stroke', 'var(--cds-chart-reference)').attr('stroke-width', 1.5).attr('stroke-dasharray', '3 2');
+    }
+    const pts = GCC.map((iso) => { const r = latestRow(iso, m.ind); return r && {iso, ...r}; }).filter(Boolean).sort((a, b) => (a.iso === focus()) - (b.iso === focus()));
+    g.selectAll('circle').data(pts).join('circle').attr('cx', (r) => x(r.value)).attr('cy', cy).attr('r', (r) => (r.iso === focus() ? 7 : 5))
+      .style('fill', (r) => colorOf(r.iso)).style('stroke', 'var(--color-panel)').attr('stroke-width', 1.5)
+      .on('pointermove', (ev, r) => { const [mx, my] = d3.pointer(ev, el); tt.show(mx, my, NAME[r.iso], [{name: m.name + T(', ', '، ') + r.year, value: d3.format('.2f')(r.value)}].concat(hic ? [{name: T('High income, ', 'الدول مرتفعة الدخل، ') + hic.year, value: d3.format('.2f')(hic.value)}] : [])); })
+      .on('pointerleave', () => tt.hide());
+    const fr = pts.find((r) => r.iso === focus());
+    if (fr) {
+      const lab = `${NAME[fr.iso]} \u2066${d3.format('.1f')(fr.value)}\u2069`;
+      const lw = measure(svg, [lab]);
+      const lx = Math.min(Math.max(x(fr.value), x.range()[0] + lw / 2), x.range()[1] - lw / 2);
+      g.append('text').attr('x', lx).attr('y', cy + 24).attr('text-anchor', 'middle').style('fill', 'var(--color-fg)').attr('font-weight', 600).text(lab);
+    }
+  });
+  const ax = svg.append('g').attr('transform', `translate(0,${M.length * rowH + 12})`);
+  x.ticks(6).forEach((v) => ax.append('text').attr('x', x(v)).attr('text-anchor', 'middle').style('fill', 'var(--color-fg-muted)').text(d3.format('~f')(v)));
+});
+
+dash.draw('vv', (el) => {
+  const src = el.dataset.source;
+  if (!text(el, [src])) return;
+  const w = Object.fromEntries(el.dataset.where.split('&').map((kv) => kv.split('=')));
+  const r = dash.data(src).data.find((x) => Object.entries(w).every(([k, v]) => String(x[k]) === v));
+  el.textContent = r ? d3.format(el.dataset.fmt)(Number(r.value)) : '—';
+});
+dash.draw('vy', (el) => {
+  const src = el.dataset.source;
+  if (!text(el, [src])) return;
+  const w = Object.fromEntries(el.dataset.where.split('&').map((kv) => kv.split('=')));
+  const r = dash.data(src).data.find((x) => Object.entries(w).every(([k, v]) => String(x[k]) === v));
+  el.textContent = r ? String(r.year) : '—';
+});
+</script>
+<script>
+dash.draw('refreshed', (el) => {
+  const m = dash.data('meta');
+  if (m.status !== 'ok') { el.textContent = '—'; return; }
+  const d = new Date(m.data.refreshed_at);
+  el.textContent = isNaN(d) ? '—' : d.toLocaleDateString(window.gx.lang() === 'ar' ? 'ar-SA-u-nu-latn-ca-gregory' : 'en-GB', {day: 'numeric', month: 'long', year: 'numeric'});
+});
+dash.onData(() => {
+  const ar = window.gx.lang() === 'ar';
+  document.documentElement.lang = ar ? 'ar' : 'en';
+  document.documentElement.dir = ar ? 'rtl' : 'ltr';
+  document.title = ar ? 'متتبع الأنظمة الصحية في دول مجلس التعاون الخليجي' : 'GCC Health System Tracker';
+});
+</script>
+</body>
+</html>
