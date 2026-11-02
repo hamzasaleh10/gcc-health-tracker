@@ -6,11 +6,6 @@
    "ar": "برنامج تحول القطاع الصحي، التقرير السنوي 2025",
    "url": "https://www.vision2030.gov.sa/media/y0pc5yc3/health-sector-transformation-report-2025-en.pdf"
   },
-  "sau_hstp23": {
-   "en": "Health Sector Transformation Program, Achievements Report 2023",
-   "ar": "برنامج تحول القطاع الصحي، تقرير الإنجازات 2023",
-   "url": "https://vision2030.gov.sa/media/c3ld5ltz/hstp-annual-report-2023-en.pdf"
-  },
   "sau_gastat23": {
    "en": "GASTAT, Healthcare Establishments and Workforce Statistics 2023",
    "ar": "الهيئة العامة للإحصاء، إحصاءات المنشآت والقوى العاملة الصحية 2023",
@@ -110,6 +105,16 @@
    "en": "Asharq Al-Awsat: Saudi Arabia aims to raise private sector's contribution to health to 50% (Oct 2023)",
    "ar": "الشرق الأوسط: السعودية تستهدف رفع مساهمة القطاع الخاص في الصحة إلى 50% (أكتوبر 2023)",
    "url": "https://english.aawsat.com/business/4637151-saudi-arabia-aims-raise-private-sector%E2%80%99s-contribution-health-industry-50"
+  },
+  "bhr_moh2030": {
+   "en": "Bahrain Ministry of Health: 2030 vision",
+   "ar": "وزارة الصحة البحرينية: رؤية 2030",
+   "url": "https://www.moh.gov.bh/Ministry/MOH2030vision?lang=en"
+  },
+  "bhr_law": {
+   "en": "Bahrain Health Insurance Law No. 23 of 2018 (Legislation and Legal Opinion Commission)",
+   "ar": "قانون الضمان الصحي رقم 23 لسنة 2018 (هيئة التشريع والرأي القانوني)",
+   "url": "https://lloc.gov.bh/Legislation/HTM/K2318"
   }
  },
  "official_vs_international": [
@@ -172,8 +177,8 @@
   {
    "iso3": "SAU",
    "indicator": "road_deaths",
-   "official": 12.05,
-   "official_year": 2025,
+   "official": 16.81,
+   "official_year": 2019,
    "src": "sau_hstp25"
   }
  ],
@@ -298,7 +303,7 @@
    "metric_en": "Private sector's contribution to health",
    "metric_ar": "مساهمة القطاع الخاص في القطاع الصحي",
    "target": "50%",
-   "by": 2030,
+   "by": null,
    "latest": "11% (stated 2023)",
    "latest_ar": "11% (معلن 2023)",
    "status": "far",
@@ -391,13 +396,13 @@
    "iso3": "BHR",
    "metric_en": "Economic Vision 2030, health",
    "metric_ar": "الرؤية الاقتصادية 2030، الصحة",
-   "target": "Qualitative: universal coverage, digital health",
-   "target_ar": "أهداف نوعية: تغطية شاملة، صحة رقمية",
+   "target": "Qualitative: unified digital health records, genomics, prevention",
+   "target_ar": "أهداف نوعية: سجل صحي رقمي موحد، الجينوم، الوقاية",
    "by": 2030,
    "latest": "No published numeric targets found",
    "latest_ar": "لم نجد أهدافًا رقمية منشورة",
    "status": "na",
-   "src": "bhr_moh"
+   "src": "bhr_moh2030"
   }
  ],
  "insurance": [
@@ -453,13 +458,14 @@
   },
   {
    "iso3": "BHR",
-   "scheme_en": "National Health Insurance Programme for Residents (Sehati law, 2018)",
-   "scheme_ar": "برنامج الضمان الصحي الوطني للمقيمين (قانون صحتي 2018)",
+   "scheme_en": "National Health Insurance Programme for Residents (Health Insurance Law No. 23 of 2018)",
+   "scheme_ar": "برنامج الضمان الصحي الوطني للمقيمين (قانون الضمان الصحي رقم 23 لسنة 2018)",
    "status_en": "Launch set for 31 Oct 2026; not yet confirmed",
    "status_ar": "الإطلاق مقرر في 31 أكتوبر 2026؛ لم يتأكد بعد",
    "covered_en": "Not published",
    "covered_ar": "غير منشور",
-   "src": "bhr_insurance"
+   "src": "bhr_insurance",
+   "src2": "bhr_law"
   }
  ],
  "vision2030": [
@@ -475,13 +481,20 @@
    "series": "target",
    "year": 2030,
    "value": 80,
-   "src": "sau_hstp23"
+   "src": "sau_hstp25"
   },
   {
    "kpi": "road_deaths",
    "series": "official",
    "year": 2016,
    "value": 28.41,
+   "src": "sau_hstp25"
+  },
+  {
+   "kpi": "road_deaths",
+   "series": "official",
+   "year": 2019,
+   "value": 16.81,
    "src": "sau_hstp25"
   },
   {

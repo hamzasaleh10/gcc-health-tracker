@@ -76,7 +76,7 @@ def fetch_world_bank():
             if iso not in COUNTRIES:
                 continue
             rows.append({"iso3": iso, "country": d["country"]["value"], "indicator": key,
-                         "year": int(d["date"]), "value": round(float(d["value"]), 3)})
+                         "year": int(d["date"]), "value": round(float(d["value"]), 6)})
             n += 1
         print(f"  {code:<20} {key:<16} {n:>4} rows")
     return rows, last_updated
