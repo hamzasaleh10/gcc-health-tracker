@@ -16,6 +16,8 @@ A bilingual (English/Arabic) dashboard that benchmarks the six Gulf Cooperation 
 | Workforce and capacity | Are there enough clinicians and beds? | Physician supply is near high-income levels in several states; nurses and hospital beds lag well behind. |
 | Saudi Vision 2030 | How do official KPIs compare with international estimates? | Official road traffic deaths were 13.1 per 100,000 in 2023; WHO's modelled estimate for 2019 was 35.9. |
 
+An [executive summary](https://hamzasaleh10.github.io/gcc-health-tracker/summary.html) ([العربية](https://hamzasaleh10.github.io/gcc-health-tracker/summary.html?lang=ar)) sets out the key findings, eight metrics for strategic leadership and six strategic insights.
+
 Pick any focus country to update every section. Views can be shared by link: `?lang=ar&focus=QAT` opens the Arabic view focused on Qatar.
 
 ## How it works

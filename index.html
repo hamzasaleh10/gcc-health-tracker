@@ -71,7 +71,10 @@
 .gx.is-ar .gx-take,.gx.is-ar .gx-lede,.gx.is-ar .n,.gx.is-ar .gx-note{line-height:1.7}
 .gx-chart{direction:ltr}
 .gx.is-ar .gx-tip{direction:rtl}
-.gx-lang{display:flex;gap:var(--cds-gap-xs);justify-content:flex-end}
+.gx-lang{display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs);justify-content:flex-end;align-items:center}
+.gx-lang a.gx-sum{margin-inline-end:auto;align-self:center;font-size:var(--cds-font-size-body);font-weight:600;text-decoration:none;color:var(--chart-1)}
+.gx-lang a.gx-sum:hover{text-decoration:underline}
+
 .gx-lang button{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer}
 .gx-lang button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
 [data-dash-source-state=empty]{color:transparent}
@@ -84,6 +87,7 @@
 <main class="site">
 <div class="gx">
   <div class="gx-lang" role="group" aria-label="Language / اللغة">
+    <a class="gx-sum" href="summary.html"><span lang="en">Read the executive summary →</span><span lang="ar">اقرأ الملخص التنفيذي ←</span></a>
     <button type="button" data-lang="en" aria-pressed="true">English</button>
     <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
   </div>
@@ -715,6 +719,7 @@ dash.onData(() => {
   document.documentElement.lang = ar ? 'ar' : 'en';
   document.documentElement.dir = ar ? 'rtl' : 'ltr';
   document.title = ar ? 'متتبع الأنظمة الصحية في دول مجلس التعاون الخليجي' : 'GCC Health System Tracker';
+  document.querySelectorAll('a.gx-sum').forEach((l) => l.setAttribute('href', ar ? 'summary.html?lang=ar' : 'summary.html'));
 });
 </script>
 </body>
