@@ -1,0 +1,509 @@
+{
+ "_about": "Official national figures, goals and reform milestones, entered by hand from government publications. Reviewed 2 November 2026. Update yearly when new national reports are published.",
+ "sources": {
+  "sau_hstp25": {
+   "en": "Health Sector Transformation Program, Annual Report 2025",
+   "ar": "برنامج تحول القطاع الصحي، التقرير السنوي 2025",
+   "url": "https://www.vision2030.gov.sa/media/y0pc5yc3/health-sector-transformation-report-2025-en.pdf"
+  },
+  "sau_hstp23": {
+   "en": "Health Sector Transformation Program, Achievements Report 2023",
+   "ar": "برنامج تحول القطاع الصحي، تقرير الإنجازات 2023",
+   "url": "https://vision2030.gov.sa/media/c3ld5ltz/hstp-annual-report-2023-en.pdf"
+  },
+  "sau_gastat23": {
+   "en": "GASTAT, Healthcare Establishments and Workforce Statistics 2023",
+   "ar": "الهيئة العامة للإحصاء، إحصاءات المنشآت والقوى العاملة الصحية 2023",
+   "url": "https://www.stats.gov.sa/documents/d/guest/healthcare-establishments-and-workforce-statistics-2023en-pdf"
+  },
+  "sau_glmm": {
+   "en": "Saudi Ministry of Health yearbooks, compiled by GLMM",
+   "ar": "الكتب الإحصائية لوزارة الصحة السعودية، تجميع برنامج GLMM",
+   "url": "https://gulfmigration.grc.net/saudi-arabia-number-of-nurses-by-nationality-saudi-non-saudi-and-sector-of-employment-2017-2024/"
+  },
+  "sau_quota": {
+   "en": "Arab News: Saudi Arabia raises local workforce quotas (Jan 2025)",
+   "ar": "عرب نيوز: رفع نسب التوطين (يناير 2025)",
+   "url": "https://www.arabnews.pk/node/2587872/business-economy"
+  },
+  "uae_fcsc": {
+   "en": "UAE.Stat (FCSC): Healthcare professionals by emirate, citizenship and gender",
+   "ar": "منصة UAE.Stat (المركز الاتحادي للتنافسية والإحصاء): الكوادر الصحية حسب الإمارة والجنسية والنوع",
+   "url": "https://uaestat.fcsc.gov.ae/?lc=en&fs[0]=FCSC%20-%20Statistical%20Hierarchy%2C0%7CHealth%20Services%23HLH_HS%23&pg=0&fc=FCSC%20-%20Statistical%20Hierarchy"
+  },
+  "uae_top15": {
+   "en": "Gulf News: UAE to be among the world's top 15 healthcare systems by 2031",
+   "ar": "جلف نيوز: الإمارات ضمن أفضل 15 نظامًا صحيًا بحلول 2031",
+   "url": "https://gulfnews.com/uae/uae-to-be-among-the-worlds-top-15-healthcare-systems-by-2031-1.500336549"
+  },
+  "uae_emiratisation": {
+   "en": "Gulf News: UAE targets more Emiratis for private healthcare jobs (Jun 2026)",
+   "ar": "جلف نيوز: قواعد جديدة للتوطين في القطاع الصحي الخاص (يونيو 2026)",
+   "url": "https://gulfnews.com/uae/health/new-rule-uae-targets-more-emiratis-for-private-healthcare-jobs-1.500575952"
+  },
+  "uae_insurance": {
+   "en": "Gulf News: UAE's mandatory health insurance for workers begins (Jan 2025)",
+   "ar": "جلف نيوز: بدء التأمين الصحي الإلزامي للعاملين (يناير 2025)",
+   "url": "https://gulfnews.com/living-in-uae/health/uaes-mandatory-health-insurance-for-workers-starts-today-everything-you-need-to-know-1.500009608"
+  },
+  "qat_opendata": {
+   "en": "Qatar Open Data Portal (Ministry of Public Health; National Planning Council)",
+   "ar": "بوابة البيانات المفتوحة في قطر (وزارة الصحة العامة؛ مجلس التخطيط الوطني)",
+   "url": "https://www.data.gov.qa/"
+  },
+  "qat_nhs": {
+   "en": "Qatar National Health Strategy 2024–2030",
+   "ar": "الاستراتيجية الوطنية للصحة في قطر 2024–2030",
+   "url": "https://thepeninsulaqatar.com/article/12/09/2024/qatar-launches-national-health-strategy-2024-2030-aims-to-build-health-centered-society"
+  },
+  "qat_insurance": {
+   "en": "Gulf Times: MoPH confirms mandatory health insurance (Oct 2021)",
+   "ar": "جلف تايمز: تأكيد تطبيق التأمين الصحي الإلزامي (أكتوبر 2021)",
+   "url": "https://www.gulf-times.com/story/702739/MoPH-confirms-implementation-of-mandatory-health-i"
+  },
+  "kwt_csb": {
+   "en": "Kuwait Central Statistical Bureau, Annual Statistical Abstract 2023–2024 (table 193)",
+   "ar": "الإدارة المركزية للإحصاء بالكويت، المجموعة الإحصائية السنوية 2023–2024 (جدول 193)",
+   "url": "https://www.csb.gov.kw/Pages/Statistics?ID=18&ParentCatID=2"
+  },
+  "kwt_dhaman": {
+   "en": "Al Jarida: Dhaman announces completion of its facilities (Feb 2023)",
+   "ar": "الجريدة: «ضمان» تعلن اكتمال منشآت منظومتها الصحية (فبراير 2023)",
+   "url": "https://www.aljarida.com/article/14712"
+  },
+  "kwt_vision": {
+   "en": "ME Tech Watch: Kuwait healthcare and Vision 2035",
+   "ar": "ME Tech Watch: القطاع الصحي في الكويت ورؤية 2035",
+   "url": "https://meatechwatch.com/2025/07/29/kuwaits-healthcare-sector-advances-with-major-infrastructure-projects-and-vision-2035-goals/"
+  },
+  "omn_ncsi": {
+   "en": "Oman NCSI, Health Statistics 2026 edition (2025 data)",
+   "ar": "المركز الوطني للإحصاء والمعلومات، إحصاءات الصحة 2026 (بيانات 2025)",
+   "url": "https://api.ncsi.gov.om/uploads/pdfs/health_statistics_2026_1788850586.pdf"
+  },
+  "omn_hale": {
+   "en": "Madhyamam: Oman seeks 70 years of healthy life expectancy by 2040",
+   "ar": "مادهيامام: عُمان تستهدف 70 عامًا من العمر الصحي المتوقع بحلول 2040",
+   "url": "https://madhyamamonline.com/middle-east/oman/oman-seeks-wider-healthcare-access-70-years-of-healthy-life-expectancy-by-2040-1562980"
+  },
+  "omn_dhamani": {
+   "en": "Lockton: Oman updates compulsory health insurance policy (Sep 2024)",
+   "ar": "لوكتون: تحديث سياسة التأمين الصحي الإلزامي في عُمان (سبتمبر 2024)",
+   "url": "https://global.lockton.com/us/en/news-insights/oman-updates-compulsory-health-insurance-policy"
+  },
+  "bhr_moh": {
+   "en": "Bahrain Ministry of Health, Annual Health Statistics 2021–2022",
+   "ar": "وزارة الصحة البحرينية، الإحصاءات الصحية السنوية 2021–2022",
+   "url": "https://www.moh.gov.bh/Content/Upload/File/638728900890233427-Annual-Health-Statistic-2021-2022--Report_en.pdf"
+  },
+  "bhr_insurance": {
+   "en": "Gulf Daily News: National Health Insurance Programme for Residents (Oct 2026)",
+   "ar": "أخبار الخليج اليومية: برنامج الضمان الصحي الوطني للمقيمين (أكتوبر 2026)",
+   "url": "https://www.gdnonline.com/Details/1410023"
+  },
+  "gccstat_nurses": {
+   "en": "GCC-Stat via Oman Daily: 413,000 nurses in the GCC (Apr 2026)",
+   "ar": "المركز الإحصائي الخليجي عبر جريدة عُمان: 413 ألف ممرض وممرضة (أبريل 2026)",
+   "url": "https://www.omandaily.om/article/1201459"
+  },
+  "sau_private": {
+   "en": "Asharq Al-Awsat: Saudi Arabia aims to raise private sector's contribution to health to 50% (Oct 2023)",
+   "ar": "الشرق الأوسط: السعودية تستهدف رفع مساهمة القطاع الخاص في الصحة إلى 50% (أكتوبر 2023)",
+   "url": "https://english.aawsat.com/business/4637151-saudi-arabia-aims-raise-private-sector%E2%80%99s-contribution-health-industry-50"
+  }
+ },
+ "official_vs_international": [
+  {
+   "iso3": "SAU",
+   "indicator": "life_exp",
+   "official": 79.7,
+   "official_year": 2024,
+   "src": "sau_hstp25"
+  },
+  {
+   "iso3": "OMN",
+   "indicator": "life_exp",
+   "official": 78.6,
+   "official_year": 2025,
+   "src": "omn_ncsi"
+  },
+  {
+   "iso3": "BHR",
+   "indicator": "life_exp",
+   "official": 79.2,
+   "official_year": 2022,
+   "src": "bhr_moh"
+  },
+  {
+   "iso3": "BHR",
+   "indicator": "physicians_1k",
+   "official": 2.83,
+   "official_year": 2022,
+   "src": "bhr_moh"
+  },
+  {
+   "iso3": "BHR",
+   "indicator": "nurses_1k",
+   "official": 6.34,
+   "official_year": 2022,
+   "src": "bhr_moh"
+  },
+  {
+   "iso3": "SAU",
+   "indicator": "nurses_1k",
+   "official": 8.63,
+   "official_year": 2025,
+   "src": "sau_hstp25"
+  },
+  {
+   "iso3": "QAT",
+   "indicator": "physicians_1k",
+   "official": 3.0,
+   "official_year": 2021,
+   "src": "qat_opendata"
+  },
+  {
+   "iso3": "QAT",
+   "indicator": "nurses_1k",
+   "official": 8.6,
+   "official_year": 2021,
+   "src": "qat_opendata"
+  },
+  {
+   "iso3": "SAU",
+   "indicator": "road_deaths",
+   "official": 12.05,
+   "official_year": 2025,
+   "src": "sau_hstp25"
+  }
+ ],
+ "localization": {
+  "regional_benchmark": {
+   "label_en": "GCC average, nurses",
+   "label_ar": "المتوسط الخليجي، الممرضون",
+   "share": 30.3,
+   "year": 2024,
+   "src": "gccstat_nurses"
+  },
+  "rows": [
+   {
+    "iso3": "SAU",
+    "year": 2023,
+    "phys": 42.8,
+    "nurse": 44.1,
+    "nurse_private": 11.0,
+    "nurse_private_year": 2024,
+    "phys_private": null,
+    "src": "sau_gastat23",
+    "src2": "sau_glmm"
+   },
+   {
+    "iso3": "OMN",
+    "year": 2025,
+    "phys": 36,
+    "nurse": 47,
+    "nurse_private": 4,
+    "nurse_private_year": 2025,
+    "phys_private": null,
+    "src": "omn_ncsi"
+   },
+   {
+    "iso3": "KWT",
+    "year": 2022,
+    "phys": 37.0,
+    "nurse": 4.0,
+    "nurse_private": 1.4,
+    "nurse_private_year": 2022,
+    "phys_private": 17.6,
+    "src": "kwt_csb"
+   },
+   {
+    "iso3": "ARE",
+    "year": 2024,
+    "phys": 8.9,
+    "nurse": 2.8,
+    "nurse_private": 0.5,
+    "nurse_private_year": 2024,
+    "phys_private": 1.8,
+    "src": "uae_fcsc"
+   },
+   {
+    "iso3": "QAT",
+    "year": null,
+    "phys": null,
+    "nurse": null,
+    "nurse_private": null,
+    "phys_private": null,
+    "src": null
+   },
+   {
+    "iso3": "BHR",
+    "year": null,
+    "phys": null,
+    "nurse": null,
+    "nurse_private": null,
+    "phys_private": null,
+    "src": null
+   }
+  ],
+  "trend": {
+   "ARE": {
+    "nurse": {
+     "2019": 1.6,
+     "2024": 2.8
+    },
+    "phys": {
+     "2019": 9.9,
+     "2024": 8.9
+    }
+   },
+   "KWT": {
+    "nurse": {
+     "2018": 3.7,
+     "2022": 4.0
+    },
+    "phys": {
+     "2018": 33.5,
+     "2022": 37.0
+    }
+   },
+   "SAU": {
+    "nurse": {
+     "2017": 36.8,
+     "2024": 43.6
+    }
+   },
+   "OMN": {
+    "phys": {
+     "2024": 34,
+     "2025": 36
+    }
+   }
+  }
+ },
+ "goals": [
+  {
+   "iso3": "SAU",
+   "metric_en": "Life expectancy at birth",
+   "metric_ar": "العمر المتوقع عند الولادة",
+   "target": "80",
+   "by": 2030,
+   "latest": "79.7 (2024, official)",
+   "latest_ar": "79.7 (2024، رسمي)",
+   "status": "near",
+   "src": "sau_hstp25"
+  },
+  {
+   "iso3": "SAU",
+   "metric_en": "Private sector's contribution to health",
+   "metric_ar": "مساهمة القطاع الخاص في القطاع الصحي",
+   "target": "50%",
+   "by": 2030,
+   "latest": "11% (stated 2023)",
+   "latest_ar": "11% (معلن 2023)",
+   "status": "far",
+   "src": "sau_private"
+  },
+  {
+   "iso3": "SAU",
+   "metric_en": "Nurses per 100,000 people",
+   "metric_ar": "الممرضون لكل 100,000 نسمة",
+   "target": "861",
+   "by": 2025,
+   "latest": "863 (2025, official)",
+   "latest_ar": "863 (2025، رسمي)",
+   "status": "met",
+   "src": "sau_hstp25"
+  },
+  {
+   "iso3": "OMN",
+   "metric_en": "Healthy life expectancy",
+   "metric_ar": "العمر الصحي المتوقع",
+   "target": "67 by 2030; 70 by 2040",
+   "target_ar": "67 بحلول 2030؛ 70 بحلول 2040",
+   "by": 2040,
+   "latest": "63.2 (2021, WHO)",
+   "latest_ar": "63.2 (2021، منظمة الصحة العالمية)",
+   "status": "far",
+   "src": "omn_hale"
+  },
+  {
+   "iso3": "ARE",
+   "metric_en": "Rank among world health systems",
+   "metric_ar": "الترتيب بين الأنظمة الصحية العالمية",
+   "target": "Top 15",
+   "target_ar": "ضمن أفضل 15",
+   "by": 2031,
+   "latest": "No single official index",
+   "latest_ar": "لا يوجد مؤشر رسمي واحد",
+   "status": "na",
+   "src": "uae_top15"
+  },
+  {
+   "iso3": "ARE",
+   "metric_en": "Emiratis in private healthcare (facilities with 50+ staff)",
+   "metric_ar": "المواطنون في القطاع الصحي الخاص (منشآت 50 موظفًا فأكثر)",
+   "target": "+2 points a year; half in clinical roles from 2027",
+   "target_ar": "+2 نقطة سنويًا؛ نصفها في الوظائف الصحية التخصصية من 2027",
+   "by": 2027,
+   "latest": "1.8% of private physicians, 0.5% of private nurses (2024)",
+   "latest_ar": "1.8% من أطباء القطاع الخاص و0.5% من ممرضيه (2024)",
+   "status": "na",
+   "src": "uae_emiratisation"
+  },
+  {
+   "iso3": "SAU",
+   "metric_en": "Saudi share in private pharmacies / dentistry",
+   "metric_ar": "نسبة السعوديين في الصيدليات وطب الأسنان (القطاع الخاص)",
+   "target": "Community pharmacies 35%, hospital pharmacies 65%; dentistry 55% (2026)",
+   "target_ar": "صيدليات المجتمع 35%، صيدليات المستشفيات 65%؛ طب الأسنان 55% (2026)",
+   "by": 2026,
+   "latest": "Not published by profession",
+   "latest_ar": "غير منشور حسب المهنة",
+   "status": "na",
+   "src": "sau_quota"
+  },
+  {
+   "iso3": "QAT",
+   "metric_en": "National Health Strategy 2024–2030",
+   "metric_ar": "الاستراتيجية الوطنية للصحة 2024–2030",
+   "target": "Qualitative: population health, system efficiency, service excellence",
+   "target_ar": "أهداف نوعية: صحة السكان، كفاءة النظام، التميز في الخدمات",
+   "by": 2030,
+   "latest": "No published numeric targets found",
+   "latest_ar": "لم نجد أهدافًا رقمية منشورة",
+   "status": "na",
+   "src": "qat_nhs"
+  },
+  {
+   "iso3": "KWT",
+   "metric_en": "New Kuwait 2035, health pillar",
+   "metric_ar": "رؤية الكويت 2035، محور الصحة",
+   "target": "Qualitative: new hospitals and capacity",
+   "target_ar": "أهداف نوعية: مستشفيات جديدة وطاقة استيعابية",
+   "by": 2035,
+   "latest": "No published numeric targets found",
+   "latest_ar": "لم نجد أهدافًا رقمية منشورة",
+   "status": "na",
+   "src": "kwt_vision"
+  },
+  {
+   "iso3": "BHR",
+   "metric_en": "Economic Vision 2030, health",
+   "metric_ar": "الرؤية الاقتصادية 2030، الصحة",
+   "target": "Qualitative: universal coverage, digital health",
+   "target_ar": "أهداف نوعية: تغطية شاملة، صحة رقمية",
+   "by": 2030,
+   "latest": "No published numeric targets found",
+   "latest_ar": "لم نجد أهدافًا رقمية منشورة",
+   "status": "na",
+   "src": "bhr_moh"
+  }
+ ],
+ "insurance": [
+  {
+   "iso3": "SAU",
+   "scheme_en": "Employer-funded cover for private-sector staff; Center for National Health Insurance for citizens",
+   "scheme_ar": "تأمين يموله صاحب العمل لموظفي القطاع الخاص؛ مركز التأمين الصحي الوطني للمواطنين",
+   "status_en": "Private mandate in force; citizen insurance being rolled out",
+   "status_ar": "الإلزام في القطاع الخاص مطبق؛ تأمين المواطنين قيد التنفيذ",
+   "covered_en": "14.2 million insured (2025)",
+   "covered_ar": "14.2 مليون مؤمن عليه (2025)",
+   "src": "sau_hstp25"
+  },
+  {
+   "iso3": "ARE",
+   "scheme_en": "Mandatory employer cover; Dubai and Abu Dhabi first, nationwide since 1 Jan 2025",
+   "scheme_ar": "تأمين إلزامي على صاحب العمل؛ دبي وأبوظبي أولًا، وعلى مستوى الدولة منذ 1 يناير 2025",
+   "status_en": "In force nationwide",
+   "status_ar": "مطبق على مستوى الدولة",
+   "covered_en": "Not published",
+   "covered_ar": "غير منشور",
+   "src": "uae_insurance"
+  },
+  {
+   "iso3": "QAT",
+   "scheme_en": "Mandatory cover for expatriates and visitors (2021 law)",
+   "scheme_ar": "تأمين إلزامي للوافدين والزوار (قانون 2021)",
+   "status_en": "In force",
+   "status_ar": "مطبق",
+   "covered_en": "560,181 insured (2024)",
+   "covered_ar": "560,181 مؤمنًا عليه (2024)",
+   "src": "qat_opendata"
+  },
+  {
+   "iso3": "KWT",
+   "scheme_en": "Dhaman: insurer and hospital network for expatriate private-sector workers",
+   "scheme_ar": "ضمان: شركة تأمين وشبكة مستشفيات للوافدين العاملين في القطاع الخاص",
+   "status_en": "Facilities built by 2023; current operating status unconfirmed",
+   "status_ar": "اكتملت المنشآت بحلول 2023؛ وضع التشغيل الحالي غير مؤكد",
+   "covered_en": "Target about 1.8 million (2023)",
+   "covered_ar": "المستهدف نحو 1.8 مليون (2023)",
+   "src": "kwt_dhaman"
+  },
+  {
+   "iso3": "OMN",
+   "scheme_en": "Dhamani: compulsory cover, visitors first, then private-sector employees",
+   "scheme_ar": "ضماني: تأمين إلزامي يبدأ بالزوار ثم موظفي القطاع الخاص",
+   "status_en": "Phased; private-sector mandate pending in latest sources",
+   "status_ar": "تطبيق مرحلي؛ إلزام القطاع الخاص معلّق وفق أحدث المصادر",
+   "covered_en": "Not published",
+   "covered_ar": "غير منشور",
+   "src": "omn_dhamani"
+  },
+  {
+   "iso3": "BHR",
+   "scheme_en": "National Health Insurance Programme for Residents (Sehati law, 2018)",
+   "scheme_ar": "برنامج الضمان الصحي الوطني للمقيمين (قانون صحتي 2018)",
+   "status_en": "Launch set for 31 Oct 2026; not yet confirmed",
+   "status_ar": "الإطلاق مقرر في 31 أكتوبر 2026؛ لم يتأكد بعد",
+   "covered_en": "Not published",
+   "covered_ar": "غير منشور",
+   "src": "bhr_insurance"
+  }
+ ],
+ "vision2030": [
+  {
+   "kpi": "life_exp",
+   "series": "official",
+   "year": 2024,
+   "value": 79.7,
+   "src": "sau_hstp25"
+  },
+  {
+   "kpi": "life_exp",
+   "series": "target",
+   "year": 2030,
+   "value": 80,
+   "src": "sau_hstp23"
+  },
+  {
+   "kpi": "road_deaths",
+   "series": "official",
+   "year": 2016,
+   "value": 28.41,
+   "src": "sau_hstp25"
+  },
+  {
+   "kpi": "road_deaths",
+   "series": "official",
+   "year": 2025,
+   "value": 12.05,
+   "src": "sau_hstp25"
+  },
+  {
+   "kpi": "ncd_rate",
+   "series": "official",
+   "year": 2019,
+   "value": 558,
+   "src": "sau_hstp25"
+  },
+  {
+   "kpi": "ncd_rate",
+   "series": "official",
+   "year": 2024,
+   "value": 366,
+   "src": "sau_hstp25"
+  }
+ ]
+}

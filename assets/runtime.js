@@ -9,7 +9,8 @@
   const SOURCES = {
     wb: 'data/gcc_worldbank.json',
     obesity: 'data/gcc_obesity_who.json',
-    vision2030: 'data/saudi_vision2030.json',
+    hale: 'data/gcc_hale_who.json',
+    national: 'data/national.json',
     meta: 'data/meta.json',
   };
   const DEFAULTS = { focus: 'SAU', lang: 'en' };
@@ -61,7 +62,7 @@
     });
     draws.forEach(([name, fn]) => {
       document.querySelectorAll(`[data-draw="${name}"]`).forEach((el) => {
-        if (el.closest('[hidden]')) return;
+        if (el.parentElement && el.parentElement.closest('[hidden]')) return;
         try { fn(el); } catch (e) { console.error('Draw failed:', name, e); }
       });
     });

@@ -93,7 +93,23 @@ def fetch_obesity():
             for c, y, v in d[["code", "year", "value"]].itertuples(index=False)]
 
 
-def validate(wb, ob):
+HALE_URL = ("https://ourworldindata.org/grapher/healthy-life-expectancy-at-birth.csv"
+            "?v=1&csvType=full&useColumnShortNames=true")
+
+
+def fetch_hale():
+    """WHO healthy life expectancy (HALE) at birth, both sexes, via Our World in Data."""
+    r = requests.get(HALE_URL, timeout=90)
+    r.raise_for_status()
+    d = pd.read_csv(io.StringIO(r.text))
+    d.columns = ["entity", "code", "year", "value"] + list(d.columns[4:])
+    d["code"] = d["code"].replace({"OWID_WRL": "WLD"})
+    d = d[d.code.isin(GCC + ["USA", "WLD"]) & (d.year >= 2000)]
+    return [{"iso3": c, "year": int(y), "value": round(float(v), 2)}
+            for c, y, v in d[["code", "year", "value"]].itertuples(index=False)]
+
+
+def validate(wb, ob, hale=None):
     problems = []
     if len(wb) < 2300:
         problems.append(f"World Bank: only {len(wb)} rows (expected 2,300+)")
@@ -108,7 +124,13 @@ def validate(wb, ob):
     for iso in GCC + ["USA", "WLD"]:
         if not any(r["iso3"] == iso for r in ob):
             problems.append(f"Obesity: no rows for {iso}")
-    for r in wb + ob:
+    if hale is not None:
+        if len(hale) < 120:
+            problems.append(f"Healthy life expectancy: only {len(hale)} rows (expected 120+)")
+        for iso in GCC + ["USA", "WLD"]:
+            if not any(r["iso3"] == iso for r in hale):
+                problems.append(f"Healthy life expectancy: no rows for {iso}")
+    for r in wb + ob + (hale or []):
         if not math.isfinite(r["value"]):
             problems.append(f"Non-numeric value: {r}")
             break
@@ -121,8 +143,11 @@ def main(out_dir):
     print("WHO obesity (Our World in Data)")
     ob = fetch_obesity()
     print(f"  {len(ob)} rows, latest year {max(r['year'] for r in ob)}")
+    print("WHO healthy life expectancy (Our World in Data)")
+    hale = fetch_hale()
+    print(f"  {len(hale)} rows, latest year {max(r['year'] for r in hale)}")
 
-    problems = validate(wb, ob)
+    problems = validate(wb, ob, hale)
     if problems:
         print("Validation failed; no files written:\n  " + "\n  ".join(problems))
         sys.exit(1)
@@ -131,9 +156,10 @@ def main(out_dir):
     dump = lambda obj, name: json.dump(obj, open(os.path.join(out_dir, name), "w"), separators=(",", ":"))
     dump(wb, "gcc_worldbank.json")
     dump(ob, "gcc_obesity_who.json")
+    dump(hale, "gcc_hale_who.json")
     dump({"refreshed_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
           "worldbank_last_updated": wb_updated,
-          "rows": {"worldbank": len(wb), "obesity": len(ob)}}, "meta.json")
+          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale)}}, "meta.json")
     print(f"Wrote {len(wb)} World Bank rows and {len(ob)} obesity rows to {out_dir}/")
 
 

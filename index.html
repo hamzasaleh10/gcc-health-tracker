@@ -28,7 +28,7 @@
 .gx-sec{display:grid;gap:var(--cds-gap-md)}
 .gx-sec>h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:0}
 .gx-sec>p.gx-lede{margin:0;color:var(--color-fg-muted);font-size:var(--cds-font-size-body);max-width:60rem}
-.gx-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10.5rem),1fr));gap:var(--cds-gap-md)}
+.gx-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr));gap:var(--cds-gap-md)}
 .gx-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start}
 .gx-tile .t{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
 .gx-tile .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;line-height:1.1}
@@ -77,6 +77,21 @@
 
 .gx-lang button{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer}
 .gx-lang button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
+
+.gx-limits{margin-top:var(--cds-gap-xs);padding-top:var(--cds-pad-sm);border-top:1px dashed var(--color-border-line);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);line-height:1.6}
+.gx-limits p{margin:0}
+.gx-limits b{color:var(--color-fg);font-weight:600}
+.gx.is-ar .gx-limits{line-height:1.8}
+.gx-tile .o{font-size:var(--cds-font-size-caption);color:var(--color-warn);font-variant-numeric:tabular-nums}
+.gx td.warn{color:var(--color-warn)}
+.gx table.gx-text td,.gx table.gx-text th{white-space:normal;text-align:start;vertical-align:top}
+.gx table.gx-text td{min-width:6rem}
+.gx table.gx-text td a{color:var(--chart-1);overflow-wrap:anywhere}
+.gx .st{display:inline-block;font-size:var(--cds-font-size-caption);font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.gx .st-met{color:var(--color-ok)}.gx .st-near{color:var(--color-warn)}.gx .st-far{color:var(--color-bad)}.gx .st-na{color:var(--color-fg-muted)}
+.gx-subh{margin:var(--cds-gap-sm) 0 0;font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium)}
+.gx-jump{display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs) var(--cds-gap-md);font-size:var(--cds-font-size-caption)}
+.gx-jump a{color:var(--chart-1);text-decoration:none}.gx-jump a:hover{text-decoration:underline}
 [data-dash-source-state=empty]{color:transparent}
 [data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
 </style>
@@ -108,6 +123,15 @@
     <button type="button" data-iso="BHR" aria-pressed="false"><span lang="en">Bahrain</span><span lang="ar">البحرين</span></button>
   </div>
 
+  <nav class="gx-jump" aria-label="Sections">
+    <a href="#outcomes"><span lang="en">Outcomes</span><span lang="ar">النتائج الصحية</span></a>
+    <a href="#risk"><span lang="en">Chronic disease</span><span lang="ar">الأمراض المزمنة</span></a>
+    <a href="#financing"><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></a>
+    <a href="#workforce"><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></a>
+    <a href="#goals"><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></a>
+    <a href="#official"><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></a>
+  </nav>
+
   <section class="gx-sec" id="snapshot">
     <h2><span lang="en">Snapshot:</span><span lang="ar">لمحة:</span> <span data-draw="focusname">—</span></h2>
     <div class="gx-tiles">
@@ -116,6 +140,13 @@
         <span class="v" data-draw="tv" data-ind="life_exp" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">years, </span><span lang="ar">سنة، </span><span data-draw="ty" data-ind="life_exp" data-source="latest" data-field="year">—</span></span>
         <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="life_exp" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span></span>
+        <span class="o" data-draw="toff" data-ind="life_exp" data-fmt=".1f" hidden></span>
+      </div>
+      <div class="gx-tile">
+        <span class="t"><span lang="en">Healthy life expectancy</span><span lang="ar">العمر الصحي المتوقع</span></span>
+        <span class="v" data-draw="tv" data-ind="hale" data-fmt=".1f" data-source="latest" data-field="value">—</span>
+        <span class="u"><span lang="en">years in good health, </span><span lang="ar">سنوات بصحة جيدة، </span><span data-draw="ty" data-ind="hale" data-source="latest" data-field="year">—</span></span>
+        <span class="r"><span lang="en">World:</span><span lang="ar">العالم:</span> <span data-draw="tr" data-ind="hale" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</span></span>
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Premature chronic-disease deaths</span><span lang="ar">الوفيات المبكرة بالأمراض المزمنة</span></span>
@@ -146,8 +177,10 @@
         <span class="v" data-draw="tv" data-ind="physicians_1k" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="physicians_1k" data-source="latest" data-field="year">—</span></span>
         <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="physicians_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span></span>
+        <span class="o" data-draw="toff" data-ind="physicians_1k" data-fmt=".1f" hidden></span>
       </div>
     </div>
+    <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Where the government publishes its own figure, it appears in orange below; the two can differ (see Official figures vs international estimates).</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وحيث تنشر الحكومة رقمها الخاص يظهر باللون البرتقالي أسفل المؤشر، وقد يختلف الرقمان (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></div>
   </section>
 
   <section class="gx-sec" id="outcomes">
@@ -160,18 +193,20 @@
         <p class="n" lang="en">Years, 2000 onward. Focus country highlighted; dashed lines are benchmarks.</p>
         <p class="n" lang="ar">بالسنوات منذ عام 2000. الدولة المختارة مميّزة، والخطوط المتقطعة للمقارنة المرجعية.</p>
         <div class="gx-chart dash-skeleton" data-draw="lechart" data-source="wb"></div>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Recent years are modelled UN estimates, revised every year. They cover all residents; figures for citizens alone can be lower (Oman: 77.5 years for Omanis against 78.6 overall, 2025).</p><p lang="ar"><b>حدود البيانات.</b> السنوات الأخيرة تقديرات مُنمذجة من الأمم المتحدة تُراجع سنويًا، وتشمل جميع المقيمين؛ وقد تكون أرقام المواطنين وحدهم أقل (عُمان: 77.5 سنة للعُمانيين مقابل 78.6 لإجمالي السكان، 2025).</p></div>
       </div>
       <div class="gx-card" id="ncd">
         <h3><span lang="en">Premature chronic-disease deaths</span><span lang="ar">الوفيات المبكرة بالأمراض المزمنة</span></h3>
-        <p class="n" lang="en">Chance of dying between 30 and 70 from the four main chronic diseases (%). The ring marks the focus country's 2030 goal under SDG 3.4.</p>
-        <p class="n" lang="ar">احتمال الوفاة بين 30 و70 عامًا بسبب الأمراض المزمنة الأربعة الرئيسية (%). تشير الدائرة إلى هدف الدولة المختارة لعام 2030 وفق الهدف 3.4.</p>
+        <p class="n" lang="en">Chance of dying between 30 and 70 from the four main chronic diseases (%). The ring marks the focus country's 2030 goal under SDG 3.4; the bar at 2030 is its projected range.</p>
+        <p class="n" lang="ar">احتمال الوفاة بين 30 و70 عامًا بسبب الأمراض المزمنة الأربعة الرئيسية (%). تشير الدائرة إلى هدف الدولة المختارة لعام 2030 وفق الهدف 3.4، ويمثل الخط الرأسي عند 2030 نطاق الإسقاط.</p>
         <div class="gx-chart dash-skeleton" data-draw="ncdchart" data-source="wb sdg34"></div>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> WHO estimates, revised only every few years. The latest year is 2021 and may still include pandemic-era deaths. The ring is the UN goal, not a national target.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات منظمة الصحة العالمية تُراجع كل بضع سنوات فقط. أحدث سنة هي 2021 وقد تتضمن وفيات مرتبطة بالجائحة. الدائرة تمثل هدف الأمم المتحدة وليست مستهدفًا وطنيًا.</p></div>
       </div>
     </div>
     <div class="gx-card" id="sdg-table">
       <h3><span lang="en">On track for SDG 3.4?</span><span lang="ar">هل الدول على المسار الصحيح لتحقيق الهدف 3.4؟</span></h3>
-      <p class="n" lang="en">Projection carries each country's 2015-to-latest yearly change forward to 2030. A country is on track when the projection reaches its goal. Straight-line projections are rough, and the latest WHO year (2021) may still carry pandemic-era deaths.</p>
-      <p class="n" lang="ar">يمدّ الإسقاط متوسط التغير السنوي لكل دولة منذ عام 2015 حتى عام 2030، وتُعدّ الدولة على المسار الصحيح إذا بلغ الإسقاط هدفها. الإسقاطات الخطية تقريبية، وقد تتضمن أحدث بيانات منظمة الصحة العالمية (2021) وفيات مرتبطة بالجائحة.</p>
+      <p class="n" lang="en">A trend line fitted to 2015–2021 projects each country to 2030, with an 80% range. On track: the whole range reaches the goal. Off track: none of it does. Uncertain: the range spans the goal.</p>
+      <p class="n" lang="ar">يُسقط خط اتجاه مُطابق لبيانات 2015–2021 وضع كل دولة حتى 2030 مع نطاق ثقة 80%. على المسار: يبلغ النطاق كله الهدف. خارج المسار: لا يبلغه أي جزء منه. غير محسوم: يتقاطع النطاق مع الهدف.</p>
       <div class="gx-tablewrap" lang="en">
         <table data-source="sdg34" data-row-key="country">
           <thead><tr>
@@ -181,6 +216,7 @@
             <th data-field="latest_year">Year</th>
             <th data-field="goal2030">2030 goal</th>
             <th data-field="proj2030">Projected 2030</th>
+            <th data-field="lo2030">Range (80%)</th>
             <th data-field="status">Status</th>
           </tr></thead>
           <tbody data-draw="sdgbody"></tbody>
@@ -195,11 +231,13 @@
             <th data-field="latest_year">السنة</th>
             <th data-field="goal2030">هدف 2030</th>
             <th data-field="proj2030">الإسقاط لعام 2030</th>
+            <th data-field="lo2030">النطاق (80%)</th>
             <th data-field="status_ar">الحالة</th>
           </tr></thead>
           <tbody data-draw="sdgbody_ar"></tbody>
         </table>
       </div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Seven data points and a straight line: the projection ignores population ageing and policy change, and the range reflects only year-to-year noise. Saudi Arabia reports a different official measure, a chronic-disease death rate that fell from 558 to 366 between 2019 and 2024 (see Official figures vs international estimates).</p><p lang="ar"><b>حدود البيانات.</b> سبع نقاط بيانات وخط مستقيم: يتجاهل الإسقاط شيخوخة السكان وتغير السياسات، ويعكس النطاق التذبذب السنوي فقط. وتنشر السعودية مقياسًا رسميًا مختلفًا هو معدل الوفيات بالأمراض غير المعدية، الذي انخفض من 558 إلى 366 بين 2019 و2024 (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></div>
     </div>
   </section>
 
@@ -213,12 +251,14 @@
         <p class="n" lang="en">Share of adults with BMI of 30 or more, age-standardized, latest year (WHO).</p>
         <p class="n" lang="ar">نسبة البالغين الذين يبلغ مؤشر كتلة الجسم لديهم 30 أو أكثر، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
         <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="obesity" data-source="latest"></div>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Modelled WHO estimates built from national surveys of different years and methods. Age-standardization makes countries comparable but is not the literal share of today's adults.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات مُنمذجة من منظمة الصحة العالمية مبنية على مسوح وطنية بسنوات ومنهجيات مختلفة. التوحيد المعياري حسب العمر يتيح المقارنة بين الدول لكنه لا يمثل حرفيًا نسبة البالغين الحاليين.</p></div>
       </div>
       <div class="gx-card" id="diabetes">
         <h3><span lang="en">Diabetes</span><span lang="ar">السكري</span></h3>
         <p class="n" lang="en">Share of adults 20–79 with diabetes, latest year (International Diabetes Federation via World Bank).</p>
         <p class="n" lang="ar">نسبة البالغين بين 20 و79 عامًا المصابين بالسكري، لأحدث سنة (الاتحاد الدولي للسكري عبر البنك الدولي).</p>
         <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="diabetes_prev" data-source="latest"></div>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Modelled estimates from the International Diabetes Federation, updated every few years and including undiagnosed cases. They are not registry counts.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات مُنمذجة من الاتحاد الدولي للسكري تُحدَّث كل بضع سنوات وتشمل الحالات غير المشخصة، وليست أعدادًا من السجلات.</p></div>
       </div>
     </div>
   </section>
@@ -233,6 +273,7 @@
         <p class="n" lang="en">Domestic general government spending as % of current health expenditure, 2000 onward.</p>
         <p class="n" lang="ar">الإنفاق الحكومي العام المحلي كنسبة مئوية من الإنفاق الصحي الجاري، منذ عام 2000.</p>
         <div class="gx-chart dash-skeleton" data-draw="govchart" data-source="wb"></div>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Spending data lag about two years (latest 2023), so recent reforms such as the UAE's nationwide insurance mandate (2025) can't show yet. Employer-paid insurance counts as private, not government, spending.</p><p lang="ar"><b>حدود البيانات.</b> تتأخر بيانات الإنفاق نحو عامين (أحدثها 2023)، لذا لا تظهر بعد إصلاحات حديثة مثل التأمين الإلزامي في الإمارات على مستوى الدولة (2025). ويُحتسب التأمين الذي يدفعه صاحب العمل إنفاقًا خاصًا لا حكوميًا.</p></div>
       </div>
       <div class="gx-card" id="spend-table">
         <h3><span lang="en">Health spending, latest year</span><span lang="ar">الإنفاق الصحي، أحدث سنة</span></h3>
@@ -264,53 +305,157 @@
             <tbody data-draw="spendbody_ar"></tbody>
           </table>
         </div>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> US dollar figures use market exchange rates, not purchasing power. Out-of-pocket spending includes what expatriates pay directly, which can be high where insurance is thin.</p><p lang="ar"><b>حدود البيانات.</b> تستخدم الأرقام بالدولار أسعار الصرف السوقية لا تعادل القوة الشرائية. وتشمل المدفوعات المباشرة ما يدفعه الوافدون مباشرة، وقد يكون مرتفعًا حيث تضعف التغطية التأمينية.</p></div>
       </div>
+    </div>
+    <div class="gx-card" id="insurance">
+      <h3><span lang="en">Health insurance reforms</span><span lang="ar">إصلاحات التأمين الصحي</span></h3>
+      <p class="n" lang="en">Every Gulf state is moving expatriates, and increasingly citizens, onto health insurance. Status as reviewed on 2 November 2026.</p>
+      <p class="n" lang="ar">تنقل كل دول الخليج الوافدين، والمواطنين بصورة متزايدة، إلى التأمين الصحي. الوضع كما رُوجع في 2 نوفمبر 2026.</p>
+      <div class="gx-tablewrap">
+        <table class="gx-text">
+          <thead><tr>
+            <th><span lang="en">Country</span><span lang="ar">الدولة</span></th>
+            <th><span lang="en">Scheme</span><span lang="ar">النظام</span></th>
+            <th><span lang="en">Status</span><span lang="ar">الحالة</span></th>
+            <th><span lang="en">Coverage</span><span lang="ar">التغطية</span></th>
+            <th><span lang="en">Source</span><span lang="ar">المصدر</span></th>
+          </tr></thead>
+          <tbody data-draw="insbody"></tbody>
+        </table>
+      </div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Coverage figures aren't comparable between countries: mandates target expatriates and private-sector workers, while most citizens use free public care (Saudi Arabia is changing this). Status comes from official announcements and news reports and can change quickly; current status in Kuwait and Bahrain could not be confirmed.</p><p lang="ar"><b>حدود البيانات.</b> أرقام التغطية غير قابلة للمقارنة بين الدول: تستهدف الأنظمة الإلزامية الوافدين والعاملين في القطاع الخاص، بينما يتلقى معظم المواطنين رعاية عامة مجانية (والسعودية تغيّر ذلك). وتستند الحالة إلى إعلانات رسمية وتقارير إخبارية قد تتغير سريعًا، ولم يتسنَّ تأكيد الوضع الحالي في الكويت والبحرين.</p></div>
     </div>
   </section>
 
   <section class="gx-sec" id="workforce">
     <h2><span lang="en">Workforce and capacity</span><span lang="ar">القوى العاملة والطاقة الاستيعابية</span></h2>
-    <p class="gx-lede" lang="en">Physician supply is close to high-income levels in several states, but nurses and hospital beds lag well behind. The dashed tick marks the high-income average.</p>
-    <p class="gx-lede" lang="ar">يقترب عدد الأطباء من مستويات الدول مرتفعة الدخل في عدة دول، لكن أعداد الممرضين وأسرّة المستشفيات متأخرة كثيرًا. يشير الخط المتقطع إلى متوسط الدول مرتفعة الدخل.</p>
+    <p class="gx-lede" lang="en">Physician supply is close to high-income levels in several states, but nurses and hospital beds lag well behind. Nursing is also where localization lags most: citizens are under 5% of nurses in the UAE and Kuwait.</p>
+    <p class="gx-lede" lang="ar">يقترب عدد الأطباء من مستويات الدول مرتفعة الدخل في عدة دول، لكن أعداد الممرضين وأسرّة المستشفيات متأخرة كثيرًا. والتمريض أيضًا هو المجال الأكثر تأخرًا في التوطين: يشكل المواطنون أقل من 5% من الممرضين في الإمارات والكويت.</p>
     <div class="gx-card" id="capacity">
       <h3><span lang="en">Physicians, nurses and hospital beds per 1,000 people</span><span lang="ar">الأطباء والممرضون وأسرّة المستشفيات لكل 1,000 نسمة</span></h3>
-      <p class="n" lang="en">Latest year each country reported (2020–2023); hover a dot for its year.</p>
-      <p class="n" lang="ar">أحدث سنة أبلغت عنها كل دولة (2020–2023)؛ مرّر المؤشر فوق أي نقطة لمعرفة سنتها.</p>
-      <div class="gx-chart short dash-skeleton" data-draw="strip" data-source="latest"></div>
+      <p class="n" lang="en">Dots: World Bank, latest year each country reported (2020–2023). Hollow rings: the government's own figure, where it differs. The dashed tick marks the high-income average; hover for years.</p>
+      <p class="n" lang="ar">النقاط: البنك الدولي، أحدث سنة أبلغت عنها كل دولة (2020–2023). الدوائر المفرغة: الرقم الحكومي الرسمي حيث يختلف. يشير الخط المتقطع إلى متوسط الدول مرتفعة الدخل؛ مرّر المؤشر لمعرفة السنوات.</p>
+      <div class="gx-chart short dash-skeleton" data-draw="strip" data-source="latest national"></div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> The World Bank's Bahrain figures (0.7 physicians and 2.7 nurses per 1,000) are far below Bahrain's own Ministry of Health figures (2.8 and 6.3, 2022) and look incomplete. Countries count staff differently (licensed or practising, public or private), so small gaps are not meaningful.</p><p lang="ar"><b>حدود البيانات.</b> أرقام البنك الدولي للبحرين (0.7 طبيب و2.7 ممرض لكل 1,000) أقل بكثير من أرقام وزارة الصحة البحرينية (2.8 و6.3، 2022) وتبدو غير مكتملة. وتختلف الدول في طريقة احتساب الكوادر (مرخّصون أو ممارسون، قطاع عام أو خاص)، لذا لا تحمل الفروق الصغيرة دلالة.</p></div>
+    </div>
+    <div class="gx-card" id="localization">
+      <h3><span lang="en">Citizens' share of physicians and nurses</span><span lang="ar">نسبة المواطنين من الأطباء والممرضين</span></h3>
+      <p class="n" lang="en">Latest official figure in each country. Localization is far further along for physicians than for nurses, and lags most in the private sector.</p>
+      <p class="n" lang="ar">أحدث رقم رسمي في كل دولة. التوطين متقدم كثيرًا في مهنة الطب مقارنة بالتمريض، وهو الأكثر تأخرًا في القطاع الخاص.</p>
+      <div class="gx-chart short dash-skeleton" data-draw="locchart" data-source="national"></div>
+      <div class="gx-tablewrap">
+        <table class="gx-text">
+          <thead><tr>
+            <th><span lang="en">Country</span><span lang="ar">الدولة</span></th>
+            <th><span lang="en">Year</span><span lang="ar">السنة</span></th>
+            <th><span lang="en">Physicians</span><span lang="ar">الأطباء</span></th>
+            <th><span lang="en">Nurses</span><span lang="ar">الممرضون</span></th>
+            <th><span lang="en">Private-sector physicians</span><span lang="ar">أطباء القطاع الخاص</span></th>
+            <th><span lang="en">Private-sector nurses</span><span lang="ar">ممرضو القطاع الخاص</span></th>
+            <th><span lang="en">Source</span><span lang="ar">المصدر</span></th>
+          </tr></thead>
+          <tbody data-draw="locbody"></tbody>
+        </table>
+      </div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each country's own statistics, with different years (2022–2025) and scopes: Saudi private-sector nurses come from the 2024 ministry yearbook as compiled by GLMM; Oman publishes rounded percentages; Kuwait's private sector includes clinics. No nationality split was found for Qatar or Bahrain. The GCC nurse benchmark (30.3%, 2024) is GCC-Stat's figure as reported in the press.</p><p lang="ar"><b>حدود البيانات.</b> إحصاءات كل دولة بسنوات (2022–2025) ونطاقات مختلفة: أرقام ممرضي القطاع الخاص في السعودية من الكتاب الإحصائي لوزارة الصحة 2024 بتجميع برنامج GLMM؛ وتنشر عُمان نسبًا مقرّبة؛ ويشمل القطاع الخاص في الكويت العيادات. ولم نجد توزيعًا حسب الجنسية لقطر أو البحرين. ومعيار الممرضين الخليجي (30.3%، 2024) هو رقم المركز الإحصائي الخليجي كما نشرته الصحافة.</p></div>
     </div>
   </section>
 
-  <section class="gx-sec" id="vision2030">
-    <h2><span lang="en">Saudi Vision 2030: official figures and international estimates</span><span lang="ar">رؤية السعودية 2030: الأرقام الرسمية والتقديرات الدولية</span></h2>
-    <p class="gx-lede" lang="en">The Health Sector Transformation Program reports progress with national figures. International series are modelled for comparability across countries and can tell a different story, so analysts working with Gulf data need to know which one a number comes from.</p>
-    <p class="gx-lede" lang="ar">يرصد برنامج تحول القطاع الصحي التقدم بأرقام وطنية، بينما تُنمذَج السلاسل الدولية لتكون قابلة للمقارنة بين الدول وقد تروي قصة مختلفة؛ لذا يحتاج المحللون العاملون على البيانات الخليجية إلى معرفة مصدر كل رقم.</p>
+
+  <section class="gx-sec" id="goals">
+    <h2><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></h2>
+    <p class="gx-lede" lang="en">Each Gulf state sets its own health goals. Saudi Arabia and Oman publish numeric targets that can be tracked; the others are mostly qualitative.</p>
+    <p class="gx-lede" lang="ar">تضع كل دولة خليجية أهدافها الصحية الخاصة. تنشر السعودية وعُمان مستهدفات رقمية يمكن تتبعها، بينما تغلب الصبغة النوعية على أهداف الدول الأخرى.</p>
+    <div class="gx-card" id="hale">
+      <h3><span lang="en">Healthy life expectancy</span><span lang="ar">العمر الصحي المتوقع</span></h3>
+      <p class="n" lang="en">Years a newborn can expect to live in good health, latest year (WHO). Oman targets 67 by 2030 and 70 by 2040.</p>
+      <p class="n" lang="ar">عدد السنوات التي يُتوقع أن يعيشها المولود بصحة جيدة، لأحدث سنة (منظمة الصحة العالمية). تستهدف عُمان 67 سنة بحلول 2030 و70 بحلول 2040.</p>
+      <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="hale" data-source="latest"></div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> WHO estimates, latest 2021, and revised between editions. Oman set its targets against an older WHO baseline (65.6 years in 2016); the current WHO series puts Oman lower (63.2 in 2021), so measured progress depends on the edition used.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات منظمة الصحة العالمية، أحدثها 2021، وتُراجع بين الإصدارات. وضعت عُمان مستهدفاتها على أساس خط أساس أقدم للمنظمة (65.6 سنة في 2016)، بينما تضع السلسلة الحالية عُمان عند مستوى أدنى (63.2 في 2021)، لذا يعتمد قياس التقدم على الإصدار المستخدم.</p></div>
+    </div>
+    <div class="gx-card" id="goals-table">
+      <h3><span lang="en">Published goals and latest position</span><span lang="ar">الأهداف المعلنة والوضع الحالي</span></h3>
+      <div class="gx-tablewrap">
+        <table class="gx-text">
+          <thead><tr>
+            <th><span lang="en">Country</span><span lang="ar">الدولة</span></th>
+            <th><span lang="en">Goal</span><span lang="ar">الهدف</span></th>
+            <th><span lang="en">Target</span><span lang="ar">المستهدف</span></th>
+            <th><span lang="en">By</span><span lang="ar">بحلول</span></th>
+            <th><span lang="en">Latest</span><span lang="ar">الأحدث</span></th>
+            <th><span lang="en">Status</span><span lang="ar">الحالة</span></th>
+            <th><span lang="en">Source</span><span lang="ar">المصدر</span></th>
+          </tr></thead>
+          <tbody data-draw="goalsbody"></tbody>
+        </table>
+      </div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Goals as published by each government; some come from ministers' statements reported in the press rather than formal plans. "Latest" uses official figures where they exist. Status is this tracker's simple comparison, not an official assessment.</p><p lang="ar"><b>حدود البيانات.</b> الأهداف كما أعلنتها كل حكومة، وبعضها مأخوذ من تصريحات وزارية نشرتها الصحافة لا من خطط رسمية. يستخدم عمود «الأحدث» الأرقام الرسمية حيثما وُجدت. والحالة مقارنة مبسطة من هذا المتتبع وليست تقييمًا رسميًا.</p></div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="official">
+    <h2><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
+    <p class="gx-lede" lang="en">Governments report national figures; the World Bank and WHO model theirs so countries can be compared. The two can differ in either direction, so anyone quoting Gulf health data needs to know which series a number comes from.</p>
+    <p class="gx-lede" lang="ar">تنشر الحكومات أرقامًا وطنية، بينما يُنمذج البنك الدولي ومنظمة الصحة العالمية أرقامهما لإتاحة المقارنة بين الدول. وقد يختلف الرقمان في أي اتجاه، لذا يحتاج كل من يستشهد ببيانات الصحة الخليجية إلى معرفة السلسلة التي يأتي منها الرقم.</p>
+    <div class="gx-card" id="official-table">
+      <h3><span lang="en">Where national and international figures differ</span><span lang="ar">حيث تختلف الأرقام الوطنية عن الدولية</span></h3>
+      <div class="gx-tablewrap">
+        <table class="gx-text">
+          <thead><tr>
+            <th><span lang="en">Indicator</span><span lang="ar">المؤشر</span></th>
+            <th><span lang="en">Country</span><span lang="ar">الدولة</span></th>
+            <th><span lang="en">Official (year)</span><span lang="ar">الرسمي (السنة)</span></th>
+            <th><span lang="en">International (year)</span><span lang="ar">الدولي (السنة)</span></th>
+            <th><span lang="en">Difference</span><span lang="ar">الفرق</span></th>
+            <th><span lang="en">Source</span><span lang="ar">المصدر</span></th>
+          </tr></thead>
+          <tbody data-draw="offbody"></tbody>
+        </table>
+      </div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Official and international series use different methods, population estimates and definitions, and often different years, so a gap is not necessarily an error in either. The Bahrain workforce gap is large enough to suggest the World Bank figures are incomplete. Official figures are entered by hand and updated yearly.</p><p lang="ar"><b>حدود البيانات.</b> تستخدم السلاسل الرسمية والدولية منهجيات وتقديرات سكانية وتعريفات مختلفة، وغالبًا سنوات مختلفة، لذا لا يعني الفرق بالضرورة خطأ في أي منهما. لكن فجوة القوى العاملة في البحرين كبيرة بما يكفي للإشارة إلى أن أرقام البنك الدولي غير مكتملة. وتُدخل الأرقام الرسمية يدويًا وتُحدَّث سنويًا.</p></div>
+    </div>
+    <h3 class="gx-subh"><span lang="en">Saudi Vision 2030 headline indicators</span><span lang="ar">المؤشرات الرئيسية لرؤية السعودية 2030</span></h3>
     <div class="gx-grid">
       <div class="gx-card" id="v-le">
         <h3><span lang="en">Life expectancy</span><span lang="ar">العمر المتوقع</span></h3>
         <div class="gx-vs">
-          <div><div class="t"><span lang="en">Official</span><span lang="ar">الرقم الرسمي</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=life_exp&amp;series=official&amp;year=2025" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=life_exp&amp;series=official&amp;year=2025">—</div></div>
+          <div><div class="t"><span lang="en">Official</span><span lang="ar">الرقم الرسمي</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=life_exp&amp;series=official&amp;year=2024" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=life_exp&amp;series=official&amp;year=2024">—</div></div>
           <div><div class="t"><span lang="en">Vision 2030 target</span><span lang="ar">مستهدف رؤية 2030</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=life_exp&amp;series=target&amp;year=2030" data-fmt=".0f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=life_exp&amp;series=target&amp;year=2030">—</div></div>
           <div><div class="t"><span lang="en">World Bank estimate</span><span lang="ar">تقدير البنك الدولي</span></div><div class="v" data-draw="vv" data-source="latest" data-field="value" data-where="iso3=SAU&amp;indicator=life_exp" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="latest" data-field="year" data-where="iso3=SAU&amp;indicator=life_exp">—</div></div>
         </div>
-        <p class="gx-note" lang="en">Years at birth. The official figure comes from the Ministry of Health; the World Bank series uses UN population estimates.</p>
-        <p class="gx-note" lang="ar">بالسنوات عند الولادة. الرقم الرسمي صادر عن وزارة الصحة، وتعتمد سلسلة البنك الدولي على تقديرات الأمم المتحدة للسكان.</p>
+        <p class="gx-note" lang="en">Years at birth. The official figure is from the program's 2025 report (2024 data); the World Bank series uses UN population estimates.</p>
+        <p class="gx-note" lang="ar">بالسنوات عند الولادة. الرقم الرسمي من تقرير البرنامج لعام 2025 (بيانات 2024)، وتعتمد سلسلة البنك الدولي على تقديرات الأمم المتحدة للسكان.</p>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Both figures are for 2024 yet differ by 0.7 years, mainly because they rest on different population and death estimates.</p><p lang="ar"><b>حدود البيانات.</b> الرقمان لعام 2024 لكنهما يختلفان بنحو 0.7 سنة، ويعود ذلك أساسًا إلى اعتمادهما على تقديرات مختلفة للسكان والوفيات.</p></div>
       </div>
       <div class="gx-card" id="v-road">
         <h3><span lang="en">Road traffic deaths per 100,000 people</span><span lang="ar">وفيات حوادث الطرق لكل 100,000 نسمة</span></h3>
         <div class="gx-vs">
           <div><div class="t"><span lang="en">Official baseline</span><span lang="ar">خط الأساس الرسمي</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=road_deaths&amp;series=official&amp;year=2016" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=road_deaths&amp;series=official&amp;year=2016">—</div></div>
-          <div><div class="t"><span lang="en">Official, latest</span><span lang="ar">الرقم الرسمي الأحدث</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=road_deaths&amp;series=official&amp;year=2023" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=road_deaths&amp;series=official&amp;year=2023">—</div></div>
+          <div><div class="t"><span lang="en">Official, latest</span><span lang="ar">الرقم الرسمي الأحدث</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=road_deaths&amp;series=official&amp;year=2025" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=road_deaths&amp;series=official&amp;year=2025">—</div></div>
           <div><div class="t"><span lang="en">WHO estimate</span><span lang="ar">تقدير منظمة الصحة العالمية</span></div><div class="v" data-draw="vv" data-source="latest" data-field="value" data-where="iso3=SAU&amp;indicator=road_deaths" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="latest" data-field="year" data-where="iso3=SAU&amp;indicator=road_deaths">—</div></div>
         </div>
         <p class="gx-note" lang="en">WHO models road deaths to correct for under-reporting in national registries, so its estimates usually run above official counts. The two series aren't directly comparable, and the WHO series in the World Bank's data stops at 2019.</p>
         <p class="gx-note" lang="ar">تُنمذج منظمة الصحة العالمية وفيات الطرق لتصحيح نقص الإبلاغ في السجلات الوطنية، لذا تأتي تقديراتها عادةً أعلى من الأرقام الرسمية. السلسلتان غير قابلتين للمقارنة المباشرة، وتتوقف سلسلة المنظمة في بيانات البنك الدولي عند عام 2019.</p>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> The official 2025 rate is based on projected 2025 population. The WHO figure is six years older, so part of the gap is time.</p><p lang="ar"><b>حدود البيانات.</b> يستند المعدل الرسمي لعام 2025 إلى تقديرات السكان المتوقعة لعام 2025. ورقم المنظمة أقدم بست سنوات، لذا يعود جزء من الفجوة إلى الفارق الزمني.</p></div>
+      </div>
+      <div class="gx-card" id="v-ncd">
+        <h3><span lang="en">Deaths from chronic disease</span><span lang="ar">الوفيات بالأمراض المزمنة</span></h3>
+        <div class="gx-vs">
+          <div><div class="t"><span lang="en">Official rate, baseline</span><span lang="ar">المعدل الرسمي، خط الأساس</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=ncd_rate&amp;series=official&amp;year=2019" data-fmt=".0f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=ncd_rate&amp;series=official&amp;year=2019">—</div></div>
+          <div><div class="t"><span lang="en">Official rate, latest</span><span lang="ar">المعدل الرسمي، الأحدث</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=ncd_rate&amp;series=official&amp;year=2024" data-fmt=".0f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=ncd_rate&amp;series=official&amp;year=2024">—</div></div>
+          <div><div class="t"><span lang="en">WHO, chance of dying 30–70</span><span lang="ar">المنظمة، احتمال الوفاة 30–70</span></div><div class="v" data-draw="vv" data-source="latest" data-field="value" data-where="iso3=SAU&amp;indicator=ncd_mort_30_70" data-fmt=".1f" data-suffix="%">—</div><div class="y" data-draw="vy" data-source="latest" data-field="year" data-where="iso3=SAU&amp;indicator=ncd_mort_30_70">—</div></div>
+        </div>
+        <p class="gx-note" lang="en">The program's official rate fell by a third and beat its 2025 target of 441. WHO's measure for SDG 3.4 shows little change and puts Saudi Arabia off track.</p>
+        <p class="gx-note" lang="ar">انخفض المعدل الرسمي للبرنامج بمقدار الثلث متجاوزًا مستهدف 2025 البالغ 441، بينما يُظهر مقياس المنظمة للهدف 3.4 تغيرًا طفيفًا ويضع السعودية خارج المسار.</p>
+        <div class="gx-limits"><p lang="en"><b>Limitations.</b> These are different measures. The report does not define its rate (likely deaths per 100,000), and the WHO series ends in 2021. Read them as two lenses, not a contradiction.</p><p lang="ar"><b>حدود البيانات.</b> هذان مقياسان مختلفان؛ إذ لا يعرّف التقرير معدله (يُرجّح أنه وفيات لكل 100,000 نسمة)، وتنتهي سلسلة المنظمة في 2021. يُقرآن كزاويتين مختلفتين لا كتناقض.</p></div>
       </div>
     </div>
   </section>
 
   <footer class="gx-foot" id="method">
-    <p class="gx-note" lang="en">Sources: World Bank World Development Indicators; WHO Global Health Observatory via Our World in Data; Saudi Ministry of Health and Health Sector Transformation Program reports. International series refresh monthly. Each figure shows the latest year a country reported, so years differ across countries and indicators. "High income" and "World" are World Bank aggregates.</p>
-    <p class="gx-note" lang="ar">المصادر: مؤشرات التنمية العالمية للبنك الدولي؛ المرصد الصحي العالمي لمنظمة الصحة العالمية عبر Our World in Data؛ تقارير وزارة الصحة السعودية وبرنامج تحول القطاع الصحي. تُحدَّث السلاسل الدولية شهريًا. يعرض كل رقم أحدث سنة أبلغت عنها الدولة، لذا تختلف السنوات بين الدول والمؤشرات. «الدول مرتفعة الدخل» و«العالم» مجموعتان إجماليتان من البنك الدولي.</p>
+    <p class="gx-note" lang="en">Sources: World Bank World Development Indicators; WHO Global Health Observatory via Our World in Data; national statistics and health ministries of all six countries (GASTAT and the Health Sector Transformation Program; UAE.Stat; Qatar Open Data; Kuwait Central Statistical Bureau; Oman NCSI; Bahrain Ministry of Health), linked beside each figure. International series refresh monthly; national figures are reviewed yearly. Each figure shows the latest year a country reported, so years differ across countries and indicators. "High income" and "World" are World Bank aggregates.</p>
+    <p class="gx-note" lang="ar">المصادر: مؤشرات التنمية العالمية للبنك الدولي؛ المرصد الصحي العالمي لمنظمة الصحة العالمية عبر Our World in Data؛ أجهزة الإحصاء ووزارات الصحة في الدول الست (الهيئة العامة للإحصاء وبرنامج تحول القطاع الصحي؛ UAE.Stat؛ بوابة البيانات المفتوحة في قطر؛ الإدارة المركزية للإحصاء بالكويت؛ المركز الوطني للإحصاء والمعلومات بعُمان؛ وزارة الصحة البحرينية)، مع رابط بجانب كل رقم. تُحدَّث السلاسل الدولية شهريًا وتُراجع الأرقام الوطنية سنويًا. يعرض كل رقم أحدث سنة أبلغت عنها الدولة، لذا تختلف السنوات بين الدول والمؤشرات. «الدول مرتفعة الدخل» و«العالم» مجموعتان إجماليتان من البنك الدولي.</p>
   </footer>
 
 <footer class="site-foot">
@@ -399,7 +544,7 @@ window.gx = (() => {
     const ml = measure(svg, yTicks.map((v) => f(v))) + 10;
     const labelled = series.filter((s) => s.label);
     const endLabels = labelled.map((s) => { const p = s.points[s.points.length - 1]; return {s, p, txt: `${s.name} \u2066${f(p.y)}\u2069`}; });
-    const mr = Math.min(W * 0.42, measure(svg, endLabels.map((l) => l.txt)) + 12);
+    const mr = Math.min(W * 0.42, measure(svg, endLabels.map((l) => l.txt)) + 12 + (extra ? 18 : 0));
     const x = d3.scaleLinear([d3.min(all, (p) => p.x), xMax], [ml, W - mr]);
     const g = svg.append('g');
     g.selectAll('line.grid').data(yTicks).join('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y).attr('y2', y).style('stroke', 'var(--cds-chart-grid)');
@@ -416,7 +561,7 @@ window.gx = (() => {
     endLabels.forEach((l) => (l.y = y(l.p.y)));
     endLabels.sort((a, b) => a.y - b.y);
     for (let i = 1; i < endLabels.length; i++) if (endLabels[i].y - endLabels[i - 1].y < 13) endLabels[i].y = endLabels[i - 1].y + 13;
-    g.selectAll('text.end').data(endLabels).join('text').attr('x', (l) => x(l.p.x) + 6).attr('y', (l) => l.y).attr('dy', '0.32em')
+    g.selectAll('text.end').data(endLabels).join('text').attr('x', (l) => (extra ? x(xMax) + 20 : x(l.p.x) + 6)).attr('y', (l) => l.y).attr('dy', '0.32em')
       .style('fill', (l) => (l.s.iso === focus() ? 'var(--color-fg)' : 'var(--color-fg-muted)')).attr('font-weight', (l) => (l.s.iso === focus() ? 600 : null)).text((l) => l.txt);
     // Hover.
     const tt = tip(el);
@@ -462,11 +607,12 @@ window.gx = (() => {
 // Calculations readers can inspect in Sources.
 dash.calc('latest', {
   title: 'Latest value per country',
-  description: 'Most recent reported year for each country and indicator, from the World Bank and WHO obesity files.',
-  inputs: ['wb', 'obesity'],
-  fn: (wb, obesity) => {
+  description: 'Most recent reported year for each country and indicator, from the World Bank, WHO obesity and WHO healthy life expectancy files.',
+  inputs: ['wb', 'obesity', 'hale'],
+  fn: (wb, obesity, hale) => {
     const rows = wb.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: Number(r.year), value: Number(r.value)}))
-      .concat(obesity.map((r) => ({iso3: r.iso3, indicator: 'obesity', year: Number(r.year), value: Number(r.value)})));
+      .concat(obesity.map((r) => ({iso3: r.iso3, indicator: 'obesity', year: Number(r.year), value: Number(r.value)})))
+      .concat(hale.map((r) => ({iso3: r.iso3, indicator: 'hale', year: Number(r.year), value: Number(r.value)})));
     const best = new Map();
     rows.forEach((r) => { const k = r.iso3 + '|' + r.indicator; if (!best.has(k) || best.get(k).year < r.year) best.set(k, r); });
     return [...best.values()];
@@ -486,17 +632,40 @@ dash.calc('gcc_avg', {
 
 dash.calc('sdg34', {
   title: 'SDG 3.4 progress by country',
-  description: 'Goal = 2015 premature chronic-disease mortality cut by one third. Projection extends the average yearly change since 2015 to 2030.',
+  description: 'Goal = 2015 premature chronic-disease mortality cut by one third. A least-squares trend on 2015 to latest projects 2030 with an 80% prediction interval.',
   inputs: ['wb'],
-  fn: (wb) => ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'].map((iso) => {
-    const s = wb.filter((r) => r.iso3 === iso && r.indicator === 'ncd_mort_30_70').map((r) => ({year: Number(r.year), value: Number(r.value), country: r.country}));
-    const b = s.find((r) => r.year === 2015);
-    const last = s.reduce((a, r) => (r.year > a.year ? r : a), s[0]);
-    const goal = b.value * 2 / 3;
-    const proj = last.value + ((last.value - b.value) / (last.year - 2015)) * (2030 - last.year);
+  fn: (wb) => {
+    const T80 = {3: 1.638, 4: 1.533, 5: 1.476, 6: 1.440, 7: 1.415, 8: 1.397, 9: 1.383, 10: 1.372, 11: 1.363, 12: 1.356};
     const r1 = (v) => Math.round(v * 10) / 10;
-    return {iso3: iso, country: b.country, v2015: r1(b.value), latest: r1(last.value), latest_year: last.year, goal2030: r1(goal), proj2030: r1(proj), status: proj <= goal ? 'On track' : 'Off track', status_ar: proj <= goal ? 'على المسار' : 'خارج المسار'};
-  }),
+    return ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'].map((iso) => {
+      const s = wb.filter((r) => r.iso3 === iso && r.indicator === 'ncd_mort_30_70')
+        .map((r) => ({year: Number(r.year), value: Number(r.value), country: r.country}))
+        .sort((a, b) => a.year - b.year);
+      const base = s.find((r) => r.year === 2015);
+      const pts = s.filter((r) => r.year >= 2015);
+      const n = pts.length, last = pts[n - 1];
+      const xm = pts.reduce((a, r) => a + r.year, 0) / n, ym = pts.reduce((a, r) => a + r.value, 0) / n;
+      const sxx = pts.reduce((a, r) => a + (r.year - xm) ** 2, 0);
+      const slope = pts.reduce((a, r) => a + (r.year - xm) * (r.value - ym), 0) / sxx;
+      const icpt = ym - slope * xm;
+      const se = Math.sqrt(pts.reduce((a, r) => a + (r.value - (icpt + slope * r.year)) ** 2, 0) / (n - 2));
+      const proj = icpt + slope * 2030;
+      const half = (T80[n - 2] || 1.3) * se * Math.sqrt(1 + 1 / n + (2030 - xm) ** 2 / sxx);
+      const goal = base.value * 2 / 3, lo = proj - half, hi = proj + half;
+      const code = hi <= goal ? 'on' : lo > goal ? 'off' : 'uncertain';
+      return {iso3: iso, country: base.country, v2015: r1(base.value), latest: r1(last.value), latest_year: last.year,
+        goal2030: r1(goal), proj2030: r1(proj), lo2030: r1(Math.max(0, lo)), hi2030: r1(hi), status_code: code,
+        status: {on: 'On track', off: 'Off track', uncertain: 'Uncertain'}[code],
+        status_ar: {on: 'على المسار', off: 'خارج المسار', uncertain: 'غير محسوم'}[code]};
+    });
+  },
+});
+
+dash.calc('vision2030', {
+  title: 'Saudi Vision 2030 official figures',
+  description: 'The vision2030 rows of the national figures file (official values and targets, each with its source).',
+  inputs: ['national'],
+  fn: (national) => national.vision2030,
 });
 
 dash.calc('spend', {
@@ -576,11 +745,15 @@ dash.draw('ncdchart', (el) => {
   lineChart(el, {
     series, f: (v) => d3.format('.1f')(v) + '%',
     extra: goal && {
-      points: [{x: 2030, y: goal.goal2030}],
+      points: [{x: 2030, y: goal.goal2030}, {x: 2030, y: goal.lo2030}, {x: 2030, y: goal.hi2030}],
       draw: (g, x, y) => {
         const last = series.find((s) => s.iso === focus()).points.slice(-1)[0];
         g.append('line').attr('x1', x(last.x)).attr('y1', y(last.y)).attr('x2', x(2030)).attr('y2', y(goal.proj2030))
           .style('stroke', dash.colors[0]).attr('stroke-width', 1.5).attr('stroke-dasharray', '2 3');
+        const wx = x(2030) + 9;
+        g.append('line').attr('x1', wx).attr('x2', wx).attr('y1', y(goal.lo2030)).attr('y2', y(goal.hi2030)).style('stroke', dash.colors[0]).attr('stroke-width', 2).attr('stroke-linecap', 'round');
+        [goal.lo2030, goal.hi2030].forEach((v) => g.append('line').attr('x1', wx - 4).attr('x2', wx + 4).attr('y1', y(v)).attr('y2', y(v)).style('stroke', dash.colors[0]).attr('stroke-width', 2));
+        g.append('circle').attr('cx', wx).attr('cy', y(goal.proj2030)).attr('r', 3).style('fill', dash.colors[0]);
         g.append('circle').attr('cx', x(2030)).attr('cy', y(goal.goal2030)).attr('r', 5).style('fill', 'none').style('stroke', dash.colors[0]).attr('stroke-width', 2);
         g.append('text').attr('x', x(2030)).attr('y', y(goal.goal2030) + 16).attr('text-anchor', 'middle').style('fill', 'var(--color-fg-muted)').text(T('2030 goal', 'هدف 2030'));
       },
@@ -594,8 +767,8 @@ dash.draw('sdgbody', (tb) => {
   const f = d3.format('.1f');
   dash.data('sdg34').data.forEach((r) => {
     const tr = document.createElement('tr'); if (r.iso3 === focus()) tr.className = 'is-focus';
-    [r.country, f(r.v2015) + '%', f(r.latest) + '%', String(r.latest_year), f(r.goal2030) + '%', f(r.proj2030) + '%', r.status].forEach((v, i) => {
-      const td = document.createElement('td'); td.textContent = v; if (i === 6) td.className = r.status === 'On track' ? 'ok' : 'bad'; tr.appendChild(td);
+    [r.country, f(r.v2015) + '%', f(r.latest) + '%', String(r.latest_year), f(r.goal2030) + '%', f(r.proj2030) + '%', f(r.lo2030) + '–' + f(r.hi2030) + '%', r.status].forEach((v, i) => {
+      const td = document.createElement('td'); td.textContent = v; if (i === 7) td.className = {on: 'ok', off: 'bad', uncertain: 'warn'}[r.status_code]; tr.appendChild(td);
     });
     tb.appendChild(tr);
   });
@@ -608,7 +781,7 @@ dash.draw('hbar', (el) => {
   const rows = isos.map((iso) => { const r = latestRow(iso, ind); return r && {iso, name: NAME[iso], value: r.value, year: r.year}; }).filter(Boolean);
   const g = rows.filter((r) => GCC.includes(r.iso)).sort((a, b) => b.value - a.value);
   const refs = rows.filter((r) => !GCC.includes(r.iso)).sort((a, b) => b.value - a.value);
-  hbar(el, g.concat(refs), (v) => d3.format('.1f')(v) + '%');
+  hbar(el, g.concat(refs), (v) => d3.format('.1f')(v) + (ind === 'hale' ? '' : '%'));
 });
 
 dash.draw('govchart', (el) => {
@@ -636,8 +809,8 @@ dash.draw('sdgbody_ar', (tb) => {
   const f = d3.format('.1f');
   dash.data('sdg34').data.forEach((r) => {
     const tr = document.createElement('tr'); tr.dataset.key = r.country; if (r.iso3 === focus()) tr.className = 'is-focus';
-    [NAME_AR[r.iso3], f(r.v2015) + '%', f(r.latest) + '%', String(r.latest_year), f(r.goal2030) + '%', f(r.proj2030) + '%', r.status_ar].forEach((v, i) => {
-      const td = document.createElement('td'); td.textContent = v; if (i === 6) td.className = r.status === 'On track' ? 'ok' : 'bad'; tr.appendChild(td);
+    [NAME_AR[r.iso3], f(r.v2015) + '%', f(r.latest) + '%', String(r.latest_year), f(r.goal2030) + '%', f(r.proj2030) + '%', '\u2066' + f(r.lo2030) + '–' + f(r.hi2030) + '%\u2069', r.status_ar].forEach((v, i) => {
+      const td = document.createElement('td'); td.textContent = v; if (i === 7) td.className = {on: 'ok', off: 'bad', uncertain: 'warn'}[r.status_code]; tr.appendChild(td);
     });
     tb.appendChild(tr);
   });
@@ -663,7 +836,8 @@ dash.draw('strip', (el) => {
   const M = [{ind: 'physicians_1k', name: T('Physicians', 'الأطباء')}, {ind: 'nurses_1k', name: T('Nurses and midwives', 'الممرضون والقابلات')}, {ind: 'beds_1k', name: T('Hospital beds', 'أسرّة المستشفيات')}];
   const W = Math.max(280, el.clientWidth), rowH = 62, H = M.length * rowH + 24;
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
-  const vals = M.flatMap((m) => [...GCC, 'HIC'].map((iso) => latestRow(iso, m.ind)).filter(Boolean).map((r) => r.value));
+  const natV = dash.data('national').status === 'ok' ? dash.data('national').data.official_vs_international.filter((o) => M.some((m) => m.ind === o.indicator)).map((o) => o.official) : [];
+  const vals = M.flatMap((m) => [...GCC, 'HIC'].map((iso) => latestRow(iso, m.ind)).filter(Boolean).map((r) => r.value)).concat(natV);
   const x = d3.scaleLinear([0, d3.max(vals) * 1.05], [12, W - 12]).nice();
   const tt = tip(el);
   M.forEach((m, i) => {
@@ -680,6 +854,16 @@ dash.draw('strip', (el) => {
       .style('fill', (r) => colorOf(r.iso)).style('stroke', 'var(--color-panel)').attr('stroke-width', 1.5)
       .on('pointermove', (ev, r) => { const [mx, my] = d3.pointer(ev, el); tt.show(mx, my, NAME[r.iso], [{name: m.name + T(', ', '، ') + r.year, value: d3.format('.2f')(r.value)}].concat(hic ? [{name: T('High income, ', 'الدول مرتفعة الدخل، ') + hic.year, value: d3.format('.2f')(hic.value)}] : [])); })
       .on('pointerleave', () => tt.hide());
+    const nat = dash.data('national');
+    const offs = nat.status === 'ok' ? nat.data.official_vs_international.filter((o) => o.indicator === m.ind && GCC.includes(o.iso3)) : [];
+    offs.forEach((o) => {
+      const wbRow = latestRow(o.iso3, m.ind);
+      if (wbRow && Math.abs(wbRow.value - o.official) < 0.15) return;
+      g.append('circle').attr('cx', x(o.official)).attr('cy', cy).attr('r', o.iso3 === focus() ? 8 : 6.5)
+        .style('fill', 'none').style('stroke', colorOf(o.iso3)).attr('stroke-width', 2)
+        .on('pointermove', (ev) => { const [mx, my] = d3.pointer(ev, el); tt.show(mx, my, NAME[o.iso3], [{name: T('Official, ', 'رسمي، ') + o.official_year, value: d3.format('.2f')(o.official)}].concat(wbRow ? [{name: T('World Bank, ', 'البنك الدولي، ') + wbRow.year, value: d3.format('.2f')(wbRow.value)}] : [])); })
+        .on('pointerleave', () => tt.hide());
+    });
     const fr = pts.find((r) => r.iso === focus());
     if (fr) {
       const lab = `${NAME[fr.iso]} \u2066${d3.format('.1f')(fr.value)}\u2069`;
@@ -697,7 +881,7 @@ dash.draw('vv', (el) => {
   if (!text(el, [src])) return;
   const w = Object.fromEntries(el.dataset.where.split('&').map((kv) => kv.split('=')));
   const r = dash.data(src).data.find((x) => Object.entries(w).every(([k, v]) => String(x[k]) === v));
-  el.textContent = r ? d3.format(el.dataset.fmt)(Number(r.value)) : '—';
+  el.textContent = r ? d3.format(el.dataset.fmt)(Number(r.value)) + (el.dataset.suffix || '') : '—';
 });
 dash.draw('vy', (el) => {
   const src = el.dataset.source;
@@ -706,6 +890,149 @@ dash.draw('vy', (el) => {
   const r = dash.data(src).data.find((x) => Object.entries(w).every(([k, v]) => String(x[k]) === v));
   el.textContent = r ? String(r.year) : '—';
 });
+</script>
+
+<script>
+(function () {
+  const {GCC, NAME, lang, T, focus, box, tip, measure, colorOf} = window.gx;
+  const nat = () => dash.data('national');
+  const srcLink = (key) => {
+    const n = nat().data, s = n && n.sources && n.sources[key];
+    if (!s) return document.createTextNode('—');
+    const a = document.createElement('a'); a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = lang() === 'ar' ? s.ar : s.en; return a;
+  };
+  const cell = (tr, v, cls) => { const td = document.createElement('td'); if (v instanceof Node) td.appendChild(v); else td.textContent = v; if (cls) td.className = cls; tr.appendChild(td); return td; };
+  const empty = (tb) => { tb.replaceChildren(); return nat().status !== 'ok'; };
+  const f1 = d3.format('.1f');
+  const pct = (v) => (v == null ? T('Not published', 'غير منشور') : (Number.isInteger(v) ? String(v) : f1(v)) + '%');
+
+  // Snapshot: official figure line under a tile
+  dash.draw('toff', (el) => {
+    el.hidden = true;
+    if (nat().status !== 'ok') return;
+    const o = nat().data.official_vs_international.find((r) => r.iso3 === focus() && r.indicator === el.dataset.ind);
+    if (!o) return;
+    el.textContent = T('Official: ', 'الرقم الرسمي: ') + d3.format(el.dataset.fmt)(o.official) + ' (' + o.official_year + ')';
+    el.hidden = false;
+  });
+
+  // Insurance table
+  dash.draw('insbody', (tb) => {
+    if (empty(tb)) return;
+    const ar = lang() === 'ar';
+    nat().data.insurance.forEach((r) => {
+      const tr = document.createElement('tr'); if (r.iso3 === focus()) tr.className = 'is-focus';
+      cell(tr, NAME[r.iso3]); cell(tr, ar ? r.scheme_ar : r.scheme_en); cell(tr, ar ? r.status_ar : r.status_en);
+      cell(tr, ar ? r.covered_ar : r.covered_en); cell(tr, srcLink(r.src));
+      tb.appendChild(tr);
+    });
+  });
+
+  // Localization table
+  dash.draw('locbody', (tb) => {
+    if (empty(tb)) return;
+    nat().data.localization.rows.forEach((r) => {
+      const tr = document.createElement('tr'); if (r.iso3 === focus()) tr.className = 'is-focus';
+      cell(tr, NAME[r.iso3]); cell(tr, r.year ? String(r.year) : '—');
+      cell(tr, pct(r.phys)); cell(tr, pct(r.nurse), r.nurse != null && r.nurse < 10 ? 'bad' : '');
+      cell(tr, pct(r.phys_private));
+      cell(tr, r.nurse_private == null ? pct(null) : pct(r.nurse_private) + (r.nurse_private_year && r.nurse_private_year !== r.year ? ' (' + r.nurse_private_year + ')' : ''), r.nurse_private != null && r.nurse_private < 10 ? 'bad' : '');
+      const td = cell(tr, r.src ? srcLink(r.src) : '—');
+      if (r.src2) { td.appendChild(document.createTextNode('; ')); td.appendChild(srcLink(r.src2)); }
+      tb.appendChild(tr);
+    });
+  });
+
+  // Localization chart: paired bars per country, GCC nurse benchmark
+  dash.draw('locchart', (el) => {
+    if (!box(el, ['national'])) return;
+    el.replaceChildren();
+    const loc = nat().data.localization;
+    const rows = loc.rows.filter((r) => r.phys != null).sort((a, b) => b.phys - a.phys);
+    const missing = loc.rows.filter((r) => r.phys == null).map((r) => NAME[r.iso3]);
+    const W = Math.max(280, el.clientWidth), bh = 12, rowH = 40, top = 30, H = top + rows.length * rowH + 30;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
+    const ml = measure(svg, rows.map((r) => NAME[r.iso3])) + 12, mr = 44;
+    const x = d3.scaleLinear([0, 100], [ml, W - mr]);
+    const cols = {phys: dash.colors[0], nurse: dash.colors[1]};
+    const leg = svg.append('g').attr('transform', `translate(${ml},12)`);
+    let lx = 0;
+    [['phys', T('Physicians', 'الأطباء')], ['nurse', T('Nurses', 'الممرضون')]].forEach(([k, label]) => {
+      leg.append('rect').attr('x', lx).attr('y', -8).attr('width', 10).attr('height', 10).attr('rx', 2).style('fill', cols[k]);
+      const t = leg.append('text').attr('x', lx + 14).attr('y', 1).style('fill', 'var(--color-fg-muted)').text(label);
+      lx += 14 + t.node().getComputedTextLength() + 18;
+    });
+    [0, 25, 50, 75, 100].forEach((v) => {
+      svg.append('line').attr('x1', x(v)).attr('x2', x(v)).attr('y1', top - 4).attr('y2', H - 22).style('stroke', 'var(--cds-chart-grid)');
+      svg.append('text').attr('x', x(v)).attr('y', H - 8).attr('text-anchor', 'middle').style('fill', 'var(--color-fg-muted)').text(v + '%');
+    });
+    const tt = tip(el);
+    rows.forEach((r, i) => {
+      const y0 = top + i * rowH;
+      const g = svg.append('g');
+      g.append('text').attr('x', ml - 8).attr('y', y0 + bh + 2).attr('dy', '0.32em').attr('text-anchor', 'end')
+        .style('fill', r.iso3 === focus() ? 'var(--color-fg)' : 'var(--color-fg-muted)').attr('font-weight', r.iso3 === focus() ? 600 : null).text(NAME[r.iso3]);
+      [['phys', 0], ['nurse', bh + 3]].forEach(([k, off]) => {
+        const v = r[k];
+        g.append('rect').attr('x', x(0)).attr('y', y0 + off).attr('height', bh).attr('width', Math.max(1.5, x(v) - x(0))).attr('rx', 2)
+          .style('fill', cols[k]).style('opacity', r.iso3 === focus() || !GCC.includes(focus()) ? 1 : 0.75)
+          .on('pointermove', (ev) => { const [mx, my] = d3.pointer(ev, el); tt.show(mx, my, NAME[r.iso3] + ', ' + r.year, [{color: cols[k], name: k === 'phys' ? T('Physicians', 'الأطباء') : T('Nurses', 'الممرضون'), value: pct(v)}]); })
+          .on('pointerleave', () => tt.hide());
+        g.append('text').attr('x', x(v) + 5).attr('y', y0 + off + bh / 2).attr('dy', '0.32em').style('fill', 'var(--color-fg)').style('font-variant-numeric', 'tabular-nums').text(pct(v));
+      });
+    });
+    const b = loc.regional_benchmark;
+    svg.append('line').attr('x1', x(b.share)).attr('x2', x(b.share)).attr('y1', top - 4).attr('y2', H - 22)
+      .style('stroke', 'var(--cds-chart-reference)').attr('stroke-width', 1.5).attr('stroke-dasharray', '4 3');
+    const bl = (lang() === 'ar' ? b.label_ar : b.label_en) + ' ' + b.share + '% (' + b.year + ')';
+    const bw = measure(svg, [bl]);
+    const bx = Math.min(x(b.share) + 4, W - bw - 2);
+    svg.append('text').attr('x', bx).attr('y', top - 10).style('fill', 'var(--color-fg-muted)').text(bl);
+    if (missing.length) {
+      const note = document.createElement('p'); note.className = 'n';
+      note.textContent = T('No nationality split published: ', 'لا يوجد توزيع منشور حسب الجنسية: ') + missing.join(T(', ', '، '));
+      el.appendChild(note);
+    }
+  });
+
+  // Goals table
+  dash.draw('goalsbody', (tb) => {
+    if (empty(tb)) return;
+    const ar = lang() === 'ar';
+    const ST = {met: ['Met', 'تحقق'], near: ['Close', 'قريب'], far: ['Far off', 'بعيد'], na: ['Not tracked numerically', 'لا يوجد قياس رقمي']};
+    nat().data.goals.forEach((r) => {
+      const tr = document.createElement('tr'); if (r.iso3 === focus()) tr.className = 'is-focus';
+      cell(tr, NAME[r.iso3]); cell(tr, ar ? r.metric_ar : r.metric_en); cell(tr, ar && r.target_ar ? r.target_ar : r.target);
+      cell(tr, String(r.by)); cell(tr, ar && r.latest_ar ? r.latest_ar : r.latest);
+      const badge = document.createElement('span'); badge.className = 'st st-' + r.status; badge.textContent = ST[r.status][ar ? 1 : 0];
+      cell(tr, badge); cell(tr, srcLink(r.src));
+      tb.appendChild(tr);
+    });
+  });
+
+  // Official vs international table
+  const LBL = {life_exp: ['Life expectancy (years)', 'العمر المتوقع (سنة)'], physicians_1k: ['Physicians per 1,000', 'الأطباء لكل 1,000'],
+    nurses_1k: ['Nurses per 1,000', 'الممرضون لكل 1,000'], road_deaths: ['Road deaths per 100,000', 'وفيات الطرق لكل 100,000']};
+  dash.draw('offbody', (tb) => {
+    tb.replaceChildren();
+    if (nat().status !== 'ok' || dash.data('latest').status !== 'ok') return;
+    const ar = lang() === 'ar';
+    const latest = dash.data('latest').data;
+    nat().data.official_vs_international.forEach((o) => {
+      const w = latest.find((r) => r.iso3 === o.iso3 && r.indicator === o.indicator);
+      const fmt = o.indicator === 'physicians_1k' ? d3.format('.2f') : f1;
+      const tr = document.createElement('tr'); if (o.iso3 === focus()) tr.className = 'is-focus';
+      cell(tr, LBL[o.indicator][ar ? 1 : 0]); cell(tr, NAME[o.iso3]);
+      cell(tr, fmt(o.official) + ' (' + o.official_year + ')');
+      cell(tr, w ? fmt(w.value) + ' (' + w.year + ')' : '—');
+      const diff = w ? o.official - w.value : null;
+      cell(tr, diff == null ? '—' : (diff > 0 ? '+' : diff < 0 ? '−' : '') + fmt(Math.abs(diff)), diff != null && w && Math.abs(diff) / w.value > 0.5 ? 'warn' : '');
+      cell(tr, srcLink(o.src));
+      tb.appendChild(tr);
+    });
+  });
+})();
 </script>
 <script>
 dash.draw('refreshed', (el) => {
