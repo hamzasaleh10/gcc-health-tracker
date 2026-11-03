@@ -28,6 +28,21 @@
 .gx-sec{display:grid;gap:var(--cds-gap-md)}
 .gx-sec>h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:0}
 .gx-sec>p.gx-lede{margin:0;color:var(--color-fg-muted);font-size:var(--cds-font-size-body);max-width:60rem}
+.gx-sec{scroll-margin-top:var(--cds-gap-md)}
+.gx-sec+.gx-sec{border-top:1px solid var(--color-border-line);padding-top:var(--cds-gap-xl)}
+.gx-sec>h2{display:flex;align-items:center;flex-wrap:wrap;gap:0 .5rem}
+.gx-num{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.75rem;height:1.75rem;border-radius:50%;background:color-mix(in srgb,var(--chart-1) 12%,transparent);color:var(--chart-1);font-size:var(--cds-font-size-caption);font-weight:600;font-variant-numeric:tabular-nums}
+.gx-ctx{display:grid;gap:var(--cds-gap-xs);max-width:60rem}
+.gx-ctx p{margin:0;font-size:var(--cds-font-size-body);color:var(--color-fg-muted);line-height:1.55}
+.gx-ctx b{color:var(--color-fg);font-weight:600}
+.gx-find{margin:0;max-width:60rem;font-size:var(--cds-font-size-body);line-height:1.55;padding:var(--cds-pad-sm) var(--cds-pad-md);border-inline-start:3px solid var(--chart-1);background:var(--color-panel);border-radius:0 var(--cds-radius) var(--cds-radius) 0}
+.gx.is-ar .gx-find{border-radius:var(--cds-radius) 0 0 var(--cds-radius)}
+.gx-find b{font-weight:600}
+.gx.is-ar .gx-ctx p,.gx.is-ar .gx-find{line-height:1.8}
+.gx-jump{align-items:center}
+.gx-jump .lbl{color:var(--color-fg-muted)}
+.gx-jump a{display:inline-flex;align-items:center;gap:.375rem}
+.gx-jump .gx-num{width:1.25rem;height:1.25rem;font-size:.7rem}
 .gx-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr));gap:var(--cds-gap-md)}
 .gx-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start}
 .gx-tile .t{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
@@ -124,16 +139,24 @@
   </div>
 
   <nav class="gx-jump" aria-label="Sections">
-    <a href="#outcomes"><span lang="en">Outcomes</span><span lang="ar">النتائج الصحية</span></a>
-    <a href="#risk"><span lang="en">Chronic disease</span><span lang="ar">الأمراض المزمنة</span></a>
-    <a href="#financing"><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></a>
-    <a href="#workforce"><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></a>
-    <a href="#goals"><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></a>
-    <a href="#official"><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></a>
+    <span class="lbl"><span lang="en">Sections</span><span lang="ar">الأقسام</span></span>
+    <a href="#snapshot"><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance</span><span lang="ar">نظرة سريعة</span></a>
+    <a href="#outcomes"><span class="gx-num" aria-hidden="true">2</span><span lang="en">Health outcomes</span><span lang="ar">النتائج الصحية</span></a>
+    <a href="#risk"><span class="gx-num" aria-hidden="true">3</span><span lang="en">Chronic disease</span><span lang="ar">الأمراض المزمنة</span></a>
+    <a href="#financing"><span class="gx-num" aria-hidden="true">4</span><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></a>
+    <a href="#workforce"><span class="gx-num" aria-hidden="true">5</span><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></a>
+    <a href="#goals"><span class="gx-num" aria-hidden="true">6</span><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></a>
+    <a href="#official"><span class="gx-num" aria-hidden="true">7</span><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></a>
   </nav>
 
   <section class="gx-sec" id="snapshot">
-    <h2><span lang="en">Snapshot:</span><span lang="ar">لمحة:</span> <span data-draw="focusname">—</span></h2>
+    <h2><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance:</span><span lang="ar">نظرة سريعة:</span><span data-draw="focusname">—</span></h2>
+    <div class="gx-ctx">
+      <p lang="en"><b>What we're looking at.</b> Seven headline measures for the focus country, each beside a high-income or world benchmark.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> سبعة مؤشرات رئيسية للدولة المختارة، كلٌّ منها بجانب معيار مقارنة بالدول مرتفعة الدخل أو بالعالم.</p>
+      <p lang="en"><b>Why it matters.</b> It gives a one-screen read on where a health system stands before you go into the detail. Pick another focus country above to compare.</p>
+      <p lang="ar"><b>لماذا يهم ذلك.</b> يقدّم صورة سريعة في شاشة واحدة عن وضع النظام الصحي قبل الدخول في التفاصيل. اختر دولة أخرى في الأعلى للمقارنة.</p>
+    </div>
     <div class="gx-tiles">
       <div class="gx-tile">
         <span class="t"><span lang="en">Life expectancy at birth</span><span lang="ar">العمر المتوقع عند الولادة</span></span>
@@ -184,9 +207,15 @@
   </section>
 
   <section class="gx-sec" id="outcomes">
-    <h2><span lang="en">Outcomes</span><span lang="ar">النتائج الصحية</span></h2>
-    <p class="gx-lede" lang="en">Longevity has climbed toward high-income levels. The harder target is premature death from cardiovascular disease, cancer, diabetes and chronic respiratory disease, which the UN's Sustainable Development Goal 3.4 asks countries to cut by a third between 2015 and 2030.</p>
-    <p class="gx-lede" lang="ar">ارتفع متوسط العمر المتوقع نحو مستويات الدول مرتفعة الدخل. أما الهدف الأصعب فهو خفض الوفيات المبكرة الناجمة عن أمراض القلب والأوعية الدموية والسرطان والسكري وأمراض الجهاز التنفسي المزمنة، إذ يدعو الهدف 3.4 من أهداف الأمم المتحدة للتنمية المستدامة الدول إلى خفضها بمقدار الثلث بين عامي 2015 و2030.</p>
+    <h2><span class="gx-num" aria-hidden="true">2</span><span lang="en">Health outcomes</span><span lang="ar">النتائج الصحية</span></h2>
+    <div class="gx-ctx">
+      <p lang="en"><b>What we're looking at.</b> How long people live, and how many die early (between 30 and 70) from cardiovascular disease, cancer, diabetes and chronic respiratory disease, measured against the UN goal (SDG 3.4) to cut those deaths by a third between 2015 and 2030.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> كم يعيش الناس، وكم منهم يتوفون مبكرًا (بين 30 و70 عامًا) بأمراض القلب والأوعية الدموية والسرطان والسكري وأمراض الجهاز التنفسي المزمنة، مقارنةً بهدف الأمم المتحدة (الهدف 3.4) لخفض هذه الوفيات بمقدار الثلث بين عامي 2015 و2030.</p>
+      <p lang="en"><b>Why it matters.</b> Life expectancy shows how far a system has come. Premature chronic-disease deaths show the work still ahead, and they are the outcome prevention spending is meant to move.</p>
+      <p lang="ar"><b>لماذا يهم ذلك.</b> يبيّن العمر المتوقع المسافة التي قطعها النظام الصحي، بينما تبيّن الوفيات المبكرة بالأمراض المزمنة العمل المتبقي، وهي النتيجة التي يُفترض أن يغيّرها الإنفاق على الوقاية.</p>
+    </div>
+    <p class="gx-find" lang="en"><b>Key finding:</b> Longevity has climbed toward high-income levels, but not every state is on course for the 2030 goal. The table below gives each country's projected range.</p>
+    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> ارتفع متوسط العمر المتوقع نحو مستويات الدول مرتفعة الدخل، لكن ليست كل الدول على المسار الصحيح لتحقيق هدف 2030. ويعرض الجدول أدناه النطاق المتوقع لكل دولة.</p>
     <div class="gx-grid">
       <div class="gx-card" id="life-exp">
         <h3><span lang="en">Life expectancy at birth</span><span lang="ar">العمر المتوقع عند الولادة</span></h3>
@@ -242,9 +271,15 @@
   </section>
 
   <section class="gx-sec" id="risk">
-    <h2><span lang="en">Chronic disease risk</span><span lang="ar">عوامل خطر الأمراض المزمنة</span></h2>
-    <p class="gx-lede" lang="en">Obesity and diabetes drive most of the region's chronic disease burden, and every Gulf state sits far above the world average on both.</p>
-    <p class="gx-lede" lang="ar">تقف السمنة والسكري وراء معظم عبء الأمراض المزمنة في المنطقة، وتتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في كليهما.</p>
+    <h2><span class="gx-num" aria-hidden="true">3</span><span lang="en">Chronic disease risk</span><span lang="ar">عوامل خطر الأمراض المزمنة</span></h2>
+    <div class="gx-ctx">
+      <p lang="en"><b>What we're looking at.</b> Adult obesity and diabetes prevalence over time, against world and high-income benchmarks.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> معدلات السمنة لدى البالغين وانتشار السكري عبر الزمن، مقارنةً بالمتوسط العالمي والدول مرتفعة الدخل.</p>
+      <p lang="en"><b>Why it matters.</b> These two conditions drive most of the region's chronic disease burden and future costs. They are the earliest signal of the demand heading toward hospitals, and the main target for prevention.</p>
+      <p lang="ar"><b>لماذا يهم ذلك.</b> تقف هاتان الحالتان وراء معظم عبء الأمراض المزمنة وتكاليفها المستقبلية في المنطقة، وهما أبكر مؤشر على الطلب المتجه نحو المستشفيات، والهدف الرئيسي لبرامج الوقاية.</p>
+    </div>
+    <p class="gx-find" lang="en"><b>Key finding:</b> Every Gulf state sits far above the world average on both.</p>
+    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> تتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في كليهما.</p>
     <div class="gx-grid">
       <div class="gx-card" id="obesity">
         <h3><span lang="en">Adult obesity</span><span lang="ar">السمنة لدى البالغين</span></h3>
@@ -264,9 +299,15 @@
   </section>
 
   <section class="gx-sec" id="financing">
-    <h2><span lang="en">Financing</span><span lang="ar">التمويل</span></h2>
-    <p class="gx-lede" lang="en">Gulf health systems are mostly government-funded and spend a smaller share of GDP than high-income peers. Reforms such as Saudi Arabia's push for private-sector participation and mandatory insurance would show up as a falling government share.</p>
-    <p class="gx-lede" lang="ar">تعتمد الأنظمة الصحية الخليجية في معظمها على التمويل الحكومي، وتنفق حصة من الناتج المحلي الإجمالي أقل من نظيراتها في الدول مرتفعة الدخل. وستنعكس إصلاحات مثل توجه السعودية نحو مشاركة القطاع الخاص والتأمين الصحي الإلزامي في تراجع الحصة الحكومية.</p>
+    <h2><span class="gx-num" aria-hidden="true">4</span><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></h2>
+    <div class="gx-ctx">
+      <p lang="en"><b>What we're looking at.</b> How much each country spends on health, who pays for it (government, insurers or patients out of pocket), and how far each has moved residents onto health insurance.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> حجم إنفاق كل دولة على الصحة، ومن يتحمّل تكلفته (الحكومة أو شركات التأمين أو المرضى من أموالهم الخاصة)، ومدى تقدّم كل دولة في نقل السكان إلى التأمين الصحي.</p>
+      <p lang="en"><b>Why it matters.</b> How a system is funded shapes what it can afford as demand grows. Insurance reforms shift cost from government budgets to employers and insurers, and open the system to private providers and investment.</p>
+      <p lang="ar"><b>لماذا يهم ذلك.</b> يحدد نموذج التمويل ما يستطيع النظام تحمّله مع تزايد الطلب. وتنقل إصلاحات التأمين التكلفة من الميزانيات الحكومية إلى أصحاب العمل وشركات التأمين، وتفتح المجال أمام مقدمي الخدمات من القطاع الخاص والاستثمار.</p>
+    </div>
+    <p class="gx-find" lang="en"><b>Key finding:</b> Gulf systems are mostly government-funded and spend a smaller share of GDP than high-income peers. All six are moving expatriates, and increasingly citizens, onto insurance.</p>
+    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> تعتمد الأنظمة الخليجية في معظمها على التمويل الحكومي، وتنفق حصة من الناتج المحلي الإجمالي أقل من نظيراتها مرتفعة الدخل. وتعمل الدول الست جميعها على نقل الوافدين، والمواطنين بشكل متزايد، إلى التأمين الصحي.</p>
     <div class="gx-grid">
       <div class="gx-card" id="gov-share">
         <h3><span lang="en">Government share of health spending</span><span lang="ar">الحصة الحكومية من الإنفاق الصحي</span></h3>
@@ -329,9 +370,15 @@
   </section>
 
   <section class="gx-sec" id="workforce">
-    <h2><span lang="en">Workforce and capacity</span><span lang="ar">القوى العاملة والطاقة الاستيعابية</span></h2>
-    <p class="gx-lede" lang="en">Physician supply is close to high-income levels in several states, but nurses and hospital beds lag well behind. Nursing is also where localization lags most: citizens are under 5% of nurses in the UAE and Kuwait.</p>
-    <p class="gx-lede" lang="ar">يقترب عدد الأطباء من مستويات الدول مرتفعة الدخل في عدة دول، لكن أعداد الممرضين وأسرّة المستشفيات متأخرة كثيرًا. والتمريض أيضًا هو المجال الأكثر تأخرًا في التوطين: يشكل المواطنون أقل من 5% من الممرضين في الإمارات والكويت.</p>
+    <h2><span class="gx-num" aria-hidden="true">5</span><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></h2>
+    <div class="gx-ctx">
+      <p lang="en"><b>What we're looking at.</b> Physicians, nurses and hospital beds per 1,000 people, and the share of physicians and nurses who are citizens.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> عدد الأطباء والممرضين وأسرّة المستشفيات لكل 1,000 نسمة، ونسبة المواطنين من الأطباء والممرضين.</p>
+      <p lang="en"><b>Why it matters.</b> Staff and beds set how much care a system can deliver. Localization goals mean countries must train more citizens, not only recruit more clinicians from abroad.</p>
+      <p lang="ar"><b>لماذا يهم ذلك.</b> يحدد عدد الكوادر والأسرّة حجم الرعاية التي يستطيع النظام تقديمها. وتعني أهداف التوطين أن على الدول تدريب مزيد من المواطنين، لا الاكتفاء باستقدام مزيد من الكوادر من الخارج.</p>
+    </div>
+    <p class="gx-find" lang="en"><b>Key finding:</b> Physician supply is close to high-income levels in several states, but nurses and beds lag well behind. Nursing is also where localization lags most: citizens are under 5% of nurses in the UAE and Kuwait.</p>
+    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> يقترب عدد الأطباء من مستويات الدول مرتفعة الدخل في عدة دول، لكن أعداد الممرضين والأسرّة متأخرة كثيرًا. والتمريض أيضًا هو المجال الأكثر تأخرًا في التوطين: يشكل المواطنون أقل من 5% من الممرضين في الإمارات والكويت.</p>
     <div class="gx-card" id="capacity">
       <h3><span lang="en">Physicians, nurses and hospital beds per 1,000 people</span><span lang="ar">الأطباء والممرضون وأسرّة المستشفيات لكل 1,000 نسمة</span></h3>
       <p class="n" lang="en">Dots: World Bank, latest year each country reported (2020–2023). Hollow rings: the government's own figure, where it differs. The dashed tick marks the high-income average; hover for years.</p>
@@ -364,9 +411,15 @@
 
 
   <section class="gx-sec" id="goals">
-    <h2><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></h2>
-    <p class="gx-lede" lang="en">Each Gulf state sets its own health goals. Saudi Arabia, Oman and the UAE publish numeric targets; Qatar's, Kuwait's and Bahrain's published health goals are mostly qualitative.</p>
-    <p class="gx-lede" lang="ar">تضع كل دولة خليجية أهدافها الصحية الخاصة. تنشر السعودية وعُمان والإمارات مستهدفات رقمية، بينما تغلب الصبغة النوعية على الأهداف الصحية المعلنة لقطر والكويت والبحرين.</p>
+    <h2><span class="gx-num" aria-hidden="true">6</span><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></h2>
+    <div class="gx-ctx">
+      <p lang="en"><b>What we're looking at.</b> Each country's published health targets, such as life expectancy, healthy life expectancy and workforce goals, beside its latest reported position.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> المستهدفات الصحية المعلنة لكل دولة، مثل العمر المتوقع والعمر الصحي المتوقع وأهداف القوى العاملة، بجانب أحدث وضع مُعلن.</p>
+      <p lang="en"><b>Why it matters.</b> Governments judge their health systems against their own targets, so this is the scorecard ministries and health leaders are held to.</p>
+      <p lang="ar"><b>لماذا يهم ذلك.</b> تقيّم الحكومات أنظمتها الصحية وفق مستهدفاتها الخاصة، لذا فهذه هي بطاقة الأداء التي تُحاسَب عليها الوزارات والقيادات الصحية.</p>
+    </div>
+    <p class="gx-find" lang="en"><b>Key finding:</b> Saudi Arabia, Oman and the UAE publish numeric targets; Qatar's, Kuwait's and Bahrain's published health goals are mostly qualitative.</p>
+    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> تنشر السعودية وعُمان والإمارات مستهدفات رقمية، بينما تغلب الصبغة النوعية على الأهداف الصحية المعلنة لقطر والكويت والبحرين.</p>
     <div class="gx-card" id="hale">
       <h3><span lang="en">Healthy life expectancy</span><span lang="ar">العمر الصحي المتوقع</span></h3>
       <p class="n" lang="en">Years a newborn can expect to live in good health, latest year (WHO). Oman targets 67 by 2030 and 70 by 2040.</p>
@@ -395,9 +448,15 @@
   </section>
 
   <section class="gx-sec" id="official">
-    <h2><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
-    <p class="gx-lede" lang="en">Governments report national figures; the World Bank and WHO model theirs so countries can be compared. The two can differ in either direction, so anyone quoting Gulf health data needs to know which series a number comes from.</p>
-    <p class="gx-lede" lang="ar">تنشر الحكومات أرقامًا وطنية، بينما يُنمذج البنك الدولي ومنظمة الصحة العالمية أرقامهما لإتاحة المقارنة بين الدول. وقد يختلف الرقمان في أي اتجاه، لذا يحتاج كل من يستشهد ببيانات الصحة الخليجية إلى معرفة السلسلة التي يأتي منها الرقم.</p>
+    <h2><span class="gx-num" aria-hidden="true">7</span><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
+    <div class="gx-ctx">
+      <p lang="en"><b>What we're looking at.</b> Where a government's own figure differs from the World Bank or WHO estimate for the same measure, plus progress on Saudi Vision 2030's headline health indicators.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> المواضع التي يختلف فيها الرقم الحكومي عن تقدير البنك الدولي أو منظمة الصحة العالمية للمؤشر نفسه، إضافةً إلى التقدم في المؤشرات الصحية الرئيسية لرؤية السعودية 2030.</p>
+      <p lang="en"><b>Why it matters.</b> Governments report national figures, while international bodies model theirs so countries can be compared. Anyone quoting Gulf health data needs to know which series a number comes from.</p>
+      <p lang="ar"><b>لماذا يهم ذلك.</b> تنشر الحكومات أرقامًا وطنية، بينما تُنمذج الجهات الدولية أرقامها لإتاحة المقارنة بين الدول. لذا يحتاج كل من يستشهد ببيانات الصحة الخليجية إلى معرفة السلسلة التي يأتي منها الرقم.</p>
+    </div>
+    <p class="gx-find" lang="en"><b>Key finding:</b> The two differ in both directions, so neither is consistently higher.</p>
+    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> يختلف الرقمان في الاتجاهين، فلا يكون أحدهما أعلى دائمًا.</p>
     <div class="gx-card" id="official-table">
       <h3><span lang="en">Where national and international figures differ</span><span lang="ar">حيث تختلف الأرقام الوطنية عن الدولية</span></h3>
       <div class="gx-tablewrap">
