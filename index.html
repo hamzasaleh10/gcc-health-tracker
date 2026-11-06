@@ -43,7 +43,8 @@
 .gx-jump .lbl{color:var(--color-fg-muted)}
 .gx-jump a{display:inline-flex;align-items:center;gap:.375rem}
 .gx-jump .gx-num{width:1.25rem;height:1.25rem;font-size:.7rem}
-.gx-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr));gap:var(--cds-gap-md)}
+.gx-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--cds-gap-md)}
+@media (min-width:48rem){.gx-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .gx-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start}
 @supports (grid-template-rows:subgrid){.gx-tile{grid-row:span 4;grid-template-rows:subgrid;row-gap:0;align-content:stretch}}
 .gx-tile .t{font-size:var(--cds-font-size-body);font-weight:600;color:var(--color-fg);line-height:1.3;padding-bottom:var(--cds-pad-sm);margin-bottom:var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line)}
@@ -153,8 +154,8 @@
   <section class="gx-sec" id="snapshot">
     <h2><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance:</span><span lang="ar">نظرة سريعة:</span><span data-draw="focusname">—</span></h2>
     <div class="gx-ctx">
-      <p lang="en"><b>What we're looking at.</b> Seven headline measures for the focus country, each beside a high-income or world benchmark.</p>
-      <p lang="ar"><b>ما الذي نعرضه.</b> سبعة مؤشرات رئيسية للدولة المختارة، كلٌّ منها بجانب معيار مقارنة بالدول مرتفعة الدخل أو بالعالم.</p>
+      <p lang="en"><b>What we're looking at.</b> Eight headline measures for the focus country, each beside a high-income or world benchmark.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> ثمانية مؤشرات رئيسية للدولة المختارة، كلٌّ منها بجانب معيار مقارنة بالدول مرتفعة الدخل أو بالعالم.</p>
       <p lang="en"><b>Why it matters.</b> It gives a one-screen read on where a health system stands before you go into the detail. Pick another focus country above to compare.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> يقدّم صورة سريعة في شاشة واحدة عن وضع النظام الصحي قبل الدخول في التفاصيل. اختر دولة أخرى في الأعلى للمقارنة.</p>
     </div>
@@ -202,6 +203,12 @@
         <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="physicians_1k" data-source="latest" data-field="year">—</span></span>
         <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="physicians_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span><span class="o" data-draw="toff" data-ind="physicians_1k" data-fmt=".1f" hidden></span></span>
 
+      </div>
+      <div class="gx-tile">
+        <span class="t"><span lang="en">Nurses and midwives</span><span lang="ar">الممرضون والقابلات</span></span>
+        <span class="v" data-draw="tv" data-ind="nurses_1k" data-fmt=".1f" data-source="latest" data-field="value">—</span>
+        <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="nurses_1k" data-source="latest" data-field="year">—</span></span>
+        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="nurses_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span><span class="o" data-draw="toff" data-ind="nurses_1k" data-fmt=".1f" hidden></span></span>
       </div>
     </div>
     <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Where the government publishes its own figure, it appears in orange below; the two can differ (see Official figures vs international estimates).</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وحيث تنشر الحكومة رقمها الخاص يظهر باللون البرتقالي أسفل المؤشر، وقد يختلف الرقمان (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></div>
