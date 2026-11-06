@@ -53,6 +53,11 @@
 .gx-methods p{margin:0;font-size:var(--cds-font-size-caption);line-height:1.6;color:var(--color-fg-muted)}
 .gx-methods b{color:var(--color-fg);font-weight:600}
 .gx.is-ar .gx-methods p{line-height:1.85}
+.gx-lims{background:var(--color-panel);border:1px solid var(--color-border-line);border-top:3px solid var(--color-fg-muted);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg);max-width:60rem}
+.gx-lims h3{margin:0 0 6px;font-size:var(--cds-font-size-body);font-weight:600}
+.gx-lims ul{margin:0;padding-inline-start:1.1rem;display:grid;gap:6px;font-size:var(--cds-font-size-caption);line-height:1.6;color:var(--color-fg-muted)}
+.gx-lims b{color:var(--color-fg);font-weight:600}
+.gx.is-ar .gx-lims ul{line-height:1.85}
 .gx-al{background:var(--color-panel);border:1px solid var(--color-border-line);border-top:3px solid var(--color-fg-muted);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg)}
 .gx-al h3{margin:0 0 var(--cds-gap-sm);font-size:var(--cds-font-size-body);font-weight:600}
 .gx-al h4{margin:0 0 6px;font-size:var(--cds-font-size-caption);font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--color-fg-muted)}
@@ -316,7 +321,11 @@
       <p lang="en"><b>Approach.</b> Each tile shows the latest year the country reported to the World Bank or WHO. Benchmarks are the World Bank's high-income and world aggregates (WHO's equivalents for obesity and healthy life expectancy). Status compares the country with the high-income average: within 5% is near; health spending has no better or worse direction, so it only shows above or below.</p>
       <p lang="ar"><b>النهج.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية. ومعايير المقارنة هي مجموعتا الدول مرتفعة الدخل والعالم لدى البنك الدولي (وما يقابلهما لدى المنظمة للسمنة والعمر الصحي المتوقع). وتقارن الحالة الدولة بمتوسط الدول مرتفعة الدخل: ضمن 5% يُعد قريبًا؛ ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p>
     </div>
-    <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Governments' own figures, which can differ, are compared in the Official vs international tab. The high-income average used for the status may be for a different year than the country's figure.</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وتُقارن الأرقام الحكومية، التي قد تختلف، في قسم «الرسمي مقابل الدولي». وقد يكون متوسط الدول مرتفعة الدخل المستخدم في الحالة لسنة مختلفة عن سنة رقم الدولة.</p></div>
+    <div class="gx-lims">
+      <h3><span lang="en">Limitations</span><span lang="ar">حدود البيانات</span></h3>
+      <ul lang="en"><li>Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Governments' own figures, which can differ, are compared in the Official vs international tab. The high-income average used for the status may be for a different year than the country's figure.</li></ul>
+      <ul lang="ar"><li>يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وتُقارن الأرقام الحكومية، التي قد تختلف، في قسم «الرسمي مقابل الدولي». وقد يكون متوسط الدول مرتفعة الدخل المستخدم في الحالة لسنة مختلفة عن سنة رقم الدولة.</li></ul>
+    </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,who_hale,wb_ncd,who_obesity,wb_diab,wb_che,wb_phys,wb_nurse,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
     <p class="gx-next"><button type="button" data-tab="goals"><span lang="en">Next: National goals →</span><span lang="ar">التالي: الأهداف الوطنية ←</span></button></p>
   </section>
@@ -345,7 +354,6 @@
           <tbody data-draw="goalsbody"></tbody>
         </table>
       </div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Goals as published by each government; some come from ministers' statements reported in the press rather than formal plans. "Latest" uses official figures where they exist. Status is this Monitor's simple comparison, not an official assessment.</p><p lang="ar"><b>حدود البيانات.</b> الأهداف كما أعلنتها كل حكومة، وبعضها مأخوذ من تصريحات وزارية نشرتها الصحافة لا من خطط رسمية. يستخدم عمود «الأحدث» الأرقام الرسمية حيثما وُجدت. والحالة مقارنة مبسطة من هذا المرصد وليست تقييمًا رسميًا.</p></div>
     </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
@@ -366,6 +374,11 @@
       <p lang="en"><b>Approach.</b> Goals come from national strategies, programme reports and official statements, each cited. The latest position uses the government's own figure where one exists, otherwise WHO or the World Bank. Status is a simple comparison: met, close (within about 5% of the target) or far off; goals without a number are marked as not tracked numerically.</p>
       <p lang="ar"><b>النهج.</b> الأهداف مأخوذة من الاستراتيجيات الوطنية وتقارير البرامج والتصريحات الرسمية، مع ذكر مصدر كل منها. ويستخدم الوضع الأحدث الرقم الحكومي حيثما وُجد، وإلا فرقم منظمة الصحة العالمية أو البنك الدولي. والحالة مقارنة مبسطة: تحقق، أو قريب (ضمن نحو 5% من المستهدف)، أو بعيد؛ وتُصنَّف الأهداف غير الرقمية بأنها بلا قياس رقمي.</p>
     </div>
+    <div class="gx-lims">
+      <h3><span lang="en">Limitations</span><span lang="ar">حدود البيانات</span></h3>
+      <ul lang="en"><li><b>Published goals and latest position.</b> Goals as published by each government; some come from ministers' statements reported in the press rather than formal plans. "Latest" uses official figures where they exist. Status is this Monitor's simple comparison, not an official assessment.</li></ul>
+      <ul lang="ar"><li><b>الأهداف المعلنة والوضع الحالي.</b> الأهداف كما أعلنتها كل حكومة، وبعضها مأخوذ من تصريحات وزارية نشرتها الصحافة لا من خطط رسمية. يستخدم عمود «الأحدث» الأرقام الرسمية حيثما وُجدت. والحالة مقارنة مبسطة من هذا المرصد وليست تقييمًا رسميًا.</li></ul>
+    </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_hale,sau_hstp25,sau_private,sau_quota,omn_hale,uae_top15,uae_emiratisation,qat_nhs,kwt_vision,bhr_moh2030"></ul></div>
     <p class="gx-next"><button type="button" data-tab="outcomes"><span lang="en">Next: Health outcomes →</span><span lang="ar">التالي: النتائج الصحية ←</span></button></p>
   </section>
@@ -384,14 +397,12 @@
         <p class="n" lang="en">Years, 2000 onward. Focus country highlighted; dashed lines are benchmarks.</p>
         <p class="n" lang="ar">بالسنوات منذ عام 2000. الدولة المختارة مميّزة، والخطوط المتقطعة للمقارنة المرجعية.</p>
         <div class="gx-chart dash-skeleton" data-draw="lechart" data-source="wb"></div>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Recent years are modelled UN estimates, revised every year; post-pandemic rebounds are provisional (Kuwait: 78.7 in 2021 to 84.6 in 2024). They cover all residents; figures for citizens alone can be lower (Oman: 77.5 years for Omanis against 78.6 overall, 2025).</p><p lang="ar"><b>حدود البيانات.</b> السنوات الأخيرة تقديرات مُنمذجة من الأمم المتحدة تُراجع سنويًا، والارتدادات بعد الجائحة مؤقتة (الكويت: 78.7 في 2021 إلى 84.6 في 2024)، وتشمل جميع المقيمين؛ وقد تكون أرقام المواطنين وحدهم أقل (عُمان: 77.5 سنة للعُمانيين مقابل 78.6 لإجمالي السكان، 2025).</p></div>
       </div>
       <div class="gx-card" id="ncd">
         <h3><span lang="en">Premature chronic-disease deaths</span><span lang="ar">الوفيات المبكرة بالأمراض المزمنة</span></h3>
         <p class="n" lang="en">Chance of dying between 30 and 70 from the four main chronic diseases (%). The ring marks the focus country's 2030 goal under SDG 3.4; the bar at 2030 is its projected range.</p>
         <p class="n" lang="ar">احتمال الوفاة بين 30 و70 عامًا بسبب الأمراض المزمنة الأربعة الرئيسية (%). تشير الدائرة إلى هدف الدولة المختارة لعام 2030 وفق الهدف 3.4، ويمثل الخط الرأسي عند 2030 نطاق الإسقاط.</p>
         <div class="gx-chart dash-skeleton" data-draw="ncdchart" data-source="wb sdg34"></div>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> WHO estimates, revised only every few years. The latest year is 2021 and may still include pandemic-era deaths. The ring is the UN goal, not a national target.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات منظمة الصحة العالمية تُراجع كل بضع سنوات فقط. أحدث سنة هي 2021 وقد تتضمن وفيات مرتبطة بالجائحة. الدائرة تمثل هدف الأمم المتحدة وليست مستهدفًا وطنيًا.</p></div>
       </div>
     </div>
     <div class="gx-card" id="hale">
@@ -399,7 +410,6 @@
       <p class="n" lang="en">How many of a newborn's expected years are lived in good health, and how many in poor health (WHO, same year for both). Oman targets 67 healthy years by 2030 and 70 by 2040.</p>
       <p class="n" lang="ar">عدد السنوات المتوقعة للمولود التي يعيشها بصحة جيدة، وعدد السنوات التي يعيشها باعتلال صحي (منظمة الصحة العالمية، للسنة نفسها في الحالتين). تستهدف عُمان 67 سنة صحية بحلول 2030 و70 بحلول 2040.</p>
       <div class="gx-chart short dash-skeleton" data-draw="halechart"></div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> WHO estimates (latest 2023), revised between editions. WHO's life expectancy here differs slightly from the World Bank's in the chart above, so both series come from WHO to keep the gap consistent. Oman set its targets against a 2016 baseline of 65.6 years, which the current WHO series matches (65.5); its rise from 65.6 in 2021 to 68.2 in 2023 is partly recovery from the pandemic.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات منظمة الصحة العالمية (أحدثها 2023)، وتُراجع بين الإصدارات. ويختلف العمر المتوقع لدى المنظمة قليلًا عن رقم البنك الدولي في الرسم أعلاه، لذا أُخذت السلسلتان من المنظمة للحفاظ على اتساق الفارق. ووضعت عُمان مستهدفاتها على أساس خط أساس قدره 65.6 سنة في 2016، وتتوافق معه السلسلة الحالية للمنظمة (65.5)؛ ويعود جزء من ارتفاعها من 65.6 في 2021 إلى 68.2 في 2023 إلى التعافي من الجائحة.</p></div>
     </div>
     <div class="gx-card" id="sdg-table">
       <h3><span lang="en">On track for SDG 3.4?</span><span lang="ar">هل الدول على المسار الصحيح لتحقيق الهدف 3.4؟</span></h3>
@@ -435,7 +445,6 @@
           <tbody data-draw="sdgbody_ar"></tbody>
         </table>
       </div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Seven data points and a straight line: the projection ignores population ageing and policy change, and the range reflects only year-to-year noise. Pandemic years matter: fitted on 2015–2019 only, Oman moves from on track to uncertain. Saudi Arabia reports a different official measure, a chronic-disease death rate that fell from 558 to 366 between 2019 and 2024 (see Official figures vs international estimates).</p><p lang="ar"><b>حدود البيانات.</b> سبع نقاط بيانات وخط مستقيم: يتجاهل الإسقاط شيخوخة السكان وتغير السياسات، ويعكس النطاق التذبذب السنوي فقط. ولسنوات الجائحة أثر: عند الاقتصار على 2015–2019 تنتقل عُمان من «على المسار» إلى «غير محسوم». وتنشر السعودية مقياسًا رسميًا مختلفًا هو معدل الوفيات بالأمراض غير المعدية، الذي انخفض من 558 إلى 366 بين 2019 و2024 (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></div>
     </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
@@ -456,6 +465,11 @@
       <p lang="en"><b>Approach.</b> Life expectancy is the World Bank's series (UN estimates). Years in poor health are WHO life expectancy minus WHO healthy life expectancy for the same year. For SDG 3.4, each country's goal is its 2015 rate cut by a third; a straight-line trend fitted to 2015 onwards is projected to 2030 with an 80% range: on track if the whole range reaches the goal, off track if none of it does, uncertain otherwise.</p>
       <p lang="ar"><b>النهج.</b> العمر المتوقع من سلسلة البنك الدولي (تقديرات الأمم المتحدة). وسنوات اعتلال الصحة هي العمر المتوقع لدى منظمة الصحة العالمية مطروحًا منه العمر الصحي المتوقع لديها للسنة نفسها. وللهدف 3.4، هدف كل دولة هو معدلها في 2015 مخفضًا بمقدار الثلث؛ ويُسقط خط اتجاه مستقيم من 2015 فصاعدًا حتى 2030 مع نطاق ثقة 80%: على المسار إذا بلغ النطاق كله الهدف، وخارجه إذا لم يبلغه أي جزء منه، وغير محسوم فيما عدا ذلك.</p>
     </div>
+    <div class="gx-lims">
+      <h3><span lang="en">Limitations</span><span lang="ar">حدود البيانات</span></h3>
+      <ul lang="en"><li><b>Life expectancy at birth.</b> Recent years are modelled UN estimates, revised every year; post-pandemic rebounds are provisional (Kuwait: 78.7 in 2021 to 84.6 in 2024). They cover all residents; figures for citizens alone can be lower (Oman: 77.5 years for Omanis against 78.6 overall, 2025).</li><li><b>Premature chronic-disease deaths.</b> WHO estimates, revised only every few years. The latest year is 2021 and may still include pandemic-era deaths. The ring is the UN goal, not a national target.</li><li><b>Healthy years and years in poor health.</b> WHO estimates (latest 2023), revised between editions. WHO's life expectancy here differs slightly from the World Bank's in the life expectancy chart, so both series come from WHO to keep the gap consistent. Oman set its targets against a 2016 baseline of 65.6 years, which the current WHO series matches (65.5); its rise from 65.6 in 2021 to 68.2 in 2023 is partly recovery from the pandemic.</li><li><b>SDG 3.4 projection.</b> Seven data points and a straight line: the projection ignores population ageing and policy change, and the range reflects only year-to-year noise. Pandemic years matter: fitted on 2015–2019 only, Oman moves from on track to uncertain. Saudi Arabia reports a different official measure, a chronic-disease death rate that fell from 558 to 366 between 2019 and 2024 (see Official figures vs international estimates).</li></ul>
+      <ul lang="ar"><li><b>العمر المتوقع عند الولادة.</b> السنوات الأخيرة تقديرات مُنمذجة من الأمم المتحدة تُراجع سنويًا، والارتدادات بعد الجائحة مؤقتة (الكويت: 78.7 في 2021 إلى 84.6 في 2024)، وتشمل جميع المقيمين؛ وقد تكون أرقام المواطنين وحدهم أقل (عُمان: 77.5 سنة للعُمانيين مقابل 78.6 لإجمالي السكان، 2025).</li><li><b>الوفيات المبكرة بالأمراض المزمنة.</b> تقديرات منظمة الصحة العالمية تُراجع كل بضع سنوات فقط. أحدث سنة هي 2021 وقد تتضمن وفيات مرتبطة بالجائحة. الدائرة تمثل هدف الأمم المتحدة وليست مستهدفًا وطنيًا.</li><li><b>سنوات الصحة الجيدة وسنوات اعتلال الصحة.</b> تقديرات منظمة الصحة العالمية (أحدثها 2023)، وتُراجع بين الإصدارات. ويختلف العمر المتوقع لدى المنظمة قليلًا عن رقم البنك الدولي في رسم العمر المتوقع، لذا أُخذت السلسلتان من المنظمة للحفاظ على اتساق الفارق. ووضعت عُمان مستهدفاتها على أساس خط أساس قدره 65.6 سنة في 2016، وتتوافق معه السلسلة الحالية للمنظمة (65.5)؛ ويعود جزء من ارتفاعها من 65.6 في 2021 إلى 68.2 في 2023 إلى التعافي من الجائحة.</li><li><b>إسقاط الهدف 3.4.</b> سبع نقاط بيانات وخط مستقيم: يتجاهل الإسقاط شيخوخة السكان وتغير السياسات، ويعكس النطاق التذبذب السنوي فقط. ولسنوات الجائحة أثر: عند الاقتصار على 2015–2019 تنتقل عُمان من «على المسار» إلى «غير محسوم». وتنشر السعودية مقياسًا رسميًا مختلفًا هو معدل الوفيات بالأمراض غير المعدية، الذي انخفض من 558 إلى 366 بين 2019 و2024 (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</li></ul>
+    </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,who_le,who_hale,wb_ncd,un_sdg,sau_hstp25,omn_ncsi,bhr_moh"></ul></div>
     <p class="gx-next"><button type="button" data-tab="risk"><span lang="en">Next: Chronic disease →</span><span lang="ar">التالي: الأمراض المزمنة ←</span></button></p>
   </section>
@@ -474,14 +488,12 @@
         <p class="n" lang="en">Share of adults with BMI of 30 or more, age-standardized, latest year (WHO).</p>
         <p class="n" lang="ar">نسبة البالغين الذين يبلغ مؤشر كتلة الجسم لديهم 30 أو أكثر، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
         <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="obesity" data-source="latest"></div>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Modelled WHO estimates built from national surveys of different years and methods. Age-standardization makes countries comparable but is not the literal share of today's adults.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات مُنمذجة من منظمة الصحة العالمية مبنية على مسوح وطنية بسنوات ومنهجيات مختلفة. التوحيد المعياري حسب العمر يتيح المقارنة بين الدول لكنه لا يمثل حرفيًا نسبة البالغين الحاليين.</p></div>
       </div>
       <div class="gx-card" id="diabetes">
         <h3><span lang="en">Diabetes</span><span lang="ar">السكري</span></h3>
         <p class="n" lang="en">Share of adults 20–79 with diabetes, latest year (International Diabetes Federation via World Bank).</p>
         <p class="n" lang="ar">نسبة البالغين بين 20 و79 عامًا المصابين بالسكري، لأحدث سنة (الاتحاد الدولي للسكري عبر البنك الدولي).</p>
         <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="diabetes_prev" data-source="latest"></div>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Modelled estimates from the International Diabetes Federation, updated every few years and including undiagnosed cases. They are not registry counts.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات مُنمذجة من الاتحاد الدولي للسكري تُحدَّث كل بضع سنوات وتشمل الحالات غير المشخصة، وليست أعدادًا من السجلات.</p></div>
       </div>
     </div>
     <div class="gx-io">
@@ -503,6 +515,11 @@
       <p lang="en"><b>Approach.</b> Obesity is WHO's age-standardized share of adults with a BMI of 30 or more, so countries with different age structures compare fairly. Diabetes is the International Diabetes Federation's prevalence for ages 20–79, including undiagnosed cases, via the World Bank. Charts show each country's latest year against world and high-income averages.</p>
       <p lang="ar"><b>النهج.</b> السمنة هي نسبة البالغين الذين يبلغ مؤشر كتلة الجسم لديهم 30 فأكثر، معيارية حسب العمر من منظمة الصحة العالمية، لتمكين المقارنة العادلة بين دول ذات تركيبات عمرية مختلفة. والسكري هو معدل الانتشار بين 20 و79 عامًا من الاتحاد الدولي للسكري، بما في ذلك الحالات غير المشخّصة، عبر البنك الدولي. وتعرض الرسوم أحدث سنة لكل دولة مقارنةً بمتوسطي العالم والدول مرتفعة الدخل.</p>
     </div>
+    <div class="gx-lims">
+      <h3><span lang="en">Limitations</span><span lang="ar">حدود البيانات</span></h3>
+      <ul lang="en"><li><b>Adult obesity.</b> Modelled WHO estimates built from national surveys of different years and methods. Age-standardization makes countries comparable but is not the literal share of today's adults.</li><li><b>Diabetes.</b> Modelled estimates from the International Diabetes Federation, updated every few years and including undiagnosed cases. They are not registry counts.</li></ul>
+      <ul lang="ar"><li><b>السمنة لدى البالغين.</b> تقديرات مُنمذجة من منظمة الصحة العالمية مبنية على مسوح وطنية بسنوات ومنهجيات مختلفة. التوحيد المعياري حسب العمر يتيح المقارنة بين الدول لكنه لا يمثل حرفيًا نسبة البالغين الحاليين.</li><li><b>السكري.</b> تقديرات مُنمذجة من الاتحاد الدولي للسكري تُحدَّث كل بضع سنوات وتشمل الحالات غير المشخصة، وليست أعدادًا من السجلات.</li></ul>
+    </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_obesity,wb_diab"></ul></div>
     <p class="gx-next"><button type="button" data-tab="financing"><span lang="en">Next: Financing and insurance →</span><span lang="ar">التالي: التمويل والتأمين ←</span></button></p>
   </section>
@@ -521,7 +538,6 @@
         <p class="n" lang="en">Domestic general government spending as % of current health expenditure, 2000 onward.</p>
         <p class="n" lang="ar">الإنفاق الحكومي العام المحلي كنسبة مئوية من الإنفاق الصحي الجاري، منذ عام 2000.</p>
         <div class="gx-chart dash-skeleton" data-draw="govchart" data-source="wb"></div>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Spending data lag about two years (latest 2023), so recent reforms such as the UAE's nationwide insurance mandate (2025) can't show yet. Employer-paid insurance counts as private, not government, spending.</p><p lang="ar"><b>حدود البيانات.</b> تتأخر بيانات الإنفاق نحو عامين (أحدثها 2023)، لذا لا تظهر بعد إصلاحات حديثة مثل التأمين الإلزامي في الإمارات على مستوى الدولة (2025). ويُحتسب التأمين الذي يدفعه صاحب العمل إنفاقًا خاصًا لا حكوميًا.</p></div>
       </div>
       <div class="gx-card" id="spend-table">
         <h3><span lang="en">Health spending, latest year</span><span lang="ar">الإنفاق الصحي، أحدث سنة</span></h3>
@@ -553,7 +569,6 @@
             <tbody data-draw="spendbody_ar"></tbody>
           </table>
         </div>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> US dollar figures use market exchange rates, not purchasing power. Out-of-pocket spending includes what expatriates pay directly, which can be high where insurance is thin.</p><p lang="ar"><b>حدود البيانات.</b> تستخدم الأرقام بالدولار أسعار الصرف السوقية لا تعادل القوة الشرائية. وتشمل المدفوعات المباشرة ما يدفعه الوافدون مباشرة، وقد يكون مرتفعًا حيث تضعف التغطية التأمينية.</p></div>
       </div>
     </div>
     <div class="gx-card" id="insurance">
@@ -572,7 +587,6 @@
           <tbody data-draw="insbody"></tbody>
         </table>
       </div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Coverage figures aren't comparable between countries: mandates target expatriates and private-sector workers, while most citizens use free public care (Saudi Arabia is changing this). Status comes from official announcements and news reports and can change quickly; current status in Kuwait and Bahrain could not be confirmed.</p><p lang="ar"><b>حدود البيانات.</b> أرقام التغطية غير قابلة للمقارنة بين الدول: تستهدف الأنظمة الإلزامية الوافدين والعاملين في القطاع الخاص، بينما يتلقى معظم المواطنين رعاية عامة مجانية (والسعودية تغيّر ذلك). وتستند الحالة إلى إعلانات رسمية وتقارير إخبارية قد تتغير سريعًا، ولم يتسنَّ تأكيد الوضع الحالي في الكويت والبحرين.</p></div>
     </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
@@ -593,6 +607,11 @@
       <p lang="en"><b>Approach.</b> Spending figures come from WHO's Global Health Expenditure Database via the World Bank: current health spending as a share of GDP and per person in US dollars, and the government and out-of-pocket shares. Insurance reforms are compiled from laws, regulators and official announcements, with the status as last reviewed.</p>
       <p lang="ar"><b>النهج.</b> أرقام الإنفاق من قاعدة بيانات الإنفاق الصحي العالمي لمنظمة الصحة العالمية عبر البنك الدولي: الإنفاق الصحي الجاري كنسبة من الناتج المحلي وللفرد بالدولار، والحصتان الحكومية والمدفوعة مباشرة. وجُمعت إصلاحات التأمين من القوانين والجهات التنظيمية والإعلانات الرسمية، مع الحالة وفق آخر مراجعة.</p>
     </div>
+    <div class="gx-lims">
+      <h3><span lang="en">Limitations</span><span lang="ar">حدود البيانات</span></h3>
+      <ul lang="en"><li><b>Government share of health spending.</b> Spending data lag about two years (latest 2023), so recent reforms such as the UAE's nationwide insurance mandate (2025) can't show yet. Employer-paid insurance counts as private, not government, spending.</li><li><b>Health spending, latest year.</b> US dollar figures use market exchange rates, not purchasing power. Out-of-pocket spending includes what expatriates pay directly, which can be high where insurance is thin.</li><li><b>Health insurance reforms.</b> Coverage figures aren't comparable between countries: mandates target expatriates and private-sector workers, while most citizens use free public care (Saudi Arabia is changing this). Status comes from official announcements and news reports and can change quickly; current status in Kuwait and Bahrain could not be confirmed.</li></ul>
+      <ul lang="ar"><li><b>الحصة الحكومية من الإنفاق الصحي.</b> تتأخر بيانات الإنفاق نحو عامين (أحدثها 2023)، لذا لا تظهر بعد إصلاحات حديثة مثل التأمين الإلزامي في الإمارات على مستوى الدولة (2025). ويُحتسب التأمين الذي يدفعه صاحب العمل إنفاقًا خاصًا لا حكوميًا.</li><li><b>الإنفاق الصحي، أحدث سنة.</b> تستخدم الأرقام بالدولار أسعار الصرف السوقية لا تعادل القوة الشرائية. وتشمل المدفوعات المباشرة ما يدفعه الوافدون مباشرة، وقد يكون مرتفعًا حيث تضعف التغطية التأمينية.</li><li><b>إصلاحات التأمين الصحي.</b> أرقام التغطية غير قابلة للمقارنة بين الدول: تستهدف الأنظمة الإلزامية الوافدين والعاملين في القطاع الخاص، بينما يتلقى معظم المواطنين رعاية عامة مجانية (والسعودية تغيّر ذلك). وتستند الحالة إلى إعلانات رسمية وتقارير إخبارية قد تتغير سريعًا، ولم يتسنَّ تأكيد الوضع الحالي في الكويت والبحرين.</li></ul>
+    </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_che,wb_chepc,wb_gov,wb_oop,sau_hstp25,uae_insurance,qat_opendata,kwt_dhaman,omn_dhamani,bhr_insurance,bhr_law"></ul></div>
     <p class="gx-next"><button type="button" data-tab="workforce"><span lang="en">Next: Workforce and localization →</span><span lang="ar">التالي: القوى العاملة والتوطين ←</span></button></p>
   </section>
@@ -610,7 +629,6 @@
       <p class="n" lang="en">Dots: World Bank, latest year each country reported (2020–2023). Hollow rings: the government's own figure, where it differs. The dashed tick marks the high-income average; hover for years.</p>
       <p class="n" lang="ar">النقاط: البنك الدولي، أحدث سنة أبلغت عنها كل دولة (2020–2023). الدوائر المفرغة: الرقم الحكومي الرسمي حيث يختلف. يشير الخط المتقطع إلى متوسط الدول مرتفعة الدخل؛ مرّر المؤشر لمعرفة السنوات.</p>
       <div class="gx-chart short dash-skeleton" data-draw="strip" data-source="latest national"></div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> The World Bank's Bahrain figures (0.7 physicians and 2.6 nurses per 1,000, 2020) are far below Bahrain's own Ministry of Health figures (2.8 and 6.3, 2022) and look incomplete. Countries count staff differently (licensed or practising, public or private), so small gaps are not meaningful.</p><p lang="ar"><b>حدود البيانات.</b> أرقام البنك الدولي للبحرين (0.7 طبيب و2.6 ممرض لكل 1,000، 2020) أقل بكثير من أرقام وزارة الصحة البحرينية (2.8 و6.3، 2022) وتبدو غير مكتملة. وتختلف الدول في طريقة احتساب الكوادر (مرخّصون أو ممارسون، قطاع عام أو خاص)، لذا لا تحمل الفروق الصغيرة دلالة.</p></div>
     </div>
     <div class="gx-card" id="localization">
       <h3><span lang="en">Citizens' share of physicians and nurses</span><span lang="ar">نسبة المواطنين من الأطباء والممرضين</span></h3>
@@ -631,7 +649,6 @@
           <tbody data-draw="locbody"></tbody>
         </table>
       </div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each country's own statistics, with different years (2022–2025) and scopes: Saudi private-sector nurses come from the 2024 ministry yearbook as compiled by GLMM; Oman publishes rounded percentages; Kuwait's private sector includes clinics. No nationality split was found for Qatar or Bahrain. The GCC nurse benchmark (30.3%, 2024) is GCC-Stat's figure as reported in the press.</p><p lang="ar"><b>حدود البيانات.</b> إحصاءات كل دولة بسنوات (2022–2025) ونطاقات مختلفة: أرقام ممرضي القطاع الخاص في السعودية من الكتاب الإحصائي لوزارة الصحة 2024 بتجميع برنامج GLMM؛ وتنشر عُمان نسبًا مقرّبة؛ ويشمل القطاع الخاص في الكويت العيادات. ولم نجد توزيعًا حسب الجنسية لقطر أو البحرين. ومعيار الممرضين الخليجي (30.3%، 2024) هو رقم المركز الإحصائي الخليجي كما نشرته الصحافة.</p></div>
     </div>
     <div class="gx-card" id="emirates">
       <h3><span lang="en">UAE by emirate</span><span lang="ar">الإمارات حسب الإمارة</span></h3>
@@ -642,7 +659,6 @@
         <div class="gx-em" role="group" aria-label="Emirate / الإمارة"><button type="button" data-em="AE" aria-pressed="false"><span lang="en">All UAE</span><span lang="ar">كل الإمارات</span></button><button type="button" data-em="AE-AZ" aria-pressed="false"><span lang="en">Abu Dhabi</span><span lang="ar">أبوظبي</span></button><button type="button" data-em="AE-DU" aria-pressed="false"><span lang="en">Dubai</span><span lang="ar">دبي</span></button><button type="button" data-em="AE-SH" aria-pressed="false"><span lang="en">Sharjah</span><span lang="ar">الشارقة</span></button><button type="button" data-em="AE-AJ" aria-pressed="false"><span lang="en">Ajman</span><span lang="ar">عجمان</span></button><button type="button" data-em="AE-UQ" aria-pressed="false"><span lang="en">Umm Al Quwain</span><span lang="ar">أم القيوين</span></button><button type="button" data-em="AE-RK" aria-pressed="false"><span lang="en">Ras Al Khaimah</span><span lang="ar">رأس الخيمة</span></button><button type="button" data-em="AE-FJ" aria-pressed="false"><span lang="en">Fujairah</span><span lang="ar">الفجيرة</span></button></div>
         <div class="gx-chart short dash-skeleton" data-draw="emirchart"></div>
         <div class="gx-emstats" data-draw="emirstats"></div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Counts are compiled by the Ministry of Health and Prevention and published on UAE.Stat; Abu Dhabi's and Dubai's own health regulators may count licensed professionals differently. Emirate populations are not used, so the card shows shares and counts rather than ratios per 1,000.</p><p lang="ar"><b>حدود البيانات.</b> الأعداد من تجميع وزارة الصحة ووقاية المجتمع ومنشورة على منصة UAE.Stat؛ وقد تحتسب الجهات الصحية في أبوظبي ودبي المهنيين المرخصين بطريقة مختلفة. ولا تُستخدم أعداد السكان في كل إمارة، لذا تعرض البطاقة النسب والأعداد لا المعدلات لكل 1,000 نسمة.</p></div>
       </div>
     </div>
     <div class="gx-io">
@@ -663,6 +679,11 @@
       <p lang="ar"><b>المبررات.</b> يحدد عدد الكوادر والأسرّة حجم الرعاية التي يستطيع النظام تقديمها، وتجعل أهداف التوطين نسبة المواطنين في القوى العاملة هدفًا سياسيًا بحد ذاته.</p>
       <p lang="en"><b>Approach.</b> Physicians, nurses and midwives, and hospital beds per 1,000 people come from the World Bank and WHO, with the government's own figure shown where it differs. Citizens' shares come from each country's statistics office or health ministry, the GCC nursing benchmark from GCC-Stat, and the UAE's emirate detail from UAE.Stat.</p>
       <p lang="ar"><b>النهج.</b> أعداد الأطباء والممرضين والقابلات وأسرّة المستشفيات لكل 1,000 نسمة من البنك الدولي ومنظمة الصحة العالمية، مع عرض الرقم الحكومي حيث يختلف. ونسب المواطنين من جهاز الإحصاء أو وزارة الصحة في كل دولة، والمعيار الخليجي للتمريض من المركز الإحصائي الخليجي، وتفاصيل الإمارات حسب الإمارة من منصة UAE.Stat.</p>
+    </div>
+    <div class="gx-lims">
+      <h3><span lang="en">Limitations</span><span lang="ar">حدود البيانات</span></h3>
+      <ul lang="en"><li><b>Physicians, nurses and hospital beds per 1,000 people.</b> The World Bank's Bahrain figures (0.7 physicians and 2.6 nurses per 1,000, 2020) are far below Bahrain's own Ministry of Health figures (2.8 and 6.3, 2022) and look incomplete. Countries count staff differently (licensed or practising, public or private), so small gaps are not meaningful.</li><li><b>Citizens' share of physicians and nurses.</b> Each country's own statistics, with different years (2022–2025) and scopes: Saudi private-sector nurses come from the 2024 ministry yearbook as compiled by GLMM; Oman publishes rounded percentages; Kuwait's private sector includes clinics. No nationality split was found for Qatar or Bahrain. The GCC nurse benchmark (30.3%, 2024) is GCC-Stat's figure as reported in the press.</li><li><b>UAE by emirate.</b> Counts are compiled by the Ministry of Health and Prevention and published on UAE.Stat; Abu Dhabi's and Dubai's own health regulators may count licensed professionals differently. Emirate populations are not used, so the card shows shares and counts rather than ratios per 1,000.</li></ul>
+      <ul lang="ar"><li><b>الأطباء والممرضون وأسرّة المستشفيات لكل 1,000 نسمة.</b> أرقام البنك الدولي للبحرين (0.7 طبيب و2.6 ممرض لكل 1,000، 2020) أقل بكثير من أرقام وزارة الصحة البحرينية (2.8 و6.3، 2022) وتبدو غير مكتملة. وتختلف الدول في طريقة احتساب الكوادر (مرخّصون أو ممارسون، قطاع عام أو خاص)، لذا لا تحمل الفروق الصغيرة دلالة.</li><li><b>نسبة المواطنين من الأطباء والممرضين.</b> إحصاءات كل دولة بسنوات (2022–2025) ونطاقات مختلفة: أرقام ممرضي القطاع الخاص في السعودية من الكتاب الإحصائي لوزارة الصحة 2024 بتجميع برنامج GLMM؛ وتنشر عُمان نسبًا مقرّبة؛ ويشمل القطاع الخاص في الكويت العيادات. ولم نجد توزيعًا حسب الجنسية لقطر أو البحرين. ومعيار الممرضين الخليجي (30.3%، 2024) هو رقم المركز الإحصائي الخليجي كما نشرته الصحافة.</li><li><b>الإمارات حسب الإمارة.</b> الأعداد من تجميع وزارة الصحة ووقاية المجتمع ومنشورة على منصة UAE.Stat؛ وقد تحتسب الجهات الصحية في أبوظبي ودبي المهنيين المرخصين بطريقة مختلفة. ولا تُستخدم أعداد السكان في كل إمارة، لذا تعرض البطاقة النسب والأعداد لا المعدلات لكل 1,000 نسمة.</li></ul>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_phys,wb_nurse,wb_beds,sau_gastat23,sau_glmm,uae_fcsc,kwt_csb,omn_ncsi,gccstat_nurses,qat_opendata,bhr_moh"></ul></div>
     <p class="gx-next"><button type="button" data-tab="outlook"><span lang="en">Next: Outlook 2040 →</span><span lang="ar">التالي: آفاق 2040 ←</span></button></p>
@@ -769,7 +790,6 @@
           <tbody data-draw="offbody"></tbody>
         </table>
       </div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Official and international series use different methods, population estimates and definitions, and often different years, so a gap is not necessarily an error in either. The Bahrain workforce gap is large enough to suggest the World Bank figures are incomplete. Official figures are entered by hand and updated yearly.</p><p lang="ar"><b>حدود البيانات.</b> تستخدم السلاسل الرسمية والدولية منهجيات وتقديرات سكانية وتعريفات مختلفة، وغالبًا سنوات مختلفة، لذا لا يعني الفرق بالضرورة خطأ في أي منهما. لكن فجوة القوى العاملة في البحرين كبيرة بما يكفي للإشارة إلى أن أرقام البنك الدولي غير مكتملة. وتُدخل الأرقام الرسمية يدويًا وتُحدَّث سنويًا.</p></div>
     </div>
     <h3 class="gx-subh"><span lang="en">Saudi Vision 2030 headline indicators</span><span lang="ar">المؤشرات الرئيسية لرؤية السعودية 2030</span></h3>
     <div class="gx-grid">
@@ -782,7 +802,6 @@
         </div>
         <p class="gx-note" lang="en">Years at birth. The official figure is from the program's 2025 report (2024 data); the World Bank series uses UN population estimates.</p>
         <p class="gx-note" lang="ar">بالسنوات عند الولادة. الرقم الرسمي من تقرير البرنامج لعام 2025 (بيانات 2024)، وتعتمد سلسلة البنك الدولي على تقديرات الأمم المتحدة للسكان.</p>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Both figures are for 2024 yet differ by 0.7 years, mainly because they rest on different population and death estimates.</p><p lang="ar"><b>حدود البيانات.</b> الرقمان لعام 2024 لكنهما يختلفان بنحو 0.7 سنة، ويعود ذلك أساسًا إلى اعتمادهما على تقديرات مختلفة للسكان والوفيات.</p></div>
       </div>
       <div class="gx-card" id="v-road">
         <h3><span lang="en">Road traffic deaths per 100,000 people</span><span lang="ar">وفيات حوادث الطرق لكل 100,000 نسمة</span></h3>
@@ -794,7 +813,6 @@
         </div>
         <p class="gx-note" lang="en">WHO models road deaths to correct for under-reporting in national registries, so its estimates usually run above official counts. The two series aren't directly comparable, and the WHO series in the World Bank's data stops at 2019.</p>
         <p class="gx-note" lang="ar">تُنمذج منظمة الصحة العالمية وفيات الطرق لتصحيح نقص الإبلاغ في السجلات الوطنية، لذا تأتي تقديراتها عادةً أعلى من الأرقام الرسمية. السلسلتان غير قابلتين للمقارنة المباشرة، وتتوقف سلسلة المنظمة في بيانات البنك الدولي عند عام 2019.</p>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> Compare like with like: for 2019 the official rate was 16.8, against WHO's 35.9. In 2016 the two were almost identical (28.4 and 28.7) and diverged afterwards. The official 2025 rate uses projected 2025 population.</p><p lang="ar"><b>حدود البيانات.</b> للمقارنة في السنة نفسها: بلغ المعدل الرسمي 16.8 في 2019 مقابل 35.9 لدى المنظمة. وكان الرقمان متقاربين جدًا في 2016 (28.4 و28.7) ثم تباعدا. ويستند المعدل الرسمي لعام 2025 إلى تقديرات السكان المتوقعة لذلك العام.</p></div>
       </div>
       <div class="gx-card" id="v-ncd">
         <h3><span lang="en">Deaths from chronic disease</span><span lang="ar">الوفيات بالأمراض المزمنة</span></h3>
@@ -805,7 +823,6 @@
         </div>
         <p class="gx-note" lang="en">The program's official rate fell by a third and beat its 2025 target of 441. WHO's measure for SDG 3.4 shows little change and puts Saudi Arabia off track.</p>
         <p class="gx-note" lang="ar">انخفض المعدل الرسمي للبرنامج بمقدار الثلث متجاوزًا مستهدف 2025 البالغ 441، بينما يُظهر مقياس المنظمة للهدف 3.4 تغيرًا طفيفًا ويضع السعودية خارج المسار.</p>
-        <div class="gx-limits"><p lang="en"><b>Limitations.</b> These are different measures. The report does not define its rate (likely deaths per 100,000), and the WHO series ends in 2021. Read them as two lenses, not a contradiction.</p><p lang="ar"><b>حدود البيانات.</b> هذان مقياسان مختلفان؛ إذ لا يعرّف التقرير معدله (يُرجّح أنه وفيات لكل 100,000 نسمة)، وتنتهي سلسلة المنظمة في 2021. يُقرآن كزاويتين مختلفتين لا كتناقض.</p></div>
       </div>
     </div>
     <div class="gx-io">
@@ -826,6 +843,11 @@
       <p lang="ar"><b>المبررات.</b> تنشر الحكومات أرقامًا وطنية بينما يُنمذج البنك الدولي ومنظمة الصحة العالمية أرقامهما لإتاحة المقارنة؛ ويحتاج كل من يستشهد ببيانات الصحة الخليجية إلى معرفة السلسلة التي يأتي منها الرقم ومدى الفارق بينهما.</p>
       <p lang="en"><b>Approach.</b> Official figures come from national statistics offices, health ministries and programme reports, matched to the same measure and, where possible, the same year as the international series. Differences are shown side by side, not reconciled.</p>
       <p lang="ar"><b>النهج.</b> الأرقام الرسمية من أجهزة الإحصاء الوطنية ووزارات الصحة وتقارير البرامج، مع مطابقتها بالمؤشر نفسه، وبالسنة نفسها حيثما أمكن، في السلسلة الدولية. وتُعرض الفروق جنبًا إلى جنب دون محاولة التوفيق بينها.</p>
+    </div>
+    <div class="gx-lims">
+      <h3><span lang="en">Limitations</span><span lang="ar">حدود البيانات</span></h3>
+      <ul lang="en"><li><b>Where national and international figures differ.</b> Official and international series use different methods, population estimates and definitions, and often different years, so a gap is not necessarily an error in either. The Bahrain workforce gap is large enough to suggest the World Bank figures are incomplete. Official figures are entered by hand and updated yearly.</li><li><b>Vision 2030, life expectancy.</b> Both figures are for 2024 yet differ by 0.7 years, mainly because they rest on different population and death estimates.</li><li><b>Vision 2030, road traffic deaths.</b> Compare like with like: for 2019 the official rate was 16.8, against WHO's 35.9. In 2016 the two were almost identical (28.4 and 28.7) and diverged afterwards. The official 2025 rate uses projected 2025 population.</li><li><b>Vision 2030, deaths from chronic disease.</b> These are different measures. The report does not define its rate (likely deaths per 100,000), and the WHO series ends in 2021. Read them as two lenses, not a contradiction.</li></ul>
+      <ul lang="ar"><li><b>حيث تختلف الأرقام الوطنية عن الدولية.</b> تستخدم السلاسل الرسمية والدولية منهجيات وتقديرات سكانية وتعريفات مختلفة، وغالبًا سنوات مختلفة، لذا لا يعني الفرق بالضرورة خطأ في أي منهما. لكن فجوة القوى العاملة في البحرين كبيرة بما يكفي للإشارة إلى أن أرقام البنك الدولي غير مكتملة. وتُدخل الأرقام الرسمية يدويًا وتُحدَّث سنويًا.</li><li><b>رؤية 2030، العمر المتوقع.</b> الرقمان لعام 2024 لكنهما يختلفان بنحو 0.7 سنة، ويعود ذلك أساسًا إلى اعتمادهما على تقديرات مختلفة للسكان والوفيات.</li><li><b>رؤية 2030، وفيات حوادث الطرق لكل 100,000 نسمة.</b> للمقارنة في السنة نفسها: بلغ المعدل الرسمي 16.8 في 2019 مقابل 35.9 لدى المنظمة. وكان الرقمان متقاربين جدًا في 2016 (28.4 و28.7) ثم تباعدا. ويستند المعدل الرسمي لعام 2025 إلى تقديرات السكان المتوقعة لذلك العام.</li><li><b>رؤية 2030، الوفيات بالأمراض المزمنة.</b> هذان مقياسان مختلفان؛ إذ لا يعرّف التقرير معدله (يُرجّح أنه وفيات لكل 100,000 نسمة)، وتنتهي سلسلة المنظمة في 2021. يُقرآن كزاويتين مختلفتين لا كتناقض.</li></ul>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,wb_phys,wb_nurse,wb_road,wb_ncd,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
     <p class="gx-next"><button type="button" data-tab="snapshot"><span lang="en">Back to the start: At a glance</span><span lang="ar">العودة إلى البداية: نظرة سريعة</span></button></p>
