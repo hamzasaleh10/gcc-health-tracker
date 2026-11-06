@@ -10,6 +10,7 @@
     wb: 'data/gcc_worldbank.json',
     obesity: 'data/gcc_obesity_who.json',
     hale: 'data/gcc_hale_who.json',
+    le_who: 'data/gcc_le_who.json',
     national: 'data/national.json',
     proj: 'data/gcc_population_projections.json',
     outlook: 'data/outlook.json',

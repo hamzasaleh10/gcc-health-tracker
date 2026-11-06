@@ -60,6 +60,7 @@ python -m http.server 8000          # then open http://localhost:8000
 | Health spending, government and out-of-pocket shares | World Bank WDI, from the WHO Global Health Expenditure Database |
 | Physicians, nurses and midwives, hospital beds | World Bank WDI, from WHO and OECD |
 | Adult obesity (age-standardized) | [WHO Global Health Observatory](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/prevalence-of-obesity-among-adults-bmi--30-(age-standardized-estimate)-(-)) (API) |
+| Life expectancy (WHO, for years in poor health) | [WHO Global Health Observatory](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/life-expectancy-at-birth-(years)) (API) |
 | Healthy life expectancy | [WHO Global Health Observatory](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/gho-ghe-hale-healthy-life-expectancy-at-birth) (API) |
 | Saudi official figures and targets | [Health Sector Transformation Program reports 2023 and 2025](https://www.vision2030.gov.sa/media/y0pc5yc3/health-sector-transformation-report-2025-en.pdf); [GASTAT workforce statistics 2023](https://www.stats.gov.sa/documents/d/guest/healthcare-establishments-and-workforce-statistics-2023en-pdf) |
 | UAE workforce by citizenship | [UAE.Stat (Federal Competitiveness and Statistics Centre)](https://uaestat.fcsc.gov.ae/) |

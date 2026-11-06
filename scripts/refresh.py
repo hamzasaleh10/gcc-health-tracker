@@ -124,12 +124,17 @@ def fetch_obesity():
     return fetch_gho("NCD_BMI_30A")
 
 
+def fetch_le():
+    """WHO life expectancy at birth, paired with HALE to give years in poor health."""
+    return fetch_gho("WHOSIS_000001")
+
+
 def fetch_hale():
     """WHO healthy life expectancy (HALE) at birth."""
     return fetch_gho("WHOSIS_000002")
 
 
-def validate(wb, ob, hale=None, proj=None):
+def validate(wb, ob, hale=None, proj=None, le=None):
     problems = []
     if len(wb) < 2300:
         problems.append(f"World Bank: only {len(wb)} rows (expected 2,300+)")
@@ -144,6 +149,10 @@ def validate(wb, ob, hale=None, proj=None):
     for iso in WHO_AREAS:
         if not any(r["iso3"] == iso for r in ob):
             problems.append(f"Obesity: no rows for {iso}")
+    if le is not None:
+        for iso in WHO_AREAS:
+            if not any(r["iso3"] == iso for r in le):
+                problems.append(f"WHO life expectancy: no rows for {iso}")
     if proj is not None:
         want = len(GCC) * len(AGE_GROUPS) * len(PROJ_YEARS)
         if len(proj) != want:
@@ -170,12 +179,15 @@ def main(out_dir):
     print("WHO healthy life expectancy (Global Health Observatory)")
     hale = fetch_hale()
     print(f"  {len(hale)} rows, latest year {max(r['year'] for r in hale)}")
+    print("WHO life expectancy (Global Health Observatory)")
+    le = fetch_le()
+    print(f"  {len(le)} rows, latest year {max(r['year'] for r in le)}")
 
     print("World Bank population projections")
     proj = fetch_projections()
     print(f"  {len(proj)} rows")
 
-    problems = validate(wb, ob, hale, proj)
+    problems = validate(wb, ob, hale, proj, le)
     if problems:
         print("Validation failed; no files written:\n  " + "\n  ".join(problems))
         sys.exit(1)
@@ -185,10 +197,11 @@ def main(out_dir):
     dump(wb, "gcc_worldbank.json")
     dump(ob, "gcc_obesity_who.json")
     dump(hale, "gcc_hale_who.json")
+    dump(le, "gcc_le_who.json")
     dump(proj, "gcc_population_projections.json")
     dump({"refreshed_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
           "worldbank_last_updated": wb_updated,
-          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "projections": len(proj)}}, "meta.json")
+          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "le_who": len(le), "projections": len(proj)}}, "meta.json")
     print(f"Wrote {len(wb)} World Bank rows and {len(ob)} obesity rows to {out_dir}/")
 
 
