@@ -628,25 +628,25 @@
       <p lang="ar"><b>لماذا يهم ذلك.</b> يستغرق بناء المستشفيات وبرامج التدريب ما بين 5 و10 سنوات، لذا تُحدَّد الطاقة المتاحة في 2040 بالقرارات المتخذة الآن.</p>
     </div>
     <div class="gx-card" id="demand">
-      <h3><span lang="en">Growth in health care demand, 2024–2040</span><span lang="ar">نمو الطلب على الرعاية الصحية، 2024–2040</span></h3>
-      <p class="n" lang="en">Population growth, plus the extra demand from an older age mix, based on how hospital use rises with age. The share of residents aged 65 and over is shown on the right.</p>
-      <p class="n" lang="ar">نمو السكان، مضافًا إليه الطلب الإضافي الناتج عن تقدم التركيبة العمرية، استنادًا إلى ارتفاع استخدام المستشفيات مع العمر. وتظهر على اليمين نسبة السكان بعمر 65 عامًا فأكثر.</p>
+      <h3><span lang="en">Health care demand in 2040 against today (2024 = 100)</span><span lang="ar">الطلب على الرعاية الصحية في 2040 مقارنةً باليوم (2024 = 100)</span></h3>
+      <p class="n" lang="en">Each bar starts from today's demand (2024 = 100), then adds population growth and the extra demand from an older age mix, based on how hospital use rises with age. Population and the share aged 65 and over, today and in 2040, are on the right (tap a bar on a phone).</p>
+      <p class="n" lang="ar">يبدأ كل شريط من الطلب الحالي (2024 = 100)، ثم يضيف نمو السكان والطلب الإضافي الناتج عن تقدم التركيبة العمرية، استنادًا إلى ارتفاع استخدام المستشفيات مع العمر. ويظهر على اليمين عدد السكان ونسبة من هم بعمر 65 عامًا فأكثر، اليوم وفي 2040 (انقر على الشريط في الهاتف).</p>
       <div class="gx-chart short dash-skeleton" data-draw="demandchart"></div>
     </div>
     <div class="gx-card" id="need">
       <h3><span lang="en">Capacity needed in 2040:</span><span lang="ar">الطاقة المطلوبة في 2040:</span> <span data-draw="focusname">—</span></h3>
-      <p class="n" lang="en">Today's beds and staff, and what the same level of care would require in 2040. The prevention column uses the scenario chosen below.</p>
-      <p class="n" lang="ar">الأسرّة والكوادر الحالية، وما يتطلبه المستوى نفسه من الرعاية في 2040. ويستخدم عمود الوقاية السيناريو المختار أدناه.</p>
+      <p class="n" lang="en">Estimated beds and staff today, and how many the same level of care per person would require in 2040 under each scenario. The prevention column follows the scenario chosen below.</p>
+      <p class="n" lang="ar">الأسرّة والكوادر الحالية التقديرية، وعددها المطلوب في 2040 للحفاظ على المستوى نفسه من الرعاية للفرد في كل سيناريو. ويتبع عمود الوقاية السيناريو المختار أدناه.</p>
       <div class="gx-tablewrap">
         <table>
           <thead><tr>
-            <th></th>
-            <th><span lang="en">Today, per 1,000</span><span lang="ar">حاليًا لكل 1,000</span></th>
-            <th><span lang="en">Today, about</span><span lang="ar">حاليًا، تقريبًا</span></th>
-            <th><span lang="en">2040: population growth only</span><span lang="ar">2040: نمو السكان فقط</span></th>
-            <th><span lang="en">2040: growth and ageing</span><span lang="ar">2040: النمو والشيخوخة</span></th>
-            <th><span lang="en">2040: with prevention</span><span lang="ar">2040: مع الوقاية</span></th>
-            <th><span lang="en">2040: at today's high-income ratio</span><span lang="ar">2040: بنسبة الدول مرتفعة الدخل الحالية</span></th>
+            <th><span lang="en">Resource</span><span lang="ar">المورد</span></th>
+            <th><span lang="en">Current ratio per 1,000 people (latest year)</span><span lang="ar">النسبة الحالية لكل 1,000 نسمة (أحدث سنة)</span></th>
+            <th><span lang="en">Current number (ratio × 2024 population, estimated)</span><span lang="ar">العدد الحالي (النسبة × سكان 2024، تقديري)</span></th>
+            <th><span lang="en">Needed in 2040: population growth only, current ratio</span><span lang="ar">المطلوب في 2040: نمو السكان فقط، بالنسبة الحالية</span></th>
+            <th><span lang="en">Needed in 2040: population growth and ageing</span><span lang="ar">المطلوب في 2040: نمو السكان والشيخوخة</span></th>
+            <th><span lang="en">Needed in 2040: growth and ageing, with obesity cut by <span data-draw="obpts">4</span> points</span><span lang="ar">المطلوب في 2040: النمو والشيخوخة، مع خفض السمنة <span data-draw="obpts">4</span> نقاط</span></th>
+            <th><span lang="en">Needed in 2040 at today's high-income average ratio</span><span lang="ar">المطلوب في 2040 بمتوسط نسبة الدول مرتفعة الدخل الحالية</span></th>
           </tr></thead>
           <tbody data-draw="needbody"></tbody>
         </table>
@@ -1290,40 +1290,62 @@ dash.draw('vy', (el) => {
   dash.draw('demandchart', (el) => {
     if (!box(el, ['proj', 'outlook'])) return;
     el.replaceChildren();
-    const rows = GCC.map((iso) => { const d = demand(iso); return {iso, g: (d.g - 1) * 100, a: (d.g * d.a - d.g) * 100, t: (d.g * d.a - 1) * 100, s0: d.s0, s1: d.s1}; }).sort((a, b) => b.t - a.t);
-    const W = Math.max(300, el.clientWidth), bh = 20, gap = 10, top = 28, H = top + rows.length * (bh + gap);
+    const rows = GCC.map((iso) => { const d = demand(iso); return {iso, g: (d.g - 1) * 100, a: (d.g * d.a - d.g) * 100, t: d.g * d.a * 100, s0: d.s0, s1: d.s1, p0: popOf(iso, 2024), p1: popOf(iso, 2040)}; }).sort((a, b) => b.t - a.t);
+    const W = Math.max(300, el.clientWidth), bh = 20, gap = 12, top = W < 640 ? 50 : 34, H = top + rows.length * (bh + gap) + 22;
     const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
-    const f1 = d3.format('.1f');
+    const f1 = d3.format('.1f'), fm = (v) => d3.format('.1f')(v / 1e6) + T('m', ' مليون');
     const ml = measure(svg, rows.map((r) => NAME[r.iso])) + 10;
-    const rl = (r) => '65+: ' + iso2(f1(r.s0) + '% → ' + f1(r.s1) + '%');
-    const tl = (r) => iso2('+' + Math.round(r.t) + '%');
-    const narrow = W < 520;
-    const mr = (narrow ? 0 : measure(svg, rows.map(rl)) + 16) + measure(svg, rows.map(tl)) + 10;
+    const pl = (r) => iso2(f1(r.p0 / 1e6) + ' → ' + f1(r.p1 / 1e6)), sl = (r) => iso2(f1(r.s0) + '% → ' + f1(r.s1) + '%');
+    const tl = (r) => iso2(Math.round(r.t) + ' (+' + Math.round(r.t - 100) + '%)');
+    const narrow = W < 640;
+    const hP = T('Population (millions), 2024 → 2040', 'السكان (مليون)، 2024 ← 2040'), hS = T('Aged 65+, 2024 → 2040', 'السكان بعمر 65 فأكثر، 2024 ← 2040');
+    const wS = Math.max(measure(svg, rows.map(sl)), measure(svg, [hS])), wP = Math.max(measure(svg, rows.map(pl)), measure(svg, [hP]));
+    const mr = (narrow ? 0 : wS + wP + 40) + measure(svg, rows.map(tl)) + 10;
     const x = d3.scaleLinear([0, d3.max(rows, (r) => r.t)], [ml, W - mr]);
+    const cB = 'var(--cds-chart-grid)';
     const cG = (r) => (r.iso === focus() ? dash.colors[0] : 'var(--cds-chart-muted)');
     const cA = (r) => (r.iso === focus() ? dash.colors[1] : 'var(--cds-chart-muted)');
-    const leg = svg.append('g').attr('transform', `translate(${ml},12)`); let lx = 0;
-    [[dash.colors[0], T('Population growth', 'نمو السكان')], [dash.colors[1], T('Older age mix', 'تقدم التركيبة العمرية')]].forEach(([c, label]) => {
-      leg.append('rect').attr('x', lx).attr('y', -8).attr('width', 10).attr('height', 10).attr('rx', 2).style('fill', c);
-      const t = leg.append('text').attr('x', lx + 14).attr('y', 1).style('fill', 'var(--color-fg-muted)').text(label);
-      lx += 14 + t.node().getComputedTextLength() + 18;
+    const leg = svg.append('g').attr('transform', `translate(${narrow ? 0 : ml},12)`); let lx = 0, ly = 0;
+    [['var(--cds-chart-muted)', T('Today, 2024 = 100', 'اليوم، 2024 = 100'), 0.45], [dash.colors[0], T('Population growth', 'نمو السكان'), 1], [dash.colors[1], T('Older age mix', 'تقدم التركيبة العمرية'), 1]].forEach(([c, label, op]) => {
+      const w = 14 + measure(svg, [label]) + 18;
+      if (lx > 0 && lx + w > W - (narrow ? 0 : ml)) { lx = 0; ly += 17; }
+      leg.append('rect').attr('x', lx).attr('y', ly - 8).attr('width', 10).attr('height', 10).attr('rx', 2).style('fill', c).style('opacity', op);
+      leg.append('text').attr('x', lx + 14).attr('y', ly + 1).style('fill', 'var(--color-fg-muted)').text(label);
+      lx += w;
     });
+    if (!narrow) {
+      svg.append('text').attr('x', W - 2).attr('y', top - 10).attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-size', '0.75rem').text(hS);
+      svg.append('text').attr('x', W - wS - 24).attr('y', top - 10).attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-size', '0.75rem').text(hP);
+    }
+    const yb = top + rows.length * (bh + gap) - gap + 4;
+    svg.append('line').attr('x1', x(100)).attr('x2', x(100)).attr('y1', top - 4).attr('y2', yb).style('stroke', 'var(--color-fg-muted)').attr('stroke-dasharray', '3 3');
+    svg.append('text').attr('x', x(100)).attr('y', yb + 14).attr('text-anchor', 'middle').style('fill', 'var(--color-fg-muted)').text(T('Today = 100', 'اليوم = 100'));
+    svg.append('text').attr('x', x(0)).attr('y', yb + 14).attr('text-anchor', 'start').style('fill', 'var(--color-fg-muted)').text('0');
     const tt = tip(el);
     rows.forEach((r, i) => {
       const y0 = top + i * (bh + gap), g = svg.append('g'), foc = r.iso === focus();
       g.append('text').attr('x', ml - 8).attr('y', y0 + bh / 2).attr('dy', '0.32em').attr('text-anchor', 'end').style('fill', foc ? 'var(--color-fg)' : 'var(--color-fg-muted)').attr('font-weight', foc ? 600 : null).text(NAME[r.iso]);
-      g.append('rect').attr('x', x(0)).attr('y', y0).attr('height', bh).attr('width', Math.max(1, x(r.g) - x(0))).attr('rx', 2).style('fill', cG(r));
-      g.append('rect').attr('x', x(r.g)).attr('y', y0).attr('height', bh).attr('width', Math.max(1, x(r.t) - x(r.g))).attr('rx', 2).style('fill', cA(r)).style('opacity', foc ? 1 : 0.55);
+      g.append('rect').attr('x', x(0)).attr('y', y0).attr('height', bh).attr('width', x(100) - x(0)).attr('rx', 2).style('fill', 'var(--cds-chart-muted)').style('opacity', foc ? 0.6 : 0.35);
+      g.append('rect').attr('x', x(100)).attr('y', y0).attr('height', bh).attr('width', Math.max(1, x(100 + r.g) - x(100))).style('fill', cG(r));
+      g.append('rect').attr('x', x(100 + r.g)).attr('y', y0).attr('height', bh).attr('width', Math.max(1, x(r.t) - x(100 + r.g))).attr('rx', 2).style('fill', cA(r)).style('opacity', foc ? 1 : 0.55);
       g.append('text').attr('x', x(r.t) + 6).attr('y', y0 + bh / 2).attr('dy', '0.32em').style('fill', 'var(--color-fg)').attr('font-weight', 600).style('font-variant-numeric', 'tabular-nums').text(tl(r));
-      if (!narrow) g.append('text').attr('x', W - 2).attr('y', y0 + bh / 2).attr('dy', '0.32em').attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-variant-numeric', 'tabular-nums').text(rl(r));
+      if (!narrow) {
+        g.append('text').attr('x', W - 2).attr('y', y0 + bh / 2).attr('dy', '0.32em').attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-variant-numeric', 'tabular-nums').text(sl(r));
+        g.append('text').attr('x', W - wS - 24).attr('y', y0 + bh / 2).attr('dy', '0.32em').attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-variant-numeric', 'tabular-nums').text(pl(r));
+      }
       g.append('rect').attr('x', 0).attr('y', y0 - 2).attr('width', W).attr('height', bh + 4).attr('fill', 'transparent')
         .on('pointermove', (ev) => { const [mx, my] = d3.pointer(ev, el); tt.show(mx, my, NAME[r.iso], [
-          {color: dash.colors[0], name: T('Population growth', 'نمو السكان'), value: '+' + f1(r.g) + '%'},
-          {color: dash.colors[1], name: T('Older age mix', 'تقدم التركيبة العمرية'), value: '+' + f1(r.a) + T(' points', ' نقطة')},
+          {name: T('Demand today (2024)', 'الطلب اليوم (2024)'), value: '100'},
+          {color: dash.colors[0], name: T('Population growth', 'نمو السكان'), value: '+' + f1(r.g)},
+          {color: dash.colors[1], name: T('Older age mix', 'تقدم التركيبة العمرية'), value: '+' + f1(r.a)},
+          {name: T('Demand in 2040', 'الطلب في 2040'), value: f1(r.t)},
+          {name: T('Population, 2024 → 2040', 'السكان، 2024 ← 2040'), value: fm(r.p0) + ' → ' + fm(r.p1)},
           {name: T('Aged 65+, 2024 → 2040', '65 عامًا فأكثر، 2024 ← 2040'), value: f1(r.s0) + '% → ' + f1(r.s1) + '%'}]); })
         .on('pointerleave', () => tt.hide());
     });
   });
+
+  dash.draw('obpts', (el) => { el.textContent = String(obPts()); });
 
   dash.draw('needbody', (tb) => {
     tb.replaceChildren();
