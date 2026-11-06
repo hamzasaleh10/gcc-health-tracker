@@ -1,10 +1,12 @@
-# GCC Health System Tracker
+# GCC Health Systems Monitor
+
+*Benchmarks, national goals and the outlook to 2040*
 
 **Live site: [hamzasaleh10.github.io/gcc-health-tracker](https://hamzasaleh10.github.io/gcc-health-tracker/)** · [العربية](https://hamzasaleh10.github.io/gcc-health-tracker/?lang=ar)
 
 A bilingual (English/Arabic) dashboard that benchmarks the six Gulf Cooperation Council health systems (Saudi Arabia, the UAE, Qatar, Kuwait, Oman and Bahrain) against high-income countries and the world. It covers health outcomes, chronic disease risk, financing and insurance, workforce and localization, and each country's national goals, and sets official national figures beside international estimates. International data refreshes automatically every month; national figures from government sources are reviewed yearly. Every panel states its limitations.
 
-![The tracker in English](assets/screenshot-en.png)
+![The Monitor in English](assets/screenshot-en.png)
 
 ## What it shows
 
@@ -88,4 +90,4 @@ python -m http.server 8000          # then open http://localhost:8000
 
 Built by Hamza Saleh, MPH, as a portfolio project on public data. It is not affiliated with any government or organization named here.
 
-![The tracker in Arabic](assets/screenshot-ar.png)
+![The Monitor in Arabic](assets/screenshot-ar.png)

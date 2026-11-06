@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GCC Health System Tracker</title>
-<meta name="description" content="Bilingual (English/Arabic) dashboard benchmarking the six GCC health systems on outcomes, chronic disease, financing and workforce, with Saudi Vision 2030 figures. World Bank and WHO data, refreshed monthly.">
+<title>GCC Health Systems Monitor</title>
+<meta name="description" content="GCC Health Systems Monitor: benchmarks, national goals and the outlook to 2040 for the six Gulf health systems. English and Arabic, refreshed monthly from World Bank and WHO data, with official national figures.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="GCC Health System Tracker">
-<meta property="og:description" content="How the six Gulf health systems compare on outcomes, chronic disease, financing and workforce. English and Arabic. Refreshed monthly from World Bank and WHO data.">
+<meta property="og:title" content="GCC Health Systems Monitor">
+<meta property="og:description" content="Benchmarks, national goals and the outlook to 2040 for the six Gulf health systems. English and Arabic, refreshed monthly.">
 <meta property="og:url" content="https://hamzasaleh10.github.io/gcc-health-tracker/">
 <meta property="og:image" content="https://hamzasaleh10.github.io/gcc-health-tracker/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,6 +19,7 @@
 <style>
 .gx{display:grid;gap:var(--cds-gap-xl);font-family:var(--font-anthropic-sans);color:var(--color-fg)}
 .gx h1{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);margin:0;line-height:1.15}
+.gx-sub{margin:6px 0 var(--cds-gap-sm);font-size:1.1rem;font-weight:500;color:var(--color-fg-muted)}
 .gx-take{margin:var(--cds-gap-xs) 0 0;font-size:var(--cds-font-size-body);color:var(--color-fg-muted);max-width:60rem}
 .gx-take b{color:var(--color-fg);font-weight:600;font-variant-numeric:tabular-nums}
 .gx-focus{display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs);align-items:center}
@@ -177,7 +178,8 @@
   </div>
 
   <header id="top">
-    <h1><span lang="en">GCC health system tracker</span><span lang="ar">متتبع الأنظمة الصحية في دول مجلس التعاون الخليجي</span></h1>
+    <h1><span lang="en">GCC Health Systems Monitor</span><span lang="ar">مرصد الأنظمة الصحية في دول مجلس التعاون الخليجي</span></h1>
+    <p class="gx-sub"><span lang="en">Benchmarks, national goals and the outlook to 2040</span><span lang="ar">المقارنات المعيارية والأهداف الوطنية وآفاق 2040</span></p>
     <p class="gx-take" lang="en">Gulf states now live about as long as people in high-income countries, but chronic disease is the open problem. Adult obesity across the six states averages <b data-draw="avg" data-source="gcc_avg" data-field="gcc_mean" data-where="indicator=obesity">—</b> against <b data-draw="avg" data-source="gcc_avg" data-field="world" data-where="indicator=obesity">—</b> worldwide, and diabetes <b data-draw="avg" data-source="gcc_avg" data-field="gcc_mean" data-where="indicator=diabetes_prev">—</b> against <b data-draw="avg" data-source="gcc_avg" data-field="world" data-where="indicator=diabetes_prev">—</b>.</p>
     <p class="gx-take" lang="ar">بلغ متوسط العمر المتوقع في دول الخليج مستوى الدول مرتفعة الدخل تقريبًا، لكن الأمراض المزمنة تبقى التحدي الأكبر. يبلغ متوسط معدل السمنة لدى البالغين في الدول الست <b data-draw="avg" data-source="gcc_avg" data-field="gcc_mean" data-where="indicator=obesity">—</b> مقابل <b data-draw="avg" data-source="gcc_avg" data-field="world" data-where="indicator=obesity">—</b> عالميًا، ومعدل السكري <b data-draw="avg" data-source="gcc_avg" data-field="gcc_mean" data-where="indicator=diabetes_prev">—</b> مقابل <b data-draw="avg" data-source="gcc_avg" data-field="world" data-where="indicator=diabetes_prev">—</b>.</p>
   </header>
@@ -343,7 +345,7 @@
           <tbody data-draw="goalsbody"></tbody>
         </table>
       </div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Goals as published by each government; some come from ministers' statements reported in the press rather than formal plans. "Latest" uses official figures where they exist. Status is this tracker's simple comparison, not an official assessment.</p><p lang="ar"><b>حدود البيانات.</b> الأهداف كما أعلنتها كل حكومة، وبعضها مأخوذ من تصريحات وزارية نشرتها الصحافة لا من خطط رسمية. يستخدم عمود «الأحدث» الأرقام الرسمية حيثما وُجدت. والحالة مقارنة مبسطة من هذا المتتبع وليست تقييمًا رسميًا.</p></div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Goals as published by each government; some come from ministers' statements reported in the press rather than formal plans. "Latest" uses official figures where they exist. Status is this Monitor's simple comparison, not an official assessment.</p><p lang="ar"><b>حدود البيانات.</b> الأهداف كما أعلنتها كل حكومة، وبعضها مأخوذ من تصريحات وزارية نشرتها الصحافة لا من خطط رسمية. يستخدم عمود «الأحدث» الأرقام الرسمية حيثما وُجدت. والحالة مقارنة مبسطة من هذا المرصد وليست تقييمًا رسميًا.</p></div>
     </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
@@ -1743,7 +1745,7 @@ dash.onData(() => {
   const ar = window.gx.lang() === 'ar';
   document.documentElement.lang = ar ? 'ar' : 'en';
   document.documentElement.dir = ar ? 'rtl' : 'ltr';
-  document.title = ar ? 'متتبع الأنظمة الصحية في دول مجلس التعاون الخليجي' : 'GCC Health System Tracker';
+  document.title = ar ? 'مرصد الأنظمة الصحية في دول مجلس التعاون الخليجي' : 'GCC Health Systems Monitor';
   document.querySelectorAll('a.gx-sum').forEach((l) => l.setAttribute('href', ar ? 'summary.html?lang=ar' : 'summary.html'));
   document.querySelectorAll('a.gx-brief').forEach((l) => l.setAttribute('href', 'brief.html?' + (ar ? 'lang=ar&' : '') + 'focus=' + window.gx.focus()));
 });

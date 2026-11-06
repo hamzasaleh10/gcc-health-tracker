@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Country Brief · GCC Health System Tracker</title>
+<title>Country Brief · GCC Health Systems Monitor</title>
 <meta name="description" content="One-page health system brief for each Gulf state: headline measures against benchmarks, national goals, workforce, insurance and the 2040 outlook. English and Arabic, printable as PDF.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GCC Health System Tracker: Country Brief">
+<meta property="og:title" content="GCC Health Systems Monitor: Country Brief">
 <meta property="og:description" content="A printable one-page health system brief for each Gulf state, in English and Arabic.">
 <meta property="og:image" content="https://hamzasaleh10.github.io/gcc-health-tracker/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -70,7 +70,7 @@
 <main class="site">
 <article class="br">
   <nav class="br-top" aria-label="Page">
-    <a class="back" href="./"><span lang="en">← Back to the tracker</span><span lang="ar">→ العودة إلى المتتبع</span></a>
+    <a class="back" href="./"><span lang="en">← Back to the Monitor</span><span lang="ar">→ العودة إلى المرصد</span></a>
     <button type="button" class="print"><span lang="en">Print or save as PDF</span><span lang="ar">طباعة أو حفظ PDF</span></button>
     <button type="button" data-lang="en" aria-pressed="true">English</button>
     <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
@@ -85,7 +85,7 @@
   </div>
 
   <h1><span data-draw="bname">—</span><span lang="en">: health system brief</span><span lang="ar">: موجز النظام الصحي</span></h1>
-  <p class="byline"><span lang="en">GCC Health System Tracker · Hamza Saleh, MPH · data refreshed</span><span lang="ar">متتبع الأنظمة الصحية الخليجية · حمزة صالح، ماجستير الصحة العامة · آخر تحديث للبيانات</span> <span data-draw="brefreshed">—</span></p>
+  <p class="byline"><span lang="en">GCC Health Systems Monitor · Hamza Saleh, MPH · data refreshed</span><span lang="ar">مرصد الأنظمة الصحية الخليجية · حمزة صالح، ماجستير الصحة العامة · آخر تحديث للبيانات</span> <span data-draw="brefreshed">—</span></p>
 
   <h2><span lang="en">Where it stands</span><span lang="ar">الوضع الحالي</span></h2>
   <ul data-draw="bstand"></ul>
@@ -229,7 +229,7 @@
     if (ob && wo) ul.appendChild(el('li', T(`Adult obesity is ${f1(ob.value)}%, ${f1(ob.value / wo.value)} times the world average.`, `تبلغ السمنة لدى البالغين ${f1(ob.value)}%، أي ${f1(ob.value / wo.value)} أضعاف المتوسط العالمي.`)));
   });
 
-  // Outlook 2040 (same method as the tracker's Outlook tab)
+  // Outlook 2040 (same method as the Monitor's Outlook tab)
   const popOf = (iso, y, ages) => dash.data('proj').data.reduce((a, r) => a + (r.iso3 === iso && r.year === y && (!ages || ages.includes(r.age)) ? r.pop : 0), 0);
   const useOf = (iso, y) => { const W = dash.data('outlook').data.age_weights.values; return dash.data('proj').data.reduce((a, r) => a + (r.iso3 === iso && r.year === y ? r.pop * W[r.age] : 0), 0); };
   const AG = ['6569', '7074', '7579', '80UP'];
@@ -310,7 +310,7 @@
     root.classList.toggle('is-ar', ar);
     document.documentElement.lang = ar ? 'ar' : 'en';
     document.documentElement.dir = ar ? 'rtl' : 'ltr';
-    document.title = (ar ? 'موجز ' + name(focus()) + ' · متتبع الأنظمة الصحية الخليجية' : name(focus()) + ' Brief · GCC Health System Tracker');
+    document.title = (ar ? 'موجز ' + name(focus()) + ' · مرصد الأنظمة الصحية الخليجية' : name(focus()) + ' Brief · GCC Health Systems Monitor');
     root.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang())));
     root.querySelectorAll('[data-iso]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.iso === focus())));
     const q = (ar ? 'lang=ar&' : '') + 'focus=' + focus();

@@ -1,4 +1,4 @@
-"""Refresh the GCC Health System Tracker data.
+"""Refresh the GCC Health Systems Monitor data.
 
 Pulls World Bank World Development Indicators and WHO adult-obesity and healthy
 life expectancy estimates (WHO Global Health Observatory API) for the six GCC states plus benchmarks, validates them,
