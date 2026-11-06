@@ -47,6 +47,11 @@
 .gx-vs .t,.gx-stat .k{font-size:1rem;font-weight:600;color:var(--color-fg);line-height:1.3;padding-bottom:var(--cds-pad-sm);margin-bottom:var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line)}
 .gx-vs .v,.gx-stat .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:1.75rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
 .gx-vs .y,.gx-stat .s{font-size:0.875rem;font-weight:600;color:var(--color-fg);line-height:1.35;margin-top:2px;font-variant-numeric:tabular-nums}
+.gx-methods{background:var(--color-panel);border:1px solid var(--color-border-line);border-top:3px solid var(--chart-6);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg);display:grid;gap:6px;max-width:60rem}
+.gx-methods h3{margin:0 0 2px;font-size:var(--cds-font-size-body);font-weight:600}
+.gx-methods p{margin:0;font-size:var(--cds-font-size-caption);line-height:1.6;color:var(--color-fg-muted)}
+.gx-methods b{color:var(--color-fg);font-weight:600}
+.gx.is-ar .gx-methods p{line-height:1.85}
 .gx-al{background:var(--color-panel);border:1px solid var(--color-border-line);border-top:3px solid var(--color-fg-muted);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg)}
 .gx-al h3{margin:0 0 var(--cds-gap-sm);font-size:var(--cds-font-size-body);font-weight:600}
 .gx-al h4{margin:0 0 6px;font-size:var(--cds-font-size-caption);font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--color-fg-muted)}
@@ -302,7 +307,14 @@
         <ul lang="ar"><li>استخدم الحالات لاختيار مؤشرين أو ثلاثة تُعرض على القيادة أولًا.</li><li>بدّل الدولة المختارة للعثور على دولة خليجية نظيرة تتفوق في مؤشر ما، والاستفادة من تجربتها.</li></ul>
       </div>
     </div>
-    <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Governments' own figures, which can differ, are compared in the Official vs international tab. Status compares the international figure with the high-income average, which may be for a different year; within 5% counts as near. Health spending has no better or worse direction, so its status only says above or below.</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وتُقارن الأرقام الحكومية، التي قد تختلف، في قسم «الرسمي مقابل الدولي». وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، وقد يكون لسنة مختلفة، ويُعد الفارق ضمن 5% قريبًا. ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p></div>
+    <div class="gx-methods">
+      <h3><span lang="en">Methods</span><span lang="ar">المنهجية</span></h3>
+      <p lang="en"><b>Rationale.</b> A one-screen view of the measures health leaders are asked about most, covering longevity, chronic disease, spending and workforce.</p>
+      <p lang="ar"><b>المبررات.</b> عرض في شاشة واحدة لأكثر المؤشرات التي تُسأل عنها القيادات الصحية، ويغطي متوسط العمر والأمراض المزمنة والإنفاق والقوى العاملة.</p>
+      <p lang="en"><b>Approach.</b> Each tile shows the latest year the country reported to the World Bank or WHO. Benchmarks are the World Bank's high-income and world aggregates (WHO's equivalents for obesity and healthy life expectancy). Status compares the country with the high-income average: within 5% is near; health spending has no better or worse direction, so it only shows above or below.</p>
+      <p lang="ar"><b>النهج.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية. ومعايير المقارنة هي مجموعتا الدول مرتفعة الدخل والعالم لدى البنك الدولي (وما يقابلهما لدى المنظمة للسمنة والعمر الصحي المتوقع). وتقارن الحالة الدولة بمتوسط الدول مرتفعة الدخل: ضمن 5% يُعد قريبًا؛ ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p>
+    </div>
+    <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Governments' own figures, which can differ, are compared in the Official vs international tab. The high-income average used for the status may be for a different year than the country's figure.</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وتُقارن الأرقام الحكومية، التي قد تختلف، في قسم «الرسمي مقابل الدولي». وقد يكون متوسط الدول مرتفعة الدخل المستخدم في الحالة لسنة مختلفة عن سنة رقم الدولة.</p></div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,who_hale,wb_ncd,who_obesity,wb_diab,wb_che,wb_phys,wb_nurse,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
     <p class="gx-next"><button type="button" data-tab="goals"><span lang="en">Next: National goals →</span><span lang="ar">التالي: الأهداف الوطنية ←</span></button></p>
   </section>
@@ -344,6 +356,13 @@
         <ul lang="en"><li>Numeric targets with published baselines would let more states show measurable progress.</li><li>Pair national KPIs with a WHO or World Bank series so progress can be compared across countries.</li><li>The largest gaps, such as Saudi Arabia's private-sector share, are where operators and investors can contribute most.</li></ul>
         <ul lang="ar"><li>إن نشر مستهدفات رقمية بخطوط أساس معلنة سيمكّن مزيدًا من الدول من إظهار تقدم قابل للقياس.</li><li>ربط المؤشرات الوطنية بسلسلة من منظمة الصحة العالمية أو البنك الدولي لإتاحة مقارنة التقدم بين الدول.</li><li>الفجوات الأكبر، مثل حصة القطاع الخاص في السعودية، هي حيث يمكن للمشغلين والمستثمرين الإسهام أكثر.</li></ul>
       </div>
+    </div>
+    <div class="gx-methods">
+      <h3><span lang="en">Methods</span><span lang="ar">المنهجية</span></h3>
+      <p lang="en"><b>Rationale.</b> Governments judge their health systems against their own targets, so progress is measured against those rather than against outside benchmarks.</p>
+      <p lang="ar"><b>المبررات.</b> تقيّم الحكومات أنظمتها الصحية وفق مستهدفاتها الخاصة، لذا يُقاس التقدم وفق هذه المستهدفات لا وفق معايير خارجية.</p>
+      <p lang="en"><b>Approach.</b> Goals come from national strategies, programme reports and official statements, each cited. The latest position uses the government's own figure where one exists, otherwise WHO or the World Bank. Status is a simple comparison: met, close (within about 5% of the target) or far off; goals without a number are marked as not tracked numerically.</p>
+      <p lang="ar"><b>النهج.</b> الأهداف مأخوذة من الاستراتيجيات الوطنية وتقارير البرامج والتصريحات الرسمية، مع ذكر مصدر كل منها. ويستخدم الوضع الأحدث الرقم الحكومي حيثما وُجد، وإلا فرقم منظمة الصحة العالمية أو البنك الدولي. والحالة مقارنة مبسطة: تحقق، أو قريب (ضمن نحو 5% من المستهدف)، أو بعيد؛ وتُصنَّف الأهداف غير الرقمية بأنها بلا قياس رقمي.</p>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_hale,sau_hstp25,sau_private,sau_quota,omn_hale,uae_top15,uae_emiratisation,qat_nhs,kwt_vision,bhr_moh2030"></ul></div>
     <p class="gx-next"><button type="button" data-tab="outcomes"><span lang="en">Next: Health outcomes →</span><span lang="ar">التالي: النتائج الصحية ←</span></button></p>
@@ -428,6 +447,13 @@
         <ul lang="ar"><li>توجيه الاستثمار من إطالة العمر إلى منع الوفاة المبكرة: الكشف المبكر عن ارتفاع ضغط الدم والكوليسترول والسكري والسيطرة عليها في الرعاية الأولية.</li><li>بالنسبة للدول الحائدة عن المسار، يحقق برنامج مركّز لأمراض القلب والسكري أكبر المكاسب نحو 2030.</li><li>تأكيد هذه الاتجاهات ببيانات ما بعد الجائحة عند نشرها من منظمة الصحة العالمية.</li></ul>
       </div>
     </div>
+    <div class="gx-methods">
+      <h3><span lang="en">Methods</span><span lang="ar">المنهجية</span></h3>
+      <p lang="en"><b>Rationale.</b> Life expectancy shows how far a system has come; healthy life expectancy shows the quality of those years; premature chronic-disease deaths are the outcome the UN's SDG 3.4 asks countries to cut by a third by 2030.</p>
+      <p lang="ar"><b>المبررات.</b> يبيّن العمر المتوقع المسافة التي قطعها النظام الصحي، ويبيّن العمر الصحي المتوقع جودة تلك السنوات، والوفيات المبكرة بالأمراض المزمنة هي النتيجة التي يدعو الهدف 3.4 من أهداف التنمية المستدامة إلى خفضها بمقدار الثلث بحلول 2030.</p>
+      <p lang="en"><b>Approach.</b> Life expectancy is the World Bank's series (UN estimates). Years in poor health are WHO life expectancy minus WHO healthy life expectancy for the same year. For SDG 3.4, each country's goal is its 2015 rate cut by a third; a straight-line trend fitted to 2015 onwards is projected to 2030 with an 80% range: on track if the whole range reaches the goal, off track if none of it does, uncertain otherwise.</p>
+      <p lang="ar"><b>النهج.</b> العمر المتوقع من سلسلة البنك الدولي (تقديرات الأمم المتحدة). وسنوات اعتلال الصحة هي العمر المتوقع لدى منظمة الصحة العالمية مطروحًا منه العمر الصحي المتوقع لديها للسنة نفسها. وللهدف 3.4، هدف كل دولة هو معدلها في 2015 مخفضًا بمقدار الثلث؛ ويُسقط خط اتجاه مستقيم من 2015 فصاعدًا حتى 2030 مع نطاق ثقة 80%: على المسار إذا بلغ النطاق كله الهدف، وخارجه إذا لم يبلغه أي جزء منه، وغير محسوم فيما عدا ذلك.</p>
+    </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,who_le,who_hale,wb_ncd,un_sdg,sau_hstp25,omn_ncsi,bhr_moh"></ul></div>
     <p class="gx-next"><button type="button" data-tab="risk"><span lang="en">Next: Chronic disease →</span><span lang="ar">التالي: الأمراض المزمنة ←</span></button></p>
   </section>
@@ -467,6 +493,13 @@
         <ul lang="en"><li>Population-wide prevention: healthier food environments, school and workplace programs, and sustained public campaigns.</li><li>Earlier detection and digital diabetes management to prevent complications such as kidney failure and heart disease.</li><li>Plan dialysis, cardiology and endocrinology capacity now for the demand these risks will create over the next 10–20 years.</li></ul>
         <ul lang="ar"><li>الوقاية على مستوى السكان: بيئات غذائية صحية أكثر، وبرامج في المدارس وأماكن العمل، وحملات توعية مستمرة.</li><li>الكشف المبكر والإدارة الرقمية لمرض السكري لمنع مضاعفاته مثل الفشل الكلوي وأمراض القلب.</li><li>التخطيط من الآن لطاقة الغسيل الكلوي وأمراض القلب والغدد الصماء لمواجهة الطلب الذي ستولده هذه المخاطر خلال 10–20 عامًا.</li></ul>
       </div>
+    </div>
+    <div class="gx-methods">
+      <h3><span lang="en">Methods</span><span lang="ar">المنهجية</span></h3>
+      <p lang="en"><b>Rationale.</b> Obesity and diabetes are the earliest signals of the cardiovascular, kidney and other chronic disease that will drive hospital demand for decades.</p>
+      <p lang="ar"><b>المبررات.</b> السمنة والسكري هما أبكر مؤشرات أمراض القلب والكلى والأمراض المزمنة الأخرى التي ستقود الطلب على المستشفيات لعقود.</p>
+      <p lang="en"><b>Approach.</b> Obesity is WHO's age-standardized share of adults with a BMI of 30 or more, so countries with different age structures compare fairly. Diabetes is the International Diabetes Federation's prevalence for ages 20–79, including undiagnosed cases, via the World Bank. Charts show each country's latest year against world and high-income averages.</p>
+      <p lang="ar"><b>النهج.</b> السمنة هي نسبة البالغين الذين يبلغ مؤشر كتلة الجسم لديهم 30 فأكثر، معيارية حسب العمر من منظمة الصحة العالمية، لتمكين المقارنة العادلة بين دول ذات تركيبات عمرية مختلفة. والسكري هو معدل الانتشار بين 20 و79 عامًا من الاتحاد الدولي للسكري، بما في ذلك الحالات غير المشخّصة، عبر البنك الدولي. وتعرض الرسوم أحدث سنة لكل دولة مقارنةً بمتوسطي العالم والدول مرتفعة الدخل.</p>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_obesity,wb_diab"></ul></div>
     <p class="gx-next"><button type="button" data-tab="financing"><span lang="en">Next: Financing and insurance →</span><span lang="ar">التالي: التمويل والتأمين ←</span></button></p>
@@ -551,6 +584,13 @@
         <ul lang="ar"><li>تفتح إصلاحات التأمين المجال أمام المستشفيات الخاصة وشركات التأمين وإدارة المطالبات والعقود القائمة على القيمة.</li><li>التخطيط لارتفاع الإنفاق الصحي كنسبة من الناتج المحلي مع شيخوخة السكان، فالتأمين يغيّر من يدفع لا حجم نمو التكاليف.</li><li>حيث ترتفع المدفوعات المباشرة، تحمي التغطية الأوسع حصول ذوي الدخل المحدود على الرعاية.</li></ul>
       </div>
     </div>
+    <div class="gx-methods">
+      <h3><span lang="en">Methods</span><span lang="ar">المنهجية</span></h3>
+      <p lang="en"><b>Rationale.</b> Who pays for care shapes what a system can afford as demand grows, and insurance reform decides how much of the system opens to private providers and insurers.</p>
+      <p lang="ar"><b>المبررات.</b> يحدد من يدفع تكلفة الرعاية ما يستطيع النظام تحمّله مع نمو الطلب، وتحدد إصلاحات التأمين مدى انفتاح النظام أمام مقدمي الخدمات وشركات التأمين من القطاع الخاص.</p>
+      <p lang="en"><b>Approach.</b> Spending figures come from WHO's Global Health Expenditure Database via the World Bank: current health spending as a share of GDP and per person in US dollars, and the government and out-of-pocket shares. Insurance reforms are compiled from laws, regulators and official announcements, with the status as last reviewed.</p>
+      <p lang="ar"><b>النهج.</b> أرقام الإنفاق من قاعدة بيانات الإنفاق الصحي العالمي لمنظمة الصحة العالمية عبر البنك الدولي: الإنفاق الصحي الجاري كنسبة من الناتج المحلي وللفرد بالدولار، والحصتان الحكومية والمدفوعة مباشرة. وجُمعت إصلاحات التأمين من القوانين والجهات التنظيمية والإعلانات الرسمية، مع الحالة وفق آخر مراجعة.</p>
+    </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_che,wb_chepc,wb_gov,wb_oop,sau_hstp25,uae_insurance,qat_opendata,kwt_dhaman,omn_dhamani,bhr_insurance,bhr_law"></ul></div>
     <p class="gx-next"><button type="button" data-tab="workforce"><span lang="en">Next: Workforce and localization →</span><span lang="ar">التالي: القوى العاملة والتوطين ←</span></button></p>
   </section>
@@ -615,6 +655,13 @@
         <ul lang="ar"><li>التعامل مع التمريض بوصفه القيد الأساسي: توسيع التعليم التمريضي وبرامج الاستبقاء والمسارات المهنية الجاذبة للمواطنين.</li><li>بناء مسارات توطين لأصحاب العمل في القطاع الخاص، حيث تنخفض نسبة المواطنين أكثر.</li><li>استخدام الشراكات بين القطاعين العام والخاص لإضافة أسرّة تتناسب مع سكان أكبر سنًا، لا مع التركيبة الشابة الحالية.</li></ul>
       </div>
     </div>
+    <div class="gx-methods">
+      <h3><span lang="en">Methods</span><span lang="ar">المنهجية</span></h3>
+      <p lang="en"><b>Rationale.</b> Staff and beds set how much care a system can deliver, and localization targets make the citizen share of the workforce a policy goal in its own right.</p>
+      <p lang="ar"><b>المبررات.</b> يحدد عدد الكوادر والأسرّة حجم الرعاية التي يستطيع النظام تقديمها، وتجعل أهداف التوطين نسبة المواطنين في القوى العاملة هدفًا سياسيًا بحد ذاته.</p>
+      <p lang="en"><b>Approach.</b> Physicians, nurses and midwives, and hospital beds per 1,000 people come from the World Bank and WHO, with the government's own figure shown where it differs. Citizens' shares come from each country's statistics office or health ministry, the GCC nursing benchmark from GCC-Stat, and the UAE's emirate detail from UAE.Stat.</p>
+      <p lang="ar"><b>النهج.</b> أعداد الأطباء والممرضين والقابلات وأسرّة المستشفيات لكل 1,000 نسمة من البنك الدولي ومنظمة الصحة العالمية، مع عرض الرقم الحكومي حيث يختلف. ونسب المواطنين من جهاز الإحصاء أو وزارة الصحة في كل دولة، والمعيار الخليجي للتمريض من المركز الإحصائي الخليجي، وتفاصيل الإمارات حسب الإمارة من منصة UAE.Stat.</p>
+    </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_phys,wb_nurse,wb_beds,sau_gastat23,sau_glmm,uae_fcsc,kwt_csb,omn_ncsi,gccstat_nurses,qat_opendata,bhr_moh"></ul></div>
     <p class="gx-next"><button type="button" data-tab="outlook"><span lang="en">Next: Outlook 2040 →</span><span lang="ar">التالي: آفاق 2040 ←</span></button></p>
   </section>
@@ -678,6 +725,13 @@
         <ul lang="en"><li>Start nurse training and hospital capacity plans now. With lead times of 5–10 years, 2040 capacity is decided this decade.</li><li>Build geriatric, chronic-disease and long-term care capacity first where ageing adds most: Bahrain, Saudi Arabia and Kuwait.</li><li>Treat prevention as a health and cost strategy, not a substitute for new capacity: it avoids hundreds of thousands of diabetes cases but does not remove the need to build.</li><li>Other Gulf states could publish 2040 workforce and bed projections, as Oman does, to anchor investment and training plans.</li></ul>
         <ul lang="ar"><li>البدء الآن في خطط تدريب الممرضين والطاقة الاستيعابية للمستشفيات، فمع مهل تتراوح بين 5 و10 سنوات تُحسم طاقة 2040 خلال هذا العقد.</li><li>بناء طاقة رعاية كبار السن والأمراض المزمنة والرعاية طويلة الأمد أولًا حيث تضيف الشيخوخة أكثر: البحرين والسعودية والكويت.</li><li>التعامل مع الوقاية بوصفها استراتيجية للصحة والتكلفة لا بديلًا عن الطاقة الجديدة: فهي تمنع مئات الآلاف من حالات السكري لكنها لا تلغي الحاجة إلى البناء.</li><li>يمكن لدول الخليج الأخرى نشر توقعات للقوى العاملة والأسرّة حتى 2040، كما تفعل عُمان، لتوجيه خطط الاستثمار والتدريب.</li></ul>
       </div>
+    </div>
+    <div class="gx-methods">
+      <h3><span lang="en">Methods</span><span lang="ar">المنهجية</span></h3>
+      <p lang="en"><b>Rationale.</b> Hospitals and training programmes take 5–10 years to deliver, so a simple, transparent estimate of 2040 needs is more useful now than a precise forecast later.</p>
+      <p lang="ar"><b>المبررات.</b> يستغرق بناء المستشفيات وبرامج التدريب ما بين 5 و10 سنوات، لذا فإن تقديرًا بسيطًا وشفافًا لاحتياجات 2040 أكثر فائدة الآن من تنبؤ دقيق لاحقًا.</p>
+      <p lang="en"><b>Approach.</b> Demand growth multiplies population growth by the change in hospital use per person as the age mix shifts (World Bank projections by five-year age group, weighted by hospital bed-days by age). Capacity needed applies that growth to today's ratio times the 2024 population. The prevention scenario links a fall in obesity to less diabetes, and less diabetes to less use of care. The Oman check applies the same growth to Oman's own 2025 figures.</p>
+      <p lang="ar"><b>النهج.</b> يُحسب نمو الطلب بضرب نمو السكان في التغير في استخدام المستشفيات للفرد مع تغير التركيبة العمرية (توقعات البنك الدولي حسب الفئات العمرية الخمسية، مرجّحة بأيام الإقامة في المستشفيات حسب العمر). وتُحسب الطاقة المطلوبة بتطبيق هذا النمو على النسبة الحالية مضروبة في عدد سكان 2024. ويربط سيناريو الوقاية انخفاض السمنة بانخفاض السكري، وانخفاض السكري بانخفاض استخدام الرعاية. وتطبق مقارنة عُمان النمو نفسه على أرقام عُمان لعام 2025.</p>
     </div>
     <div class="gx-al">
       <h3><span lang="en">Assumptions and limitations</span><span lang="ar">الافتراضات وحدود البيانات</span></h3>
@@ -763,6 +817,13 @@
         <ul lang="en"><li>State the source and method behind every KPI in board papers, investor materials and international submissions.</li><li>Work with WHO and the World Bank to reconcile the largest gaps, such as Bahrain's workforce and Saudi road deaths.</li><li>Where the series disagree, show both figures side by side rather than choosing one.</li></ul>
         <ul lang="ar"><li>ذكر مصدر كل مؤشر وطريقة احتسابه في أوراق مجالس الإدارة ومواد المستثمرين والتقارير الدولية.</li><li>العمل مع منظمة الصحة العالمية والبنك الدولي لمواءمة الفجوات الأكبر، مثل القوى العاملة في البحرين ووفيات الطرق في السعودية.</li><li>حيث تختلف السلاسل، عرض الرقمين جنبًا إلى جنب بدل اختيار أحدهما.</li></ul>
       </div>
+    </div>
+    <div class="gx-methods">
+      <h3><span lang="en">Methods</span><span lang="ar">المنهجية</span></h3>
+      <p lang="en"><b>Rationale.</b> Governments report national figures while the World Bank and WHO model theirs for comparability; anyone quoting Gulf health data needs to know which series a number comes from and how far apart they are.</p>
+      <p lang="ar"><b>المبررات.</b> تنشر الحكومات أرقامًا وطنية بينما يُنمذج البنك الدولي ومنظمة الصحة العالمية أرقامهما لإتاحة المقارنة؛ ويحتاج كل من يستشهد ببيانات الصحة الخليجية إلى معرفة السلسلة التي يأتي منها الرقم ومدى الفارق بينهما.</p>
+      <p lang="en"><b>Approach.</b> Official figures come from national statistics offices, health ministries and programme reports, matched to the same measure and, where possible, the same year as the international series. Differences are shown side by side, not reconciled.</p>
+      <p lang="ar"><b>النهج.</b> الأرقام الرسمية من أجهزة الإحصاء الوطنية ووزارات الصحة وتقارير البرامج، مع مطابقتها بالمؤشر نفسه، وبالسنة نفسها حيثما أمكن، في السلسلة الدولية. وتُعرض الفروق جنبًا إلى جنب دون محاولة التوفيق بينها.</p>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,wb_phys,wb_nurse,wb_road,wb_ncd,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
     <p class="gx-next"><button type="button" data-tab="snapshot"><span lang="en">Back to the start: At a glance</span><span lang="ar">العودة إلى البداية: نظرة سريعة</span></button></p>
