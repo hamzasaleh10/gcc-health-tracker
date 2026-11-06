@@ -35,6 +35,18 @@
 .gx-ctx{display:grid;gap:var(--cds-gap-xs);max-width:60rem}
 .gx-ctx p{margin:0;font-size:var(--cds-font-size-body);color:var(--color-fg-muted);line-height:1.55}
 .gx-ctx b{color:var(--color-fg);font-weight:600}
+.gx-io{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:var(--cds-gap-md)}
+.gx-io-col{background:var(--color-panel);border:1px solid var(--color-border-line);border-top:3px solid var(--chart-1);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg)}
+.gx-io-opp{border-top-color:var(--chart-3)}
+.gx-io h3{margin:0 0 var(--cds-gap-xs);font-size:var(--cds-font-size-body);font-weight:600}
+.gx-io ul{margin:0;padding-inline-start:1.1rem;display:grid;gap:6px;font-size:var(--cds-font-size-body);line-height:1.5}
+.gx.is-ar .gx-io ul{line-height:1.8}
+.gx-src{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gx-src h3{margin:0 0 4px;font-size:var(--cds-font-size-caption);font-weight:600;color:var(--color-fg);text-transform:uppercase;letter-spacing:.04em}
+.gx.is-ar .gx-src h3{text-transform:none;letter-spacing:0}
+.gx-src ul{margin:0;padding-inline-start:1.1rem;display:grid;gap:2px;line-height:1.5}
+.gx-src a{color:var(--chart-1);overflow-wrap:anywhere}
+
 .gx-find{margin:0;max-width:60rem;font-size:var(--cds-font-size-body);line-height:1.55;padding:var(--cds-pad-sm) var(--cds-pad-md);border-inline-start:3px solid var(--chart-1);background:var(--color-panel);border-radius:0 var(--cds-radius) var(--cds-radius) 0}
 .gx.is-ar .gx-find{border-radius:var(--cds-radius) 0 0 var(--cds-radius)}
 .gx-find b{font-weight:600}
@@ -167,6 +179,18 @@
       <p lang="en"><b>Why it matters.</b> It gives a one-screen read on where a health system stands before you go into the detail. Pick another focus country above to compare.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> يقدّم صورة سريعة في شاشة واحدة عن وضع النظام الصحي قبل الدخول في التفاصيل. اختر دولة أخرى في الأعلى للمقارنة.</p>
     </div>
+    <div class="gx-io">
+      <div class="gx-io-col gx-io-ins">
+        <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
+        <ul lang="en"><li>Most Gulf states now match high-income countries on how long people live. The red statuses cluster on chronic disease and staffing.</li><li>Where governments publish their own figures, they can differ from international estimates in either direction, as the orange lines show.</li></ul>
+        <ul lang="ar"><li>تضاهي معظم دول الخليج الآن الدول مرتفعة الدخل في متوسط العمر، بينما تتركز الحالات الحمراء في الأمراض المزمنة والكوادر الصحية.</li><li>حيث تنشر الحكومات أرقامها الخاصة، قد تختلف عن التقديرات الدولية في أي اتجاه، كما تُظهر الأسطر البرتقالية.</li></ul>
+      </div>
+      <div class="gx-io-col gx-io-opp">
+        <h3><span lang="en">Opportunities</span><span lang="ar">الفرص</span></h3>
+        <ul lang="en"><li>Use the statuses to choose the two or three measures to put in front of leadership first.</li><li>Switch focus countries to find a Gulf peer that does better on a measure, and learn from its approach.</li></ul>
+        <ul lang="ar"><li>استخدم الحالات لاختيار مؤشرين أو ثلاثة تُعرض على القيادة أولًا.</li><li>بدّل الدولة المختارة للعثور على دولة خليجية نظيرة تتفوق في مؤشر ما، والاستفادة من تجربتها.</li></ul>
+      </div>
+    </div>
     <div class="gx-tiles">
       <div class="gx-tile">
         <span class="t"><span lang="en">Life expectancy at birth</span><span lang="ar">العمر المتوقع عند الولادة</span></span>
@@ -258,6 +282,7 @@
       </div>
     </div>
     <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Where the government publishes its own figure, it appears in orange; the two can differ (see Official figures vs international estimates). Status compares the international figure with the high-income average, which may be for a different year; within 5% counts as near. Health spending has no better or worse direction, so its status only says above or below.</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وحيث تنشر الحكومة رقمها الخاص يظهر باللون البرتقالي، وقد يختلف الرقمان (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية). وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، وقد يكون لسنة مختلفة، ويُعد الفارق ضمن 5% قريبًا. ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p></div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,who_hale,wb_ncd,who_obesity,wb_diab,wb_che,wb_phys,wb_nurse,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
   </section>
 
   <section class="gx-sec" id="outcomes">
@@ -268,8 +293,18 @@
       <p lang="en"><b>Why it matters.</b> Life expectancy shows how far a system has come. Premature chronic-disease deaths show the work still ahead, and they are the outcome prevention spending is meant to move.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> يبيّن العمر المتوقع المسافة التي قطعها النظام الصحي، بينما تبيّن الوفيات المبكرة بالأمراض المزمنة العمل المتبقي، وهي النتيجة التي يُفترض أن يغيّرها الإنفاق على الوقاية.</p>
     </div>
-    <p class="gx-find" lang="en"><b>Key finding:</b> Longevity has climbed toward high-income levels, but not every state is on course for the 2030 goal. The table below gives each country's projected range.</p>
-    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> ارتفع متوسط العمر المتوقع نحو مستويات الدول مرتفعة الدخل، لكن ليست كل الدول على المسار الصحيح لتحقيق هدف 2030. ويعرض الجدول أدناه النطاق المتوقع لكل دولة.</p>
+    <div class="gx-io">
+      <div class="gx-io-col gx-io-ins">
+        <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
+        <ul lang="en"><li>Four of the six states exceed the high-income average for life expectancy on World Bank data, though official figures for Oman and Bahrain are lower.</li><li>On the 2015–2021 trend, Qatar and Oman are on track for the 2030 goal on premature chronic-disease deaths; Saudi Arabia, the UAE and Bahrain are off track, and Kuwait is uncertain.</li><li>The UAE moved the wrong way, from 8.4% in 2015 to 11.6% in 2021, mostly during 2020–21.</li></ul>
+        <ul lang="ar"><li>تتجاوز أربع من الدول الست متوسط العمر المتوقع في الدول مرتفعة الدخل وفق بيانات البنك الدولي، وإن كانت الأرقام الرسمية لعُمان والبحرين أقل.</li><li>وفق اتجاه 2015–2021، تسير قطر وعُمان على المسار الصحيح لتحقيق هدف 2030 في الوفيات المبكرة بالأمراض المزمنة، بينما تحيد عنه السعودية والإمارات والبحرين، ويبقى وضع الكويت غير محسوم.</li><li>تحركت الإمارات في الاتجاه المعاكس، من 8.4% في 2015 إلى 11.6% في 2021، ومعظم ذلك خلال 2020–2021.</li></ul>
+      </div>
+      <div class="gx-io-col gx-io-opp">
+        <h3><span lang="en">Opportunities</span><span lang="ar">الفرص</span></h3>
+        <ul lang="en"><li>Shift investment from extending life to preventing early death: screening and control of high blood pressure, cholesterol and diabetes in primary care.</li><li>For the off-track states, a focused cardiovascular and diabetes program offers the largest gains toward 2030.</li><li>Confirm these trends with post-pandemic data as WHO publishes it.</li></ul>
+        <ul lang="ar"><li>توجيه الاستثمار من إطالة العمر إلى منع الوفاة المبكرة: الكشف المبكر عن ارتفاع ضغط الدم والكوليسترول والسكري والسيطرة عليها في الرعاية الأولية.</li><li>بالنسبة للدول الحائدة عن المسار، يحقق برنامج مركّز لأمراض القلب والسكري أكبر المكاسب نحو 2030.</li><li>تأكيد هذه الاتجاهات ببيانات ما بعد الجائحة عند نشرها من منظمة الصحة العالمية.</li></ul>
+      </div>
+    </div>
     <div class="gx-grid">
       <div class="gx-card" id="life-exp">
         <h3><span lang="en">Life expectancy at birth</span><span lang="ar">العمر المتوقع عند الولادة</span></h3>
@@ -322,6 +357,7 @@
       </div>
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Seven data points and a straight line: the projection ignores population ageing and policy change, and the range reflects only year-to-year noise. Pandemic years matter: fitted on 2015–2019 only, Oman moves from on track to uncertain. Saudi Arabia reports a different official measure, a chronic-disease death rate that fell from 558 to 366 between 2019 and 2024 (see Official figures vs international estimates).</p><p lang="ar"><b>حدود البيانات.</b> سبع نقاط بيانات وخط مستقيم: يتجاهل الإسقاط شيخوخة السكان وتغير السياسات، ويعكس النطاق التذبذب السنوي فقط. ولسنوات الجائحة أثر: عند الاقتصار على 2015–2019 تنتقل عُمان من «على المسار» إلى «غير محسوم». وتنشر السعودية مقياسًا رسميًا مختلفًا هو معدل الوفيات بالأمراض غير المعدية، الذي انخفض من 558 إلى 366 بين 2019 و2024 (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></div>
     </div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,wb_ncd,un_sdg,sau_hstp25,omn_ncsi,bhr_moh"></ul></div>
   </section>
 
   <section class="gx-sec" id="risk">
@@ -332,8 +368,18 @@
       <p lang="en"><b>Why it matters.</b> These two conditions drive most of the region's chronic disease burden and future costs. They are the earliest signal of the demand heading toward hospitals, and the main target for prevention.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> تقف هاتان الحالتان وراء معظم عبء الأمراض المزمنة وتكاليفها المستقبلية في المنطقة، وهما أبكر مؤشر على الطلب المتجه نحو المستشفيات، والهدف الرئيسي لبرامج الوقاية.</p>
     </div>
-    <p class="gx-find" lang="en"><b>Key finding:</b> Every Gulf state sits far above the world average on both.</p>
-    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> تتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في كليهما.</p>
+    <div class="gx-io">
+      <div class="gx-io-col gx-io-ins">
+        <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
+        <ul lang="en"><li>Every Gulf state sits far above the world average on both obesity and diabetes.</li><li>Obesity is above 40% in Qatar, Kuwait and Saudi Arabia, on a par with the United States.</li><li>Diabetes is more than double the high-income average in five of the six states.</li></ul>
+        <ul lang="ar"><li>تتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في السمنة والسكري معًا.</li><li>تتجاوز السمنة 40% في قطر والكويت والسعودية، على قدم المساواة مع الولايات المتحدة.</li><li>يزيد انتشار السكري على ضعف متوسط الدول مرتفعة الدخل في خمس من الدول الست.</li></ul>
+      </div>
+      <div class="gx-io-col gx-io-opp">
+        <h3><span lang="en">Opportunities</span><span lang="ar">الفرص</span></h3>
+        <ul lang="en"><li>Population-wide prevention: healthier food environments, school and workplace programs, and sustained public campaigns.</li><li>Earlier detection and digital diabetes management to prevent complications such as kidney failure and heart disease.</li><li>Plan dialysis, cardiology and endocrinology capacity now for the demand these risks will create over the next 10–20 years.</li></ul>
+        <ul lang="ar"><li>الوقاية على مستوى السكان: بيئات غذائية صحية أكثر، وبرامج في المدارس وأماكن العمل، وحملات توعية مستمرة.</li><li>الكشف المبكر والإدارة الرقمية لمرض السكري لمنع مضاعفاته مثل الفشل الكلوي وأمراض القلب.</li><li>التخطيط من الآن لطاقة الغسيل الكلوي وأمراض القلب والغدد الصماء لمواجهة الطلب الذي ستولده هذه المخاطر خلال 10–20 عامًا.</li></ul>
+      </div>
+    </div>
     <div class="gx-grid">
       <div class="gx-card" id="obesity">
         <h3><span lang="en">Adult obesity</span><span lang="ar">السمنة لدى البالغين</span></h3>
@@ -350,6 +396,7 @@
         <div class="gx-limits"><p lang="en"><b>Limitations.</b> Modelled estimates from the International Diabetes Federation, updated every few years and including undiagnosed cases. They are not registry counts.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات مُنمذجة من الاتحاد الدولي للسكري تُحدَّث كل بضع سنوات وتشمل الحالات غير المشخصة، وليست أعدادًا من السجلات.</p></div>
       </div>
     </div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_obesity,wb_diab"></ul></div>
   </section>
 
   <section class="gx-sec" id="financing">
@@ -360,8 +407,18 @@
       <p lang="en"><b>Why it matters.</b> How a system is funded shapes what it can afford as demand grows. Insurance reforms shift cost from government budgets to employers and insurers, and open the system to private providers and investment.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> يحدد نموذج التمويل ما يستطيع النظام تحمّله مع تزايد الطلب. وتنقل إصلاحات التأمين التكلفة من الميزانيات الحكومية إلى أصحاب العمل وشركات التأمين، وتفتح المجال أمام مقدمي الخدمات من القطاع الخاص والاستثمار.</p>
     </div>
-    <p class="gx-find" lang="en"><b>Key finding:</b> Gulf systems are mostly government-funded and spend a smaller share of GDP than high-income peers. All six are moving expatriates, and increasingly citizens, onto insurance.</p>
-    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> تعتمد الأنظمة الخليجية في معظمها على التمويل الحكومي، وتنفق حصة من الناتج المحلي الإجمالي أقل من نظيراتها مرتفعة الدخل. وتعمل الدول الست جميعها على نقل الوافدين، والمواطنين بشكل متزايد، إلى التأمين الصحي.</p>
+    <div class="gx-io">
+      <div class="gx-io-col gx-io-ins">
+        <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
+        <ul lang="en"><li>Gulf states spend 2.5–5.7% of GDP on health, against 12.5% in high-income countries, and governments fund 59–89% of it.</li><li>Kuwait and Oman are the most state-reliant, at over 85% government-funded. Bahrain's households pay the most out of pocket, about twice the high-income share.</li><li>All six are moving expatriates, and increasingly citizens, onto mandatory health insurance.</li></ul>
+        <ul lang="ar"><li>تنفق دول الخليج 2.5–5.7% من الناتج المحلي الإجمالي على الصحة، مقابل 12.5% في الدول مرتفعة الدخل، وتموّل الحكومات 59–89% منه.</li><li>الكويت وعُمان الأكثر اعتمادًا على الدولة، إذ تتجاوز الحصة الحكومية 85%. وتدفع الأسر في البحرين أعلى نسبة من أموالها الخاصة، نحو ضعف حصة الدول مرتفعة الدخل.</li><li>تعمل الدول الست جميعها على نقل الوافدين، والمواطنين بشكل متزايد، إلى التأمين الصحي الإلزامي.</li></ul>
+      </div>
+      <div class="gx-io-col gx-io-opp">
+        <h3><span lang="en">Opportunities</span><span lang="ar">الفرص</span></h3>
+        <ul lang="en"><li>Insurance reform opens room for private hospitals, insurers, claims administrators and value-based contracts.</li><li>Plan for health spending to rise as a share of GDP as populations age. Insurance changes who pays, not whether costs grow.</li><li>Where out-of-pocket spending is high, wider coverage protects access for lower-income residents.</li></ul>
+        <ul lang="ar"><li>تفتح إصلاحات التأمين المجال أمام المستشفيات الخاصة وشركات التأمين وإدارة المطالبات والعقود القائمة على القيمة.</li><li>التخطيط لارتفاع الإنفاق الصحي كنسبة من الناتج المحلي مع شيخوخة السكان، فالتأمين يغيّر من يدفع لا حجم نمو التكاليف.</li><li>حيث ترتفع المدفوعات المباشرة، تحمي التغطية الأوسع حصول ذوي الدخل المحدود على الرعاية.</li></ul>
+      </div>
+    </div>
     <div class="gx-grid">
       <div class="gx-card" id="gov-share">
         <h3><span lang="en">Government share of health spending</span><span lang="ar">الحصة الحكومية من الإنفاق الصحي</span></h3>
@@ -421,6 +478,7 @@
       </div>
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Coverage figures aren't comparable between countries: mandates target expatriates and private-sector workers, while most citizens use free public care (Saudi Arabia is changing this). Status comes from official announcements and news reports and can change quickly; current status in Kuwait and Bahrain could not be confirmed.</p><p lang="ar"><b>حدود البيانات.</b> أرقام التغطية غير قابلة للمقارنة بين الدول: تستهدف الأنظمة الإلزامية الوافدين والعاملين في القطاع الخاص، بينما يتلقى معظم المواطنين رعاية عامة مجانية (والسعودية تغيّر ذلك). وتستند الحالة إلى إعلانات رسمية وتقارير إخبارية قد تتغير سريعًا، ولم يتسنَّ تأكيد الوضع الحالي في الكويت والبحرين.</p></div>
     </div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_che,wb_chepc,wb_gov,wb_oop,sau_hstp25,uae_insurance,qat_opendata,kwt_dhaman,omn_dhamani,bhr_insurance,bhr_law"></ul></div>
   </section>
 
   <section class="gx-sec" id="workforce">
@@ -431,8 +489,18 @@
       <p lang="en"><b>Why it matters.</b> Staff and beds set how much care a system can deliver. Localization goals mean countries must train more citizens, not only recruit more clinicians from abroad.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> يحدد عدد الكوادر والأسرّة حجم الرعاية التي يستطيع النظام تقديمها. وتعني أهداف التوطين أن على الدول تدريب مزيد من المواطنين، لا الاكتفاء باستقدام مزيد من الكوادر من الخارج.</p>
     </div>
-    <p class="gx-find" lang="en"><b>Key finding:</b> Physician supply is close to high-income levels in several states, but nurses and beds lag well behind. Nursing is also where localization lags most: citizens are under 5% of nurses in the UAE and Kuwait.</p>
-    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> يقترب عدد الأطباء من مستويات الدول مرتفعة الدخل في عدة دول، لكن أعداد الممرضين والأسرّة متأخرة كثيرًا. والتمريض أيضًا هو المجال الأكثر تأخرًا في التوطين: يشكل المواطنون أقل من 5% من الممرضين في الإمارات والكويت.</p>
+    <div class="gx-io">
+      <div class="gx-io-col gx-io-ins">
+        <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
+        <ul lang="en"><li>Physician supply is near high-income levels in several states, but nurses are 17–56% below the benchmark and hospital beds further still.</li><li>Citizens are under 5% of nurses in the UAE and Kuwait, against 44% in Saudi Arabia and 47% in Oman. Private-sector localization lags everywhere.</li><li>Bahrain's World Bank workforce figures appear incomplete next to its Ministry of Health statistics.</li></ul>
+        <ul lang="ar"><li>يقترب عدد الأطباء من مستويات الدول مرتفعة الدخل في عدة دول، لكن أعداد الممرضين أقل من المعيار بنسبة 17–56%، والأسرّة أقل من ذلك بكثير.</li><li>يشكل المواطنون أقل من 5% من الممرضين في الإمارات والكويت، مقابل 44% في السعودية و47% في عُمان. ويتأخر التوطين في القطاع الخاص في كل الدول.</li><li>تبدو أرقام القوى العاملة للبحرين لدى البنك الدولي غير مكتملة مقارنةً بإحصاءات وزارة الصحة.</li></ul>
+      </div>
+      <div class="gx-io-col gx-io-opp">
+        <h3><span lang="en">Opportunities</span><span lang="ar">الفرص</span></h3>
+        <ul lang="en"><li>Treat nursing as the binding constraint: expand nursing education, retention and career paths that attract citizens.</li><li>Build localization pipelines for private-sector employers, where citizens' share is lowest.</li><li>Use public-private partnerships to add bed capacity sized for an older population, not today's young one.</li></ul>
+        <ul lang="ar"><li>التعامل مع التمريض بوصفه القيد الأساسي: توسيع التعليم التمريضي وبرامج الاستبقاء والمسارات المهنية الجاذبة للمواطنين.</li><li>بناء مسارات توطين لأصحاب العمل في القطاع الخاص، حيث تنخفض نسبة المواطنين أكثر.</li><li>استخدام الشراكات بين القطاعين العام والخاص لإضافة أسرّة تتناسب مع سكان أكبر سنًا، لا مع التركيبة الشابة الحالية.</li></ul>
+      </div>
+    </div>
     <div class="gx-card" id="capacity">
       <h3><span lang="en">Physicians, nurses and hospital beds per 1,000 people</span><span lang="ar">الأطباء والممرضون وأسرّة المستشفيات لكل 1,000 نسمة</span></h3>
       <p class="n" lang="en">Dots: World Bank, latest year each country reported (2020–2023). Hollow rings: the government's own figure, where it differs. The dashed tick marks the high-income average; hover for years.</p>
@@ -461,6 +529,7 @@
       </div>
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each country's own statistics, with different years (2022–2025) and scopes: Saudi private-sector nurses come from the 2024 ministry yearbook as compiled by GLMM; Oman publishes rounded percentages; Kuwait's private sector includes clinics. No nationality split was found for Qatar or Bahrain. The GCC nurse benchmark (30.3%, 2024) is GCC-Stat's figure as reported in the press.</p><p lang="ar"><b>حدود البيانات.</b> إحصاءات كل دولة بسنوات (2022–2025) ونطاقات مختلفة: أرقام ممرضي القطاع الخاص في السعودية من الكتاب الإحصائي لوزارة الصحة 2024 بتجميع برنامج GLMM؛ وتنشر عُمان نسبًا مقرّبة؛ ويشمل القطاع الخاص في الكويت العيادات. ولم نجد توزيعًا حسب الجنسية لقطر أو البحرين. ومعيار الممرضين الخليجي (30.3%، 2024) هو رقم المركز الإحصائي الخليجي كما نشرته الصحافة.</p></div>
     </div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_phys,wb_nurse,wb_beds,sau_gastat23,sau_glmm,uae_fcsc,kwt_csb,omn_ncsi,gccstat_nurses,qat_opendata,bhr_moh"></ul></div>
   </section>
 
 
@@ -472,8 +541,18 @@
       <p lang="en"><b>Why it matters.</b> Governments judge their health systems against their own targets, so this is the scorecard ministries and health leaders are held to.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> تقيّم الحكومات أنظمتها الصحية وفق مستهدفاتها الخاصة، لذا فهذه هي بطاقة الأداء التي تُحاسَب عليها الوزارات والقيادات الصحية.</p>
     </div>
-    <p class="gx-find" lang="en"><b>Key finding:</b> Saudi Arabia, Oman and the UAE publish numeric targets; Qatar's, Kuwait's and Bahrain's published health goals are mostly qualitative.</p>
-    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> تنشر السعودية وعُمان والإمارات مستهدفات رقمية، بينما تغلب الصبغة النوعية على الأهداف الصحية المعلنة لقطر والكويت والبحرين.</p>
+    <div class="gx-io">
+      <div class="gx-io-col gx-io-ins">
+        <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
+        <ul lang="en"><li>Saudi Arabia met its 2025 nursing target and is close on life expectancy (79.7 against a 2030 target of 80, official). Its private-sector goal is furthest off.</li><li>Oman has passed its 2030 healthy life expectancy target on WHO's latest data, partly a post-pandemic rebound.</li><li>Qatar, Kuwait and Bahrain publish mostly qualitative health goals, which makes progress hard to track publicly.</li></ul>
+        <ul lang="ar"><li>حققت السعودية مستهدف التمريض لعام 2025 وتقترب من مستهدف العمر المتوقع (79.7 مقابل 80 بحلول 2030، رسميًا)، بينما يبقى مستهدف القطاع الخاص الأبعد.</li><li>تجاوزت عُمان مستهدف العمر الصحي المتوقع لعام 2030 وفق أحدث بيانات منظمة الصحة العالمية، ويعود ذلك جزئيًا إلى التعافي بعد الجائحة.</li><li>تنشر قطر والكويت والبحرين أهدافًا صحية نوعية في معظمها، ما يصعّب تتبع التقدم علنًا.</li></ul>
+      </div>
+      <div class="gx-io-col gx-io-opp">
+        <h3><span lang="en">Opportunities</span><span lang="ar">الفرص</span></h3>
+        <ul lang="en"><li>Numeric targets with published baselines would let more states show measurable progress.</li><li>Pair national KPIs with a WHO or World Bank series so progress can be compared across countries.</li><li>The largest gaps, such as Saudi Arabia's private-sector share, are where operators and investors can contribute most.</li></ul>
+        <ul lang="ar"><li>إن نشر مستهدفات رقمية بخطوط أساس معلنة سيمكّن مزيدًا من الدول من إظهار تقدم قابل للقياس.</li><li>ربط المؤشرات الوطنية بسلسلة من منظمة الصحة العالمية أو البنك الدولي لإتاحة مقارنة التقدم بين الدول.</li><li>الفجوات الأكبر، مثل حصة القطاع الخاص في السعودية، هي حيث يمكن للمشغلين والمستثمرين الإسهام أكثر.</li></ul>
+      </div>
+    </div>
     <div class="gx-card" id="hale">
       <h3><span lang="en">Healthy life expectancy</span><span lang="ar">العمر الصحي المتوقع</span></h3>
       <p class="n" lang="en">Years a newborn can expect to live in good health, latest year (WHO). Oman targets 67 by 2030 and 70 by 2040.</p>
@@ -499,6 +578,7 @@
       </div>
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Goals as published by each government; some come from ministers' statements reported in the press rather than formal plans. "Latest" uses official figures where they exist. Status is this tracker's simple comparison, not an official assessment.</p><p lang="ar"><b>حدود البيانات.</b> الأهداف كما أعلنتها كل حكومة، وبعضها مأخوذ من تصريحات وزارية نشرتها الصحافة لا من خطط رسمية. يستخدم عمود «الأحدث» الأرقام الرسمية حيثما وُجدت. والحالة مقارنة مبسطة من هذا المتتبع وليست تقييمًا رسميًا.</p></div>
     </div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_hale,sau_hstp25,sau_private,sau_quota,omn_hale,uae_top15,uae_emiratisation,qat_nhs,kwt_vision,bhr_moh2030"></ul></div>
   </section>
 
   <section class="gx-sec" id="official">
@@ -509,8 +589,18 @@
       <p lang="en"><b>Why it matters.</b> Governments report national figures, while international bodies model theirs so countries can be compared. Anyone quoting Gulf health data needs to know which series a number comes from.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> تنشر الحكومات أرقامًا وطنية، بينما تُنمذج الجهات الدولية أرقامها لإتاحة المقارنة بين الدول. لذا يحتاج كل من يستشهد ببيانات الصحة الخليجية إلى معرفة السلسلة التي يأتي منها الرقم.</p>
     </div>
-    <p class="gx-find" lang="en"><b>Key finding:</b> The two differ in both directions, so neither is consistently higher.</p>
-    <p class="gx-find" lang="ar"><b>أبرز النتائج:</b> يختلف الرقمان في الاتجاهين، فلا يكون أحدهما أعلى دائمًا.</p>
+    <div class="gx-io">
+      <div class="gx-io-col gx-io-ins">
+        <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
+        <ul lang="en"><li>The gaps run in both directions: Saudi Arabia's official life expectancy is above the World Bank's, while Oman's and Bahrain's are below.</li><li>For 2019, Saudi Arabia's official road deaths were 16.8 per 100,000, against WHO's modelled 35.9.</li><li>Bahrain's Ministry of Health reports two to four times the nurses and physicians per person that the World Bank series shows.</li></ul>
+        <ul lang="ar"><li>تسير الفجوات في الاتجاهين: العمر المتوقع الرسمي في السعودية أعلى من رقم البنك الدولي، بينما رقما عُمان والبحرين أدنى منه.</li><li>في 2019، بلغت وفيات حوادث الطرق الرسمية في السعودية 16.8 لكل 100,000 نسمة، مقابل 35.9 في تقدير منظمة الصحة العالمية.</li><li>تُظهر أرقام وزارة الصحة البحرينية ما بين ضعفين وأربعة أضعاف عدد الممرضين والأطباء لكل نسمة مقارنةً بسلسلة البنك الدولي.</li></ul>
+      </div>
+      <div class="gx-io-col gx-io-opp">
+        <h3><span lang="en">Opportunities</span><span lang="ar">الفرص</span></h3>
+        <ul lang="en"><li>State the source and method behind every KPI in board papers, investor materials and international submissions.</li><li>Work with WHO and the World Bank to reconcile the largest gaps, such as Bahrain's workforce and Saudi road deaths.</li><li>Where the series disagree, show both figures side by side rather than choosing one.</li></ul>
+        <ul lang="ar"><li>ذكر مصدر كل مؤشر وطريقة احتسابه في أوراق مجالس الإدارة ومواد المستثمرين والتقارير الدولية.</li><li>العمل مع منظمة الصحة العالمية والبنك الدولي لمواءمة الفجوات الأكبر، مثل القوى العاملة في البحرين ووفيات الطرق في السعودية.</li><li>حيث تختلف السلاسل، عرض الرقمين جنبًا إلى جنب بدل اختيار أحدهما.</li></ul>
+      </div>
+    </div>
     <div class="gx-card" id="official-table">
       <h3><span lang="en">Where national and international figures differ</span><span lang="ar">حيث تختلف الأرقام الوطنية عن الدولية</span></h3>
       <div class="gx-tablewrap">
@@ -565,6 +655,7 @@
         <div class="gx-limits"><p lang="en"><b>Limitations.</b> These are different measures. The report does not define its rate (likely deaths per 100,000), and the WHO series ends in 2021. Read them as two lenses, not a contradiction.</p><p lang="ar"><b>حدود البيانات.</b> هذان مقياسان مختلفان؛ إذ لا يعرّف التقرير معدله (يُرجّح أنه وفيات لكل 100,000 نسمة)، وتنتهي سلسلة المنظمة في 2021. يُقرآن كزاويتين مختلفتين لا كتناقض.</p></div>
       </div>
     </div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,wb_phys,wb_nurse,wb_road,wb_ncd,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
   </section>
 
   <footer class="gx-foot" id="method">
@@ -1016,6 +1107,33 @@ dash.draw('vy', (el) => {
     const a = document.createElement('a'); a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
     a.textContent = lang() === 'ar' ? s.ar : s.en; return a;
   };
+  const WB = (code, en, ar) => ({en: 'World Bank WDI: ' + en, ar: 'مؤشرات التنمية العالمية للبنك الدولي: ' + ar, url: 'https://data.worldbank.org/indicator/' + code});
+  const INTL = {
+    wb_le: WB('SP.DYN.LE00.IN', 'Life expectancy at birth (UN Population Division)', 'العمر المتوقع عند الولادة (شعبة السكان في الأمم المتحدة)'),
+    wb_ncd: WB('SH.DYN.NCOM.ZS', 'Mortality from cardiovascular disease, cancer, diabetes or chronic respiratory disease, ages 30–70 (WHO)', 'الوفيات بأمراض القلب والسرطان والسكري والأمراض التنفسية المزمنة بين 30 و70 عامًا (منظمة الصحة العالمية)'),
+    wb_diab: WB('SH.STA.DIAB.ZS', 'Diabetes prevalence, ages 20–79 (International Diabetes Federation)', 'انتشار السكري بين 20 و79 عامًا (الاتحاد الدولي للسكري)'),
+    wb_che: WB('SH.XPD.CHEX.GD.ZS', 'Current health expenditure, % of GDP (WHO)', 'الإنفاق الصحي الجاري، % من الناتج المحلي الإجمالي (منظمة الصحة العالمية)'),
+    wb_chepc: WB('SH.XPD.CHEX.PC.CD', 'Current health expenditure per person, US$ (WHO)', 'الإنفاق الصحي الجاري للفرد بالدولار (منظمة الصحة العالمية)'),
+    wb_gov: WB('SH.XPD.GHED.CH.ZS', 'Government share of current health expenditure (WHO)', 'الحصة الحكومية من الإنفاق الصحي الجاري (منظمة الصحة العالمية)'),
+    wb_oop: WB('SH.XPD.OOPC.CH.ZS', 'Out-of-pocket share of current health expenditure (WHO)', 'حصة المدفوعات المباشرة من الإنفاق الصحي الجاري (منظمة الصحة العالمية)'),
+    wb_phys: WB('SH.MED.PHYS.ZS', 'Physicians per 1,000 people (WHO)', 'الأطباء لكل 1,000 نسمة (منظمة الصحة العالمية)'),
+    wb_nurse: WB('SH.MED.NUMW.P3', 'Nurses and midwives per 1,000 people (WHO)', 'الممرضون والقابلات لكل 1,000 نسمة (منظمة الصحة العالمية)'),
+    wb_beds: WB('SH.MED.BEDS.ZS', 'Hospital beds per 1,000 people (WHO, OECD)', 'أسرّة المستشفيات لكل 1,000 نسمة (منظمة الصحة العالمية، منظمة التعاون الاقتصادي والتنمية)'),
+    wb_road: WB('SH.STA.TRAF.P5', 'Road traffic deaths per 100,000 people (WHO)', 'وفيات حوادث الطرق لكل 100,000 نسمة (منظمة الصحة العالمية)'),
+    who_obesity: {en: 'WHO Global Health Observatory: Obesity among adults, age-standardized', ar: 'المرصد الصحي العالمي لمنظمة الصحة العالمية: السمنة لدى البالغين، معيارية حسب العمر', url: 'https://www.who.int/data/gho/data/indicators/indicator-details/GHO/prevalence-of-obesity-among-adults-bmi--30-(age-standardized-estimate)-(-)'},
+    who_hale: {en: 'WHO Global Health Observatory: Healthy life expectancy at birth', ar: 'المرصد الصحي العالمي لمنظمة الصحة العالمية: العمر الصحي المتوقع عند الولادة', url: 'https://www.who.int/data/gho/data/indicators/indicator-details/GHO/gho-ghe-hale-healthy-life-expectancy-at-birth'},
+    un_sdg: {en: 'United Nations: Sustainable Development Goal 3, target 3.4', ar: 'الأمم المتحدة: الهدف 3 من أهداف التنمية المستدامة، الغاية 3.4', url: 'https://sdgs.un.org/goals/goal3'},
+  };
+  dash.draw('srclist', (ul) => {
+    ul.replaceChildren();
+    const ns = nat().status === 'ok' ? nat().data.sources : {};
+    ul.dataset.keys.split(',').forEach((k) => {
+      const s = INTL[k] || ns[k]; if (!s) return;
+      const li = document.createElement('li'), a = document.createElement('a');
+      a.href = s.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = lang() === 'ar' ? s.ar : s.en;
+      li.appendChild(a); ul.appendChild(li);
+    });
+  });
   const cell = (tr, v, cls) => { const td = document.createElement('td'); if (v instanceof Node) td.appendChild(v); else td.textContent = v; if (cls) td.className = cls; tr.appendChild(td); return td; };
   const empty = (tb) => { tb.replaceChildren(); return nat().status !== 'ok'; };
   const f1 = d3.format('.1f');
