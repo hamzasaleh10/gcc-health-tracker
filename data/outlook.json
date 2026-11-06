@@ -1,0 +1,202 @@
+{
+ "note": "Assumptions for the Outlook 2040 tab. Hand-entered; each value is cited. Reviewed yearly with national.json.",
+ "age_weights": {
+  "measure": "Hospital bed-days per 1,000 inhabitants, both sexes, Norway 2009",
+  "src": "ssb_beddays",
+  "values": {
+   "0004": 1119.0,
+   "0509": 115.8,
+   "1014": 136.2,
+   "1519": 198.8,
+   "2024": 314.1,
+   "2529": 443.8,
+   "3034": 469.2,
+   "3539": 408.0,
+   "4044": 367.6,
+   "4549": 441.7,
+   "5054": 585.4,
+   "5559": 790.1,
+   "6064": 1108.7,
+   "6569": 1564.3,
+   "7074": 2100.3,
+   "7579": 2743.1,
+   "80UP": 3828.8
+  },
+  "derivation": "0-4 combines under-1 (4,333.7, includes healthy newborns) and 1-4 (315.3) as (4,333.7 + 4 x 315.3) / 5."
+ },
+ "prevention": {
+  "rr_obese": 7.19,
+  "rr_overweight": 2.99,
+  "rr_src": "abdullah2010",
+  "rr_note": "Relative risk of diabetes vs normal weight. The scenario assumes people moving out of obesity become overweight, so the effective relative risk is 7.19 / 2.99.",
+  "cost_multiplier": 2.6,
+  "cost_src": "ada2023",
+  "cost_note": "Medical expenditures for people with diagnosed diabetes are about 2.6 times those without (United States, 2022). Used as a proxy for relative use of health care."
+ },
+ "oman_official_2040": {
+  "src": "omn_ncsi",
+  "base_year": 2025,
+  "unit": "thousand",
+  "physicians": {
+   "2025": 12.0,
+   "2040": 21.4
+  },
+  "nurses": {
+   "2025": 24.4,
+   "2040": 44.6
+  },
+  "beds": {
+   "2025": 8.2,
+   "2040": 15.7
+  }
+ },
+ "emirates": {
+  "src": "uae_fcsc",
+  "year": 2024,
+  "trend_from": 2019,
+  "names": {
+   "AE-AZ": [
+    "Abu Dhabi",
+    "أبوظبي"
+   ],
+   "AE-DU": [
+    "Dubai",
+    "دبي"
+   ],
+   "AE-SH": [
+    "Sharjah",
+    "الشارقة"
+   ],
+   "AE-AJ": [
+    "Ajman",
+    "عجمان"
+   ],
+   "AE-UQ": [
+    "Umm Al Quwain",
+    "أم القيوين"
+   ],
+   "AE-RK": [
+    "Ras Al Khaimah",
+    "رأس الخيمة"
+   ],
+   "AE-FJ": [
+    "Fujairah",
+    "الفجيرة"
+   ]
+  },
+  "rows": {
+   "AE": {
+    "phy": 34912,
+    "phy_em": 3102,
+    "phy_prv": 23732,
+    "phy_prv_em": 437,
+    "nur": 67931,
+    "nur_em": 1897,
+    "nur_prv": 43490,
+    "nur_prv_em": 205,
+    "phy_2019": 25414,
+    "phy_em_2019": 2511,
+    "nur_2019": 56142,
+    "nur_em_2019": 926
+   },
+   "AE-AZ": {
+    "phy": 13370,
+    "phy_em": 1893,
+    "phy_prv": 8016,
+    "phy_prv_em": 224,
+    "nur": 30043,
+    "nur_em": 940,
+    "nur_prv": 18042,
+    "nur_prv_em": 150,
+    "phy_2019": 10169,
+    "phy_em_2019": 1445,
+    "nur_2019": 27520,
+    "nur_em_2019": 469
+   },
+   "AE-DU": {
+    "phy": 14602,
+    "phy_em": 869,
+    "phy_prv": 11930,
+    "phy_prv_em": 180,
+    "nur": 25037,
+    "nur_em": 169,
+    "nur_prv": 19605,
+    "nur_prv_em": 38,
+    "phy_2019": 10011,
+    "phy_em_2019": 748,
+    "nur_2019": 18741,
+    "nur_em_2019": 108
+   },
+   "AE-SH": {
+    "phy": 3630,
+    "phy_em": 186,
+    "phy_prv": 2255,
+    "phy_prv_em": 21,
+    "nur": 6584,
+    "nur_em": 296,
+    "nur_prv": 3550,
+    "nur_prv_em": 8,
+    "phy_2019": 2757,
+    "phy_em_2019": 151,
+    "nur_2019": 4861,
+    "nur_em_2019": 108
+   },
+   "AE-AJ": {
+    "phy": 1200,
+    "phy_em": 18,
+    "phy_prv": 878,
+    "phy_prv_em": 3,
+    "nur": 1934,
+    "nur_em": 34,
+    "nur_prv": 1247,
+    "nur_prv_em": 2,
+    "phy_2019": 878,
+    "phy_em_2019": 28,
+    "nur_2019": 1593,
+    "nur_em_2019": 13
+   },
+   "AE-UQ": {
+    "phy": 290,
+    "phy_em": 15,
+    "phy_prv": 54,
+    "phy_prv_em": 0,
+    "nur": 667,
+    "nur_em": 32,
+    "nur_prv": 99,
+    "nur_prv_em": 0,
+    "phy_2019": 260,
+    "phy_em_2019": 22,
+    "nur_2019": 608,
+    "nur_em_2019": 8
+   },
+   "AE-RK": {
+    "phy": 995,
+    "phy_em": 54,
+    "phy_prv": 451,
+    "phy_prv_em": 5,
+    "nur": 1960,
+    "nur_em": 234,
+    "nur_prv": 696,
+    "nur_prv_em": 6,
+    "phy_2019": 785,
+    "phy_em_2019": 61,
+    "nur_2019": 1727,
+    "nur_em_2019": 130
+   },
+   "AE-FJ": {
+    "phy": 825,
+    "phy_em": 67,
+    "phy_prv": 148,
+    "phy_prv_em": 4,
+    "nur": 1706,
+    "nur_em": 192,
+    "nur_prv": 251,
+    "nur_prv_em": 1,
+    "phy_2019": 554,
+    "phy_em_2019": 56,
+    "nur_2019": 1092,
+    "nur_em_2019": 90
+   }
+  }
+ }
+}

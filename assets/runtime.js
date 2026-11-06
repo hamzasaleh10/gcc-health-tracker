@@ -11,11 +11,15 @@
     obesity: 'data/gcc_obesity_who.json',
     hale: 'data/gcc_hale_who.json',
     national: 'data/national.json',
+    proj: 'data/gcc_population_projections.json',
+    outlook: 'data/outlook.json',
     meta: 'data/meta.json',
   };
-  const DEFAULTS = { focus: 'SAU', lang: 'en', tab: 'snapshot' };
+  const DEFAULTS = { focus: 'SAU', lang: 'en', tab: 'snapshot', ob: '4', em: 'AE' };
   const ALLOWED = {
-    tab: ['snapshot', 'outcomes', 'risk', 'financing', 'workforce', 'goals', 'official'],
+    tab: ['snapshot', 'outcomes', 'risk', 'financing', 'workforce', 'goals', 'outlook', 'official'],
+    ob: ['0', '2', '4', '6', '8', '10'],
+    em: ['AE', 'AE-AZ', 'AE-DU', 'AE-SH', 'AE-AJ', 'AE-UQ', 'AE-RK', 'AE-FJ'],
     focus: ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'],
     lang: ['en', 'ar'],
   };

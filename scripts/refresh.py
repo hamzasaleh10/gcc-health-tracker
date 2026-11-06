@@ -83,6 +83,32 @@ def fetch_world_bank():
     return rows, last_updated
 
 
+AGE_GROUPS = ["0004", "0509", "1014", "1519", "2024", "2529", "3034", "3539", "4044",
+              "4549", "5054", "5559", "6064", "6569", "7074", "7579", "80UP"]
+PROJ_YEARS = [2024, 2025, 2030, 2035, 2040, 2045, 2050]
+
+
+def fetch_projections():
+    """World Bank population estimates and projections (source 40): GCC population by
+    five-year age group, both sexes, for the base year and projection years."""
+    rows, by = [], {}
+    codes = [f"SP.POP.{g}.{s}" for g in AGE_GROUPS for s in ("MA", "FE")]
+    for i in range(0, len(codes), 17):
+        url = (f"https://api.worldbank.org/v2/country/{';'.join(GCC)}/indicator/{';'.join(codes[i:i + 17])}"
+               f"?source=40&format=json&date={PROJ_YEARS[0]}:{PROJ_YEARS[-1]}&per_page=5000")
+        meta, data = get_json(url)
+        for d in data or []:
+            y = int(d["date"])
+            if y not in PROJ_YEARS or d["value"] is None:
+                continue
+            g = d["indicator"]["id"].split(".")[2]
+            k = (d["countryiso3code"], y, g)
+            by[k] = by.get(k, 0) + float(d["value"])
+    for (iso, y, g), v in sorted(by.items()):
+        rows.append({"iso3": iso, "year": y, "age": g, "pop": round(v)})
+    return rows
+
+
 def fetch_gho(code):
     rows = []
     for d in get_json(GHO_URL.format(code=code))["value"]:
@@ -103,7 +129,7 @@ def fetch_hale():
     return fetch_gho("WHOSIS_000002")
 
 
-def validate(wb, ob, hale=None):
+def validate(wb, ob, hale=None, proj=None):
     problems = []
     if len(wb) < 2300:
         problems.append(f"World Bank: only {len(wb)} rows (expected 2,300+)")
@@ -118,6 +144,10 @@ def validate(wb, ob, hale=None):
     for iso in WHO_AREAS:
         if not any(r["iso3"] == iso for r in ob):
             problems.append(f"Obesity: no rows for {iso}")
+    if proj is not None:
+        want = len(GCC) * len(AGE_GROUPS) * len(PROJ_YEARS)
+        if len(proj) != want:
+            problems.append(f"Population projections: {len(proj)} rows (expected {want})")
     if hale is not None:
         if len(hale) < 120:
             problems.append(f"Healthy life expectancy: only {len(hale)} rows (expected 120+)")
@@ -141,7 +171,11 @@ def main(out_dir):
     hale = fetch_hale()
     print(f"  {len(hale)} rows, latest year {max(r['year'] for r in hale)}")
 
-    problems = validate(wb, ob, hale)
+    print("World Bank population projections")
+    proj = fetch_projections()
+    print(f"  {len(proj)} rows")
+
+    problems = validate(wb, ob, hale, proj)
     if problems:
         print("Validation failed; no files written:\n  " + "\n  ".join(problems))
         sys.exit(1)
@@ -151,9 +185,10 @@ def main(out_dir):
     dump(wb, "gcc_worldbank.json")
     dump(ob, "gcc_obesity_who.json")
     dump(hale, "gcc_hale_who.json")
+    dump(proj, "gcc_population_projections.json")
     dump({"refreshed_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
           "worldbank_last_updated": wb_updated,
-          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale)}}, "meta.json")
+          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "projections": len(proj)}}, "meta.json")
     print(f"Wrote {len(wb)} World Bank rows and {len(ob)} obesity rows to {out_dir}/")
 
 

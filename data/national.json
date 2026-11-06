@@ -115,6 +115,21 @@
    "en": "Bahrain Health Insurance Law No. 23 of 2018 (Legislation and Legal Opinion Commission)",
    "ar": "قانون الضمان الصحي رقم 23 لسنة 2018 (هيئة التشريع والرأي القانوني)",
    "url": "https://lloc.gov.bh/Legislation/HTM/K2318"
+  },
+  "ssb_beddays": {
+   "en": "Statistics Norway: In-patient stays and bed-days per 1,000 inhabitants, by age (2009)",
+   "ar": "هيئة الإحصاء النرويجية: الإقامات وأيام الإقامة في المستشفيات لكل 1,000 نسمة حسب العمر (2009)",
+   "url": "https://www.ssb.no/a/en/static/pasient_en/tab-2010-04-20-06-en.html"
+  },
+  "abdullah2010": {
+   "en": "Abdullah et al. (2010), overweight, obesity and diabetes risk: meta-analysis, Diabetes Research and Clinical Practice",
+   "ar": "عبدالله وآخرون (2010)، زيادة الوزن والسمنة وخطر السكري: تحليل تلوي، مجلة أبحاث السكري والممارسة السريرية",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/20493574/"
+  },
+  "ada2023": {
+   "en": "American Diabetes Association: Economic Costs of Diabetes in the U.S. in 2022 (2023)",
+   "ar": "الجمعية الأمريكية للسكري: التكاليف الاقتصادية للسكري في الولايات المتحدة عام 2022 (2023)",
+   "url": "https://diabetes.org/about-us/statistics/cost-diabetes"
   }
  },
  "official_vs_international": [

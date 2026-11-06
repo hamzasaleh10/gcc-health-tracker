@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Country Brief · GCC Health System Tracker</title>
+<meta name="description" content="One-page health system brief for each Gulf state: headline measures against benchmarks, national goals, workforce, insurance and the 2040 outlook. English and Arabic, printable as PDF.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCC Health System Tracker: Country Brief">
+<meta property="og:description" content="A printable one-page health system brief for each Gulf state, in English and Arabic.">
+<meta property="og:image" content="https://hamzasaleh10.github.io/gcc-health-tracker/assets/preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5fa8'/%3E%3Cpath d='M9 22V14M16 22V9M23 22V17' stroke='white' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.br { max-width: 50rem; margin-inline: auto; --gx-font: var(--font-anthropic-sans), "Noto Sans Arabic", "Segoe UI", "Geeza Pro", Tahoma, sans-serif; font-family: var(--gx-font); }
+.br:not(.is-ar) [lang="ar"] { display: none !important; }
+.br.is-ar [lang="en"] { display: none !important; }
+.br.is-ar { direction: rtl; }
+.br.is-ar p, .br.is-ar li, .br.is-ar td { line-height: 1.8; }
+.br-top { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-xs); margin-bottom: var(--cds-gap-lg); }
+.br-top a.back { margin-inline-end: auto; font-size: var(--cds-font-size-caption); text-decoration: none; }
+.br-top a.back:hover { text-decoration: underline; }
+.br-pills { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); margin-bottom: var(--cds-gap-lg); }
+.br button {
+  font: inherit; font-family: var(--gx-font); font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm);
+  border: 1px solid var(--color-border-line); border-radius: 999px; background: var(--color-panel); color: var(--color-fg); cursor: pointer;
+}
+.br button[aria-pressed="true"] { border-color: var(--color-fg); font-weight: 600; box-shadow: inset 0 0 0 1px var(--color-fg); }
+.br button.print { font-weight: 600; color: var(--chart-1); }
+.br h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: 2.1rem; line-height: 1.15; margin: 0 0 4px; }
+.br .byline { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: 0 0 var(--cds-gap-lg); }
+.br h2 { font-size: 1.05rem; font-weight: 600; margin: var(--cds-gap-lg) 0 var(--cds-gap-xs); padding-top: var(--cds-pad-sm); border-top: 1px solid var(--color-border-line); }
+.br p, .br li { font-size: 0.95rem; line-height: 1.55; }
+.br p { margin: 0 0 var(--cds-gap-sm); }
+.br ul { padding-inline-start: 1.2rem; margin: 0 0 var(--cds-gap-sm); }
+.br li { margin-bottom: 4px; }
+.br .tw { overflow-x: auto; margin: 0 0 var(--cds-gap-sm); }
+.br table { border-collapse: collapse; width: 100%; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.br th, .br td { text-align: start; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--color-border-line); }
+.br th { font-weight: 600; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.br td.n, .br th.n { text-align: end; white-space: nowrap; }
+.br td.o { color: var(--color-warn); }
+.br .st { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 1px 7px; border-radius: 6px; border: 1px solid currentColor; white-space: nowrap; }
+.br .st-met { color: var(--color-ok); } .br .st-near { color: var(--color-warn); } .br .st-far { color: var(--color-bad); } .br .st-na { color: var(--color-fg-muted); }
+.br .note { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.5; }
+.br .lead { font-size: 1.02rem; }
+.br .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 0 var(--cds-gap-lg); }
+.br a { color: var(--chart-1); }
+.br .src li { font-size: var(--cds-font-size-caption); margin-bottom: 2px; }
+@media print {
+  @page { size: A4; margin: 14mm 12mm; }
+  :root { --color-bg: #fff; --color-panel: #fff; }
+  body { font-size: 11px; }
+  .br-top, .br-pills, .site-foot a { display: none !important; }
+  .site { padding: 0; }
+  .br h1 { font-size: 1.6rem; }
+  .br h2 { break-after: avoid; margin-top: 10px; }
+  .br table, .br li { break-inside: avoid; }
+  .br a { color: inherit; text-decoration: none; }
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="assets/runtime.js"></script>
+</head>
+<body>
+<main class="site">
+<article class="br">
+  <nav class="br-top" aria-label="Page">
+    <a class="back" href="./"><span lang="en">← Back to the tracker</span><span lang="ar">→ العودة إلى المتتبع</span></a>
+    <button type="button" class="print"><span lang="en">Print or save as PDF</span><span lang="ar">طباعة أو حفظ PDF</span></button>
+    <button type="button" data-lang="en" aria-pressed="true">English</button>
+    <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
+  </nav>
+  <div class="br-pills" role="group" aria-label="Country / الدولة">
+    <button type="button" data-iso="SAU"><span lang="en">Saudi Arabia</span><span lang="ar">السعودية</span></button>
+    <button type="button" data-iso="ARE"><span lang="en">UAE</span><span lang="ar">الإمارات</span></button>
+    <button type="button" data-iso="QAT"><span lang="en">Qatar</span><span lang="ar">قطر</span></button>
+    <button type="button" data-iso="KWT"><span lang="en">Kuwait</span><span lang="ar">الكويت</span></button>
+    <button type="button" data-iso="OMN"><span lang="en">Oman</span><span lang="ar">عُمان</span></button>
+    <button type="button" data-iso="BHR"><span lang="en">Bahrain</span><span lang="ar">البحرين</span></button>
+  </div>
+
+  <h1><span data-draw="bname">—</span><span lang="en">: health system brief</span><span lang="ar">: موجز النظام الصحي</span></h1>
+  <p class="byline"><span lang="en">GCC Health System Tracker · Hamza Saleh, MPH · data refreshed</span><span lang="ar">متتبع الأنظمة الصحية الخليجية · حمزة صالح، ماجستير الصحة العامة · آخر تحديث للبيانات</span> <span data-draw="brefreshed">—</span></p>
+
+  <h2><span lang="en">Where it stands</span><span lang="ar">الوضع الحالي</span></h2>
+  <ul data-draw="bstand"></ul>
+
+  <h2><span lang="en">Headline measures</span><span lang="ar">المؤشرات الرئيسية</span></h2>
+  <div class="tw"><table>
+    <thead><tr>
+      <th><span lang="en">Measure</span><span lang="ar">المؤشر</span></th>
+      <th class="n" data-draw="bcol">—</th>
+      <th class="n"><span lang="en">Official</span><span lang="ar">الرسمي</span></th>
+      <th class="n"><span lang="en">High income</span><span lang="ar">الدول مرتفعة الدخل</span></th>
+      <th class="n"><span lang="en">World</span><span lang="ar">العالم</span></th>
+      <th><span lang="en">Status</span><span lang="ar">الحالة</span></th>
+    </tr></thead>
+    <tbody data-draw="bmeasures"></tbody>
+  </table></div>
+  <p class="note"><span lang="en">International figures from the World Bank and WHO, latest year each was reported. Status compares the international figure with the high-income average; within 5% counts as near.</span><span lang="ar">الأرقام الدولية من البنك الدولي ومنظمة الصحة العالمية، لأحدث سنة متاحة. وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، ويُعد الفارق ضمن 5% قريبًا.</span></p>
+
+  <h2><span lang="en">Outlook 2040</span><span lang="ar">آفاق 2040</span></h2>
+  <p data-draw="boutlook"></p>
+  <div class="tw"><table>
+    <thead><tr>
+      <th></th>
+      <th class="n"><span lang="en">Today, about</span><span lang="ar">حاليًا، تقريبًا</span></th>
+      <th class="n"><span lang="en">Needed in 2040</span><span lang="ar">المطلوب في 2040</span></th>
+      <th class="n"><span lang="en">Extra by 2040</span><span lang="ar">الإضافي بحلول 2040</span></th>
+    </tr></thead>
+    <tbody data-draw="bneed"></tbody>
+  </table></div>
+  <p class="note"><span lang="en">Same level of care per person as today, adjusted for population growth and ageing (World Bank projections; hospital use by age from Statistics Norway). Illustrative, not a forecast.</span><span lang="ar">بالمستوى الحالي نفسه من الرعاية للفرد، معدّلًا وفق نمو السكان وشيخوختهم (توقعات البنك الدولي؛ استخدام المستشفيات حسب العمر من هيئة الإحصاء النرويجية). توضيحي وليس تنبؤًا.</span></p>
+
+  <div class="cols">
+    <div>
+      <h2><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></h2>
+      <ul data-draw="bgoals"></ul>
+    </div>
+    <div>
+      <h2><span lang="en">Workforce and insurance</span><span lang="ar">القوى العاملة والتأمين</span></h2>
+      <ul data-draw="bwork"></ul>
+    </div>
+  </div>
+
+  <h2><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
+  <ul data-draw="boff"></ul>
+
+  <h2><span lang="en">Sources</span><span lang="ar">المصادر</span></h2>
+  <ul class="src" data-draw="bsrc"></ul>
+  <p class="note"><span lang="en">Full charts, methods and limitations:</span><span lang="ar">الرسوم البيانية الكاملة والمنهجية وحدود البيانات:</span> <a class="trk" href="./">hamzasaleh10.github.io/gcc-health-tracker</a></p>
+
+  <footer class="site-foot">
+    <span><span lang="en">Built by Hamza Saleh, MPH</span><span lang="ar">إعداد: حمزة صالح، ماجستير الصحة العامة</span></span>
+    <a href="https://github.com/hamzasaleh10/gcc-health-tracker"><span lang="en">Source code and data pipeline</span><span lang="ar">الشيفرة المصدرية ومسار البيانات</span></a>
+  </footer>
+</article>
+</main>
+
+<script>
+(function () {
+  const GCC = ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'];
+  const NM = {SAU: ['Saudi Arabia', 'السعودية'], ARE: ['United Arab Emirates', 'الإمارات العربية المتحدة'], QAT: ['Qatar', 'قطر'], KWT: ['Kuwait', 'الكويت'], OMN: ['Oman', 'عُمان'], BHR: ['Bahrain', 'البحرين']};
+  const root = document.querySelector('.br');
+  const lang = () => (dash.params().lang === 'ar' ? 'ar' : 'en');
+  const T = (en, ar) => (lang() === 'ar' ? ar : en);
+  const focus = () => (GCC.includes(dash.params().focus) ? dash.params().focus : 'SAU');
+  const name = (iso) => NM[iso][lang() === 'ar' ? 1 : 0];
+  const ok = (...ids) => ids.every((id) => dash.data(id).status === 'ok');
+  const f1 = d3.format('.1f');
+  const iso2 = (t) => '⁦' + t + '⁩';
+  const rc = (v) => (v == null || isNaN(v) ? '—' : d3.format(',')(v >= 1000 ? Math.round(v / 100) * 100 : Math.round(v)));
+  const el = (tag, text, cls) => { const e = document.createElement(tag); if (text != null) e.textContent = text; if (cls) e.className = cls; return e; };
+  const nat = () => dash.data('national').data;
+
+  dash.calc('latest', {
+    inputs: ['wb', 'obesity', 'hale'],
+    fn: (wb, obesity, hale) => {
+      const rows = wb.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: +r.year, value: +r.value}))
+        .concat(obesity.map((r) => ({iso3: r.iso3, indicator: 'obesity', year: +r.year, value: +r.value})))
+        .concat(hale.map((r) => ({iso3: r.iso3, indicator: 'hale', year: +r.year, value: +r.value})));
+      const best = new Map();
+      rows.forEach((r) => { const k = r.iso3 + '|' + r.indicator; if (!best.has(k) || best.get(k).year < r.year) best.set(k, r); });
+      return [...best.values()];
+    },
+  });
+  const latest = (iso, ind) => dash.data('latest').data.find((r) => r.iso3 === iso && r.indicator === ind);
+  const official = (iso, ind) => nat().official_vs_international.find((r) => r.iso3 === iso && r.indicator === ind);
+
+  const M = [
+    ['life_exp', 'Life expectancy at birth (years)', 'العمر المتوقع عند الولادة (سنة)', '', 'high'],
+    ['hale', 'Healthy life expectancy (years)', 'العمر الصحي المتوقع (سنة)', '', 'high'],
+    ['ncd_mort_30_70', 'Premature chronic-disease deaths, ages 30–70', 'الوفيات المبكرة بالأمراض المزمنة، 30–70 عامًا', '%', 'low'],
+    ['obesity', 'Adult obesity, age-standardized', 'السمنة لدى البالغين، معيارية حسب العمر', '%', 'low'],
+    ['diabetes_prev', 'Diabetes, adults 20–79', 'السكري، البالغون بين 20 و79 عامًا', '%', 'low'],
+    ['che_gdp', 'Health spending, % of GDP', 'الإنفاق الصحي، % من الناتج المحلي', '%', 'none'],
+    ['physicians_1k', 'Physicians per 1,000 people', 'الأطباء لكل 1,000 نسمة', '', 'high'],
+    ['nurses_1k', 'Nurses and midwives per 1,000 people', 'الممرضون والقابلات لكل 1,000 نسمة', '', 'high'],
+  ];
+  const status = (iso, ind, dir) => {
+    const v = latest(iso, ind), h = latest('HIC', ind);
+    if (!v || !h) return null;
+    const gap = (v.value - h.value) / h.value;
+    if (dir === 'none') return gap < 0 ? ['st-na', T('Below high-income level', 'أقل من مستوى الدول مرتفعة الدخل'), 'below'] : ['st-na', T('Above high-income level', 'أعلى من مستوى الدول مرتفعة الدخل'), 'above'];
+    if (Math.abs(gap) <= 0.05) return ['st-near', T('Near high-income level', 'قريب من مستوى الدول مرتفعة الدخل'), 'near'];
+    return (gap > 0) === (dir === 'high') ? ['st-met', T('Better than high income', 'أفضل من الدول مرتفعة الدخل'), 'better'] : ['st-far', T('Behind high income', 'متأخر عن الدول مرتفعة الدخل'), 'behind'];
+  };
+  const mname = (m) => (lang() === 'ar' ? m[2] : m[1]);
+  const SHORT = {life_exp: ['life expectancy', 'العمر المتوقع'], hale: ['healthy life expectancy', 'العمر الصحي المتوقع'], ncd_mort_30_70: ['premature chronic-disease deaths', 'الوفيات المبكرة بالأمراض المزمنة'], obesity: ['adult obesity', 'السمنة لدى البالغين'], diabetes_prev: ['diabetes', 'السكري'], che_gdp: ['health spending', 'الإنفاق الصحي'], physicians_1k: ['physicians per person', 'الأطباء لكل نسمة'], nurses_1k: ['nurses per person', 'الممرضين لكل نسمة']};
+
+  dash.draw('bname', (e) => { e.textContent = name(focus()); });
+  dash.draw('bcol', (e) => { e.textContent = name(focus()); });
+  dash.draw('brefreshed', (e) => {
+    if (!ok('meta')) return;
+    const d = new Date(dash.data('meta').data.refreshed_at);
+    e.textContent = isNaN(d) ? '—' : d.toLocaleDateString(lang() === 'ar' ? 'ar-SA-u-nu-latn-ca-gregory' : 'en-GB', {day: 'numeric', month: 'long', year: 'numeric'});
+  });
+
+  dash.draw('bmeasures', (tb) => {
+    tb.replaceChildren();
+    if (!ok('latest', 'national')) return;
+    const iso = focus();
+    M.forEach((m) => {
+      const [ind, , , sfx, dir] = m, v = latest(iso, ind), o = official(iso, ind), h = latest('HIC', ind), w = latest('WLD', ind), st = status(iso, ind, dir);
+      const tr = el('tr');
+      tr.append(el('td', mname(m)), el('td', v ? iso2(f1(v.value) + sfx + ' (' + v.year + ')') : '—', 'n'),
+        el('td', o ? iso2(f1(o.official) + sfx + ' (' + o.official_year + ')') : '—', 'n' + (o ? ' o' : '')),
+        el('td', h ? f1(h.value) + sfx : '—', 'n'), el('td', w ? f1(w.value) + sfx : '—', 'n'));
+      const td = el('td'); if (st) td.appendChild(el('span', st[1], 'st ' + st[0])); tr.appendChild(td);
+      tb.appendChild(tr);
+    });
+  });
+
+  dash.draw('bstand', (ul) => {
+    ul.replaceChildren();
+    if (!ok('latest', 'national')) return;
+    const iso = focus(), groups = {better: [], near: [], behind: []};
+    M.forEach((m) => { const st = status(iso, m[0], m[4]); if (st && groups[st[2]]) groups[st[2]].push(SHORT[m[0]][lang() === 'ar' ? 1 : 0]); });
+    const join = (a) => (a.length > 1 ? a.slice(0, -1).join(T(', ', '، ')) + T(' and ', ' و') + a[a.length - 1] : a[0]);
+    if (groups.better.length) ul.appendChild(el('li', T('Better than the high-income average on ', 'أفضل من متوسط الدول مرتفعة الدخل في ') + join(groups.better) + '.'));
+    if (groups.near.length) ul.appendChild(el('li', T('Close to the high-income average on ', 'قريبة من متوسط الدول مرتفعة الدخل في ') + join(groups.near) + '.'));
+    if (groups.behind.length) ul.appendChild(el('li', T('Behind the high-income average on ', 'متأخرة عن متوسط الدول مرتفعة الدخل في ') + join(groups.behind) + '.'));
+    const ob = latest(iso, 'obesity'), wo = latest('WLD', 'obesity');
+    if (ob && wo) ul.appendChild(el('li', T(`Adult obesity is ${f1(ob.value)}%, ${f1(ob.value / wo.value)} times the world average.`, `تبلغ السمنة لدى البالغين ${f1(ob.value)}%، أي ${f1(ob.value / wo.value)} أضعاف المتوسط العالمي.`)));
+  });
+
+  // Outlook 2040 (same method as the tracker's Outlook tab)
+  const popOf = (iso, y, ages) => dash.data('proj').data.reduce((a, r) => a + (r.iso3 === iso && r.year === y && (!ages || ages.includes(r.age)) ? r.pop : 0), 0);
+  const useOf = (iso, y) => { const W = dash.data('outlook').data.age_weights.values; return dash.data('proj').data.reduce((a, r) => a + (r.iso3 === iso && r.year === y ? r.pop * W[r.age] : 0), 0); };
+  const AG = ['6569', '7074', '7579', '80UP'];
+  const demand = (iso) => { const p0 = popOf(iso, 2024), p1 = popOf(iso, 2040); return {g: p1 / p0, a: (useOf(iso, 2040) / p1) / (useOf(iso, 2024) / p0), s0: 100 * popOf(iso, 2024, AG) / p0, s1: 100 * popOf(iso, 2040, AG) / p1}; };
+  const ratioNow = (iso, ind) => { const w = latest(iso, ind), o = official(iso, ind); if (o && (!w || o.official_year >= w.year)) return o.official; return w ? w.value : null; };
+  dash.draw('boutlook', (p) => {
+    p.replaceChildren();
+    if (!ok('proj', 'outlook')) return;
+    const d = demand(focus());
+    p.textContent = T(`Demand for care is set to grow by about ${Math.round((d.g * d.a - 1) * 100)}% by 2040: ${Math.round((d.g - 1) * 100)}% from population growth, plus an older age mix as residents aged 65 and over rise from ${f1(d.s0)}% to ${f1(d.s1)}% of the population.`,
+      `يُتوقع أن ينمو الطلب على الرعاية بنحو ${Math.round((d.g * d.a - 1) * 100)}% بحلول 2040: ${Math.round((d.g - 1) * 100)}% من نمو السكان، إضافةً إلى تقدم التركيبة العمرية مع ارتفاع نسبة السكان بعمر 65 عامًا فأكثر من ${f1(d.s0)}% إلى ${f1(d.s1)}%.`);
+  });
+  dash.draw('bneed', (tb) => {
+    tb.replaceChildren();
+    if (!ok('proj', 'outlook', 'latest', 'national')) return;
+    const iso = focus(), d = demand(iso), p24 = popOf(iso, 2024);
+    [['beds_1k', T('Hospital beds', 'أسرّة المستشفيات')], ['nurses_1k', T('Nurses and midwives', 'الممرضون والقابلات')], ['physicians_1k', T('Physicians', 'الأطباء')]].forEach(([ind, label]) => {
+      const r = ratioNow(iso, ind), tr = el('tr');
+      const now = r == null ? null : r * p24 / 1000, need = now == null ? null : now * d.g * d.a;
+      tr.append(el('td', label), el('td', rc(now), 'n'), el('td', rc(need), 'n'), el('td', need == null ? '—' : '+' + rc(need - now), 'n'));
+      tb.appendChild(tr);
+    });
+  });
+
+  const ST = {met: ['st-met', 'Met', 'تحقق'], near: ['st-near', 'Close', 'قريب'], far: ['st-far', 'Far off', 'بعيد'], na: ['st-na', 'Not tracked numerically', 'لا يوجد قياس رقمي']};
+  dash.draw('bgoals', (ul) => {
+    ul.replaceChildren();
+    if (!ok('national')) return;
+    const ar = lang() === 'ar';
+    nat().goals.filter((g) => g.iso3 === focus()).forEach((g) => {
+      const li = el('li'); const st = ST[g.status] || ST.na;
+      li.append(el('strong', (ar ? g.metric_ar : g.metric_en) + ': '), document.createTextNode((ar && g.target_ar ? g.target_ar : g.target) + (g.by && !String(ar && g.target_ar ? g.target_ar : g.target).includes(String(g.by)) ? T(' by ', ' بحلول ') + g.by : '') + T('. Latest: ', '. الأحدث: ') + (ar && g.latest_ar ? g.latest_ar : g.latest) + ' '), el('span', ar ? st[2] : st[1], 'st ' + st[0]));
+      ul.appendChild(li);
+    });
+    if (!ul.children.length) ul.appendChild(el('li', T('No published goals found.', 'لم نجد أهدافًا منشورة.')));
+  });
+
+  dash.draw('bwork', (ul) => {
+    ul.replaceChildren();
+    if (!ok('national')) return;
+    const ar = lang() === 'ar', iso = focus(), L = nat().localization.rows.find((r) => r.iso3 === iso), I = nat().insurance.find((r) => r.iso3 === iso);
+    const pc = (v) => (Number.isInteger(v) ? v : f1(v)) + '%';
+    if (L && L.phys != null) ul.appendChild(el('li', T(`Citizens are ${pc(L.phys)} of physicians and ${pc(L.nurse)} of nurses (${L.year}).`, `يشكل المواطنون ${pc(L.phys)} من الأطباء و${pc(L.nurse)} من الممرضين (${L.year}).`) +
+      (L.nurse_private != null ? T(` In the private sector, ${pc(L.nurse_private)} of nurses are citizens.`, ` وفي القطاع الخاص يشكل المواطنون ${pc(L.nurse_private)} من الممرضين.`) : '')));
+    else ul.appendChild(el('li', T('No breakdown of the health workforce by nationality is published.', 'لا يوجد توزيع منشور للقوى العاملة الصحية حسب الجنسية.')));
+    const b = nat().localization.regional_benchmark;
+    ul.appendChild(el('li', T(`GCC average: citizens are ${b.share}% of nurses (${b.year}).`, `المتوسط الخليجي: يشكل المواطنون ${b.share}% من الممرضين (${b.year}).`)));
+    if (I) ul.appendChild(el('li', T('Insurance: ', 'التأمين: ') + (ar ? I.scheme_ar : I.scheme_en) + T('. Status: ', '. الحالة: ') + (ar ? I.status_ar : I.status_en) + '.'));
+  });
+
+  const IND = {life_exp: ['Life expectancy', 'العمر المتوقع'], physicians_1k: ['Physicians per 1,000', 'الأطباء لكل 1,000'], nurses_1k: ['Nurses per 1,000', 'الممرضون لكل 1,000'], road_deaths: ['Road deaths per 100,000', 'وفيات الطرق لكل 100,000']};
+  dash.draw('boff', (ul) => {
+    ul.replaceChildren();
+    if (!ok('national', 'latest')) return;
+    const iso = focus(), rows = nat().official_vs_international.filter((r) => r.iso3 === iso);
+    rows.forEach((o) => {
+      const w = dash.data('wb').data.find((r) => r.iso3 === iso && r.indicator === o.indicator && +r.year === o.official_year) || latest(iso, o.indicator);
+      const lab = IND[o.indicator] ? IND[o.indicator][lang() === 'ar' ? 1 : 0] : o.indicator;
+      ul.appendChild(el('li', lab + ': ' + T('official ', 'الرسمي ') + f1(o.official) + ' (' + o.official_year + ')' + (w ? T(', World Bank/WHO ', '، البنك الدولي/منظمة الصحة العالمية ') + f1(+w.value) + ' (' + w.year + ')' : '') + '.'));
+    });
+    if (!rows.length) ul.appendChild(el('li', T('No official figure was found that differs from the international series for these measures.', 'لم نجد رقمًا رسميًا يختلف عن السلسلة الدولية لهذه المؤشرات.')));
+  });
+
+  const SRC_BY = {SAU: ['sau_hstp25', 'sau_gastat23', 'sau_glmm'], ARE: ['uae_fcsc', 'uae_insurance', 'uae_top15'], QAT: ['qat_opendata', 'qat_nhs'], KWT: ['kwt_csb', 'kwt_dhaman', 'kwt_vision'], OMN: ['omn_ncsi', 'omn_hale', 'omn_dhamani'], BHR: ['bhr_moh', 'bhr_insurance', 'bhr_moh2030']};
+  dash.draw('bsrc', (ul) => {
+    ul.replaceChildren();
+    if (!ok('national')) return;
+    const ar = lang() === 'ar';
+    const add = (t, url) => { const li = el('li'), a = el('a', t); a.href = url; a.target = '_blank'; a.rel = 'noopener'; li.appendChild(a); ul.appendChild(li); };
+    add(T('World Bank World Development Indicators (outcomes, diabetes, spending, workforce)', 'مؤشرات التنمية العالمية للبنك الدولي (النتائج والسكري والإنفاق والقوى العاملة)'), 'https://data.worldbank.org/indicator');
+    add(T('WHO Global Health Observatory (obesity, healthy life expectancy)', 'المرصد الصحي العالمي لمنظمة الصحة العالمية (السمنة والعمر الصحي المتوقع)'), 'https://www.who.int/data/gho');
+    add(T('World Bank population estimates and projections', 'تقديرات السكان وتوقعاتهم من البنك الدولي'), 'https://databank.worldbank.org/source/population-estimates-and-projections');
+    SRC_BY[focus()].forEach((k) => { const s = nat().sources[k]; if (s) add(ar ? s.ar : s.en, s.url); });
+  });
+
+  dash.onData(() => {
+    const ar = lang() === 'ar';
+    root.classList.toggle('is-ar', ar);
+    document.documentElement.lang = ar ? 'ar' : 'en';
+    document.documentElement.dir = ar ? 'rtl' : 'ltr';
+    document.title = (ar ? 'موجز ' + name(focus()) + ' · متتبع الأنظمة الصحية الخليجية' : name(focus()) + ' Brief · GCC Health System Tracker');
+    root.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang())));
+    root.querySelectorAll('[data-iso]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.iso === focus())));
+    const q = (ar ? 'lang=ar&' : '') + 'focus=' + focus();
+    root.querySelectorAll('a.back, a.trk').forEach((a) => a.setAttribute('href', './?' + q));
+  });
+  root.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => dash.setParams({lang: b.dataset.lang})));
+  root.querySelectorAll('[data-iso]').forEach((b) => b.addEventListener('click', () => dash.setParams({focus: b.dataset.iso})));
+  root.querySelectorAll('button.print').forEach((b) => b.addEventListener('click', () => window.print()));
+})();
+</script>
+</body>
+</html>

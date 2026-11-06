@@ -25,11 +25,26 @@
 .gx-focus span.lbl{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-inline-end:var(--cds-gap-xs)}
 .gx-focus button{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer}
 .gx-focus button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
+.gx-focus a.gx-brief{margin-inline-start:auto;font-size:var(--cds-font-size-caption);font-weight:600;color:var(--chart-1);text-decoration:none;padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--chart-1);border-radius:999px}
+.gx-focus a.gx-brief:hover{background:color-mix(in srgb,var(--chart-1) 8%,transparent)}
 .gx-sec{display:grid;gap:var(--cds-gap-md)}
 .gx-sec>h2{font-size:1.5rem;font-weight:600;margin:0;line-height:1.3}
 .gx-sec>p.gx-lede{margin:0;color:var(--color-fg-muted);font-size:var(--cds-font-size-body);max-width:60rem}
 .gx-sec{scroll-margin-top:var(--cds-gap-md)}
 .gx-sec[hidden]{display:none}
+.gx-ob,.gx-em{display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs);align-items:center}
+.gx-ob .lbl{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-inline-end:var(--cds-gap-xs)}
+.gx-ob button,.gx-em button,.gx-showuae{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer;min-width:2.25rem}
+.gx-ob button[aria-pressed="true"],.gx-em button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
+.gx-showuae{font-weight:600;color:var(--chart-1);justify-self:start}
+.gx-emhint{display:grid;gap:var(--cds-gap-xs)}
+.gx-emhint[hidden]{display:none}
+.gx-prev,.gx-emstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10.5rem),1fr));gap:var(--cds-gap-sm)}
+.gx-stat{border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-sm) var(--cds-pad-md);display:grid;gap:2px;align-content:start}
+.gx-stat .k{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gx-stat .v{font-family:var(--font-anthropic-serif);font-size:1.35rem;line-height:1.15;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gx-stat .s{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums}
+.gx-stat.good .v{color:var(--color-ok)}
 .gx-tabs{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs);align-items:center;padding:var(--cds-pad-sm) 0;background:var(--color-bg);border-bottom:1px solid var(--color-border-line)}
 .gx-tabs .lbl{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-inline-end:var(--cds-gap-xs)}
 @media (max-width:47.99rem){.gx-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}.gx-tabs::-webkit-scrollbar{display:none}.gx-tabs button{flex:none}.gx-tabs .lbl{display:none}}
@@ -163,6 +178,7 @@
     <button type="button" data-iso="KWT" aria-pressed="false"><span lang="en">Kuwait</span><span lang="ar">الكويت</span></button>
     <button type="button" data-iso="OMN" aria-pressed="false"><span lang="en">Oman</span><span lang="ar">عُمان</span></button>
     <button type="button" data-iso="BHR" aria-pressed="false"><span lang="en">Bahrain</span><span lang="ar">البحرين</span></button>
+    <a class="gx-brief" href="brief.html"><span lang="en">Country brief (PDF) →</span><span lang="ar">موجز الدولة (PDF) ←</span></a>
   </div>
 
   <nav class="gx-tabs" aria-label="Sections / الأقسام">
@@ -173,7 +189,8 @@
     <button type="button" data-tab="risk" aria-pressed="false" aria-controls="risk"><span class="gx-num" aria-hidden="true">4</span><span lang="en">Chronic disease</span><span lang="ar">الأمراض المزمنة</span></button>
     <button type="button" data-tab="financing" aria-pressed="false" aria-controls="financing"><span class="gx-num" aria-hidden="true">5</span><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></button>
     <button type="button" data-tab="workforce" aria-pressed="false" aria-controls="workforce"><span class="gx-num" aria-hidden="true">6</span><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></button>
-    <button type="button" data-tab="official" aria-pressed="false" aria-controls="official"><span class="gx-num" aria-hidden="true">7</span><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></button>
+    <button type="button" data-tab="outlook" aria-pressed="false" aria-controls="outlook"><span class="gx-num" aria-hidden="true">7</span><span lang="en">Outlook 2040</span><span lang="ar">آفاق 2040</span></button>
+    <button type="button" data-tab="official" aria-pressed="false" aria-controls="official"><span class="gx-num" aria-hidden="true">8</span><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></button>
   </nav>
 
   <section class="gx-sec" id="snapshot">
@@ -575,6 +592,18 @@
       </div>
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each country's own statistics, with different years (2022–2025) and scopes: Saudi private-sector nurses come from the 2024 ministry yearbook as compiled by GLMM; Oman publishes rounded percentages; Kuwait's private sector includes clinics. No nationality split was found for Qatar or Bahrain. The GCC nurse benchmark (30.3%, 2024) is GCC-Stat's figure as reported in the press.</p><p lang="ar"><b>حدود البيانات.</b> إحصاءات كل دولة بسنوات (2022–2025) ونطاقات مختلفة: أرقام ممرضي القطاع الخاص في السعودية من الكتاب الإحصائي لوزارة الصحة 2024 بتجميع برنامج GLMM؛ وتنشر عُمان نسبًا مقرّبة؛ ويشمل القطاع الخاص في الكويت العيادات. ولم نجد توزيعًا حسب الجنسية لقطر أو البحرين. ومعيار الممرضين الخليجي (30.3%، 2024) هو رقم المركز الإحصائي الخليجي كما نشرته الصحافة.</p></div>
     </div>
+    <div class="gx-card" id="emirates">
+      <h3><span lang="en">UAE by emirate</span><span lang="ar">الإمارات حسب الإمارة</span></h3>
+      <div class="gx-emhint"><p class="n"><span lang="en">Emirate-level workforce detail is available for the UAE.</span><span lang="ar">تتوفر تفاصيل القوى العاملة على مستوى الإمارات لدولة الإمارات.</span></p><button type="button" class="gx-showuae"><span lang="en">Show UAE by emirate</span><span lang="ar">عرض الإمارات حسب الإمارة</span></button></div>
+      <div class="gx-embody" hidden>
+        <p class="n" lang="en">Citizens' share of physicians and nurses in each emirate, 2024. Pick an emirate for its workforce detail.</p>
+        <p class="n" lang="ar">نسبة المواطنين من الأطباء والممرضين في كل إمارة، 2024. اختر إمارة لعرض تفاصيل قواها العاملة.</p>
+        <div class="gx-em" role="group" aria-label="Emirate / الإمارة"><button type="button" data-em="AE" aria-pressed="false"><span lang="en">All UAE</span><span lang="ar">كل الإمارات</span></button><button type="button" data-em="AE-AZ" aria-pressed="false"><span lang="en">Abu Dhabi</span><span lang="ar">أبوظبي</span></button><button type="button" data-em="AE-DU" aria-pressed="false"><span lang="en">Dubai</span><span lang="ar">دبي</span></button><button type="button" data-em="AE-SH" aria-pressed="false"><span lang="en">Sharjah</span><span lang="ar">الشارقة</span></button><button type="button" data-em="AE-AJ" aria-pressed="false"><span lang="en">Ajman</span><span lang="ar">عجمان</span></button><button type="button" data-em="AE-UQ" aria-pressed="false"><span lang="en">Umm Al Quwain</span><span lang="ar">أم القيوين</span></button><button type="button" data-em="AE-RK" aria-pressed="false"><span lang="en">Ras Al Khaimah</span><span lang="ar">رأس الخيمة</span></button><button type="button" data-em="AE-FJ" aria-pressed="false"><span lang="en">Fujairah</span><span lang="ar">الفجيرة</span></button></div>
+        <div class="gx-chart short dash-skeleton" data-draw="emirchart"></div>
+        <div class="gx-emstats" data-draw="emirstats"></div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Counts are compiled by the Ministry of Health and Prevention and published on UAE.Stat; Abu Dhabi's and Dubai's own health regulators may count licensed professionals differently. Emirate populations are not used, so the card shows shares and counts rather than ratios per 1,000.</p><p lang="ar"><b>حدود البيانات.</b> الأعداد من تجميع وزارة الصحة ووقاية المجتمع ومنشورة على منصة UAE.Stat؛ وقد تحتسب الجهات الصحية في أبوظبي ودبي المهنيين المرخصين بطريقة مختلفة. ولا تُستخدم أعداد السكان في كل إمارة، لذا تعرض البطاقة النسب والأعداد لا المعدلات لكل 1,000 نسمة.</p></div>
+      </div>
+    </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
         <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
@@ -588,11 +617,79 @@
       </div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_phys,wb_nurse,wb_beds,sau_gastat23,sau_glmm,uae_fcsc,kwt_csb,omn_ncsi,gccstat_nurses,qat_opendata,bhr_moh"></ul></div>
+    <p class="gx-next"><button type="button" data-tab="outlook"><span lang="en">Next: Outlook 2040 →</span><span lang="ar">التالي: آفاق 2040 ←</span></button></p>
+  </section>
+
+  <section class="gx-sec" id="outlook" hidden>
+    <h2><span class="gx-num" aria-hidden="true">7</span><span lang="en">Outlook 2040</span><span lang="ar">آفاق 2040</span></h2>
+    <div class="gx-ctx">
+      <p lang="en"><b>What we're looking at.</b> How much hospital and workforce capacity each country will need by 2040 as its population grows and ages, and how much prevention could reduce that need.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> حجم الطاقة الاستيعابية للمستشفيات والقوى العاملة الذي ستحتاجه كل دولة بحلول 2040 مع نمو سكانها وتقدمهم في العمر، ومدى قدرة الوقاية على تقليص هذه الحاجة.</p>
+      <p lang="en"><b>Why it matters.</b> Hospitals and training programmes take 5–10 years to deliver, so the capacity available in 2040 is decided by choices made now.</p>
+      <p lang="ar"><b>لماذا يهم ذلك.</b> يستغرق بناء المستشفيات وبرامج التدريب ما بين 5 و10 سنوات، لذا تُحدَّد الطاقة المتاحة في 2040 بالقرارات المتخذة الآن.</p>
+    </div>
+    <div class="gx-card" id="demand">
+      <h3><span lang="en">Growth in health care demand, 2024–2040</span><span lang="ar">نمو الطلب على الرعاية الصحية، 2024–2040</span></h3>
+      <p class="n" lang="en">Population growth, plus the extra demand from an older age mix, based on how hospital use rises with age. The share of residents aged 65 and over is shown on the right.</p>
+      <p class="n" lang="ar">نمو السكان، مضافًا إليه الطلب الإضافي الناتج عن تقدم التركيبة العمرية، استنادًا إلى ارتفاع استخدام المستشفيات مع العمر. وتظهر على اليمين نسبة السكان بعمر 65 عامًا فأكثر.</p>
+      <div class="gx-chart short dash-skeleton" data-draw="demandchart"></div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Population projections are the World Bank's (UN-based) and assume recent migration patterns continue; Gulf populations depend heavily on expatriate workers, so actual growth can differ widely. No Gulf age profile of hospital use is published, so the age pattern comes from Norway (2009) and is applied to all six countries.</p><p lang="ar"><b>حدود البيانات.</b> توقعات السكان من البنك الدولي (المستندة إلى الأمم المتحدة) وتفترض استمرار أنماط الهجرة الحالية؛ ويعتمد سكان الخليج كثيرًا على العمالة الوافدة، لذا قد يختلف النمو الفعلي كثيرًا. ولا يتوفر نمط خليجي منشور لاستخدام المستشفيات حسب العمر، لذا أُخذ النمط من النرويج (2009) وطُبّق على الدول الست.</p></div>
+    </div>
+    <div class="gx-card" id="need">
+      <h3><span lang="en">Capacity needed in 2040:</span><span lang="ar">الطاقة المطلوبة في 2040:</span> <span data-draw="focusname">—</span></h3>
+      <p class="n" lang="en">Today's beds and staff, and what the same level of care would require in 2040. The prevention column uses the scenario chosen below.</p>
+      <p class="n" lang="ar">الأسرّة والكوادر الحالية، وما يتطلبه المستوى نفسه من الرعاية في 2040. ويستخدم عمود الوقاية السيناريو المختار أدناه.</p>
+      <div class="gx-tablewrap">
+        <table>
+          <thead><tr>
+            <th></th>
+            <th><span lang="en">Today, per 1,000</span><span lang="ar">حاليًا لكل 1,000</span></th>
+            <th><span lang="en">Today, about</span><span lang="ar">حاليًا، تقريبًا</span></th>
+            <th><span lang="en">2040: population growth only</span><span lang="ar">2040: نمو السكان فقط</span></th>
+            <th><span lang="en">2040: growth and ageing</span><span lang="ar">2040: النمو والشيخوخة</span></th>
+            <th><span lang="en">2040: with prevention</span><span lang="ar">2040: مع الوقاية</span></th>
+            <th><span lang="en">2040: at today's high-income ratio</span><span lang="ar">2040: بنسبة الدول مرتفعة الدخل الحالية</span></th>
+          </tr></thead>
+          <tbody data-draw="needbody"></tbody>
+        </table>
+      </div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Today's counts are estimated as the latest ratio per 1,000 times the 2024 population, so they are approximate; the ratio is the government's figure where it is more recent than the World Bank's. The same demand growth is applied to beds, nurses and physicians. The high-income column overstates need, because high-income populations are much older.</p><p lang="ar"><b>حدود البيانات.</b> تُقدَّر الأعداد الحالية بضرب أحدث نسبة لكل 1,000 في عدد سكان 2024، لذا فهي تقريبية؛ والنسبة هي الرقم الحكومي حيث يكون أحدث من رقم البنك الدولي. ويُطبَّق نمو الطلب نفسه على الأسرّة والممرضين والأطباء. ويبالغ عمود الدول مرتفعة الدخل في تقدير الحاجة لأن سكان تلك الدول أكبر سنًا بكثير.</p></div>
+    </div>
+    <div class="gx-grid">
+      <div class="gx-card" id="prevent">
+        <h3><span lang="en">Prevention scenario</span><span lang="ar">سيناريو الوقاية</span></h3>
+        <p class="n" lang="en">Choose how many percentage points adult obesity falls by 2040. Fewer obese adults means less diabetes, and less diabetes means less demand for care.</p>
+        <p class="n" lang="ar">اختر عدد النقاط المئوية التي تنخفض بها السمنة لدى البالغين بحلول 2040. فانخفاض عدد البالغين المصابين بالسمنة يعني سكريًا أقل، والسكري الأقل يعني طلبًا أقل على الرعاية.</p>
+        <div class="gx-ob" role="group" aria-label="Obesity reduction / خفض السمنة"><span class="lbl"><span lang="en">Fall in obesity (points)</span><span lang="ar">انخفاض السمنة (نقاط)</span></span><button type="button" data-ob="0" aria-pressed="false">0</button><button type="button" data-ob="2" aria-pressed="false">2</button><button type="button" data-ob="4" aria-pressed="false">4</button><button type="button" data-ob="6" aria-pressed="false">6</button><button type="button" data-ob="8" aria-pressed="false">8</button><button type="button" data-ob="10" aria-pressed="false">10</button></div>
+        <div class="gx-prev" data-draw="prevout"></div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Illustrative. Diabetes risks come from a meta-analysis of cohorts mostly outside the Gulf, and the cost multiplier is from the United States. The scenario assumes people moving out of obesity become overweight, that diabetes falls in step by 2040, and that other risks stay the same.</p><p lang="ar"><b>حدود البيانات.</b> توضيحي. مخاطر السكري مأخوذة من تحليل تلوي لدراسات أُجريت في معظمها خارج الخليج، ومعامل التكلفة من الولايات المتحدة. ويفترض السيناريو أن من يخرجون من فئة السمنة يصبحون في فئة زيادة الوزن، وأن السكري ينخفض بالتوازي بحلول 2040، وأن عوامل الخطر الأخرى تبقى ثابتة.</p></div>
+      </div>
+      <div class="gx-card" id="oman2040">
+        <h3><span lang="en">Check against Oman's official 2040 plan</span><span lang="ar">مقارنة بخطة عُمان الرسمية لعام 2040</span></h3>
+        <p class="n" lang="en">Oman is the only Gulf state found to publish 2040 needs. Applying this model to Oman's 2025 figures shows how much of its plan demographics explain.</p>
+        <p class="n" lang="ar">عُمان هي الدولة الخليجية الوحيدة التي وجدنا أنها تنشر احتياجات 2040. ويُظهر تطبيق هذا النموذج على أرقام عُمان لعام 2025 مقدار ما تفسره العوامل السكانية من خطتها.</p>
+        <div class="gx-chart short dash-skeleton" data-draw="omanchart"></div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> NCSI's figures are planned needs, which likely include higher target staffing ratios as well as demographic growth. Base figures are NCSI's 2025 counts, in thousands.</p><p lang="ar"><b>حدود البيانات.</b> أرقام المركز الوطني للإحصاء والمعلومات احتياجات مخططة تتضمن على الأرجح نسب كوادر مستهدفة أعلى إلى جانب النمو السكاني. وأرقام الأساس هي أعداد 2025 الصادرة عن المركز، بالآلاف.</p></div>
+      </div>
+    </div>
+    <div class="gx-io">
+      <div class="gx-io-col gx-io-ins">
+        <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
+        <ul lang="en"><li>Demand for hospital care is set to grow by roughly a quarter to nearly a half by 2040, mostly because populations keep growing.</li><li>Ageing adds most in Bahrain, Saudi Arabia and Kuwait, where the share of residents aged 65 and over rises by two-thirds or more.</li><li>Oman's official 2040 plan goes beyond demographics: it calls for 30–40% more physicians, nurses and beds than this model's demographic estimate, implying higher staffing ratios.</li><li>Prevention moves capacity modestly but health a lot: a 5-point fall in adult obesity trims 2040 demand by about 1%, yet means 15,000 (Bahrain) to over 300,000 (Saudi Arabia) fewer adults with diabetes.</li></ul>
+        <ul lang="ar"><li>يُتوقع أن ينمو الطلب على الرعاية بالمستشفيات بنحو الربع إلى النصف تقريبًا بحلول 2040، ويعود ذلك أساسًا إلى استمرار نمو السكان.</li><li>تضيف الشيخوخة أكثر في البحرين والسعودية والكويت، حيث ترتفع نسبة السكان بعمر 65 عامًا فأكثر بمقدار الثلثين أو أكثر.</li><li>تتجاوز خطة عُمان الرسمية لعام 2040 العوامل السكانية: فهي تتطلب أطباء وممرضين وأسرّة أكثر بنسبة 30–40% من التقدير السكاني لهذا النموذج، ما يعني نسب كوادر أعلى.</li><li>أثر الوقاية على الطاقة الاستيعابية محدود لكنه كبير على الصحة: انخفاض السمنة لدى البالغين 5 نقاط يقلّص الطلب في 2040 بنحو 1%، لكنه يعني عددًا أقل من البالغين المصابين بالسكري يتراوح بين 15,000 (البحرين) وأكثر من 300,000 (السعودية).</li></ul>
+      </div>
+      <div class="gx-io-col gx-io-opp">
+        <h3><span lang="en">Opportunities/recommendations</span><span lang="ar">الفرص/التوصيات</span></h3>
+        <ul lang="en"><li>Start nurse training and hospital capacity plans now. With lead times of 5–10 years, 2040 capacity is decided this decade.</li><li>Build geriatric, chronic-disease and long-term care capacity first where ageing adds most: Bahrain, Saudi Arabia and Kuwait.</li><li>Treat prevention as a health and cost strategy, not a substitute for new capacity: it avoids hundreds of thousands of diabetes cases but does not remove the need to build.</li><li>Other Gulf states could publish 2040 workforce and bed projections, as Oman does, to anchor investment and training plans.</li></ul>
+        <ul lang="ar"><li>البدء الآن في خطط تدريب الممرضين والطاقة الاستيعابية للمستشفيات، فمع مهل تتراوح بين 5 و10 سنوات تُحسم طاقة 2040 خلال هذا العقد.</li><li>بناء طاقة رعاية كبار السن والأمراض المزمنة والرعاية طويلة الأمد أولًا حيث تضيف الشيخوخة أكثر: البحرين والسعودية والكويت.</li><li>التعامل مع الوقاية بوصفها استراتيجية للصحة والتكلفة لا بديلًا عن الطاقة الجديدة: فهي تمنع مئات الآلاف من حالات السكري لكنها لا تلغي الحاجة إلى البناء.</li><li>يمكن لدول الخليج الأخرى نشر توقعات للقوى العاملة والأسرّة حتى 2040، كما تفعل عُمان، لتوجيه خطط الاستثمار والتدريب.</li></ul>
+      </div>
+    </div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_proj,ssb_beddays,wb_beds,wb_nurse,wb_phys,who_obesity,wb_diab,abdullah2010,ada2023,omn_ncsi"></ul></div>
     <p class="gx-next"><button type="button" data-tab="official"><span lang="en">Next: Official vs international →</span><span lang="ar">التالي: الرسمي مقابل الدولي ←</span></button></p>
   </section>
 
   <section class="gx-sec" id="official" hidden>
-    <h2><span class="gx-num" aria-hidden="true">7</span><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
+    <h2><span class="gx-num" aria-hidden="true">8</span><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> Where a government's own figure differs from the World Bank or WHO estimate for the same measure, plus progress on Saudi Vision 2030's headline health indicators.</p>
       <p lang="ar"><b>ما الذي نعرضه.</b> المواضع التي يختلف فيها الرقم الحكومي عن تقدير البنك الدولي أو منظمة الصحة العالمية للمؤشر نفسه، إضافةً إلى التقدم في المؤشرات الصحية الرئيسية لرؤية السعودية 2030.</p>
@@ -907,7 +1004,7 @@ const {GCC, NAME, NAME_AR, lang, T, nm, focus, box, text, fmt, lineChart, hbar, 
 document.querySelectorAll('.gx-focus button').forEach((b) => b.addEventListener('click', () => dash.setParams({focus: b.dataset.iso})));
 document.querySelectorAll('.gx-lang button').forEach((b) => b.addEventListener('click', () => dash.setParams({lang: b.dataset.lang})));
 // Section tabs: one section at a time, kept in the URL (?tab=) so views can be shared
-const TABS = ['snapshot', 'goals', 'outcomes', 'risk', 'financing', 'workforce', 'official'];
+const TABS = ['snapshot', 'goals', 'outcomes', 'risk', 'financing', 'workforce', 'outlook', 'official'];
 const tabsBar = document.querySelector('.gx-tabs');
 document.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => {
   dash.setParams({tab: b.dataset.tab});
@@ -1151,8 +1248,207 @@ dash.draw('vy', (el) => {
     wb_road: WB('SH.STA.TRAF.P5', 'Road traffic deaths per 100,000 people (WHO)', 'وفيات حوادث الطرق لكل 100,000 نسمة (منظمة الصحة العالمية)'),
     who_obesity: {en: 'WHO Global Health Observatory: Obesity among adults, age-standardized', ar: 'المرصد الصحي العالمي لمنظمة الصحة العالمية: السمنة لدى البالغين، معيارية حسب العمر', url: 'https://www.who.int/data/gho/data/indicators/indicator-details/GHO/prevalence-of-obesity-among-adults-bmi--30-(age-standardized-estimate)-(-)'},
     who_hale: {en: 'WHO Global Health Observatory: Healthy life expectancy at birth', ar: 'المرصد الصحي العالمي لمنظمة الصحة العالمية: العمر الصحي المتوقع عند الولادة', url: 'https://www.who.int/data/gho/data/indicators/indicator-details/GHO/gho-ghe-hale-healthy-life-expectancy-at-birth'},
+    wb_proj: {en: 'World Bank: Population estimates and projections (UN-based), by five-year age group', ar: 'البنك الدولي: تقديرات السكان وتوقعاتهم (استنادًا إلى الأمم المتحدة) حسب الفئات العمرية الخمسية', url: 'https://databank.worldbank.org/source/population-estimates-and-projections'},
     un_sdg: {en: 'United Nations: Sustainable Development Goal 3, target 3.4', ar: 'الأمم المتحدة: الهدف 3 من أهداف التنمية المستدامة، الغاية 3.4', url: 'https://sdgs.un.org/goals/goal3'},
   };
+  // ---------- Outlook 2040 ----------
+  const out = () => dash.data('outlook');
+  const proj = () => dash.data('proj');
+  const AGES65 = ['6569', '7074', '7579', '80UP'];
+  const ADULT = ['2024', '2529', '3034', '3539', '4044', '4549', '5054', '5559', '6064', '6569', '7074', '7579'];
+  const iso2 = (t) => '⁦' + t + '⁩';
+  const rc = (v) => (v == null || isNaN(v) ? '—' : d3.format(',')(v >= 1000 ? Math.round(v / 100) * 100 : Math.round(v)));
+  const popOf = (iso, y, ages) => proj().data.reduce((a, r) => a + (r.iso3 === iso && r.year === y && (!ages || ages.includes(r.age)) ? r.pop : 0), 0);
+  const useOf = (iso, y) => { const W = out().data.age_weights.values; return proj().data.reduce((a, r) => a + (r.iso3 === iso && r.year === y ? r.pop * W[r.age] : 0), 0); };
+  // Demand growth y0 -> y1: g = population growth factor, a = ageing factor (age-weighted use per person)
+  const demand = (iso, y0 = 2024, y1 = 2040) => {
+    const p0 = popOf(iso, y0), p1 = popOf(iso, y1);
+    return {g: p1 / p0, a: (useOf(iso, y1) / p1) / (useOf(iso, y0) / p0), s0: 100 * popOf(iso, y0, AGES65) / p0, s1: 100 * popOf(iso, y1, AGES65) / p1};
+  };
+  const obPts = () => Number(dash.params().ob || 4);
+  // Obesity falls by pts points; those leaving obesity become overweight (RR obese / RR overweight);
+  // diabetes shifts in proportion; demand falls in proportion to diabetes's extra use of care.
+  const prevention = (iso, pts) => {
+    const P = out().data.prevention, ob = latestRow(iso, 'obesity'), di = latestRow(iso, 'diabetes_prev');
+    if (!ob || !di) return null;
+    const p = ob.value / 100, d = di.value / 100, rr = P.rr_obese / P.rr_overweight, p2 = Math.max(0, p - pts / 100);
+    const d2 = d * ((1 - p2) + p2 * rr) / ((1 - p) + p * rr);
+    const m = P.cost_multiplier, red = 1 - ((1 - d2) + d2 * m) / ((1 - d) + d * m);
+    return {p, p2, d, d2, red, cases: popOf(iso, 2040, ADULT) * (d - d2)};
+  };
+  const ratioNow = (iso, ind) => {
+    const w = latestRow(iso, ind);
+    const o = nat().status === 'ok' && nat().data.official_vs_international.find((r) => r.iso3 === iso && r.indicator === ind);
+    if (o && (!w || o.official_year >= w.year)) return {v: o.official, y: o.official_year, official: true};
+    return w ? {v: w.value, y: w.year, official: false} : null;
+  };
+  const ready = () => ['proj', 'outlook', 'latest', 'national'].every((id) => dash.data(id).status === 'ok');
+  const RES = () => [['beds_1k', T('Hospital beds', 'أسرّة المستشفيات')], ['nurses_1k', T('Nurses and midwives', 'الممرضون والقابلات')], ['physicians_1k', T('Physicians', 'الأطباء')]];
+
+  dash.draw('demandchart', (el) => {
+    if (!box(el, ['proj', 'outlook'])) return;
+    el.replaceChildren();
+    const rows = GCC.map((iso) => { const d = demand(iso); return {iso, g: (d.g - 1) * 100, a: (d.g * d.a - d.g) * 100, t: (d.g * d.a - 1) * 100, s0: d.s0, s1: d.s1}; }).sort((a, b) => b.t - a.t);
+    const W = Math.max(300, el.clientWidth), bh = 20, gap = 10, top = 28, H = top + rows.length * (bh + gap);
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
+    const f1 = d3.format('.1f');
+    const ml = measure(svg, rows.map((r) => NAME[r.iso])) + 10;
+    const rl = (r) => '65+: ' + iso2(f1(r.s0) + '% → ' + f1(r.s1) + '%');
+    const tl = (r) => iso2('+' + Math.round(r.t) + '%');
+    const narrow = W < 520;
+    const mr = (narrow ? 0 : measure(svg, rows.map(rl)) + 16) + measure(svg, rows.map(tl)) + 10;
+    const x = d3.scaleLinear([0, d3.max(rows, (r) => r.t)], [ml, W - mr]);
+    const cG = (r) => (r.iso === focus() ? dash.colors[0] : 'var(--cds-chart-muted)');
+    const cA = (r) => (r.iso === focus() ? dash.colors[1] : 'var(--cds-chart-muted)');
+    const leg = svg.append('g').attr('transform', `translate(${ml},12)`); let lx = 0;
+    [[dash.colors[0], T('Population growth', 'نمو السكان')], [dash.colors[1], T('Older age mix', 'تقدم التركيبة العمرية')]].forEach(([c, label]) => {
+      leg.append('rect').attr('x', lx).attr('y', -8).attr('width', 10).attr('height', 10).attr('rx', 2).style('fill', c);
+      const t = leg.append('text').attr('x', lx + 14).attr('y', 1).style('fill', 'var(--color-fg-muted)').text(label);
+      lx += 14 + t.node().getComputedTextLength() + 18;
+    });
+    const tt = tip(el);
+    rows.forEach((r, i) => {
+      const y0 = top + i * (bh + gap), g = svg.append('g'), foc = r.iso === focus();
+      g.append('text').attr('x', ml - 8).attr('y', y0 + bh / 2).attr('dy', '0.32em').attr('text-anchor', 'end').style('fill', foc ? 'var(--color-fg)' : 'var(--color-fg-muted)').attr('font-weight', foc ? 600 : null).text(NAME[r.iso]);
+      g.append('rect').attr('x', x(0)).attr('y', y0).attr('height', bh).attr('width', Math.max(1, x(r.g) - x(0))).attr('rx', 2).style('fill', cG(r));
+      g.append('rect').attr('x', x(r.g)).attr('y', y0).attr('height', bh).attr('width', Math.max(1, x(r.t) - x(r.g))).attr('rx', 2).style('fill', cA(r)).style('opacity', foc ? 1 : 0.55);
+      g.append('text').attr('x', x(r.t) + 6).attr('y', y0 + bh / 2).attr('dy', '0.32em').style('fill', 'var(--color-fg)').attr('font-weight', 600).style('font-variant-numeric', 'tabular-nums').text(tl(r));
+      if (!narrow) g.append('text').attr('x', W - 2).attr('y', y0 + bh / 2).attr('dy', '0.32em').attr('text-anchor', 'end').style('fill', 'var(--color-fg-muted)').style('font-variant-numeric', 'tabular-nums').text(rl(r));
+      g.append('rect').attr('x', 0).attr('y', y0 - 2).attr('width', W).attr('height', bh + 4).attr('fill', 'transparent')
+        .on('pointermove', (ev) => { const [mx, my] = d3.pointer(ev, el); tt.show(mx, my, NAME[r.iso], [
+          {color: dash.colors[0], name: T('Population growth', 'نمو السكان'), value: '+' + f1(r.g) + '%'},
+          {color: dash.colors[1], name: T('Older age mix', 'تقدم التركيبة العمرية'), value: '+' + f1(r.a) + T(' points', ' نقطة')},
+          {name: T('Aged 65+, 2024 → 2040', '65 عامًا فأكثر، 2024 ← 2040'), value: f1(r.s0) + '% → ' + f1(r.s1) + '%'}]); })
+        .on('pointerleave', () => tt.hide());
+    });
+  });
+
+  dash.draw('needbody', (tb) => {
+    tb.replaceChildren();
+    if (!ready()) return;
+    const iso = focus(), d = demand(iso), pv = prevention(iso, obPts()), p24 = popOf(iso, 2024), p40 = popOf(iso, 2040);
+    RES().forEach(([ind, label]) => {
+      const r = ratioNow(iso, ind), h = latestRow('HIC', ind), tr = document.createElement('tr');
+      cell(tr, label);
+      if (!r) { for (let i = 0; i < 6; i++) cell(tr, '—'); tb.appendChild(tr); return; }
+      const now = r.v * p24 / 1000, g = now * d.g, ga = g * d.a, pr = pv ? ga * (1 - pv.red) : null;
+      cell(tr, f1(r.v) + ' (' + r.y + (r.official ? T(', official', '، رسمي') : '') + ')');
+      cell(tr, rc(now)); cell(tr, rc(g));
+      const c = cell(tr, rc(ga) + ' (+' + Math.round((ga / now - 1) * 100) + '%)'); c.style.fontWeight = 600;
+      cell(tr, pr == null ? '—' : rc(pr)); cell(tr, h ? rc(h.value * p40 / 1000) : '—');
+      tb.appendChild(tr);
+    });
+  });
+
+  const stat = (k, v, sub, cls) => {
+    const d = document.createElement('div'); d.className = 'gx-stat' + (cls ? ' ' + cls : '');
+    [['k', k], ['v', v], ['s', sub]].forEach(([c, t]) => { if (t == null) return; const e = document.createElement('span'); e.className = c; e.textContent = t; d.appendChild(e); });
+    return d;
+  };
+  dash.draw('prevout', (el) => {
+    el.replaceChildren();
+    if (!ready()) return;
+    const iso = focus(), pts = obPts(), pv = prevention(iso, pts);
+    if (!pv) return;
+    const d = demand(iso), p24 = popOf(iso, 2024);
+    const need = (ind) => { const r = ratioNow(iso, ind); return r ? r.v * p24 / 1000 * d.g * d.a : null; };
+    el.append(
+      stat(T('Adult obesity', 'السمنة لدى البالغين'), iso2(f1(pv.p * 100) + '% → ' + f1(pv.p2 * 100) + '%'), NAME[iso]),
+      stat(T('Adult diabetes', 'السكري لدى البالغين'), iso2(f1(pv.d * 100) + '% → ' + f1(pv.d2 * 100) + '%'), T('ages 20–79', 'بين 20 و79 عامًا')),
+      stat(T('Fewer adults with diabetes in 2040', 'بالغون أقل مصابون بالسكري في 2040'), rc(pv.cases), null, pts ? 'good' : ''),
+      stat(T('Lower demand for care', 'طلب أقل على الرعاية'), iso2((pts ? '−' : '') + d3.format('.1f')(pv.red * 100) + '%'),
+        pts ? T('about ' + rc(need('beds_1k') * pv.red) + ' fewer beds and ' + rc(need('nurses_1k') * pv.red) + ' fewer nurses needed', 'أقل بنحو ' + rc(need('beds_1k') * pv.red) + ' سريرًا و' + rc(need('nurses_1k') * pv.red) + ' ممرضًا') : T('Choose a fall in obesity above', 'اختر انخفاضًا في السمنة أعلاه'), pts ? 'good' : ''));
+  });
+
+  dash.draw('omanchart', (el) => {
+    if (!box(el, ['proj', 'outlook'])) return;
+    el.replaceChildren();
+    const O = out().data.oman_official_2040, d = demand('OMN', O.base_year, 2040);
+    const S = [['base', T('2025, actual', '2025، فعلي'), 'var(--cds-chart-muted)'], ['model', T('2040, this model', '2040، هذا النموذج'), dash.colors[0]], ['plan', T("2040, Oman's plan", '2040، خطة عُمان'), dash.colors[1]]];
+    const G = [['physicians', T('Physicians', 'الأطباء')], ['nurses', T('Nurses', 'الممرضون')], ['beds', T('Hospital beds', 'أسرّة المستشفيات')]]
+      .map(([k, l]) => ({l, v: {base: O[k]['2025'], model: O[k]['2025'] * d.g * d.a, plan: O[k]['2040']}}));
+    const W = Math.max(280, el.clientWidth), bh = 11, stack = W < 460, top = stack ? 62 : 30, gh = 18 + 3 * (bh + 3) + 12, H = top + G.length * gh;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
+    const fk = (v) => d3.format('.1f')(v) + T('k', ' ألف');
+    const mr = measure(svg, [fk(99.9)]) + 10, ml = 4;
+    const x = d3.scaleLinear([0, d3.max(G, (g) => g.v.plan)], [ml, W - mr]);
+    const leg = svg.append('g').attr('transform', `translate(${ml},12)`); let lx = 0;
+    S.forEach(([, label, c], j) => {
+      const ly = stack ? j * 17 : 0, x0 = stack ? 0 : lx;
+      leg.append('rect').attr('x', x0).attr('y', ly - 8).attr('width', 10).attr('height', 10).attr('rx', 2).style('fill', c);
+      const t = leg.append('text').attr('x', x0 + 14).attr('y', ly + 1).style('fill', 'var(--color-fg-muted)').text(label);
+      lx += 14 + t.node().getComputedTextLength() + 14;
+    });
+    G.forEach((g, i) => {
+      const y0 = top + i * gh;
+      svg.append('text').attr('x', ml).attr('y', y0 + 10).style('fill', 'var(--color-fg)').attr('font-weight', 600).text(g.l);
+      S.forEach(([k, , c], j) => {
+        const y = y0 + 18 + j * (bh + 3);
+        svg.append('rect').attr('x', x(0)).attr('y', y).attr('height', bh).attr('width', Math.max(1, x(g.v[k]) - x(0))).attr('rx', 2).style('fill', c);
+        svg.append('text').attr('x', x(g.v[k]) + 5).attr('y', y + bh / 2).attr('dy', '0.32em').style('fill', 'var(--color-fg)').style('font-variant-numeric', 'tabular-nums').text(fk(g.v[k]));
+      });
+    });
+  });
+
+  // ---------- UAE by emirate ----------
+  const EMS = ['AE-AZ', 'AE-DU', 'AE-SH', 'AE-AJ', 'AE-UQ', 'AE-RK', 'AE-FJ'];
+  const emSel = () => dash.params().em || 'AE';
+  const emName = (k) => (k === 'AE' ? T('All UAE', 'كل الإمارات') : out().data.emirates.names[k][lang() === 'ar' ? 1 : 0]);
+  const sh = (a, b) => (b ? (100 * a) / b : null);
+  dash.onData(() => {
+    const isAE = focus() === 'ARE';
+    document.querySelectorAll('#emirates .gx-embody').forEach((e) => (e.hidden = !isAE));
+    document.querySelectorAll('#emirates .gx-emhint').forEach((e) => (e.hidden = isAE));
+    document.querySelectorAll('.gx-em button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.em === emSel())));
+    document.querySelectorAll('.gx-ob button').forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.ob) === obPts())));
+  });
+  dash.draw('emirchart', (el) => {
+    if (!box(el, ['outlook'])) return;
+    el.replaceChildren();
+    const R = out().data.emirates.rows, sel = emSel();
+    const rows = ['AE'].concat(EMS.slice().sort((a, b) => sh(R[b].nur_em, R[b].nur) - sh(R[a].nur_em, R[a].nur)))
+      .map((k) => ({k, phys: sh(R[k].phy_em, R[k].phy), nurse: sh(R[k].nur_em, R[k].nur)}));
+    const W = Math.max(280, el.clientWidth), bh = 10, rowH = 30, top = 28, H = top + rows.length * rowH + 24;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
+    const ml = measure(svg, rows.map((r) => emName(r.k))) + 12, mr = 44;
+    const xmax = Math.max(20, Math.ceil(d3.max(rows, (r) => Math.max(r.phys, r.nurse)) / 5) * 5);
+    const x = d3.scaleLinear([0, xmax], [ml, W - mr]);
+    const cols = {phys: dash.colors[0], nurse: dash.colors[1]};
+    const leg = svg.append('g').attr('transform', `translate(${ml},12)`); let lx = 0;
+    [['phys', T('Physicians', 'الأطباء')], ['nurse', T('Nurses', 'الممرضون')]].forEach(([k, label]) => {
+      leg.append('rect').attr('x', lx).attr('y', -8).attr('width', 10).attr('height', 10).attr('rx', 2).style('fill', cols[k]);
+      const t = leg.append('text').attr('x', lx + 14).attr('y', 1).style('fill', 'var(--color-fg-muted)').text(label);
+      lx += 14 + t.node().getComputedTextLength() + 18;
+    });
+    x.ticks(4).forEach((v) => {
+      svg.append('line').attr('x1', x(v)).attr('x2', x(v)).attr('y1', top - 4).attr('y2', H - 20).style('stroke', 'var(--cds-chart-grid)');
+      svg.append('text').attr('x', x(v)).attr('y', H - 6).attr('text-anchor', 'middle').style('fill', 'var(--color-fg-muted)').text(v + '%');
+    });
+    rows.forEach((r, i) => {
+      const y0 = top + i * rowH, on = r.k === sel, dim = sel !== 'AE' && !on && r.k !== 'AE';
+      const g = svg.append('g').style('cursor', 'pointer').on('click', () => dash.setParams({em: r.k}));
+      g.append('text').attr('x', ml - 8).attr('y', y0 + bh + 1).attr('dy', '0.32em').attr('text-anchor', 'end')
+        .style('fill', on ? 'var(--color-fg)' : 'var(--color-fg-muted)').attr('font-weight', on || r.k === 'AE' ? 600 : null).text(emName(r.k));
+      [['phys', 0], ['nurse', bh + 2]].forEach(([k, off]) => {
+        g.append('rect').attr('x', x(0)).attr('y', y0 + off).attr('height', bh).attr('width', Math.max(1.5, x(r[k]) - x(0))).attr('rx', 2).style('fill', cols[k]).style('opacity', dim ? 0.4 : 1);
+        g.append('text').attr('x', x(r[k]) + 5).attr('y', y0 + off + bh / 2).attr('dy', '0.32em').style('fill', 'var(--color-fg)').style('font-variant-numeric', 'tabular-nums').style('font-size', '0.75rem').text(f1(r[k]) + '%');
+      });
+    });
+  });
+  dash.draw('emirstats', (el) => {
+    el.replaceChildren();
+    if (out().status !== 'ok') return;
+    const k = emSel(), r = out().data.emirates.rows[k], pc = (a, b) => f1(sh(a, b)) + '%', n = d3.format(',');
+    el.append(
+      stat(T('Physicians', 'الأطباء'), n(r.phy), T('citizens: ', 'المواطنون: ') + pc(r.phy_em, r.phy)),
+      stat(T('Nurses', 'الممرضون'), n(r.nur), T('citizens: ', 'المواطنون: ') + pc(r.nur_em, r.nur)),
+      stat(T('Nurses in the private sector', 'الممرضون في القطاع الخاص'), pc(r.nur_prv, r.nur), T('citizens: ', 'المواطنون: ') + pc(r.nur_prv_em, r.nur_prv) + T(' of private nurses', ' من ممرضي القطاع الخاص')),
+      stat(T('Citizen nurses, 2019 → 2024', 'الممرضون المواطنون، 2019 ← 2024'), iso2(n(r.nur_em_2019) + ' → ' + n(r.nur_em)), emName(k)));
+  });
+  document.querySelectorAll('.gx-em button').forEach((b) => b.addEventListener('click', () => dash.setParams({em: b.dataset.em})));
+  document.querySelectorAll('.gx-ob button').forEach((b) => b.addEventListener('click', () => dash.setParams({ob: b.dataset.ob})));
+  document.querySelectorAll('.gx-showuae').forEach((b) => b.addEventListener('click', () => dash.setParams({focus: 'ARE', em: 'AE'})));
+
   dash.draw('srclist', (ul) => {
     ul.replaceChildren();
     const ns = nat().status === 'ok' ? nat().data.sources : {};
@@ -1321,6 +1617,7 @@ dash.onData(() => {
   document.documentElement.dir = ar ? 'rtl' : 'ltr';
   document.title = ar ? 'متتبع الأنظمة الصحية في دول مجلس التعاون الخليجي' : 'GCC Health System Tracker';
   document.querySelectorAll('a.gx-sum').forEach((l) => l.setAttribute('href', ar ? 'summary.html?lang=ar' : 'summary.html'));
+  document.querySelectorAll('a.gx-brief').forEach((l) => l.setAttribute('href', 'brief.html?' + (ar ? 'lang=ar&' : '') + 'focus=' + window.gx.focus()));
 });
 </script>
 </body>

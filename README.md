@@ -15,7 +15,10 @@ A bilingual (English/Arabic) dashboard that benchmarks the six Gulf Cooperation 
 | Chronic disease risk | How large is the obesity and diabetes burden? | Adult obesity averages 36.6% across the GCC against 16.2% worldwide; diabetes 22.2% against 10.8%. |
 | Financing and insurance | Who pays for health care, and how is that changing? | GCC states spend 2.5–5.7% of GDP on health against 12.5% in high-income countries; governments fund 59–89%. All six are moving expatriates, and increasingly citizens, onto insurance. |
 | Workforce and localization | Are there enough clinicians, and how many are citizens? | Physician supply is near high-income levels in several states; nurses and beds lag. Citizens are 9–43% of physicians but under 5% of nurses in the UAE and Kuwait. |
+| Outlook 2040 | How much capacity will each country need by 2040, and how much could prevention save? | Demand grows 27–45% by 2040, mostly from population growth; ageing adds most in Bahrain, Saudi Arabia and Kuwait. Oman's official 2040 plan goes 30–40% beyond demographics. |
 | Official vs international | Where do national and international figures disagree? | In both directions: Saudi official life expectancy is above the World Bank's, Oman's and Bahrain's are below; Bahrain's own workforce figures are about three times the World Bank's. |
+
+Each country also has a printable one-page [country brief](https://hamzasaleh10.github.io/gcc-health-tracker/brief.html) in English and Arabic, and the workforce tab breaks the UAE down by emirate.
 
 An [executive summary](https://hamzasaleh10.github.io/gcc-health-tracker/summary.html) ([العربية](https://hamzasaleh10.github.io/gcc-health-tracker/summary.html?lang=ar)) sets out the key findings, eight metrics for strategic leadership and six strategic insights.
 
@@ -32,6 +35,7 @@ Health Observatory                                            run in browser)
         └── GitHub Actions, 2nd of every month (.github/workflows/refresh-data.yml)
 ```
 
+- **Outlook model.** `data/outlook.json` holds the 2040 model's cited assumptions: hospital use by age (Statistics Norway), diabetes risk by weight (Abdullah et al., 2010), the extra care used by people with diabetes (American Diabetes Association) and Oman's official 2040 needs. It also holds the UAE's workforce by emirate (UAE.Stat). Population projections by age refresh monthly from the World Bank.
 - **National data.** `data/national.json` holds official figures, goals, insurance milestones and workforce localization from each government's statistics office or health ministry, with a source for every entry. It is updated by hand once a year, because most national sources are PDF reports or sites that block automated access.
 - **Pipeline.** `scripts/refresh.py` pulls 14 World Bank indicators, WHO adult-obesity and WHO healthy life expectancy estimates for the six GCC states plus benchmarks, validates row counts, country and indicator coverage and value types, and only then writes the JSON files. A failed source or a suspicious result stops the run without touching the published data.
 - **Automation.** A scheduled GitHub Actions workflow runs the pipeline monthly and commits the data only when it changed. GitHub Pages republishes the site on each commit.
@@ -69,6 +73,7 @@ python -m http.server 8000          # then open http://localhost:8000
 
 - Each figure is the latest year a country reported, so years differ across countries and indicators.
 - SDG 3.4 goal = each country's 2015 rate of premature chronic-disease mortality cut by one third. A least-squares trend on 2015–2021 projects 2030 with an 80% prediction interval: on track if the whole range reaches the goal, off track if none of it does, uncertain otherwise. It ignores ageing and policy change, and the 2021 figures may still carry pandemic-era deaths.
+- Outlook 2040 keeps today's care per person constant and adjusts it for population growth and ageing. It applies Norway's age pattern of hospital use to all six countries, relies on projections that assume recent migration continues, and is a scenario, not a forecast. The prevention scenario is illustrative.
 - Every panel on the site carries its own limitations note.
 - The World Bank's workforce figures for Bahrain appear incomplete against the Ministry of Health's statistics; both are shown.
 - No nationality split of the health workforce was found for Qatar or Bahrain.
