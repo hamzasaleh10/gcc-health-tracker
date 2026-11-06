@@ -42,6 +42,8 @@ Health Observatory                                            run in browser)
 - **Front end.** A single static page with D3.js charts. Derived metrics (latest values, GCC averages, SDG 3.4 projections, spending tables) are computed in the browser from the raw data, so every figure traces back to a source row.
 - **Bilingual.** Full English and Arabic versions with right-to-left layout, translated labels, tables and chart annotations.
 
+When `assets/runtime.js` or `assets/site.css` changes, bump the `?v=` date on their links in `index.html`, `brief.html` and `summary.html` so browsers fetch the new version straight away.
+
 Run it locally:
 
 ```bash
