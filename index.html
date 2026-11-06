@@ -26,12 +26,12 @@
 .gx-focus button{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer}
 .gx-focus button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
 .gx-sec{display:grid;gap:var(--cds-gap-md)}
-.gx-sec>h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:0}
+.gx-sec>h2{font-size:1.5rem;font-weight:600;margin:0;line-height:1.3}
 .gx-sec>p.gx-lede{margin:0;color:var(--color-fg-muted);font-size:var(--cds-font-size-body);max-width:60rem}
 .gx-sec{scroll-margin-top:var(--cds-gap-md)}
 .gx-sec+.gx-sec{border-top:1px solid var(--color-border-line);padding-top:var(--cds-gap-xl)}
 .gx-sec>h2{display:flex;align-items:center;flex-wrap:wrap;gap:0 .5rem}
-.gx-num{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.75rem;height:1.75rem;border-radius:50%;background:color-mix(in srgb,var(--chart-1) 12%,transparent);color:var(--chart-1);font-size:var(--cds-font-size-caption);font-weight:600;font-variant-numeric:tabular-nums}
+.gx-num{display:inline-flex;align-items:center;justify-content:center;flex:none;width:2rem;height:2rem;border-radius:50%;background:color-mix(in srgb,var(--chart-1) 12%,transparent);color:var(--chart-1);font-size:var(--cds-font-size-caption);font-weight:600;font-variant-numeric:tabular-nums}
 .gx-ctx{display:grid;gap:var(--cds-gap-xs);max-width:60rem}
 .gx-ctx p{margin:0;font-size:var(--cds-font-size-body);color:var(--color-fg-muted);line-height:1.55}
 .gx-ctx b{color:var(--color-fg);font-weight:600}
@@ -45,10 +45,11 @@
 .gx-jump .gx-num{width:1.25rem;height:1.25rem;font-size:.7rem}
 .gx-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr));gap:var(--cds-gap-md)}
 .gx-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start}
-.gx-tile .t{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+@supports (grid-template-rows:subgrid){.gx-tile{grid-row:span 4;grid-template-rows:subgrid;row-gap:0;align-content:stretch}}
+.gx-tile .t{font-size:var(--cds-font-size-body);font-weight:600;color:var(--color-fg);line-height:1.3;padding-bottom:var(--cds-pad-sm);margin-bottom:var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line)}
 .gx-tile .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;line-height:1.1}
 .gx-tile .u{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
-.gx-tile .r{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums}
+.gx-tile .r{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums;padding-top:var(--cds-pad-sm);margin-top:var(--cds-pad-sm);border-top:1px solid var(--color-border-line)}
 .gx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:var(--cds-gap-md)}
 .gx-card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);display:grid;gap:var(--cds-gap-sm);align-content:start;min-width:0}
 .gx-card h3{margin:0;font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium)}
@@ -97,7 +98,7 @@
 .gx-limits p{margin:0}
 .gx-limits b{color:var(--color-fg);font-weight:600}
 .gx.is-ar .gx-limits{line-height:1.8}
-.gx-tile .o{font-size:var(--cds-font-size-caption);color:var(--color-warn);font-variant-numeric:tabular-nums}
+.gx-tile .o{display:block;margin-top:2px;font-size:var(--cds-font-size-caption);color:var(--color-warn);font-variant-numeric:tabular-nums}
 .gx td.warn{color:var(--color-warn)}
 .gx table.gx-text td,.gx table.gx-text th{white-space:normal;text-align:start;vertical-align:top}
 .gx table.gx-text td{min-width:6rem}
@@ -162,8 +163,8 @@
         <span class="t"><span lang="en">Life expectancy at birth</span><span lang="ar">العمر المتوقع عند الولادة</span></span>
         <span class="v" data-draw="tv" data-ind="life_exp" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">years, </span><span lang="ar">سنة، </span><span data-draw="ty" data-ind="life_exp" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="life_exp" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span></span>
-        <span class="o" data-draw="toff" data-ind="life_exp" data-fmt=".1f" hidden></span>
+        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="life_exp" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span><span class="o" data-draw="toff" data-ind="life_exp" data-fmt=".1f" hidden></span></span>
+
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Healthy life expectancy</span><span lang="ar">العمر الصحي المتوقع</span></span>
@@ -199,8 +200,8 @@
         <span class="t"><span lang="en">Physicians</span><span lang="ar">الأطباء</span></span>
         <span class="v" data-draw="tv" data-ind="physicians_1k" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="physicians_1k" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="physicians_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span></span>
-        <span class="o" data-draw="toff" data-ind="physicians_1k" data-fmt=".1f" hidden></span>
+        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="physicians_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span><span class="o" data-draw="toff" data-ind="physicians_1k" data-fmt=".1f" hidden></span></span>
+
       </div>
     </div>
     <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Where the government publishes its own figure, it appears in orange below; the two can differ (see Official figures vs international estimates).</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وحيث تنشر الحكومة رقمها الخاص يظهر باللون البرتقالي أسفل المؤشر، وقد يختلف الرقمان (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></div>
