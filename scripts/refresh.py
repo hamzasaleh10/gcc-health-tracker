@@ -1,7 +1,7 @@
 """Refresh the GCC Health System Tracker data.
 
-Pulls World Bank World Development Indicators and WHO adult-obesity estimates
-(via Our World in Data) for the six GCC states plus benchmarks, validates them,
+Pulls World Bank World Development Indicators and WHO adult-obesity and healthy
+life expectancy estimates (WHO Global Health Observatory API) for the six GCC states plus benchmarks, validates them,
 and writes the JSON files the site reads from /data.
 
 Usage: python scripts/refresh.py [DATA_DIR]   (default: data)
@@ -10,14 +10,12 @@ Exits non-zero, writing nothing, if a source fails or the data looks wrong,
 so a bad month never replaces good data.
 """
 import datetime as dt
-import io
 import json
 import math
 import os
 import sys
 import time
 
-import pandas as pd
 import requests
 
 GCC = ["SAU", "ARE", "QAT", "KWT", "OMN", "BHR"]
@@ -44,8 +42,11 @@ INDICATORS = {
 # Aggregates come back without an ISO3 code; map the World Bank ids.
 AGGREGATE_IDS = {"XD": "HIC", "1W": "WLD"}
 
-OBESITY_URL = ("https://ourworldindata.org/grapher/obesity-prevalence-adults-who-gho.csv"
-               "?v=1&csvType=full&useColumnShortNames=true")
+# WHO Global Health Observatory (OData API). Both sexes; the World Bank high-income
+# group and the global estimate map to the codes the World Bank data uses.
+GHO_URL = "https://ghoapi.azureedge.net/api/{code}?$filter=Dim1%20eq%20'SEX_BTSX'"
+GHO_AREAS = {**{c: c for c in GCC + ["USA"]}, "WB_HI": "HIC", "GLOBAL": "WLD"}
+WHO_AREAS = GCC + ["USA", "HIC", "WLD"]
 
 
 def get_json(url, tries=4):
@@ -82,31 +83,24 @@ def fetch_world_bank():
     return rows, last_updated
 
 
+def fetch_gho(code):
+    rows = []
+    for d in get_json(GHO_URL.format(code=code))["value"]:
+        iso = GHO_AREAS.get(d["SpatialDim"])
+        if iso is None or d.get("NumericValue") is None or int(d["TimeDim"]) < 2000:
+            continue
+        rows.append({"iso3": iso, "year": int(d["TimeDim"]), "value": round(float(d["NumericValue"]), 2)})
+    return sorted(rows, key=lambda r: (r["iso3"], r["year"]))
+
+
 def fetch_obesity():
-    r = requests.get(OBESITY_URL, timeout=90)
-    r.raise_for_status()
-    d = pd.read_csv(io.StringIO(r.text))
-    d.columns = ["entity", "code", "year", "value"] + list(d.columns[4:])
-    d["code"] = d["code"].replace({"OWID_WRL": "WLD"})
-    d = d[d.code.isin(GCC + ["USA", "WLD"]) & (d.year >= 2000)]
-    return [{"iso3": c, "year": int(y), "value": round(float(v), 2)}
-            for c, y, v in d[["code", "year", "value"]].itertuples(index=False)]
-
-
-HALE_URL = ("https://ourworldindata.org/grapher/healthy-life-expectancy-at-birth.csv"
-            "?v=1&csvType=full&useColumnShortNames=true")
+    """WHO adult obesity (BMI 30+, age-standardized, ages 18+)."""
+    return fetch_gho("NCD_BMI_30A")
 
 
 def fetch_hale():
-    """WHO healthy life expectancy (HALE) at birth, both sexes, via Our World in Data."""
-    r = requests.get(HALE_URL, timeout=90)
-    r.raise_for_status()
-    d = pd.read_csv(io.StringIO(r.text))
-    d.columns = ["entity", "code", "year", "value"] + list(d.columns[4:])
-    d["code"] = d["code"].replace({"OWID_WRL": "WLD"})
-    d = d[d.code.isin(GCC + ["USA", "WLD"]) & (d.year >= 2000)]
-    return [{"iso3": c, "year": int(y), "value": round(float(v), 2)}
-            for c, y, v in d[["code", "year", "value"]].itertuples(index=False)]
+    """WHO healthy life expectancy (HALE) at birth."""
+    return fetch_gho("WHOSIS_000002")
 
 
 def validate(wb, ob, hale=None):
@@ -121,13 +115,13 @@ def validate(wb, ob, hale=None):
             problems.append(f"World Bank: no rows for {key}")
     if len(ob) < 180:
         problems.append(f"Obesity: only {len(ob)} rows (expected 180+)")
-    for iso in GCC + ["USA", "WLD"]:
+    for iso in WHO_AREAS:
         if not any(r["iso3"] == iso for r in ob):
             problems.append(f"Obesity: no rows for {iso}")
     if hale is not None:
         if len(hale) < 120:
             problems.append(f"Healthy life expectancy: only {len(hale)} rows (expected 120+)")
-        for iso in GCC + ["USA", "WLD"]:
+        for iso in WHO_AREAS:
             if not any(r["iso3"] == iso for r in hale):
                 problems.append(f"Healthy life expectancy: no rows for {iso}")
     for r in wb + ob + (hale or []):
@@ -140,10 +134,10 @@ def validate(wb, ob, hale=None):
 def main(out_dir):
     print("World Bank WDI")
     wb, wb_updated = fetch_world_bank()
-    print("WHO obesity (Our World in Data)")
+    print("WHO obesity (Global Health Observatory)")
     ob = fetch_obesity()
     print(f"  {len(ob)} rows, latest year {max(r['year'] for r in ob)}")
-    print("WHO healthy life expectancy (Our World in Data)")
+    print("WHO healthy life expectancy (Global Health Observatory)")
     hale = fetch_hale()
     print(f"  {len(hale)} rows, latest year {max(r['year'] for r in hale)}")
 

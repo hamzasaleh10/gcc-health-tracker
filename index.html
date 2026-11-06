@@ -46,10 +46,17 @@
 .gx-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--cds-gap-md)}
 @media (min-width:48rem){.gx-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .gx-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start}
-@supports (grid-template-rows:subgrid){.gx-tile{grid-row:span 4;grid-template-rows:subgrid;row-gap:0;align-content:stretch}}
+@supports (grid-template-rows:subgrid){.gx-tile{grid-row:span 5;grid-template-rows:subgrid;row-gap:0;align-content:stretch}}
 .gx-tile .t{font-size:1rem;font-weight:600;color:var(--color-fg);line-height:1.3;padding-bottom:var(--cds-pad-sm);margin-bottom:var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line)}
 .gx-tile .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:clamp(2rem,1.4rem + 1.2vw,2.5rem);font-variant-numeric:tabular-nums;line-height:1.05}
 .gx-tile .nw{white-space:nowrap}
+.gx-tile .r{display:grid;gap:3px;align-content:start}
+.gx-tile .cmp{display:flex;justify-content:space-between;gap:var(--cds-gap-xs)}
+.gx-tile .cmp b{font-weight:600;color:var(--color-fg)}
+.gx-tile .cmp.o{color:var(--color-warn)}
+.gx-tile .cmp.o.na{color:var(--color-fg-muted);font-style:italic}
+.gx-tile .s{padding-top:var(--cds-pad-sm)}
+.gx-tile .s .st{white-space:normal;line-height:1.3;padding:2px 8px;border-radius:6px}
 .gx-tile .u{font-size:0.875rem;font-weight:600;color:var(--color-fg);line-height:1.35;margin-top:2px}
 .gx-tile .r{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums;padding-top:var(--cds-pad-sm);margin-top:var(--cds-pad-sm);border-top:1px solid var(--color-border-line)}
 .gx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:var(--cds-gap-md)}
@@ -100,7 +107,7 @@
 .gx-limits p{margin:0}
 .gx-limits b{color:var(--color-fg);font-weight:600}
 .gx.is-ar .gx-limits{line-height:1.8}
-.gx-tile .o{display:block;margin-top:2px;font-size:var(--cds-font-size-caption);color:var(--color-warn);font-variant-numeric:tabular-nums}
+.gx-tile .o{font-size:var(--cds-font-size-caption);color:var(--color-warn);font-variant-numeric:tabular-nums}
 .gx td.warn{color:var(--color-warn)}
 .gx table.gx-text td,.gx table.gx-text th{white-space:normal;text-align:start;vertical-align:top}
 .gx table.gx-text td{min-width:6rem}
@@ -155,8 +162,8 @@
   <section class="gx-sec" id="snapshot">
     <h2><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance:</span><span lang="ar">نظرة سريعة:</span><span data-draw="focusname">—</span></h2>
     <div class="gx-ctx">
-      <p lang="en"><b>What we're looking at.</b> Eight headline measures for the focus country, each beside a high-income or world benchmark.</p>
-      <p lang="ar"><b>ما الذي نعرضه.</b> ثمانية مؤشرات رئيسية للدولة المختارة، كلٌّ منها بجانب معيار مقارنة بالدول مرتفعة الدخل أو بالعالم.</p>
+      <p lang="en"><b>What we're looking at.</b> Eight headline measures for the focus country, each with the government's own figure where published, the high-income and world averages, and a status against high-income countries.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> ثمانية مؤشرات رئيسية للدولة المختارة، مع الرقم الحكومي حيثما نُشر، ومتوسطَي الدول مرتفعة الدخل والعالم، وحالة الدولة مقارنةً بالدول مرتفعة الدخل.</p>
       <p lang="en"><b>Why it matters.</b> It gives a one-screen read on where a health system stands before you go into the detail. Pick another focus country above to compare.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> يقدّم صورة سريعة في شاشة واحدة عن وضع النظام الصحي قبل الدخول في التفاصيل. اختر دولة أخرى في الأعلى للمقارنة.</p>
     </div>
@@ -165,54 +172,92 @@
         <span class="t"><span lang="en">Life expectancy at birth</span><span lang="ar">العمر المتوقع عند الولادة</span></span>
         <span class="v" data-draw="tv" data-ind="life_exp" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">years, </span><span lang="ar">سنة، </span><span data-draw="ty" data-ind="life_exp" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="life_exp" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span><span class="o" data-draw="toff" data-ind="life_exp" data-fmt=".1f" hidden></span></span>
-
+        <span class="r">
+          <span class="cmp o" data-draw="toff" data-ind="life_exp" data-fmt=".1f"></span>
+          <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="life_exp" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
+          <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="life_exp" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
+        </span>
+        <span class="s"><span class="st" data-draw="tst" data-ind="life_exp" data-better="high"></span></span>
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Healthy life expectancy</span><span lang="ar">العمر الصحي المتوقع</span></span>
         <span class="v" data-draw="tv" data-ind="hale" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">years in good health, </span><span lang="ar">سنوات بصحة جيدة، </span><span data-draw="ty" data-ind="hale" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">World:</span><span lang="ar">العالم:</span> <span data-draw="tr" data-ind="hale" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</span></span>
+        <span class="r">
+          <span class="cmp o" data-draw="toff" data-ind="hale" data-fmt=".1f"></span>
+          <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="hale" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
+          <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="hale" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
+        </span>
+        <span class="s"><span class="st" data-draw="tst" data-ind="hale" data-better="high"></span></span>
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Premature chronic-disease deaths</span><span lang="ar">الوفيات المبكرة بالأمراض المزمنة</span></span>
         <span class="v" data-draw="tv" data-ind="ncd_mort_30_70" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">chance of dying <span class="nw">30–70</span>, </span><span lang="ar">احتمال الوفاة بين 30 و70 عامًا، </span><span data-draw="ty" data-ind="ncd_mort_30_70" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="ncd_mort_30_70" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
+        <span class="r">
+          <span class="cmp o" data-draw="toff" data-ind="ncd_mort_30_70" data-fmt=".1f" data-suffix="%"></span>
+          <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="ncd_mort_30_70" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
+          <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="ncd_mort_30_70" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
+        </span>
+        <span class="s"><span class="st" data-draw="tst" data-ind="ncd_mort_30_70" data-better="low"></span></span>
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Adult obesity</span><span lang="ar">السمنة لدى البالغين</span></span>
         <span class="v" data-draw="tv" data-ind="obesity" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">age-standardized, </span><span lang="ar">معيارية حسب العمر، </span><span data-draw="ty" data-ind="obesity" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">World:</span><span lang="ar">العالم:</span> <span data-draw="tr" data-ind="obesity" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
+        <span class="r">
+          <span class="cmp o" data-draw="toff" data-ind="obesity" data-fmt=".1f" data-suffix="%"></span>
+          <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="obesity" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
+          <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="obesity" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
+        </span>
+        <span class="s"><span class="st" data-draw="tst" data-ind="obesity" data-better="low"></span></span>
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Diabetes</span><span lang="ar">السكري</span></span>
         <span class="v" data-draw="tv" data-ind="diabetes_prev" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">of adults 20–79, </span><span lang="ar">من البالغين بين 20 و79 عامًا، </span><span data-draw="ty" data-ind="diabetes_prev" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="diabetes_prev" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
+        <span class="r">
+          <span class="cmp o" data-draw="toff" data-ind="diabetes_prev" data-fmt=".1f" data-suffix="%"></span>
+          <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="diabetes_prev" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
+          <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="diabetes_prev" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
+        </span>
+        <span class="s"><span class="st" data-draw="tst" data-ind="diabetes_prev" data-better="low"></span></span>
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Health spending</span><span lang="ar">الإنفاق الصحي</span></span>
         <span class="v" data-draw="tv" data-ind="che_gdp" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">of GDP, </span><span lang="ar">من الناتج المحلي الإجمالي، </span><span data-draw="ty" data-ind="che_gdp" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="che_gdp" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
+        <span class="r">
+          <span class="cmp o" data-draw="toff" data-ind="che_gdp" data-fmt=".1f" data-suffix="%"></span>
+          <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="che_gdp" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
+          <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="che_gdp" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
+        </span>
+        <span class="s"><span class="st" data-draw="tst" data-ind="che_gdp" data-better="none"></span></span>
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Physicians</span><span lang="ar">الأطباء</span></span>
         <span class="v" data-draw="tv" data-ind="physicians_1k" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="physicians_1k" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="physicians_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span><span class="o" data-draw="toff" data-ind="physicians_1k" data-fmt=".1f" hidden></span></span>
-
+        <span class="r">
+          <span class="cmp o" data-draw="toff" data-ind="physicians_1k" data-fmt=".1f"></span>
+          <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="physicians_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
+          <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="physicians_1k" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
+        </span>
+        <span class="s"><span class="st" data-draw="tst" data-ind="physicians_1k" data-better="high"></span></span>
       </div>
       <div class="gx-tile">
         <span class="t"><span lang="en">Nurses and midwives</span><span lang="ar">الممرضون والقابلات</span></span>
         <span class="v" data-draw="tv" data-ind="nurses_1k" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="nurses_1k" data-source="latest" data-field="year">—</span></span>
-        <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="nurses_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</span><span class="o" data-draw="toff" data-ind="nurses_1k" data-fmt=".1f" hidden></span></span>
+        <span class="r">
+          <span class="cmp o" data-draw="toff" data-ind="nurses_1k" data-fmt=".1f"></span>
+          <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="nurses_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
+          <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="nurses_1k" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
+        </span>
+        <span class="s"><span class="st" data-draw="tst" data-ind="nurses_1k" data-better="high"></span></span>
       </div>
     </div>
-    <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Where the government publishes its own figure, it appears in orange below; the two can differ (see Official figures vs international estimates).</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وحيث تنشر الحكومة رقمها الخاص يظهر باللون البرتقالي أسفل المؤشر، وقد يختلف الرقمان (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></div>
+    <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Where the government publishes its own figure, it appears in orange; the two can differ (see Official figures vs international estimates). Status compares the international figure with the high-income average, which may be for a different year; within 5% counts as near. Health spending has no better or worse direction, so its status only says above or below.</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وحيث تنشر الحكومة رقمها الخاص يظهر باللون البرتقالي، وقد يختلف الرقمان (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية). وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، وقد يكون لسنة مختلفة، ويُعد الفارق ضمن 5% قريبًا. ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p></div>
   </section>
 
   <section class="gx-sec" id="outcomes">
@@ -434,7 +479,7 @@
       <p class="n" lang="en">Years a newborn can expect to live in good health, latest year (WHO). Oman targets 67 by 2030 and 70 by 2040.</p>
       <p class="n" lang="ar">عدد السنوات التي يُتوقع أن يعيشها المولود بصحة جيدة، لأحدث سنة (منظمة الصحة العالمية). تستهدف عُمان 67 سنة بحلول 2030 و70 بحلول 2040.</p>
       <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="hale" data-source="latest"></div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> WHO estimates, latest 2021, and revised between editions. Oman set its targets against a 2016 baseline of 65.6 years; the current WHO series gives 64.4 for 2016 and 63.2 for 2021, so measured progress depends on which series is used.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات منظمة الصحة العالمية، أحدثها 2021، وتُراجع بين الإصدارات. وضعت عُمان مستهدفاتها على أساس خط أساس قدره 65.6 سنة في 2016، بينما تعطي السلسلة الحالية للمنظمة 64.4 لعام 2016 و63.2 لعام 2021، لذا يعتمد قياس التقدم على السلسلة المستخدمة.</p></div>
+      <div class="gx-limits"><p lang="en"><b>Limitations.</b> WHO estimates, latest 2023, and revised between editions. Oman set its targets against a 2016 baseline of 65.6 years, which the current WHO series matches (65.5). Its jump from 65.6 in 2021 to 68.2 in 2023 is partly recovery from the pandemic, so the 2030 target should be confirmed with later years.</p><p lang="ar"><b>حدود البيانات.</b> تقديرات منظمة الصحة العالمية، أحدثها 2023، وتُراجع بين الإصدارات. وضعت عُمان مستهدفاتها على أساس خط أساس قدره 65.6 سنة في 2016، وتتوافق معه السلسلة الحالية للمنظمة (65.5). ويعود جزء من القفزة من 65.6 في 2021 إلى 68.2 في 2023 إلى التعافي من الجائحة، لذا ينبغي تأكيد تحقيق مستهدف 2030 ببيانات السنوات اللاحقة.</p></div>
     </div>
     <div class="gx-card" id="goals-table">
       <h3><span lang="en">Published goals and latest position</span><span lang="ar">الأهداف المعلنة والوضع الحالي</span></h3>
@@ -846,7 +891,7 @@ dash.draw('sdgbody', (tb) => {
 dash.draw('hbar', (el) => {
   if (!box(el, ['latest'])) return;
   const ind = el.dataset.ind;
-  const isos = [...GCC, 'USA', ind === 'obesity' ? null : 'HIC', 'WLD'].filter(Boolean);
+  const isos = [...GCC, 'USA', 'HIC', 'WLD'];
   const rows = isos.map((iso) => { const r = latestRow(iso, ind); return r && {iso, name: NAME[iso], value: r.value, year: r.year}; }).filter(Boolean);
   const g = rows.filter((r) => GCC.includes(r.iso)).sort((a, b) => b.value - a.value);
   const refs = rows.filter((r) => !GCC.includes(r.iso)).sort((a, b) => b.value - a.value);
@@ -978,12 +1023,24 @@ dash.draw('vy', (el) => {
 
   // Snapshot: official figure line under a tile
   dash.draw('toff', (el) => {
-    el.hidden = true;
-    if (nat().status !== 'ok') return;
-    const o = nat().data.official_vs_international.find((r) => r.iso3 === focus() && r.indicator === el.dataset.ind);
-    if (!o) return;
-    el.textContent = T('Official: ', 'الرقم الرسمي: ') + d3.format(el.dataset.fmt)(o.official) + ' (' + o.official_year + ')';
-    el.hidden = false;
+    const o = nat().status === 'ok' && nat().data.official_vs_international.find((r) => r.iso3 === focus() && r.indicator === el.dataset.ind);
+    el.classList.toggle('na', !o);
+    el.textContent = T('Official: ', 'الرقم الرسمي: ') + (o ? d3.format(el.dataset.fmt)(o.official) + (el.dataset.suffix || '') + ' (' + o.official_year + ')' : T('not published', 'غير منشور'));
+  });
+
+  // Status of the focus country against the high-income average (international data; within 5% counts as near)
+  dash.draw('tst', (el) => {
+    el.className = 'st';
+    if (dash.data('latest').status !== 'ok') { el.textContent = ''; return; }
+    const v = latestRow(focus(), el.dataset.ind), h = latestRow('HIC', el.dataset.ind);
+    if (!v || !h) { el.textContent = ''; return; }
+    const gap = (v.value - h.value) / h.value, dir = el.dataset.better;
+    let cls, en, ar;
+    if (dir === 'none') { cls = 'st-na'; [en, ar] = gap < 0 ? ['Below high-income level', 'أقل من مستوى الدول مرتفعة الدخل'] : ['Above high-income level', 'أعلى من مستوى الدول مرتفعة الدخل']; }
+    else if (Math.abs(gap) <= 0.05) { cls = 'st-near'; en = 'Near high-income level'; ar = 'قريب من مستوى الدول مرتفعة الدخل'; }
+    else if ((gap > 0) === (dir === 'high')) { cls = 'st-met'; en = 'Better than high income'; ar = 'أفضل من الدول مرتفعة الدخل'; }
+    else { cls = 'st-far'; en = 'Behind high income'; ar = 'متأخر عن الدول مرتفعة الدخل'; }
+    el.classList.add(cls); el.textContent = T(en, ar);
   });
 
   // Insurance table
