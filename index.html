@@ -401,19 +401,19 @@
     </div>
     <div class="gx-card" id="sdg-table">
       <h3><span lang="en">On track for SDG 3.4?</span><span lang="ar">هل الدول على المسار الصحيح لتحقيق الهدف 3.4؟</span></h3>
-      <p class="n" lang="en">A trend line fitted to 2015–2021 projects each country to 2030, with an 80% range. On track: the whole range reaches the goal. Off track: none of it does. Uncertain: the range spans the goal.</p>
-      <p class="n" lang="ar">يُسقط خط اتجاه مُطابق لبيانات 2015–2021 وضع كل دولة حتى 2030 مع نطاق ثقة 80%. على المسار: يبلغ النطاق كله الهدف. خارج المسار: لا يبلغه أي جزء منه. غير محسوم: يتقاطع النطاق مع الهدف.</p>
+      <p class="n" lang="en">All rates are the chance (%) of dying between ages 30 and 70 from cardiovascular disease, cancer, diabetes or chronic respiratory disease. A trend line fitted to 2015–2021 projects each country to 2030, with an 80% range. On track: the whole range reaches the goal. Off track: none of it does. Uncertain: the range spans the goal.</p>
+      <p class="n" lang="ar">جميع المعدلات هي احتمال الوفاة (%) بين 30 و70 عامًا بأمراض القلب والأوعية الدموية أو السرطان أو السكري أو أمراض الجهاز التنفسي المزمنة. يُسقط خط اتجاه مُطابق لبيانات 2015–2021 وضع كل دولة حتى 2030 مع نطاق ثقة 80%. على المسار: يبلغ النطاق كله الهدف. خارج المسار: لا يبلغه أي جزء منه. غير محسوم: يتقاطع النطاق مع الهدف.</p>
       <div class="gx-tablewrap" lang="en">
         <table data-source="sdg34" data-row-key="country">
           <thead><tr>
             <th data-field="country">Country</th>
-            <th data-field="v2015">2015</th>
-            <th data-field="latest">Latest</th>
-            <th data-field="latest_year">Year</th>
-            <th data-field="goal2030">2030 goal</th>
-            <th data-field="proj2030">Projected 2030</th>
-            <th data-field="lo2030">Range (80%)</th>
-            <th data-field="status">Status</th>
+            <th data-field="v2015">Baseline rate, 2015</th>
+            <th data-field="latest">Latest rate</th>
+            <th data-field="latest_year">Year of latest rate</th>
+            <th data-field="goal2030">2030 goal (2015 rate cut by a third)</th>
+            <th data-field="proj2030">Projected 2030 rate (trend)</th>
+            <th data-field="lo2030">Projected 2030 range (80% confidence)</th>
+            <th data-field="status">Status against 2030 goal</th>
           </tr></thead>
           <tbody data-draw="sdgbody"></tbody>
         </table>
@@ -422,13 +422,13 @@
         <table data-source="sdg34" data-row-key="country">
           <thead><tr>
             <th data-field="country">الدولة</th>
-            <th data-field="v2015">2015</th>
-            <th data-field="latest">الأحدث</th>
-            <th data-field="latest_year">السنة</th>
-            <th data-field="goal2030">هدف 2030</th>
-            <th data-field="proj2030">الإسقاط لعام 2030</th>
-            <th data-field="lo2030">النطاق (80%)</th>
-            <th data-field="status_ar">الحالة</th>
+            <th data-field="v2015">معدل خط الأساس، 2015</th>
+            <th data-field="latest">أحدث معدل</th>
+            <th data-field="latest_year">سنة أحدث معدل</th>
+            <th data-field="goal2030">هدف 2030 (معدل 2015 مخفضًا بمقدار الثلث)</th>
+            <th data-field="proj2030">المعدل المتوقع لعام 2030 (الاتجاه)</th>
+            <th data-field="lo2030">النطاق المتوقع لعام 2030 (ثقة 80%)</th>
+            <th data-field="status_ar">الحالة مقارنةً بهدف 2030</th>
           </tr></thead>
           <tbody data-draw="sdgbody_ar"></tbody>
         </table>
