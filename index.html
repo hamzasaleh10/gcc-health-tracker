@@ -29,7 +29,18 @@
 .gx-sec>h2{font-size:1.5rem;font-weight:600;margin:0;line-height:1.3}
 .gx-sec>p.gx-lede{margin:0;color:var(--color-fg-muted);font-size:var(--cds-font-size-body);max-width:60rem}
 .gx-sec{scroll-margin-top:var(--cds-gap-md)}
-.gx-sec+.gx-sec{border-top:1px solid var(--color-border-line);padding-top:var(--cds-gap-xl)}
+.gx-sec[hidden]{display:none}
+.gx-tabs{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs);align-items:center;padding:var(--cds-pad-sm) 0;background:var(--color-bg);border-bottom:1px solid var(--color-border-line)}
+.gx-tabs .lbl{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-inline-end:var(--cds-gap-xs)}
+@media (max-width:47.99rem){.gx-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}.gx-tabs::-webkit-scrollbar{display:none}.gx-tabs button{flex:none}.gx-tabs .lbl{display:none}}
+.gx-tabs button,.gx-next button{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);display:inline-flex;align-items:center;gap:.375rem;padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer}
+.gx-tabs button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
+.gx-tabs button:hover,.gx-next button:hover{border-color:var(--color-fg)}
+.gx-tabs .gx-num{width:1.25rem;height:1.25rem;font-size:.7rem}
+.gx-tabs button[aria-pressed="true"] .gx-num{background:var(--chart-1);color:#fff}
+.gx-sec+.gx-sec{border-top:0;padding-top:0}
+.gx-next{margin:0;display:flex;justify-content:flex-end}
+.gx-next button{font-size:var(--cds-font-size-body);font-weight:600;color:var(--chart-1);padding:var(--cds-pad-sm) var(--cds-pad-md)}
 .gx-sec>h2{display:flex;align-items:center;flex-wrap:wrap;gap:0 .5rem}
 .gx-num{display:inline-flex;align-items:center;justify-content:center;flex:none;width:2rem;height:2rem;border-radius:50%;background:color-mix(in srgb,var(--chart-1) 12%,transparent);color:var(--chart-1);font-size:var(--cds-font-size-caption);font-weight:600;font-variant-numeric:tabular-nums}
 .gx-ctx{display:grid;gap:var(--cds-gap-xs);max-width:60rem}
@@ -51,10 +62,6 @@
 .gx.is-ar .gx-find{border-radius:var(--cds-radius) 0 0 var(--cds-radius)}
 .gx-find b{font-weight:600}
 .gx.is-ar .gx-ctx p,.gx.is-ar .gx-find{line-height:1.8}
-.gx-jump{align-items:center}
-.gx-jump .lbl{color:var(--color-fg-muted)}
-.gx-jump a{display:inline-flex;align-items:center;gap:.375rem}
-.gx-jump .gx-num{width:1.25rem;height:1.25rem;font-size:.7rem}
 .gx-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--cds-gap-md)}
 @media (min-width:48rem){.gx-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .gx-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start}
@@ -127,8 +134,6 @@
 .gx .st{display:inline-block;font-size:var(--cds-font-size-caption);font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
 .gx .st-met{color:var(--color-ok)}.gx .st-near{color:var(--color-warn)}.gx .st-far{color:var(--color-bad)}.gx .st-na{color:var(--color-fg-muted)}
 .gx-subh{margin:var(--cds-gap-sm) 0 0;font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium)}
-.gx-jump{display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs) var(--cds-gap-md);font-size:var(--cds-font-size-caption)}
-.gx-jump a{color:var(--chart-1);text-decoration:none}.gx-jump a:hover{text-decoration:underline}
 [data-dash-source-state=empty]{color:transparent}
 [data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
 </style>
@@ -160,15 +165,15 @@
     <button type="button" data-iso="BHR" aria-pressed="false"><span lang="en">Bahrain</span><span lang="ar">البحرين</span></button>
   </div>
 
-  <nav class="gx-jump" aria-label="Sections">
-    <span class="lbl"><span lang="en">Sections</span><span lang="ar">الأقسام</span></span>
-    <a href="#snapshot"><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance</span><span lang="ar">نظرة سريعة</span></a>
-    <a href="#outcomes"><span class="gx-num" aria-hidden="true">2</span><span lang="en">Health outcomes</span><span lang="ar">النتائج الصحية</span></a>
-    <a href="#risk"><span class="gx-num" aria-hidden="true">3</span><span lang="en">Chronic disease</span><span lang="ar">الأمراض المزمنة</span></a>
-    <a href="#financing"><span class="gx-num" aria-hidden="true">4</span><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></a>
-    <a href="#workforce"><span class="gx-num" aria-hidden="true">5</span><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></a>
-    <a href="#goals"><span class="gx-num" aria-hidden="true">6</span><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></a>
-    <a href="#official"><span class="gx-num" aria-hidden="true">7</span><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></a>
+  <nav class="gx-tabs" aria-label="Sections / الأقسام">
+    <span class="lbl"><span lang="en">Section</span><span lang="ar">القسم</span></span>
+    <button type="button" data-tab="snapshot" aria-pressed="false" aria-controls="snapshot"><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance</span><span lang="ar">نظرة سريعة</span></button>
+    <button type="button" data-tab="outcomes" aria-pressed="false" aria-controls="outcomes"><span class="gx-num" aria-hidden="true">2</span><span lang="en">Health outcomes</span><span lang="ar">النتائج الصحية</span></button>
+    <button type="button" data-tab="risk" aria-pressed="false" aria-controls="risk"><span class="gx-num" aria-hidden="true">3</span><span lang="en">Chronic disease</span><span lang="ar">الأمراض المزمنة</span></button>
+    <button type="button" data-tab="financing" aria-pressed="false" aria-controls="financing"><span class="gx-num" aria-hidden="true">4</span><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></button>
+    <button type="button" data-tab="workforce" aria-pressed="false" aria-controls="workforce"><span class="gx-num" aria-hidden="true">5</span><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></button>
+    <button type="button" data-tab="goals" aria-pressed="false" aria-controls="goals"><span class="gx-num" aria-hidden="true">6</span><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></button>
+    <button type="button" data-tab="official" aria-pressed="false" aria-controls="official"><span class="gx-num" aria-hidden="true">7</span><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></button>
   </nav>
 
   <section class="gx-sec" id="snapshot">
@@ -283,9 +288,10 @@
     </div>
     <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Where the government publishes its own figure, it appears in orange; the two can differ (see Official figures vs international estimates). Status compares the international figure with the high-income average, which may be for a different year; within 5% counts as near. Health spending has no better or worse direction, so its status only says above or below.</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وحيث تنشر الحكومة رقمها الخاص يظهر باللون البرتقالي، وقد يختلف الرقمان (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية). وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، وقد يكون لسنة مختلفة، ويُعد الفارق ضمن 5% قريبًا. ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p></div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,who_hale,wb_ncd,who_obesity,wb_diab,wb_che,wb_phys,wb_nurse,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
+    <p class="gx-next"><button type="button" data-tab="outcomes"><span lang="en">Next: Health outcomes →</span><span lang="ar">التالي: النتائج الصحية ←</span></button></p>
   </section>
 
-  <section class="gx-sec" id="outcomes">
+  <section class="gx-sec" id="outcomes" hidden>
     <h2><span class="gx-num" aria-hidden="true">2</span><span lang="en">Health outcomes</span><span lang="ar">النتائج الصحية</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> How long people live, and how many die early (between 30 and 70) from cardiovascular disease, cancer, diabetes and chronic respiratory disease, measured against the UN goal (SDG 3.4) to cut those deaths by a third between 2015 and 2030.</p>
@@ -358,9 +364,10 @@
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Seven data points and a straight line: the projection ignores population ageing and policy change, and the range reflects only year-to-year noise. Pandemic years matter: fitted on 2015–2019 only, Oman moves from on track to uncertain. Saudi Arabia reports a different official measure, a chronic-disease death rate that fell from 558 to 366 between 2019 and 2024 (see Official figures vs international estimates).</p><p lang="ar"><b>حدود البيانات.</b> سبع نقاط بيانات وخط مستقيم: يتجاهل الإسقاط شيخوخة السكان وتغير السياسات، ويعكس النطاق التذبذب السنوي فقط. ولسنوات الجائحة أثر: عند الاقتصار على 2015–2019 تنتقل عُمان من «على المسار» إلى «غير محسوم». وتنشر السعودية مقياسًا رسميًا مختلفًا هو معدل الوفيات بالأمراض غير المعدية، الذي انخفض من 558 إلى 366 بين 2019 و2024 (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,wb_ncd,un_sdg,sau_hstp25,omn_ncsi,bhr_moh"></ul></div>
+    <p class="gx-next"><button type="button" data-tab="risk"><span lang="en">Next: Chronic disease →</span><span lang="ar">التالي: الأمراض المزمنة ←</span></button></p>
   </section>
 
-  <section class="gx-sec" id="risk">
+  <section class="gx-sec" id="risk" hidden>
     <h2><span class="gx-num" aria-hidden="true">3</span><span lang="en">Chronic disease risk</span><span lang="ar">عوامل خطر الأمراض المزمنة</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> Adult obesity and diabetes prevalence over time, against world and high-income benchmarks.</p>
@@ -397,9 +404,10 @@
       </div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_obesity,wb_diab"></ul></div>
+    <p class="gx-next"><button type="button" data-tab="financing"><span lang="en">Next: Financing and insurance →</span><span lang="ar">التالي: التمويل والتأمين ←</span></button></p>
   </section>
 
-  <section class="gx-sec" id="financing">
+  <section class="gx-sec" id="financing" hidden>
     <h2><span class="gx-num" aria-hidden="true">4</span><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> How much each country spends on health, who pays for it (government, insurers or patients out of pocket), and how far each has moved residents onto health insurance.</p>
@@ -479,9 +487,10 @@
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Coverage figures aren't comparable between countries: mandates target expatriates and private-sector workers, while most citizens use free public care (Saudi Arabia is changing this). Status comes from official announcements and news reports and can change quickly; current status in Kuwait and Bahrain could not be confirmed.</p><p lang="ar"><b>حدود البيانات.</b> أرقام التغطية غير قابلة للمقارنة بين الدول: تستهدف الأنظمة الإلزامية الوافدين والعاملين في القطاع الخاص، بينما يتلقى معظم المواطنين رعاية عامة مجانية (والسعودية تغيّر ذلك). وتستند الحالة إلى إعلانات رسمية وتقارير إخبارية قد تتغير سريعًا، ولم يتسنَّ تأكيد الوضع الحالي في الكويت والبحرين.</p></div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_che,wb_chepc,wb_gov,wb_oop,sau_hstp25,uae_insurance,qat_opendata,kwt_dhaman,omn_dhamani,bhr_insurance,bhr_law"></ul></div>
+    <p class="gx-next"><button type="button" data-tab="workforce"><span lang="en">Next: Workforce and localization →</span><span lang="ar">التالي: القوى العاملة والتوطين ←</span></button></p>
   </section>
 
-  <section class="gx-sec" id="workforce">
+  <section class="gx-sec" id="workforce" hidden>
     <h2><span class="gx-num" aria-hidden="true">5</span><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> Physicians, nurses and hospital beds per 1,000 people, and the share of physicians and nurses who are citizens.</p>
@@ -530,10 +539,11 @@
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each country's own statistics, with different years (2022–2025) and scopes: Saudi private-sector nurses come from the 2024 ministry yearbook as compiled by GLMM; Oman publishes rounded percentages; Kuwait's private sector includes clinics. No nationality split was found for Qatar or Bahrain. The GCC nurse benchmark (30.3%, 2024) is GCC-Stat's figure as reported in the press.</p><p lang="ar"><b>حدود البيانات.</b> إحصاءات كل دولة بسنوات (2022–2025) ونطاقات مختلفة: أرقام ممرضي القطاع الخاص في السعودية من الكتاب الإحصائي لوزارة الصحة 2024 بتجميع برنامج GLMM؛ وتنشر عُمان نسبًا مقرّبة؛ ويشمل القطاع الخاص في الكويت العيادات. ولم نجد توزيعًا حسب الجنسية لقطر أو البحرين. ومعيار الممرضين الخليجي (30.3%، 2024) هو رقم المركز الإحصائي الخليجي كما نشرته الصحافة.</p></div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_phys,wb_nurse,wb_beds,sau_gastat23,sau_glmm,uae_fcsc,kwt_csb,omn_ncsi,gccstat_nurses,qat_opendata,bhr_moh"></ul></div>
+    <p class="gx-next"><button type="button" data-tab="goals"><span lang="en">Next: National goals →</span><span lang="ar">التالي: الأهداف الوطنية ←</span></button></p>
   </section>
 
 
-  <section class="gx-sec" id="goals">
+  <section class="gx-sec" id="goals" hidden>
     <h2><span class="gx-num" aria-hidden="true">6</span><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> Each country's published health targets, such as life expectancy, healthy life expectancy and workforce goals, beside its latest reported position.</p>
@@ -579,9 +589,10 @@
       <div class="gx-limits"><p lang="en"><b>Limitations.</b> Goals as published by each government; some come from ministers' statements reported in the press rather than formal plans. "Latest" uses official figures where they exist. Status is this tracker's simple comparison, not an official assessment.</p><p lang="ar"><b>حدود البيانات.</b> الأهداف كما أعلنتها كل حكومة، وبعضها مأخوذ من تصريحات وزارية نشرتها الصحافة لا من خطط رسمية. يستخدم عمود «الأحدث» الأرقام الرسمية حيثما وُجدت. والحالة مقارنة مبسطة من هذا المتتبع وليست تقييمًا رسميًا.</p></div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_hale,sau_hstp25,sau_private,sau_quota,omn_hale,uae_top15,uae_emiratisation,qat_nhs,kwt_vision,bhr_moh2030"></ul></div>
+    <p class="gx-next"><button type="button" data-tab="official"><span lang="en">Next: Official vs international →</span><span lang="ar">التالي: الرسمي مقابل الدولي ←</span></button></p>
   </section>
 
-  <section class="gx-sec" id="official">
+  <section class="gx-sec" id="official" hidden>
     <h2><span class="gx-num" aria-hidden="true">7</span><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> Where a government's own figure differs from the World Bank or WHO estimate for the same measure, plus progress on Saudi Vision 2030's headline health indicators.</p>
@@ -656,6 +667,7 @@
       </div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,wb_phys,wb_nurse,wb_road,wb_ncd,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
+    <p class="gx-next"><button type="button" data-tab="snapshot"><span lang="en">Back to the start: At a glance</span><span lang="ar">العودة إلى البداية: نظرة سريعة</span></button></p>
   </section>
 
   <footer class="gx-foot" id="method">
@@ -895,6 +907,24 @@ const {GCC, NAME, NAME_AR, lang, T, nm, focus, box, text, fmt, lineChart, hbar, 
 // Focus buttons.
 document.querySelectorAll('.gx-focus button').forEach((b) => b.addEventListener('click', () => dash.setParams({focus: b.dataset.iso})));
 document.querySelectorAll('.gx-lang button').forEach((b) => b.addEventListener('click', () => dash.setParams({lang: b.dataset.lang})));
+// Section tabs: one section at a time, kept in the URL (?tab=) so views can be shared
+const TABS = ['snapshot', 'outcomes', 'risk', 'financing', 'workforce', 'goals', 'official'];
+const tabsBar = document.querySelector('.gx-tabs');
+document.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => {
+  dash.setParams({tab: b.dataset.tab});
+  // Bring the new section's top into view just under the sticky tab bar
+  const y = document.querySelector('.gx-focus').getBoundingClientRect().bottom + scrollY;
+  if (scrollY > y || b.closest('.gx-next')) scrollTo({top: y});
+}));
+if (TABS.includes(location.hash.slice(1))) dash.setParams({tab: location.hash.slice(1)});
+dash.onData(() => {
+  const t = TABS.includes(dash.params().tab) ? dash.params().tab : 'snapshot';
+  TABS.forEach((id) => { const sec = document.getElementById(id); if (sec) sec.hidden = id !== t; });
+  document.querySelectorAll('.gx-tabs button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tab === t)));
+  const on = document.querySelector('.gx-tabs button[aria-pressed="true"]');
+  // after the language direction is applied, centre the active tab in the scrolling bar (phones)
+  requestAnimationFrame(() => { if (on && tabsBar.scrollWidth > tabsBar.clientWidth) { const y = scrollY; on.scrollIntoView({block: 'nearest', inline: 'center'}); if (scrollY !== y) scrollTo({top: y}); } });
+});
 dash.onData(() => {
   document.querySelectorAll('.gx-focus button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.iso === focus())));
   document.querySelectorAll('.gx-lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang())));

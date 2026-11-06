@@ -19,7 +19,7 @@ A bilingual (English/Arabic) dashboard that benchmarks the six Gulf Cooperation 
 
 An [executive summary](https://hamzasaleh10.github.io/gcc-health-tracker/summary.html) ([العربية](https://hamzasaleh10.github.io/gcc-health-tracker/summary.html?lang=ar)) sets out the key findings, eight metrics for strategic leadership and six strategic insights.
 
-Pick any focus country to update every section. Views can be shared by link: `?lang=ar&focus=QAT` opens the Arabic view focused on Qatar.
+Sections open as tabs, and picking a focus country updates every one. Views can be shared by link: `?lang=ar&focus=QAT&tab=workforce` opens the Arabic workforce tab focused on Qatar.
 
 ## How it works
 

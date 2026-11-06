@@ -13,8 +13,9 @@
     national: 'data/national.json',
     meta: 'data/meta.json',
   };
-  const DEFAULTS = { focus: 'SAU', lang: 'en' };
+  const DEFAULTS = { focus: 'SAU', lang: 'en', tab: 'snapshot' };
   const ALLOWED = {
+    tab: ['snapshot', 'outcomes', 'risk', 'financing', 'workforce', 'goals', 'official'],
     focus: ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'],
     lang: ['en', 'ar'],
   };
