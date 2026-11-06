@@ -47,9 +47,10 @@
 @media (min-width:48rem){.gx-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .gx-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start}
 @supports (grid-template-rows:subgrid){.gx-tile{grid-row:span 4;grid-template-rows:subgrid;row-gap:0;align-content:stretch}}
-.gx-tile .t{font-size:var(--cds-font-size-body);font-weight:600;color:var(--color-fg);line-height:1.3;padding-bottom:var(--cds-pad-sm);margin-bottom:var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line)}
-.gx-tile .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;line-height:1.1}
-.gx-tile .u{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gx-tile .t{font-size:1rem;font-weight:600;color:var(--color-fg);line-height:1.3;padding-bottom:var(--cds-pad-sm);margin-bottom:var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line)}
+.gx-tile .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:clamp(2rem,1.4rem + 1.2vw,2.5rem);font-variant-numeric:tabular-nums;line-height:1.05}
+.gx-tile .nw{white-space:nowrap}
+.gx-tile .u{font-size:0.875rem;font-weight:600;color:var(--color-fg);line-height:1.35;margin-top:2px}
 .gx-tile .r{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums;padding-top:var(--cds-pad-sm);margin-top:var(--cds-pad-sm);border-top:1px solid var(--color-border-line)}
 .gx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:var(--cds-gap-md)}
 .gx-card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);display:grid;gap:var(--cds-gap-sm);align-content:start;min-width:0}
@@ -176,7 +177,7 @@
       <div class="gx-tile">
         <span class="t"><span lang="en">Premature chronic-disease deaths</span><span lang="ar">الوفيات المبكرة بالأمراض المزمنة</span></span>
         <span class="v" data-draw="tv" data-ind="ncd_mort_30_70" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
-        <span class="u"><span lang="en">chance of dying 30–70, </span><span lang="ar">احتمال الوفاة بين 30 و70 عامًا، </span><span data-draw="ty" data-ind="ncd_mort_30_70" data-source="latest" data-field="year">—</span></span>
+        <span class="u"><span lang="en">chance of dying <span class="nw">30–70</span>, </span><span lang="ar">احتمال الوفاة بين 30 و70 عامًا، </span><span data-draw="ty" data-ind="ncd_mort_30_70" data-source="latest" data-field="year">—</span></span>
         <span class="r"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <span data-draw="tr" data-ind="ncd_mort_30_70" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span></span>
       </div>
       <div class="gx-tile">
