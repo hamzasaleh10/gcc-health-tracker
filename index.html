@@ -39,11 +39,22 @@
 .gx-showuae{font-weight:600;color:var(--chart-1);justify-self:start}
 .gx-emhint{display:grid;gap:var(--cds-gap-xs)}
 .gx-emhint[hidden]{display:none}
-.gx-prev,.gx-emstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10.5rem),1fr));gap:var(--cds-gap-sm)}
-.gx-stat{border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-sm) var(--cds-pad-md);display:grid;gap:2px;align-content:start}
-.gx-stat .k{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
-.gx-stat .v{font-family:var(--font-anthropic-serif);font-size:1.35rem;line-height:1.15;font-variant-numeric:tabular-nums;white-space:nowrap}
-.gx-stat .s{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums}
+/* One tile design: title, divider, figure, bold description, then muted comparison */
+.gx-prev,.gx-emstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10.5rem),1fr));gap:var(--cds-gap-md)}
+.gx-vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr));gap:var(--cds-gap-sm)}
+.gx-vs>div,.gx-stat{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);align-content:start;min-width:0}
+@supports (grid-template-rows:subgrid){.gx-vs>div,.gx-stat{grid-row:span 3;grid-template-rows:subgrid;row-gap:0;align-content:stretch}}
+.gx-vs .t,.gx-stat .k{font-size:1rem;font-weight:600;color:var(--color-fg);line-height:1.3;padding-bottom:var(--cds-pad-sm);margin-bottom:var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line)}
+.gx-vs .v,.gx-stat .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:1.75rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gx-vs .y,.gx-stat .s{font-size:0.875rem;font-weight:600;color:var(--color-fg);line-height:1.35;margin-top:2px;font-variant-numeric:tabular-nums}
+.gx-al{background:var(--color-panel);border:1px solid var(--color-border-line);border-top:3px solid var(--color-fg-muted);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg)}
+.gx-al h3{margin:0 0 var(--cds-gap-sm);font-size:var(--cds-font-size-body);font-weight:600}
+.gx-al h4{margin:0 0 6px;font-size:var(--cds-font-size-caption);font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--color-fg-muted)}
+.gx.is-ar .gx-al h4{text-transform:none;letter-spacing:0}
+.gx-al-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:var(--cds-gap-lg)}
+.gx-al ul{margin:0;padding-inline-start:1.1rem;display:grid;gap:6px;font-size:var(--cds-font-size-caption);line-height:1.55;color:var(--color-fg-muted)}
+.gx-al b{color:var(--color-fg);font-weight:600}
+.gx.is-ar .gx-al ul{line-height:1.8}
 .gx-stat.good .v{color:var(--color-ok)}
 .gx-tabs{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs);align-items:center;padding:var(--cds-pad-sm) 0;background:var(--color-bg);border-bottom:1px solid var(--color-border-line)}
 .gx-tabs .lbl{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-inline-end:var(--cds-gap-xs)}
@@ -117,10 +128,6 @@
 .gx tr.is-ref td{color:var(--color-fg-muted)}
 .gx td.ok{color:var(--color-ok)}
 .gx td.bad{color:var(--color-bad)}
-.gx-vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8rem),1fr));gap:var(--cds-gap-md)}
-.gx-vs .t{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
-.gx-vs .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;line-height:1.1}
-.gx-vs .y{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
 .gx-note{margin:0;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);max-width:60rem}
 .gx-foot{display:grid;gap:var(--cds-gap-xs);border-top:1px solid var(--color-border-line);padding-top:var(--cds-pad-md)}
 .gx{--gx-font:var(--font-anthropic-sans),"Noto Sans Arabic","Segoe UI","Geeza Pro",Tahoma,sans-serif;font-family:var(--gx-font)}
@@ -196,8 +203,8 @@
   <section class="gx-sec" id="snapshot">
     <h2><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance:</span><span lang="ar">نظرة سريعة:</span><span data-draw="focusname">—</span></h2>
     <div class="gx-ctx">
-      <p lang="en"><b>What we're looking at.</b> Eight headline measures for the focus country, each with the government's own figure where published, the high-income and world averages, and a status against high-income countries.</p>
-      <p lang="ar"><b>ما الذي نعرضه.</b> ثمانية مؤشرات رئيسية للدولة المختارة، مع الرقم الحكومي حيثما نُشر، ومتوسطَي الدول مرتفعة الدخل والعالم، وحالة الدولة مقارنةً بالدول مرتفعة الدخل.</p>
+      <p lang="en"><b>What we're looking at.</b> Eight headline measures for the focus country, each with the high-income and world averages and a status against high-income countries.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> ثمانية مؤشرات رئيسية للدولة المختارة، مع متوسطَي الدول مرتفعة الدخل والعالم، وحالة الدولة مقارنةً بالدول مرتفعة الدخل.</p>
       <p lang="en"><b>Why it matters.</b> It gives a one-screen read on where a health system stands before you go into the detail. Pick another focus country above to compare.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> يقدّم صورة سريعة في شاشة واحدة عن وضع النظام الصحي قبل الدخول في التفاصيل. اختر دولة أخرى في الأعلى للمقارنة.</p>
     </div>
@@ -207,7 +214,6 @@
         <span class="v" data-draw="tv" data-ind="life_exp" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">years, </span><span lang="ar">سنة، </span><span data-draw="ty" data-ind="life_exp" data-source="latest" data-field="year">—</span></span>
         <span class="r">
-          <span class="cmp o" data-draw="toff" data-ind="life_exp" data-fmt=".1f"></span>
           <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="life_exp" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
           <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="life_exp" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
         </span>
@@ -218,7 +224,6 @@
         <span class="v" data-draw="tv" data-ind="hale" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">years in good health, </span><span lang="ar">سنوات بصحة جيدة، </span><span data-draw="ty" data-ind="hale" data-source="latest" data-field="year">—</span></span>
         <span class="r">
-          <span class="cmp o" data-draw="toff" data-ind="hale" data-fmt=".1f"></span>
           <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="hale" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
           <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="hale" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
         </span>
@@ -229,7 +234,6 @@
         <span class="v" data-draw="tv" data-ind="ncd_mort_30_70" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">chance of dying <span class="nw">30–70</span>, </span><span lang="ar">احتمال الوفاة بين 30 و70 عامًا، </span><span data-draw="ty" data-ind="ncd_mort_30_70" data-source="latest" data-field="year">—</span></span>
         <span class="r">
-          <span class="cmp o" data-draw="toff" data-ind="ncd_mort_30_70" data-fmt=".1f" data-suffix="%"></span>
           <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="ncd_mort_30_70" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
           <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="ncd_mort_30_70" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
         </span>
@@ -240,7 +244,6 @@
         <span class="v" data-draw="tv" data-ind="obesity" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">age-standardized, </span><span lang="ar">معيارية حسب العمر، </span><span data-draw="ty" data-ind="obesity" data-source="latest" data-field="year">—</span></span>
         <span class="r">
-          <span class="cmp o" data-draw="toff" data-ind="obesity" data-fmt=".1f" data-suffix="%"></span>
           <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="obesity" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
           <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="obesity" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
         </span>
@@ -251,7 +254,6 @@
         <span class="v" data-draw="tv" data-ind="diabetes_prev" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">of adults 20–79, </span><span lang="ar">من البالغين بين 20 و79 عامًا، </span><span data-draw="ty" data-ind="diabetes_prev" data-source="latest" data-field="year">—</span></span>
         <span class="r">
-          <span class="cmp o" data-draw="toff" data-ind="diabetes_prev" data-fmt=".1f" data-suffix="%"></span>
           <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="diabetes_prev" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
           <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="diabetes_prev" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
         </span>
@@ -262,7 +264,6 @@
         <span class="v" data-draw="tv" data-ind="che_gdp" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">of GDP, </span><span lang="ar">من الناتج المحلي الإجمالي، </span><span data-draw="ty" data-ind="che_gdp" data-source="latest" data-field="year">—</span></span>
         <span class="r">
-          <span class="cmp o" data-draw="toff" data-ind="che_gdp" data-fmt=".1f" data-suffix="%"></span>
           <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="che_gdp" data-ref="HIC" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
           <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="che_gdp" data-ref="WLD" data-fmt=".1f" data-suffix="%" data-source="latest" data-field="value">—</b></span>
         </span>
@@ -273,7 +274,6 @@
         <span class="v" data-draw="tv" data-ind="physicians_1k" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="physicians_1k" data-source="latest" data-field="year">—</span></span>
         <span class="r">
-          <span class="cmp o" data-draw="toff" data-ind="physicians_1k" data-fmt=".1f"></span>
           <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="physicians_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
           <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="physicians_1k" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
         </span>
@@ -284,7 +284,6 @@
         <span class="v" data-draw="tv" data-ind="nurses_1k" data-fmt=".1f" data-source="latest" data-field="value">—</span>
         <span class="u"><span lang="en">per 1,000 people, </span><span lang="ar">لكل 1,000 نسمة، </span><span data-draw="ty" data-ind="nurses_1k" data-source="latest" data-field="year">—</span></span>
         <span class="r">
-          <span class="cmp o" data-draw="toff" data-ind="nurses_1k" data-fmt=".1f"></span>
           <span class="cmp"><span lang="en">High income:</span><span lang="ar">الدول مرتفعة الدخل:</span> <b data-draw="tr" data-ind="nurses_1k" data-ref="HIC" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
           <span class="cmp"><span lang="en">World:</span><span lang="ar">العالم:</span> <b data-draw="tr" data-ind="nurses_1k" data-ref="WLD" data-fmt=".1f" data-source="latest" data-field="value">—</b></span>
         </span>
@@ -294,8 +293,8 @@
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
         <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
-        <ul lang="en"><li>Most Gulf states now match high-income countries on how long people live. The red statuses cluster on chronic disease and staffing.</li><li>Where governments publish their own figures, they can differ from international estimates in either direction, as the orange lines show.</li></ul>
-        <ul lang="ar"><li>تضاهي معظم دول الخليج الآن الدول مرتفعة الدخل في متوسط العمر، بينما تتركز الحالات الحمراء في الأمراض المزمنة والكوادر الصحية.</li><li>حيث تنشر الحكومات أرقامها الخاصة، قد تختلف عن التقديرات الدولية في أي اتجاه، كما تُظهر الأسطر البرتقالية.</li></ul>
+        <ul lang="en"><li>Most Gulf states now match high-income countries on how long people live. The red statuses cluster on chronic disease and staffing.</li><li>Governments' own figures can differ from these international estimates in either direction; the Official vs international tab sets them side by side.</li></ul>
+        <ul lang="ar"><li>تضاهي معظم دول الخليج الآن الدول مرتفعة الدخل في متوسط العمر، بينما تتركز الحالات الحمراء في الأمراض المزمنة والكوادر الصحية.</li><li>قد تختلف الأرقام الحكومية عن هذه التقديرات الدولية في أي اتجاه، ويعرضها قسم «الرسمي مقابل الدولي» جنبًا إلى جنب.</li></ul>
       </div>
       <div class="gx-io-col gx-io-opp">
         <h3><span lang="en">Opportunities/recommendations</span><span lang="ar">الفرص/التوصيات</span></h3>
@@ -303,7 +302,7 @@
         <ul lang="ar"><li>استخدم الحالات لاختيار مؤشرين أو ثلاثة تُعرض على القيادة أولًا.</li><li>بدّل الدولة المختارة للعثور على دولة خليجية نظيرة تتفوق في مؤشر ما، والاستفادة من تجربتها.</li></ul>
       </div>
     </div>
-    <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Where the government publishes its own figure, it appears in orange; the two can differ (see Official figures vs international estimates). Status compares the international figure with the high-income average, which may be for a different year; within 5% counts as near. Health spending has no better or worse direction, so its status only says above or below.</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وحيث تنشر الحكومة رقمها الخاص يظهر باللون البرتقالي، وقد يختلف الرقمان (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية). وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، وقد يكون لسنة مختلفة، ويُعد الفارق ضمن 5% قريبًا. ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p></div>
+    <div class="gx-limits"><p lang="en"><b>Limitations.</b> Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Governments' own figures, which can differ, are compared in the Official vs international tab. Status compares the international figure with the high-income average, which may be for a different year; within 5% counts as near. Health spending has no better or worse direction, so its status only says above or below.</p><p lang="ar"><b>حدود البيانات.</b> يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وتُقارن الأرقام الحكومية، التي قد تختلف، في قسم «الرسمي مقابل الدولي». وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، وقد يكون لسنة مختلفة، ويُعد الفارق ضمن 5% قريبًا. ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p></div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,who_hale,wb_ncd,who_obesity,wb_diab,wb_che,wb_phys,wb_nurse,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
     <p class="gx-next"><button type="button" data-tab="goals"><span lang="en">Next: National goals →</span><span lang="ar">التالي: الأهداف الوطنية ←</span></button></p>
   </section>
@@ -633,7 +632,6 @@
       <p class="n" lang="en">Population growth, plus the extra demand from an older age mix, based on how hospital use rises with age. The share of residents aged 65 and over is shown on the right.</p>
       <p class="n" lang="ar">نمو السكان، مضافًا إليه الطلب الإضافي الناتج عن تقدم التركيبة العمرية، استنادًا إلى ارتفاع استخدام المستشفيات مع العمر. وتظهر على اليمين نسبة السكان بعمر 65 عامًا فأكثر.</p>
       <div class="gx-chart short dash-skeleton" data-draw="demandchart"></div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Population projections are the World Bank's (UN-based) and assume recent migration patterns continue; Gulf populations depend heavily on expatriate workers, so actual growth can differ widely. No Gulf age profile of hospital use is published, so the age pattern comes from Norway (2009) and is applied to all six countries.</p><p lang="ar"><b>حدود البيانات.</b> توقعات السكان من البنك الدولي (المستندة إلى الأمم المتحدة) وتفترض استمرار أنماط الهجرة الحالية؛ ويعتمد سكان الخليج كثيرًا على العمالة الوافدة، لذا قد يختلف النمو الفعلي كثيرًا. ولا يتوفر نمط خليجي منشور لاستخدام المستشفيات حسب العمر، لذا أُخذ النمط من النرويج (2009) وطُبّق على الدول الست.</p></div>
     </div>
     <div class="gx-card" id="need">
       <h3><span lang="en">Capacity needed in 2040:</span><span lang="ar">الطاقة المطلوبة في 2040:</span> <span data-draw="focusname">—</span></h3>
@@ -653,7 +651,6 @@
           <tbody data-draw="needbody"></tbody>
         </table>
       </div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Today's counts are estimated as the latest ratio per 1,000 times the 2024 population, so they are approximate; the ratio is the government's figure where it is more recent than the World Bank's. The same demand growth is applied to beds, nurses and physicians. The high-income column overstates need, because high-income populations are much older.</p><p lang="ar"><b>حدود البيانات.</b> تُقدَّر الأعداد الحالية بضرب أحدث نسبة لكل 1,000 في عدد سكان 2024، لذا فهي تقريبية؛ والنسبة هي الرقم الحكومي حيث يكون أحدث من رقم البنك الدولي. ويُطبَّق نمو الطلب نفسه على الأسرّة والممرضين والأطباء. ويبالغ عمود الدول مرتفعة الدخل في تقدير الحاجة لأن سكان تلك الدول أكبر سنًا بكثير.</p></div>
     </div>
     <div class="gx-grid">
       <div class="gx-card" id="prevent">
@@ -662,14 +659,12 @@
         <p class="n" lang="ar">اختر عدد النقاط المئوية التي تنخفض بها السمنة لدى البالغين بحلول 2040. فانخفاض عدد البالغين المصابين بالسمنة يعني سكريًا أقل، والسكري الأقل يعني طلبًا أقل على الرعاية.</p>
         <div class="gx-ob" role="group" aria-label="Obesity reduction / خفض السمنة"><span class="lbl"><span lang="en">Fall in obesity (points)</span><span lang="ar">انخفاض السمنة (نقاط)</span></span><button type="button" data-ob="0" aria-pressed="false">0</button><button type="button" data-ob="2" aria-pressed="false">2</button><button type="button" data-ob="4" aria-pressed="false">4</button><button type="button" data-ob="6" aria-pressed="false">6</button><button type="button" data-ob="8" aria-pressed="false">8</button><button type="button" data-ob="10" aria-pressed="false">10</button></div>
         <div class="gx-prev" data-draw="prevout"></div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> Illustrative. Diabetes risks come from a meta-analysis of cohorts mostly outside the Gulf, and the cost multiplier is from the United States. The scenario assumes people moving out of obesity become overweight, that diabetes falls in step by 2040, and that other risks stay the same.</p><p lang="ar"><b>حدود البيانات.</b> توضيحي. مخاطر السكري مأخوذة من تحليل تلوي لدراسات أُجريت في معظمها خارج الخليج، ومعامل التكلفة من الولايات المتحدة. ويفترض السيناريو أن من يخرجون من فئة السمنة يصبحون في فئة زيادة الوزن، وأن السكري ينخفض بالتوازي بحلول 2040، وأن عوامل الخطر الأخرى تبقى ثابتة.</p></div>
       </div>
       <div class="gx-card" id="oman2040">
         <h3><span lang="en">Check against Oman's official 2040 plan</span><span lang="ar">مقارنة بخطة عُمان الرسمية لعام 2040</span></h3>
         <p class="n" lang="en">Oman is the only Gulf state found to publish 2040 needs. Applying this model to Oman's 2025 figures shows how much of its plan demographics explain.</p>
         <p class="n" lang="ar">عُمان هي الدولة الخليجية الوحيدة التي وجدنا أنها تنشر احتياجات 2040. ويُظهر تطبيق هذا النموذج على أرقام عُمان لعام 2025 مقدار ما تفسره العوامل السكانية من خطتها.</p>
         <div class="gx-chart short dash-skeleton" data-draw="omanchart"></div>
-      <div class="gx-limits"><p lang="en"><b>Limitations.</b> NCSI's figures are planned needs, which likely include higher target staffing ratios as well as demographic growth. Base figures are NCSI's 2025 counts, in thousands.</p><p lang="ar"><b>حدود البيانات.</b> أرقام المركز الوطني للإحصاء والمعلومات احتياجات مخططة تتضمن على الأرجح نسب كوادر مستهدفة أعلى إلى جانب النمو السكاني. وأرقام الأساس هي أعداد 2025 الصادرة عن المركز، بالآلاف.</p></div>
       </div>
     </div>
     <div class="gx-io">
@@ -682,6 +677,13 @@
         <h3><span lang="en">Opportunities/recommendations</span><span lang="ar">الفرص/التوصيات</span></h3>
         <ul lang="en"><li>Start nurse training and hospital capacity plans now. With lead times of 5–10 years, 2040 capacity is decided this decade.</li><li>Build geriatric, chronic-disease and long-term care capacity first where ageing adds most: Bahrain, Saudi Arabia and Kuwait.</li><li>Treat prevention as a health and cost strategy, not a substitute for new capacity: it avoids hundreds of thousands of diabetes cases but does not remove the need to build.</li><li>Other Gulf states could publish 2040 workforce and bed projections, as Oman does, to anchor investment and training plans.</li></ul>
         <ul lang="ar"><li>البدء الآن في خطط تدريب الممرضين والطاقة الاستيعابية للمستشفيات، فمع مهل تتراوح بين 5 و10 سنوات تُحسم طاقة 2040 خلال هذا العقد.</li><li>بناء طاقة رعاية كبار السن والأمراض المزمنة والرعاية طويلة الأمد أولًا حيث تضيف الشيخوخة أكثر: البحرين والسعودية والكويت.</li><li>التعامل مع الوقاية بوصفها استراتيجية للصحة والتكلفة لا بديلًا عن الطاقة الجديدة: فهي تمنع مئات الآلاف من حالات السكري لكنها لا تلغي الحاجة إلى البناء.</li><li>يمكن لدول الخليج الأخرى نشر توقعات للقوى العاملة والأسرّة حتى 2040، كما تفعل عُمان، لتوجيه خطط الاستثمار والتدريب.</li></ul>
+      </div>
+    </div>
+    <div class="gx-al">
+      <h3><span lang="en">Assumptions and limitations</span><span lang="ar">الافتراضات وحدود البيانات</span></h3>
+      <div class="gx-al-cols">
+        <div><h4><span lang="en">Assumptions</span><span lang="ar">الافتراضات</span></h4><ul lang="en"><li><b>Same care per person.</b> Today's beds, nurses and physicians per person, adjusted for age, stay the same to 2040.</li><li><b>Population.</b> Population by five-year age group follows the World Bank's UN-based projections, which assume recent migration patterns continue.</li><li><b>Hospital use by age.</b> Use rises with age as in Norway in 2009 (bed-days per 1,000 people by age group). The same pattern is applied to all six countries and to beds, nurses and physicians alike.</li><li><b>Starting point.</b> The latest ratio per 1,000 people (the government's figure where it is more recent than the World Bank's) multiplied by the 2024 population.</li><li><b>Prevention.</b> Obesity falls by the chosen points by 2040 and those leaving obesity become overweight (diabetes risk 7.19 vs 2.99 times normal weight; Abdullah et al., 2010). Diabetes falls in proportion, and people with diabetes use about 2.6 times as much care (American Diabetes Association, 2023).</li></ul><ul lang="ar"><li><b>المستوى نفسه من الرعاية للفرد.</b> تبقى أعداد الأسرّة والممرضين والأطباء لكل فرد، معدّلة حسب العمر، كما هي حتى 2040.</li><li><b>السكان.</b> يتبع عدد السكان حسب الفئات العمرية الخمسية توقعات البنك الدولي المستندة إلى الأمم المتحدة، التي تفترض استمرار أنماط الهجرة الحالية.</li><li><b>استخدام المستشفيات حسب العمر.</b> يرتفع الاستخدام مع العمر كما في النرويج عام 2009 (أيام الإقامة لكل 1,000 نسمة حسب الفئة العمرية). ويُطبَّق النمط نفسه على الدول الست وعلى الأسرّة والممرضين والأطباء على حد سواء.</li><li><b>نقطة البداية.</b> أحدث نسبة لكل 1,000 نسمة (الرقم الحكومي حيث يكون أحدث من رقم البنك الدولي) مضروبة في عدد سكان 2024.</li><li><b>الوقاية.</b> تنخفض السمنة بعدد النقاط المختار بحلول 2040، ويصبح من يخرجون من فئة السمنة في فئة زيادة الوزن (خطر السكري 7.19 مقابل 2.99 ضعف الوزن الطبيعي؛ عبدالله وآخرون، 2010). وينخفض السكري بالنسبة نفسها، ويستخدم المصابون بالسكري نحو 2.6 ضعف الرعاية (الجمعية الأمريكية للسكري، 2023).</li></ul></div>
+        <div><h4><span lang="en">Limitations</span><span lang="ar">حدود البيانات</span></h4><ul lang="en"><li><b>Migration drives Gulf population change.</b> Actual growth can differ widely from the projections, in either direction.</li><li><b>No Gulf age profile of hospital use is published.</b> Norway's includes healthy newborns in the under-1 group, and Gulf populations are more male and of working age, so the ageing effect is approximate.</li><li><b>Today's counts are approximate.</b> For Oman, the World Bank's bed ratio (1.0 per 1,000) is below the roughly 1.5 implied by NCSI's 8,200 beds in 2025, so Oman's bed figures here are likely understated.</li><li><b>The high-income column overstates need,</b> because high-income populations are much older than Gulf populations.</li><li><b>Prevention results are illustrative.</b> The risks come from studies mostly outside the Gulf, the cost multiplier is from the United States, diabetes is assumed to respond fully by 2040, and other risks are held constant.</li><li><b>Oman's plan is a statement of needs.</b> It likely includes higher target staffing ratios, so the gap with this model reflects different aims, not an error in either.</li><li><b>A scenario, not a forecast.</b> It does not model policy changes, new technology, productivity gains or care moving out of hospitals.</li></ul><ul lang="ar"><li><b>الهجرة هي المحرك الرئيسي لتغير السكان في الخليج.</b> وقد يختلف النمو الفعلي كثيرًا عن التوقعات في أي اتجاه.</li><li><b>لا يوجد نمط خليجي منشور لاستخدام المستشفيات حسب العمر.</b> ويشمل النمط النرويجي المواليد الأصحاء في فئة دون السنة، وسكان الخليج أكثر ذكورًا وفي سن العمل، لذا فأثر الشيخوخة تقريبي.</li><li><b>الأعداد الحالية تقريبية.</b> ففي عُمان، نسبة الأسرّة لدى البنك الدولي (1.0 لكل 1,000) أقل من نحو 1.5 المستفادة من 8,200 سرير أعلنها المركز الوطني للإحصاء والمعلومات لعام 2025، لذا يُرجّح أن أرقام الأسرّة لعُمان هنا أقل من الواقع.</li><li><b>يبالغ عمود الدول مرتفعة الدخل في تقدير الحاجة،</b> لأن سكان تلك الدول أكبر سنًا بكثير من سكان الخليج.</li><li><b>نتائج الوقاية توضيحية.</b> فالمخاطر مأخوذة من دراسات أُجريت في معظمها خارج الخليج، ومعامل التكلفة من الولايات المتحدة، ويُفترض أن يستجيب السكري كليًا بحلول 2040، مع تثبيت عوامل الخطر الأخرى.</li><li><b>خطة عُمان بيان للاحتياجات.</b> وتتضمن على الأرجح نسب كوادر مستهدفة أعلى، لذا تعكس الفجوة مع هذا النموذج أهدافًا مختلفة لا خطأً في أي منهما.</li><li><b>سيناريو وليس تنبؤًا.</b> لا يتضمن تغيرات السياسات أو التقنيات الجديدة أو مكاسب الإنتاجية أو انتقال الرعاية خارج المستشفيات.</li></ul></div>
       </div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_proj,ssb_beddays,wb_beds,wb_nurse,wb_phys,who_obesity,wb_diab,abdullah2010,ada2023,omn_ncsi"></ul></div>
