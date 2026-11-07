@@ -94,4 +94,8 @@ python -m http.server 8000          # then open http://localhost:8000
 
 Built by [Hamza Saleh, MPH](https://www.linkedin.com/in/hamza-saleh1/) as a portfolio project on public data. It is not affiliated with any government or organization named here.
 
+**Cite as:** Saleh, H. (2026). *GCC Health Systems Monitor*. https://hamzasaleh10.github.io/gcc-health-tracker/
+
+**Licence:** the code is under the [MIT licence](LICENSE). The text and analysis (written content, findings, projections and briefs) are under [Creative Commons Attribution 4.0 (CC BY 4.0)](LICENSE-CONTENT): reuse is welcome with credit. Source data remain under their providers' terms (World Bank: CC BY 4.0; WHO and national statistics offices: their own terms).
+
 ![The Monitor in Arabic](assets/screenshot-ar.png)

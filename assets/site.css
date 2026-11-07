@@ -108,6 +108,7 @@ body {
   color: var(--color-fg-muted);
 }
 .site-foot .sep { flex: 1 1 auto; }
+.site-foot .site-cite { flex-basis: 100%; margin: 0; }
 
 /* Loading placeholder */
 .dash-skeleton {
