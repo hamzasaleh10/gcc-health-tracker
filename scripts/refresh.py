@@ -1,7 +1,8 @@
 """Refresh the GCC Health Systems Monitor data.
 
-Pulls World Bank World Development Indicators and WHO adult-obesity and healthy
-life expectancy estimates (WHO Global Health Observatory API) for the six GCC states plus benchmarks, validates them,
+Pulls World Bank World Development Indicators, WHO Global Health Observatory estimates
+(obesity, healthy life expectancy, hypertension, workforce) and WHO Global Health Estimates
+(causes of death and years of life lost) for the six GCC states plus benchmarks, validates them,
 and writes the JSON files the site reads from /data.
 
 Usage: python scripts/refresh.py [DATA_DIR]   (default: data)
@@ -38,6 +39,8 @@ INDICATORS = {
     "SH.MED.BEDS.ZS": "beds_1k",           # Hospital beds per 1,000 people
     "SP.POP.TOTL": "population",           # Population, total
     "SP.POP.65UP.TO.ZS": "pop65_share",    # Population ages 65+ (% of total)
+    "EN.ATM.PM25.MC.M3": "pm25",           # Mean annual exposure to PM2.5 (micrograms per cubic metre)
+    "SH.STA.AIRP.P5": "airpol_deaths",     # Deaths from household and ambient air pollution, per 100,000, age-standardized - WHO
 }
 # Aggregates come back without an ISO3 code; map the World Bank ids.
 AGGREGATE_IDS = {"XD": "HIC", "1W": "WLD"}
@@ -136,6 +139,60 @@ def fetch_nurse_midwife():
     return sorted(rows, key=lambda r: (r["iso3"], r["indicator"], r["year"]))
 
 
+def fetch_hypertension():
+    """WHO hypertension among adults 30-79 (age-standardized): prevalence, and the share of
+    people with hypertension whose blood pressure is controlled."""
+    rows = []
+    for code, key in (("NCD_HYP_PREVALENCE_A", "hyp_prev"), ("NCD_HYP_CONTROL_A", "hyp_control")):
+        rows += [{**r, "indicator": key} for r in fetch_gho(code)]
+    return rows
+
+
+# WHO Global Health Estimates (xMart API): deaths and years of life lost by cause.
+GHE_URL = "https://xmart-api-public.who.int/DEX_CMS/{table}"
+GHE_FIELDS = ("DIM_GHECAUSE_CODE,DIM_GHECAUSE_TITLE,FLAG_LEVEL,FLAG_RANKABLE,DIM_CAUSE_GROUP,"
+              "VAL_YLL_COUNT_NUMERIC,VAL_YLL_RATE100K_NUMERIC,VAL_DTHS_COUNT_NUMERIC,VAL_DTHS_RATE100K_NUMERIC")
+GHE_AREAS = {**{c: ("GHE_FULL", "DIM_COUNTRY_CODE", c) for c in GCC},
+             "HIC": ("GHE_REGIONS", "DIM_REGION_CODE", "HIC"), "WLD": ("GHE_REGIONS", "DIM_REGION_CODE", "WRLD")}
+GHE_BASE_YEAR = 2019  # last year before the pandemic
+
+
+def ghe_latest_year():
+    url = GHE_URL.format(table="GHE_FULL") + "?$apply=filter(DIM_COUNTRY_CODE%20eq%20'SAU')/groupby((DIM_YEAR_CODE))"
+    return max(int(r["DIM_YEAR_CODE"]) for r in get_json(url)["value"])
+
+
+def fetch_causes():
+    """Leading causes of death and years of life lost, both sexes, all ages: the GCC states,
+    the high-income group and the world, for the pre-pandemic year and the latest year.
+    Keeps WHO's rankable causes (each death counted once) plus the broad groups (levels 1-2)."""
+    latest = ghe_latest_year()
+    rows = []
+    for iso, (table, dim, code) in GHE_AREAS.items():
+        for year in sorted({GHE_BASE_YEAR, latest}):
+            flt = (f"{dim} eq '{code}' and DIM_YEAR_CODE eq {year} and DIM_SEX_CODE eq 'TOTAL' "
+                   f"and DIM_AGEGROUP_CODE eq 'TOTAL'")
+            url = GHE_URL.format(table=table) + "?" + requests.compat.urlencode({"$filter": flt, "$select": GHE_FIELDS})
+            got = get_json(url)["value"]
+            tot = next(r for r in got if int(r["DIM_GHECAUSE_CODE"]) == 0)
+            yll0, dth0 = tot["VAL_YLL_COUNT_NUMERIC"], tot["VAL_DTHS_COUNT_NUMERIC"]
+            for r in got:
+                lvl, rank = int(r["FLAG_LEVEL"]), bool(r["FLAG_RANKABLE"])
+                if not (lvl in (1, 2) or rank):
+                    continue
+                yll_pct = 100 * r["VAL_YLL_COUNT_NUMERIC"] / yll0
+                if lvl > 2 and yll_pct < 0.1:
+                    continue
+                rows.append({"iso3": iso, "year": year, "code": int(r["DIM_GHECAUSE_CODE"]),
+                             "cause": r["DIM_GHECAUSE_TITLE"], "level": lvl, "group": int(r["DIM_CAUSE_GROUP"]),
+                             "rankable": rank, "yll_pct": round(yll_pct, 2),
+                             "dth_pct": round(100 * r["VAL_DTHS_COUNT_NUMERIC"] / dth0, 2),
+                             "yll_rate": round(r["VAL_YLL_RATE100K_NUMERIC"], 1),
+                             "deaths": round(r["VAL_DTHS_COUNT_NUMERIC"]),
+                             "dth_rate": round(r["VAL_DTHS_RATE100K_NUMERIC"], 2)})
+    return sorted(rows, key=lambda r: (r["iso3"], r["year"], -r["yll_pct"])), latest
+
+
 def fetch_le():
     """WHO life expectancy at birth, paired with HALE to give years in poor health."""
     return fetch_gho("WHOSIS_000001")
@@ -146,8 +203,22 @@ def fetch_hale():
     return fetch_gho("WHOSIS_000002")
 
 
-def validate(wb, ob, hale=None, proj=None, le=None, nm=None):
+def validate(wb, ob, hale=None, proj=None, le=None, nm=None, hyp=None, causes=None):
     problems = []
+    if hyp is not None:
+        for key in ("hyp_prev", "hyp_control"):
+            for iso in WHO_AREAS:
+                if not any(r["iso3"] == iso and r["indicator"] == key for r in hyp):
+                    problems.append(f"WHO {key}: no rows for {iso}")
+    if causes is not None:
+        for iso in GHE_AREAS:
+            for y in {r["year"] for r in causes}:
+                n = sum(1 for r in causes if r["iso3"] == iso and r["year"] == y and r["rankable"])
+                if n < 40:
+                    problems.append(f"WHO causes of death: only {n} causes for {iso} {y}")
+                grp = sum(r["yll_pct"] for r in causes if r["iso3"] == iso and r["year"] == y and r["level"] == 1)
+                if abs(grp - 100) > 1:
+                    problems.append(f"WHO causes of death: groups sum to {grp:.1f}% for {iso} {y}")
     if len(wb) < 2300:
         problems.append(f"World Bank: only {len(wb)} rows (expected 2,300+)")
     for iso in COUNTRIES:
@@ -206,7 +277,14 @@ def main(out_dir):
     proj = fetch_projections()
     print(f"  {len(proj)} rows")
 
-    problems = validate(wb, ob, hale, proj, le, nm)
+    print("WHO hypertension (Global Health Observatory)")
+    hyp = fetch_hypertension()
+    print(f"  {len(hyp)} rows")
+    print("WHO Global Health Estimates: causes of death and years of life lost")
+    causes, ghe_year = fetch_causes()
+    print(f"  {len(causes)} rows, years {GHE_BASE_YEAR} and {ghe_year}")
+
+    problems = validate(wb, ob, hale, proj, le, nm, hyp, causes)
     if problems:
         print("Validation failed; no files written:\n  " + "\n  ".join(problems))
         sys.exit(1)
@@ -219,9 +297,11 @@ def main(out_dir):
     dump(le, "gcc_le_who.json")
     dump(nm, "gcc_nurse_midwife_who.json")
     dump(proj, "gcc_population_projections.json")
+    dump(hyp, "gcc_hypertension_who.json")
+    dump(causes, "gcc_causes_who.json")
     dump({"refreshed_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
           "worldbank_last_updated": wb_updated,
-          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "le_who": len(le), "nurse_midwife": len(nm), "projections": len(proj)}}, "meta.json")
+          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "le_who": len(le), "nurse_midwife": len(nm), "projections": len(proj), "hypertension": len(hyp), "causes": len(causes)}}, "meta.json")
     print(f"Wrote {len(wb)} World Bank rows and {len(ob)} obesity rows to {out_dir}/")
 
 
