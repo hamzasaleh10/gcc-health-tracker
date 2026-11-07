@@ -124,6 +124,18 @@ def fetch_obesity():
     return fetch_gho("NCD_BMI_30A")
 
 
+def fetch_nurse_midwife():
+    """WHO National Health Workforce Accounts: nursing personnel and midwifery personnel (numbers), GCC only."""
+    rows = []
+    for code, key in (("HWF_0008", "nurses"), ("HWF_0009", "midwives")):
+        url = f"https://ghoapi.azureedge.net/api/{code}?$filter=" + "%20or%20".join(f"SpatialDim%20eq%20'{c}'" for c in GCC)
+        for d in get_json(url)["value"]:
+            if d.get("NumericValue") is None or int(d["TimeDim"]) < 2010:
+                continue
+            rows.append({"iso3": d["SpatialDim"], "indicator": key, "year": int(d["TimeDim"]), "value": round(float(d["NumericValue"]))})
+    return sorted(rows, key=lambda r: (r["iso3"], r["indicator"], r["year"]))
+
+
 def fetch_le():
     """WHO life expectancy at birth, paired with HALE to give years in poor health."""
     return fetch_gho("WHOSIS_000001")
@@ -134,7 +146,7 @@ def fetch_hale():
     return fetch_gho("WHOSIS_000002")
 
 
-def validate(wb, ob, hale=None, proj=None, le=None):
+def validate(wb, ob, hale=None, proj=None, le=None, nm=None):
     problems = []
     if len(wb) < 2300:
         problems.append(f"World Bank: only {len(wb)} rows (expected 2,300+)")
@@ -153,6 +165,10 @@ def validate(wb, ob, hale=None, proj=None, le=None):
         for iso in WHO_AREAS:
             if not any(r["iso3"] == iso for r in le):
                 problems.append(f"WHO life expectancy: no rows for {iso}")
+    if nm is not None:
+        for iso in GCC:
+            if not any(r["iso3"] == iso and r["indicator"] == "nurses" for r in nm):
+                problems.append(f"WHO nursing personnel: no rows for {iso}")
     if proj is not None:
         want = len(GCC) * len(AGE_GROUPS) * len(PROJ_YEARS)
         if len(proj) != want:
@@ -183,11 +199,14 @@ def main(out_dir):
     le = fetch_le()
     print(f"  {len(le)} rows, latest year {max(r['year'] for r in le)}")
 
+    print("WHO nursing and midwifery personnel")
+    nm = fetch_nurse_midwife()
+    print(f"  {len(nm)} rows")
     print("World Bank population projections")
     proj = fetch_projections()
     print(f"  {len(proj)} rows")
 
-    problems = validate(wb, ob, hale, proj, le)
+    problems = validate(wb, ob, hale, proj, le, nm)
     if problems:
         print("Validation failed; no files written:\n  " + "\n  ".join(problems))
         sys.exit(1)
@@ -198,10 +217,11 @@ def main(out_dir):
     dump(ob, "gcc_obesity_who.json")
     dump(hale, "gcc_hale_who.json")
     dump(le, "gcc_le_who.json")
+    dump(nm, "gcc_nurse_midwife_who.json")
     dump(proj, "gcc_population_projections.json")
     dump({"refreshed_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
           "worldbank_last_updated": wb_updated,
-          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "le_who": len(le), "projections": len(proj)}}, "meta.json")
+          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "le_who": len(le), "nurse_midwife": len(nm), "projections": len(proj)}}, "meta.json")
     print(f"Wrote {len(wb)} World Bank rows and {len(ob)} obesity rows to {out_dir}/")
 
 

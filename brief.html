@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261106">
+<link rel="stylesheet" href="assets/site.css?v=20261107">
 <style>
 .br { max-width: 50rem; margin-inline: auto; --gx-font: var(--font-anthropic-sans), "Noto Sans Arabic", "Segoe UI", "Geeza Pro", Tahoma, sans-serif; font-family: var(--gx-font); }
 .br:not(.is-ar) [lang="ar"] { display: none !important; }
@@ -64,7 +64,7 @@
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="assets/runtime.js?v=20261106"></script>
+<script src="assets/runtime.js?v=20261107"></script>
 </head>
 <body>
 <main class="site">
@@ -85,7 +85,7 @@
   </div>
 
   <h1><span data-draw="bname">—</span><span lang="en">: health system brief</span><span lang="ar">: موجز النظام الصحي</span></h1>
-  <p class="byline"><span lang="en">GCC Health Systems Monitor · Hamza Saleh, MPH · data refreshed</span><span lang="ar">مرصد الأنظمة الصحية الخليجية · حمزة صالح، ماجستير الصحة العامة · آخر تحديث للبيانات</span> <span data-draw="brefreshed">—</span></p>
+  <p class="byline"><span lang="en">GCC Health Systems Monitor · <a href="https://www.linkedin.com/in/hamza-saleh1/" target="_blank" rel="noopener">Hamza Saleh, MPH</a> · data refreshed</span><span lang="ar">مرصد الأنظمة الصحية الخليجية · <a href="https://www.linkedin.com/in/hamza-saleh1/" target="_blank" rel="noopener">حمزة صالح، ماجستير الصحة العامة</a> · آخر تحديث للبيانات</span> <span data-draw="brefreshed">—</span></p>
 
   <h2><span lang="en">Where it stands</span><span lang="ar">الوضع الحالي</span></h2>
   <ul data-draw="bstand"></ul>
@@ -95,7 +95,6 @@
     <thead><tr>
       <th><span lang="en">Measure</span><span lang="ar">المؤشر</span></th>
       <th class="n" data-draw="bcol">—</th>
-      <th class="n"><span lang="en">Official</span><span lang="ar">الرسمي</span></th>
       <th class="n"><span lang="en">High income</span><span lang="ar">الدول مرتفعة الدخل</span></th>
       <th class="n"><span lang="en">World</span><span lang="ar">العالم</span></th>
       <th><span lang="en">Status</span><span lang="ar">الحالة</span></th>
@@ -110,12 +109,13 @@
     <thead><tr>
       <th><span lang="en">Resource</span><span lang="ar">المورد</span></th>
       <th class="n"><span lang="en">Current number (estimated, 2024)</span><span lang="ar">العدد الحالي (تقديري، 2024)</span></th>
+      <th class="n"><span lang="en">Needed in 2030 (population growth and ageing)</span><span lang="ar">المطلوب في 2030 (نمو السكان والشيخوخة)</span></th>
       <th class="n"><span lang="en">Needed in 2040 (population growth and ageing)</span><span lang="ar">المطلوب في 2040 (نمو السكان والشيخوخة)</span></th>
       <th class="n"><span lang="en">Additional needed by 2040</span><span lang="ar">الإضافي المطلوب بحلول 2040</span></th>
     </tr></thead>
     <tbody data-draw="bneed"></tbody>
   </table></div>
-  <p class="note"><span lang="en">Same level of care per person as today, adjusted for population growth and ageing (World Bank projections; hospital use by age from Statistics Norway). Illustrative, not a forecast.</span><span lang="ar">بالمستوى الحالي نفسه من الرعاية للفرد، معدّلًا وفق نمو السكان وشيخوختهم (توقعات البنك الدولي؛ استخدام المستشفيات حسب العمر من هيئة الإحصاء النرويجية). توضيحي وليس تنبؤًا.</span></p>
+  <p class="note"><span lang="en">Same level of care per person as today, adjusted for population growth and ageing (World Bank projections; hospital use by age from Statistics Norway). Current numbers use World Bank ratios. Illustrative, not a forecast.</span><span lang="ar">بالمستوى الحالي نفسه من الرعاية للفرد، معدّلًا وفق نمو السكان وشيخوختهم (توقعات البنك الدولي؛ استخدام المستشفيات حسب العمر من هيئة الإحصاء النرويجية). وتستند الأعداد الحالية إلى نسب البنك الدولي. توضيحي وليس تنبؤًا.</span></p>
 
   <div class="cols">
     <div>
@@ -128,15 +128,12 @@
     </div>
   </div>
 
-  <h2><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
-  <ul data-draw="boff"></ul>
-
   <h2><span lang="en">Sources</span><span lang="ar">المصادر</span></h2>
   <ul class="src" data-draw="bsrc"></ul>
   <p class="note"><span lang="en">Full charts, methods and limitations:</span><span lang="ar">الرسوم البيانية الكاملة والمنهجية وحدود البيانات:</span> <a class="trk" href="./">hamzasaleh10.github.io/gcc-health-tracker</a></p>
 
   <footer class="site-foot">
-    <span><span lang="en">Built by Hamza Saleh, MPH</span><span lang="ar">إعداد: حمزة صالح، ماجستير الصحة العامة</span></span>
+    <span><span lang="en">Built by <a href="https://www.linkedin.com/in/hamza-saleh1/" target="_blank" rel="noopener">Hamza Saleh, MPH</a></span><span lang="ar">إعداد: <a href="https://www.linkedin.com/in/hamza-saleh1/" target="_blank" rel="noopener">حمزة صالح، ماجستير الصحة العامة</a></span></span>
     <a href="https://github.com/hamzasaleh10/gcc-health-tracker"><span lang="en">Source code and data pipeline</span><span lang="ar">الشيفرة المصدرية ومسار البيانات</span></a>
   </footer>
 </article>
@@ -170,7 +167,6 @@
     },
   });
   const latest = (iso, ind) => dash.data('latest').data.find((r) => r.iso3 === iso && r.indicator === ind);
-  const official = (iso, ind) => nat().official_vs_international.find((r) => r.iso3 === iso && r.indicator === ind);
 
   const M = [
     ['life_exp', 'Life expectancy at birth (years)', 'العمر المتوقع عند الولادة (سنة)', '', 'high'],
@@ -206,10 +202,9 @@
     if (!ok('latest', 'national')) return;
     const iso = focus();
     M.forEach((m) => {
-      const [ind, , , sfx, dir] = m, v = latest(iso, ind), o = official(iso, ind), h = latest('HIC', ind), w = latest('WLD', ind), st = status(iso, ind, dir);
+      const [ind, , , sfx, dir] = m, v = latest(iso, ind), h = latest('HIC', ind), w = latest('WLD', ind), st = status(iso, ind, dir);
       const tr = el('tr');
       tr.append(el('td', mname(m)), el('td', v ? iso2(f1(v.value) + sfx + ' (' + v.year + ')') : '—', 'n'),
-        el('td', o ? iso2(f1(o.official) + sfx + ' (' + o.official_year + ')') : '—', 'n' + (o ? ' o' : '')),
         el('td', h ? f1(h.value) + sfx : '—', 'n'), el('td', w ? f1(w.value) + sfx : '—', 'n'));
       const td = el('td'); if (st) td.appendChild(el('span', st[1], 'st ' + st[0])); tr.appendChild(td);
       tb.appendChild(tr);
@@ -233,8 +228,8 @@
   const popOf = (iso, y, ages) => dash.data('proj').data.reduce((a, r) => a + (r.iso3 === iso && r.year === y && (!ages || ages.includes(r.age)) ? r.pop : 0), 0);
   const useOf = (iso, y) => { const W = dash.data('outlook').data.age_weights.values; return dash.data('proj').data.reduce((a, r) => a + (r.iso3 === iso && r.year === y ? r.pop * W[r.age] : 0), 0); };
   const AG = ['6569', '7074', '7579', '80UP'];
-  const demand = (iso) => { const p0 = popOf(iso, 2024), p1 = popOf(iso, 2040); return {g: p1 / p0, a: (useOf(iso, 2040) / p1) / (useOf(iso, 2024) / p0), s0: 100 * popOf(iso, 2024, AG) / p0, s1: 100 * popOf(iso, 2040, AG) / p1}; };
-  const ratioNow = (iso, ind) => { const w = latest(iso, ind), o = official(iso, ind); if (o && (!w || o.official_year >= w.year)) return o.official; return w ? w.value : null; };
+  const demand = (iso, y1 = 2040) => { const p0 = popOf(iso, 2024), p1 = popOf(iso, y1); return {g: p1 / p0, a: (useOf(iso, y1) / p1) / (useOf(iso, 2024) / p0), s0: 100 * popOf(iso, 2024, AG) / p0, s1: 100 * popOf(iso, y1, AG) / p1}; };
+  const ratioNow = (iso, ind) => { const w = latest(iso, ind); return w ? w.value : null; };
   dash.draw('boutlook', (p) => {
     p.replaceChildren();
     if (!ok('proj', 'outlook')) return;
@@ -245,11 +240,11 @@
   dash.draw('bneed', (tb) => {
     tb.replaceChildren();
     if (!ok('proj', 'outlook', 'latest', 'national')) return;
-    const iso = focus(), d = demand(iso), p24 = popOf(iso, 2024);
+    const iso = focus(), d = demand(iso), d30 = demand(iso, 2030), p24 = popOf(iso, 2024);
     [['beds_1k', T('Hospital beds', 'أسرّة المستشفيات')], ['nurses_1k', T('Nurses and midwives', 'الممرضون والقابلات')], ['physicians_1k', T('Physicians', 'الأطباء')]].forEach(([ind, label]) => {
       const r = ratioNow(iso, ind), tr = el('tr');
-      const now = r == null ? null : r * p24 / 1000, need = now == null ? null : now * d.g * d.a;
-      tr.append(el('td', label), el('td', rc(now), 'n'), el('td', rc(need), 'n'), el('td', need == null ? '—' : '+' + rc(need - now), 'n'));
+      const now = r == null ? null : r * p24 / 1000, need = now == null ? null : now * d.g * d.a, n30 = now == null ? null : now * d30.g * d30.a;
+      tr.append(el('td', label), el('td', rc(now), 'n'), el('td', rc(n30), 'n'), el('td', rc(need), 'n'), el('td', need == null ? '—' : '+' + rc(need - now), 'n'));
       tb.appendChild(tr);
     });
   });
@@ -278,19 +273,6 @@
     const b = nat().localization.regional_benchmark;
     ul.appendChild(el('li', T(`GCC average: citizens are ${b.share}% of nurses (${b.year}).`, `المتوسط الخليجي: يشكل المواطنون ${b.share}% من الممرضين (${b.year}).`)));
     if (I) ul.appendChild(el('li', T('Insurance: ', 'التأمين: ') + (ar ? I.scheme_ar : I.scheme_en) + T('. Status: ', '. الحالة: ') + (ar ? I.status_ar : I.status_en) + '.'));
-  });
-
-  const IND = {life_exp: ['Life expectancy', 'العمر المتوقع'], physicians_1k: ['Physicians per 1,000', 'الأطباء لكل 1,000'], nurses_1k: ['Nurses per 1,000', 'الممرضون لكل 1,000'], road_deaths: ['Road deaths per 100,000', 'وفيات الطرق لكل 100,000']};
-  dash.draw('boff', (ul) => {
-    ul.replaceChildren();
-    if (!ok('national', 'latest')) return;
-    const iso = focus(), rows = nat().official_vs_international.filter((r) => r.iso3 === iso);
-    rows.forEach((o) => {
-      const w = dash.data('wb').data.find((r) => r.iso3 === iso && r.indicator === o.indicator && +r.year === o.official_year) || latest(iso, o.indicator);
-      const lab = IND[o.indicator] ? IND[o.indicator][lang() === 'ar' ? 1 : 0] : o.indicator;
-      ul.appendChild(el('li', lab + ': ' + T('official ', 'الرسمي ') + f1(o.official) + ' (' + o.official_year + ')' + (w ? T(', World Bank/WHO ', '، البنك الدولي/منظمة الصحة العالمية ') + f1(+w.value) + ' (' + w.year + ')' : '') + '.'));
-    });
-    if (!rows.length) ul.appendChild(el('li', T('No official figure was found that differs from the international series for these measures.', 'لم نجد رقمًا رسميًا يختلف عن السلسلة الدولية لهذه المؤشرات.')));
   });
 
   const SRC_BY = {SAU: ['sau_hstp25', 'sau_gastat23', 'sau_glmm'], ARE: ['uae_fcsc', 'uae_insurance', 'uae_top15'], QAT: ['qat_opendata', 'qat_nhs'], KWT: ['kwt_csb', 'kwt_dhaman', 'kwt_vision'], OMN: ['omn_ncsi', 'omn_hale', 'omn_dhamani'], BHR: ['bhr_moh', 'bhr_insurance', 'bhr_moh2030']};

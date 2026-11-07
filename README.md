@@ -88,6 +88,6 @@ python -m http.server 8000          # then open http://localhost:8000
 
 ## About
 
-Built by Hamza Saleh, MPH, as a portfolio project on public data. It is not affiliated with any government or organization named here.
+Built by [Hamza Saleh, MPH](https://www.linkedin.com/in/hamza-saleh1/) as a portfolio project on public data. It is not affiliated with any government or organization named here.
 
 ![The Monitor in Arabic](assets/screenshot-ar.png)
