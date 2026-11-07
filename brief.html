@@ -42,6 +42,8 @@
 .br table { border-collapse: collapse; width: 100%; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 .br th, .br td { text-align: start; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--color-border-line); }
 .br th { font-weight: 600; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.br th .l1, .br th .l2 { display: block; white-space: nowrap; }
+.br th .l2 { font-weight: 400; }
 .br td.n, .br th.n { text-align: end; white-space: nowrap; }
 .br td.o { color: var(--color-warn); }
 .br .st { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 1px 7px; border-radius: 6px; border: 1px solid currentColor; white-space: nowrap; }
@@ -108,10 +110,10 @@
   <div class="tw"><table>
     <thead><tr>
       <th><span lang="en">Resource</span><span lang="ar">المورد</span></th>
-      <th class="n"><span lang="en">Current number (estimated, 2024)</span><span lang="ar">العدد الحالي (تقديري، 2024)</span></th>
-      <th class="n"><span lang="en">Needed in 2030 (population growth and ageing)</span><span lang="ar">المطلوب في 2030 (نمو السكان والشيخوخة)</span></th>
-      <th class="n"><span lang="en">Needed in 2040 (population growth and ageing)</span><span lang="ar">المطلوب في 2040 (نمو السكان والشيخوخة)</span></th>
-      <th class="n"><span lang="en">Additional needed by 2040</span><span lang="ar">الإضافي المطلوب بحلول 2040</span></th>
+      <th class="n"><span lang="en"><span class="l1">Current number</span><span class="l2">(estimated, 2024)</span></span><span lang="ar"><span class="l1">العدد الحالي</span><span class="l2">(تقديري، 2024)</span></span></th>
+      <th class="n"><span lang="en"><span class="l1">Needed in 2030</span><span class="l2">(growth and ageing)</span></span><span lang="ar"><span class="l1">المطلوب في 2030</span><span class="l2">(النمو والشيخوخة)</span></span></th>
+      <th class="n"><span lang="en"><span class="l1">Needed in 2040</span><span class="l2">(growth and ageing)</span></span><span lang="ar"><span class="l1">المطلوب في 2040</span><span class="l2">(النمو والشيخوخة)</span></span></th>
+      <th class="n"><span lang="en"><span class="l1">Additional</span><span class="l2">needed by 2040</span></span><span lang="ar"><span class="l1">الإضافي المطلوب</span><span class="l2">بحلول 2040</span></span></th>
     </tr></thead>
     <tbody data-draw="bneed"></tbody>
   </table></div>

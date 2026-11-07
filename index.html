@@ -169,7 +169,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
 .gx td.ok{color:var(--color-ok)}
 .gx td.bad{color:var(--color-bad)}
 .gx-heat td{text-align:center}.gx-heat th{text-align:center}.gx-heat th:first-child,.gx-heat td:first-child{text-align:start;white-space:normal;min-width:9rem}
-.gx-heat .f{font-weight:600;box-shadow:inset 2px 0 0 var(--chart-1),inset -2px 0 0 var(--chart-1)}.gx-heat th.f{color:var(--color-fg)}.gx-heat td.r{color:var(--color-fg-muted)}
+.gx-heat .f{font-weight:700;box-shadow:inset 2px 0 0 var(--color-fg),inset -2px 0 0 var(--color-fg)}.gx-heat th.f{color:var(--color-fg)}.gx-heat td.r{color:var(--color-fg-muted)}
 .gx-heat tr.grp td{border-top:2px solid var(--color-border-line)}
 .gx-cy{margin:0 0 var(--cds-gap-sm)}
 .gx-see{margin:var(--cds-gap-xs) 0 0}
@@ -525,8 +525,8 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
     </div>
     <div class="gx-card" id="causes-gcc">
       <h3><span lang="en">Years of life lost by cause across the Gulf</span><span lang="ar">سنوات العمر المفقودة حسب السبب في دول الخليج</span></h3>
-      <p class="n" lang="en">Share of all years of life lost (%), <span data-draw="cyr">2023</span>. Darker cells are higher within each row; the focus country is highlighted.</p>
-      <p class="n" lang="ar">النسبة من إجمالي سنوات العمر المفقودة (%)، <span data-draw="cyr">2023</span>. الخلايا الأغمق أعلى ضمن كل صف، والدولة المختارة مميّزة.</p>
+      <p class="n" lang="en">Share of all years of life lost (%), <span data-draw="cyr">2023</span>. Heat-map colors run from pale yellow (lowest) to dark red (highest) within each row; the focus country is outlined.</p>
+      <p class="n" lang="ar">النسبة من إجمالي سنوات العمر المفقودة (%)، <span data-draw="cyr">2023</span>. تتدرج ألوان الخريطة الحرارية من الأصفر الفاتح (الأدنى) إلى الأحمر الداكن (الأعلى) ضمن كل صف، والدولة المختارة محاطة بإطار.</p>
       <div class="gx-tablewrap dash-skeleton" data-draw="causeheat"></div>
       <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">The same WHO estimates. Rows are the causes that rank in the top 10 for at least two Gulf states, plus all cancers combined (WHO's cancer group), against the high-income and world estimates for the same year.</p><p lang="ar">تقديرات المنظمة نفسها. الصفوف هي الأسباب التي تقع ضمن أهم 10 أسباب في دولتين خليجيتين على الأقل، إضافةً إلى جميع السرطانات مجتمعةً (مجموعة السرطان لدى المنظمة)، مقارنةً بتقديرات الدول مرتفعة الدخل والعالم للسنة نفسها.</p></details>
       <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Cancers are ranked as separate types, so no single cancer tops the list, yet together they account for 11–39% of years lost in the Gulf (2023). Qatar's high cancer share partly reflects a young, largely working-age population with few deaths from the diseases of old age. Shares are not age-adjusted (see the note above).</p><p lang="ar">تُرتَّب السرطانات بأنواعها منفصلةً، فلا يتصدر أي نوع منها القائمة، لكنها مجتمعةً تمثل 11–39% من السنوات المفقودة في الخليج (2023). ويعكس ارتفاع نصيب السرطان في قطر جزئيًا سكانًا شبابًا معظمهم في سن العمل وقلة الوفيات بأمراض الشيخوخة. والنسب غير معدّلة حسب العمر (انظر الملاحظة أعلاه).</p></details>
@@ -1448,9 +1448,14 @@ dash.draw('causeheat', (el) => {
     const th = document.createElement('td'); th.textContent = causeName({code, cause: (crow('HIC', y, code) || {}).cause}); tr.appendChild(th);
     vals.forEach((v, i) => {
       const td = tr.insertCell(); td.textContent = v == null ? '—' : d3.format('.1f')(v);
-      if (v != null) td.style.background = `color-mix(in srgb, var(--chart-1) ${Math.round(6 + 44 * v / max)}%, transparent)`;
+      if (v != null) {
+        const c = d3.color(d3.interpolateYlOrRd(0.04 + 0.8 * v / max));
+        td.style.background = c.formatHex();
+        const lum = (0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b) / 255;
+        td.style.color = lum < 0.55 ? '#fff' : '#1a1a1a';
+      }
       if (cols[i] === focus()) td.className = 'f';
-      if (!GCC.includes(cols[i])) td.classList.add('r');
+
     });
   });
   el.appendChild(table);
@@ -2027,7 +2032,7 @@ dash.draw('vy', (el) => {
       const tr = document.createElement('tr'); if (r.iso3 === focus()) tr.className = 'is-focus';
       cell(tr, NAME[r.iso3]); cell(tr, ar ? r.metric_ar : r.metric_en); cell(tr, ar && r.target_ar ? r.target_ar : r.target);
       cell(tr, r.by == null ? T('Not stated', 'غير محدد') : String(r.by)); cell(tr, ar && r.latest_ar ? r.latest_ar : r.latest);
-      const badge = document.createElement('span'); badge.className = 'st st-' + r.status; badge.textContent = ST[r.status][ar ? 1 : 0];
+      const badge = document.createElement('span'); badge.className = 'st st-' + (r.status === 'na' ? 'far' : r.status); badge.textContent = ST[r.status][ar ? 1 : 0];
       cell(tr, badge); cell(tr, srcLink(r.src));
       tb.appendChild(tr);
     });
