@@ -96,6 +96,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
 .gx-stat.good .v{color:var(--color-ok)}
 .gx-tabs{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs);align-items:center;padding:var(--cds-pad-sm) 0;background:var(--color-bg);border-bottom:1px solid var(--color-border-line)}
 .gx-tabs .lbl{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-inline-end:var(--cds-gap-xs)}
+@media (max-width:74.99rem){.gx-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.gx-tabs::-webkit-scrollbar{display:none}.gx-tabs button{flex:none}.gx-tabs .lbl{display:none}}
 @media (max-width:47.99rem){.gx-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}.gx-tabs::-webkit-scrollbar{display:none}.gx-tabs button{flex:none}.gx-tabs .lbl{display:none}}
 .gx-tabs button,.gx-next button{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);display:inline-flex;align-items:center;gap:.375rem;padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:999px;background:var(--color-panel);color:var(--color-fg);cursor:pointer}
 .gx-tabs button[aria-pressed="true"]{border-color:var(--color-fg);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-fg)}
@@ -171,6 +172,14 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
 .gx-heat .f{font-weight:600;box-shadow:inset 2px 0 0 var(--chart-1),inset -2px 0 0 var(--chart-1)}.gx-heat th.f{color:var(--color-fg)}.gx-heat td.r{color:var(--color-fg-muted)}
 .gx-heat tr.grp td{border-top:2px solid var(--color-border-line)}
 .gx-cy{margin:0 0 var(--cds-gap-sm)}
+.gx-see{margin:var(--cds-gap-xs) 0 0}
+.gx-see button,.gx-seebtn{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);font-weight:600;color:var(--chart-1);background:none;border:0;padding:0;cursor:pointer;text-align:start}
+.gx-see button:hover,.gx-seebtn:hover{text-decoration:underline}
+.gx-howto{margin-top:var(--cds-gap-sm)}
+.gx-howto>summary{cursor:pointer;font-size:var(--cds-font-size-caption);font-weight:600;color:var(--chart-1);width:max-content;max-width:100%}
+.gx-tiles .gx-tile-wide{grid-column:1/-1;grid-row:auto;grid-template-rows:none;row-gap:var(--cds-gap-xs)}
+.gx-tile-wide .v{font-size:clamp(1.5rem,1.2rem + .8vw,2rem)}
+@media (min-width:48rem){.gx-tiles .gx-tile-wide{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);column-gap:var(--cds-gap-lg);grid-template-areas:"t t" "v r" "u s"}.gx-tile-wide .t{grid-area:t}.gx-tile-wide .v{grid-area:v}.gx-tile-wide .u{grid-area:u}.gx-tile-wide .r{grid-area:r}.gx-tile-wide .s{grid-area:s;align-self:end}}
 .gx-note{margin:0;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);max-width:60rem}
 .gx-foot{display:grid;gap:var(--cds-gap-xs);border-top:1px solid var(--color-border-line);padding-top:var(--cds-pad-md)}
 .gx{--gx-font:var(--font-anthropic-sans),"Noto Sans Arabic","Segoe UI","Geeza Pro",Tahoma,sans-serif;font-family:var(--gx-font)}
@@ -219,7 +228,8 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
     <p class="gx-sub"><span lang="en">Benchmarks, national goals and the outlook to 2040</span><span lang="ar">المقارنات المعيارية والأهداف الوطنية وآفاق 2040</span></p>
     <p class="gx-take" lang="en">The GCC Health Systems Monitor compares the health systems of Saudi Arabia, the UAE, Qatar, Kuwait, Oman and Bahrain with high-income countries and the world. It combines 21 World Bank and WHO indicators and WHO estimates of the causes of death, refreshed monthly, with official figures from all six governments, tracks each country's own health goals and estimates the hospital and workforce capacity each will need by 2040. Choose a focus country to tailor every section; each chart explains its methods and notes.</p>
     <p class="gx-take" lang="ar">يقارن مرصد الأنظمة الصحية في دول مجلس التعاون الخليجي الأنظمة الصحية في السعودية والإمارات وقطر والكويت وعُمان والبحرين بالدول مرتفعة الدخل وبالعالم. ويجمع 21 مؤشرًا من البنك الدولي ومنظمة الصحة العالمية وتقديرات المنظمة لأسباب الوفاة، تُحدَّث شهريًا، مع الأرقام الرسمية للحكومات الست، ويتابع الأهداف الصحية لكل دولة، ويقدّر الطاقة الاستيعابية للمستشفيات والقوى العاملة التي ستحتاجها كل دولة بحلول 2040. اختر دولة لتخصيص جميع الأقسام؛ ويشرح كل رسم بياني منهجيته وملاحظاته.</p>
-    <ol class="gx-guide" aria-label="Sections / الأقسام"><li><button type="button" data-tab="snapshot"><b><span lang="en">At a glance</span><span lang="ar">نظرة سريعة</span></b></button> <span lang="en">eight headline measures against high-income and world averages.</span><span lang="ar">ثمانية مؤشرات رئيسية مقارنةً بمتوسطي الدول مرتفعة الدخل والعالم.</span></li><li><button type="button" data-tab="goals"><b><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></b></button> <span lang="en">each government's health targets and how close it is to them.</span><span lang="ar">المستهدفات الصحية لكل حكومة ومدى قربها من تحقيقها.</span></li><li><button type="button" data-tab="outcomes"><b><span lang="en">Health outcomes</span><span lang="ar">النتائج الصحية</span></b></button> <span lang="en">life expectancy, healthy years and early deaths from chronic disease against the UN 2030 goal.</span><span lang="ar">العمر المتوقع والسنوات الصحية والوفيات المبكرة بالأمراض المزمنة مقارنةً بهدف الأمم المتحدة لعام 2030.</span></li><li><button type="button" data-tab="causes"><b><span lang="en">Causes of premature death</span><span lang="ar">أسباب الوفاة المبكرة</span></b></button> <span lang="en">the diseases and injuries that cost each country the most years of life, from heart disease to road crashes.</span><span lang="ar">الأمراض والإصابات التي تُفقد كل دولة أكبر عدد من سنوات العمر، من أمراض القلب إلى حوادث الطرق.</span></li><li><button type="button" data-tab="risk"><b><span lang="en">Chronic disease</span><span lang="ar">الأمراض المزمنة</span></b></button> <span lang="en">obesity, diabetes, high blood pressure and air pollution, the main drivers of future demand.</span><span lang="ar">السمنة والسكري وارتفاع ضغط الدم وتلوث الهواء، المحركات الرئيسية للطلب المستقبلي.</span></li><li><button type="button" data-tab="financing"><b><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></b></button> <span lang="en">how much each country spends, who pays and where insurance reform stands.</span><span lang="ar">حجم إنفاق كل دولة، ومن يدفع، وأين وصلت إصلاحات التأمين.</span></li><li><button type="button" data-tab="workforce"><b><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></b></button> <span lang="en">doctors, nurses, midwives and beds, staffing standards and citizens' share of the workforce.</span><span lang="ar">الأطباء والممرضون والقابلات والأسرّة، ومعايير التوظيف، ونسبة المواطنين في القوى العاملة.</span></li><li><button type="button" data-tab="outlook"><b><span lang="en">Outlook 2040</span><span lang="ar">آفاق 2040</span></b></button> <span lang="en">the hospital and workforce capacity needed in 2030 and 2040, with a prevention scenario.</span><span lang="ar">الطاقة الاستيعابية للمستشفيات والقوى العاملة المطلوبة في 2030 و2040، مع سيناريو للوقاية.</span></li><li><button type="button" data-tab="official"><b><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></b></button> <span lang="en">where national figures and World Bank or WHO estimates disagree.</span><span lang="ar">المواضع التي تختلف فيها الأرقام الوطنية عن تقديرات البنك الدولي أو منظمة الصحة العالمية.</span></li></ol>
+    <details class="gx-howto"><summary><span lang="en">How to use this Monitor: the nine sections</span><span lang="ar">كيفية استخدام المرصد: الأقسام التسعة</span></summary>
+    <ol class="gx-guide" aria-label="Sections / الأقسام"><li><button type="button" data-tab="snapshot"><b><span lang="en">At a glance</span><span lang="ar">نظرة سريعة</span></b></button> <span lang="en">eight headline measures against high-income and world averages, and the leading cause of years of life lost.</span><span lang="ar">ثمانية مؤشرات رئيسية مقارنةً بمتوسطي الدول مرتفعة الدخل والعالم، والسبب الأول لسنوات العمر المفقودة.</span></li><li><button type="button" data-tab="goals"><b><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></b></button> <span lang="en">each government's health targets and how close it is to them.</span><span lang="ar">المستهدفات الصحية لكل حكومة ومدى قربها من تحقيقها.</span></li><li><button type="button" data-tab="outcomes"><b><span lang="en">Health outcomes</span><span lang="ar">النتائج الصحية</span></b></button> <span lang="en">life expectancy, healthy years and early deaths from chronic disease against the UN 2030 goal.</span><span lang="ar">العمر المتوقع والسنوات الصحية والوفيات المبكرة بالأمراض المزمنة مقارنةً بهدف الأمم المتحدة لعام 2030.</span></li><li><button type="button" data-tab="causes"><b><span lang="en">Causes of premature death</span><span lang="ar">أسباب الوفاة المبكرة</span></b></button> <span lang="en">the diseases and injuries that cost each country the most years of life, from heart disease to road crashes.</span><span lang="ar">الأمراض والإصابات التي تُفقد كل دولة أكبر عدد من سنوات العمر، من أمراض القلب إلى حوادث الطرق.</span></li><li><button type="button" data-tab="risk"><b><span lang="en">Risk factors</span><span lang="ar">عوامل الخطر</span></b></button> <span lang="en">obesity, diabetes, high blood pressure and air pollution, the main drivers of future demand.</span><span lang="ar">السمنة والسكري وارتفاع ضغط الدم وتلوث الهواء، المحركات الرئيسية للطلب المستقبلي.</span></li><li><button type="button" data-tab="financing"><b><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></b></button> <span lang="en">how much each country spends, who pays and where insurance reform stands.</span><span lang="ar">حجم إنفاق كل دولة، ومن يدفع، وأين وصلت إصلاحات التأمين.</span></li><li><button type="button" data-tab="workforce"><b><span lang="en">Workforce and capacity</span><span lang="ar">القوى العاملة والطاقة الاستيعابية</span></b></button> <span lang="en">doctors, nurses, midwives and beds, staffing standards and citizens' share of the workforce.</span><span lang="ar">الأطباء والممرضون والقابلات والأسرّة، ومعايير التوظيف، ونسبة المواطنين في القوى العاملة.</span></li><li><button type="button" data-tab="outlook"><b><span lang="en">Outlook 2040</span><span lang="ar">آفاق 2040</span></b></button> <span lang="en">the hospital and workforce capacity needed in 2030 and 2040, with a prevention scenario.</span><span lang="ar">الطاقة الاستيعابية للمستشفيات والقوى العاملة المطلوبة في 2030 و2040، مع سيناريو للوقاية.</span></li><li><button type="button" data-tab="official"><b><span lang="en">Data check</span><span lang="ar">تدقيق البيانات</span></b></button> <span lang="en">where national figures and World Bank or WHO estimates disagree.</span><span lang="ar">المواضع التي تختلف فيها الأرقام الوطنية عن تقديرات البنك الدولي أو منظمة الصحة العالمية.</span></li></ol></details>
   </header>
 
   <div class="gx-focus" role="group" aria-label="Focus country / الدولة المختارة">
@@ -236,21 +246,21 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
   <nav class="gx-tabs" aria-label="Sections / الأقسام">
     <span class="lbl"><span lang="en">Section</span><span lang="ar">القسم</span></span>
     <button type="button" data-tab="snapshot" aria-pressed="false" aria-controls="snapshot"><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance</span><span lang="ar">نظرة سريعة</span></button>
-    <button type="button" data-tab="goals" aria-pressed="false" aria-controls="goals"><span class="gx-num" aria-hidden="true">2</span><span lang="en">National goals</span><span lang="ar">الأهداف الوطنية</span></button>
-    <button type="button" data-tab="outcomes" aria-pressed="false" aria-controls="outcomes"><span class="gx-num" aria-hidden="true">3</span><span lang="en">Health outcomes</span><span lang="ar">النتائج الصحية</span></button>
-    <button type="button" data-tab="causes" aria-pressed="false" aria-controls="causes"><span class="gx-num" aria-hidden="true">4</span><span lang="en">Causes of premature death</span><span lang="ar">أسباب الوفاة المبكرة</span></button>
-    <button type="button" data-tab="risk" aria-pressed="false" aria-controls="risk"><span class="gx-num" aria-hidden="true">5</span><span lang="en">Chronic disease</span><span lang="ar">الأمراض المزمنة</span></button>
-    <button type="button" data-tab="financing" aria-pressed="false" aria-controls="financing"><span class="gx-num" aria-hidden="true">6</span><span lang="en">Financing and insurance</span><span lang="ar">التمويل والتأمين</span></button>
-    <button type="button" data-tab="workforce" aria-pressed="false" aria-controls="workforce"><span class="gx-num" aria-hidden="true">7</span><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></button>
+    <button type="button" data-tab="goals" aria-pressed="false" aria-controls="goals"><span class="gx-num" aria-hidden="true">2</span><span lang="en">Goals</span><span lang="ar">الأهداف</span></button>
+    <button type="button" data-tab="outcomes" aria-pressed="false" aria-controls="outcomes"><span class="gx-num" aria-hidden="true">3</span><span lang="en">Outcomes</span><span lang="ar">النتائج</span></button>
+    <button type="button" data-tab="causes" aria-pressed="false" aria-controls="causes"><span class="gx-num" aria-hidden="true">4</span><span lang="en">Causes of death</span><span lang="ar">أسباب الوفاة</span></button>
+    <button type="button" data-tab="risk" aria-pressed="false" aria-controls="risk"><span class="gx-num" aria-hidden="true">5</span><span lang="en">Risk factors</span><span lang="ar">عوامل الخطر</span></button>
+    <button type="button" data-tab="financing" aria-pressed="false" aria-controls="financing"><span class="gx-num" aria-hidden="true">6</span><span lang="en">Financing</span><span lang="ar">التمويل</span></button>
+    <button type="button" data-tab="workforce" aria-pressed="false" aria-controls="workforce"><span class="gx-num" aria-hidden="true">7</span><span lang="en">Workforce</span><span lang="ar">القوى العاملة</span></button>
     <button type="button" data-tab="outlook" aria-pressed="false" aria-controls="outlook"><span class="gx-num" aria-hidden="true">8</span><span lang="en">Outlook 2040</span><span lang="ar">آفاق 2040</span></button>
-    <button type="button" data-tab="official" aria-pressed="false" aria-controls="official"><span class="gx-num" aria-hidden="true">9</span><span lang="en">Official vs international</span><span lang="ar">الرسمي مقابل الدولي</span></button>
+    <button type="button" data-tab="official" aria-pressed="false" aria-controls="official"><span class="gx-num" aria-hidden="true">9</span><span lang="en">Data check</span><span lang="ar">تدقيق البيانات</span></button>
   </nav>
 
   <section class="gx-sec" id="snapshot">
     <h2><span class="gx-num" aria-hidden="true">1</span><span lang="en">At a glance:</span><span lang="ar">نظرة سريعة:</span><span data-draw="focusname">—</span></h2>
     <div class="gx-ctx">
-      <p lang="en"><b>What we're looking at.</b> Eight headline measures for the focus country, each with the high-income and world averages and a status against high-income countries.</p>
-      <p lang="ar"><b>ما الذي نعرضه.</b> ثمانية مؤشرات رئيسية للدولة المختارة، مع متوسطَي الدول مرتفعة الدخل والعالم، وحالة الدولة مقارنةً بالدول مرتفعة الدخل.</p>
+      <p lang="en"><b>What we're looking at.</b> Eight headline measures for the focus country, each with the high-income and world averages and a status against high-income countries, plus the disease or injury that costs it the most years of life.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> ثمانية مؤشرات رئيسية للدولة المختارة، مع متوسطَي الدول مرتفعة الدخل والعالم، وحالة الدولة مقارنةً بالدول مرتفعة الدخل، إضافةً إلى المرض أو الإصابة الأكثر تسببًا في فقدان سنوات العمر.</p>
       <p lang="en"><b>Why it matters.</b> It gives a one-screen read on where a health system stands before you go into the detail. Pick another focus country above to compare.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> يقدّم صورة سريعة في شاشة واحدة عن وضع النظام الصحي قبل الدخول في التفاصيل. اختر دولة أخرى في الأعلى للمقارنة.</p>
     </div>
@@ -335,12 +345,22 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         </span>
         <span class="s"><span class="st" data-draw="tst" data-ind="nurses_1k" data-better="high"></span></span>
       </div>
+      <div class="gx-tile gx-tile-wide">
+        <span class="t"><span lang="en">Leading cause of years of life lost</span><span lang="ar">السبب الأول لسنوات العمر المفقودة</span></span>
+        <span class="v" data-draw="leadc" data-k="name">—</span>
+        <span class="u" data-draw="leadc" data-k="share">—</span>
+        <span class="r">
+          <span class="cmp"><span lang="en">High income, same cause:</span><span lang="ar">الدول مرتفعة الدخل، السبب نفسه:</span> <b data-draw="leadc" data-k="hic">—</b></span>
+          <span class="cmp"><span lang="en">Second cause:</span><span lang="ar">السبب الثاني:</span> <b data-draw="leadc" data-k="second">—</b></span>
+        </span>
+        <span class="s"><button type="button" class="gx-seebtn" data-tab="causes"><span lang="en">See all causes →</span><span lang="ar">عرض جميع الأسباب ←</span></button></span>
+      </div>
     </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
         <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
-        <ul lang="en"><li>Most Gulf states now match high-income countries on how long people live. The red statuses cluster on chronic disease and staffing.</li><li>Governments' own figures can differ from these international estimates in either direction; the Official vs international tab sets them side by side.</li></ul>
-        <ul lang="ar"><li>تضاهي معظم دول الخليج الآن الدول مرتفعة الدخل في متوسط العمر، بينما تتركز الحالات الحمراء في الأمراض المزمنة والكوادر الصحية.</li><li>قد تختلف الأرقام الحكومية عن هذه التقديرات الدولية في أي اتجاه، ويعرضها قسم «الرسمي مقابل الدولي» جنبًا إلى جنب.</li></ul>
+        <ul lang="en"><li>Most Gulf states now match high-income countries on how long people live. The red statuses cluster on chronic disease and staffing.</li><li>Governments' own figures can differ from these international estimates in either direction; the Data check tab sets them side by side.</li></ul>
+        <ul lang="ar"><li>تضاهي معظم دول الخليج الآن الدول مرتفعة الدخل في متوسط العمر، بينما تتركز الحالات الحمراء في الأمراض المزمنة والكوادر الصحية.</li><li>قد تختلف الأرقام الحكومية عن هذه التقديرات الدولية في أي اتجاه، ويعرضها قسم «تدقيق البيانات» جنبًا إلى جنب.</li></ul>
       </div>
       <div class="gx-io-col gx-io-opp">
         <h3><span lang="en">Opportunities/recommendations</span><span lang="ar">الفرص/التوصيات</span></h3>
@@ -349,7 +369,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       </div>
     </div>
     <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">Each tile shows the latest year the country reported to the World Bank or WHO. Benchmarks are the World Bank's high-income and world aggregates (WHO's equivalents for obesity and healthy life expectancy). Status compares the country with the high-income average: within 5% is near; health spending has no better or worse direction, so it only shows above or below.</p><p lang="ar">يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية. ومعايير المقارنة هي مجموعتا الدول مرتفعة الدخل والعالم لدى البنك الدولي (وما يقابلهما لدى المنظمة للسمنة والعمر الصحي المتوقع). وتقارن الحالة الدولة بمتوسط الدول مرتفعة الدخل: ضمن 5% يُعد قريبًا؛ ولا يوجد اتجاه أفضل أو أسوأ للإنفاق الصحي، لذا تكتفي حالته بأعلى أو أقل.</p></details>
-    <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Governments' own figures, which can differ, are compared in the Official vs international tab. The high-income average used for the status may be for a different year than the country's figure.</p><p lang="ar">يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وتُقارن الأرقام الحكومية، التي قد تختلف، في قسم «الرسمي مقابل الدولي». وقد يكون متوسط الدول مرتفعة الدخل المستخدم في الحالة لسنة مختلفة عن سنة رقم الدولة.</p></details>
+    <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Each tile shows the latest year the country reported to the World Bank or WHO, so years differ between tiles. Governments' own figures, which can differ, are compared in the Data check tab. The high-income average used for the status may be for a different year than the country's figure.</p><p lang="ar">يعرض كل مؤشر أحدث سنة أبلغت عنها الدولة إلى البنك الدولي أو منظمة الصحة العالمية، لذا تختلف السنوات بين المؤشرات. وتُقارن الأرقام الحكومية، التي قد تختلف، في قسم «تدقيق البيانات». وقد يكون متوسط الدول مرتفعة الدخل المستخدم في الحالة لسنة مختلفة عن سنة رقم الدولة.</p></details>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_le,who_hale,wb_ncd,who_obesity,wb_diab,wb_che,wb_phys,wb_nurse,sau_hstp25,omn_ncsi,bhr_moh,qat_opendata"></ul></div>
     <p class="gx-next"><button type="button" data-tab="goals"><span lang="en">Next: National goals →</span><span lang="ar">التالي: الأهداف الوطنية ←</span></button></p>
   </section>
@@ -419,6 +439,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <p class="n" lang="en">Chance of dying between 30 and 70 from the four main chronic diseases (%). The ring marks the focus country's 2030 goal under SDG 3.4; the bar at 2030 is its projected range.</p>
         <p class="n" lang="ar">احتمال الوفاة بين 30 و70 عامًا بسبب الأمراض المزمنة الأربعة الرئيسية (%). تشير الدائرة إلى هدف الدولة المختارة لعام 2030 وفق الهدف 3.4، ويمثل الخط الرأسي عند 2030 نطاق الإسقاط.</p>
         <div class="gx-chart dash-skeleton" data-draw="ncdchart" data-source="wb sdg34"></div>
+      <p class="gx-see"><button type="button" data-tab="causes"><span lang="en">See also: which diseases cause these deaths, in Causes of death →</span><span lang="ar">انظر أيضًا: الأمراض المسببة لهذه الوفيات، في قسم أسباب الوفاة ←</span></button></p>
       <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's probability of dying between ages 30 and 70 from cardiovascular disease, cancer, diabetes or chronic respiratory disease, via the World Bank. The ring marks each country's 2030 goal under SDG 3.4: its 2015 rate cut by a third.</p><p lang="ar">احتمال الوفاة بين 30 و70 عامًا بأمراض القلب والأوعية الدموية أو السرطان أو السكري أو الأمراض التنفسية المزمنة، من منظمة الصحة العالمية عبر البنك الدولي. وتشير الدائرة إلى هدف كل دولة لعام 2030 وفق الهدف 3.4: معدلها في 2015 مخفضًا بمقدار الثلث.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">WHO estimates, revised only every few years. The latest year is 2021 and may still include pandemic-era deaths. The ring is the UN goal, not a national target.</p><p lang="ar">تقديرات منظمة الصحة العالمية تُراجع كل بضع سنوات فقط. أحدث سنة هي 2021 وقد تتضمن وفيات مرتبطة بالجائحة. الدائرة تمثل هدف الأمم المتحدة وليست مستهدفًا وطنيًا.</p></details>
       </div>
@@ -466,7 +487,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         </table>
       </div>
     <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">Each country's goal is its 2015 rate cut by a third. A least-squares straight line fitted to 2015 onwards is projected to 2030 with an 80% prediction range: on track if the whole range reaches the goal, off track if none of it does, uncertain otherwise.</p><p lang="ar">هدف كل دولة هو معدلها في 2015 مخفضًا بمقدار الثلث. ويُسقط خط مستقيم بطريقة المربعات الصغرى من 2015 فصاعدًا حتى 2030 مع نطاق تنبؤ 80%: على المسار إذا بلغ النطاق كله الهدف، وخارجه إذا لم يبلغه أي جزء منه، وغير محسوم فيما عدا ذلك.</p></details>
-      <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Seven data points and a straight line: the projection ignores population ageing and policy change, and the range reflects only year-to-year noise. Pandemic years matter: fitted on 2015–2019 only, Oman moves from on track to uncertain. Saudi Arabia reports a different official measure, a chronic-disease death rate that fell from 558 to 366 between 2019 and 2024 (see Official figures vs international estimates).</p><p lang="ar">سبع نقاط بيانات وخط مستقيم: يتجاهل الإسقاط شيخوخة السكان وتغير السياسات، ويعكس النطاق التذبذب السنوي فقط. ولسنوات الجائحة أثر: عند الاقتصار على 2015–2019 تنتقل عُمان من «على المسار» إلى «غير محسوم». وتنشر السعودية مقياسًا رسميًا مختلفًا هو معدل الوفيات بالأمراض غير المعدية، الذي انخفض من 558 إلى 366 بين 2019 و2024 (انظر قسم الأرقام الرسمية مقابل التقديرات الدولية).</p></details>
+      <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Seven data points and a straight line: the projection ignores population ageing and policy change, and the range reflects only year-to-year noise. Pandemic years matter: fitted on 2015–2019 only, Oman moves from on track to uncertain. Saudi Arabia reports a different official measure, a chronic-disease death rate that fell from 558 to 366 between 2019 and 2024 (see Data check).</p><p lang="ar">سبع نقاط بيانات وخط مستقيم: يتجاهل الإسقاط شيخوخة السكان وتغير السياسات، ويعكس النطاق التذبذب السنوي فقط. ولسنوات الجائحة أثر: عند الاقتصار على 2015–2019 تنتقل عُمان من «على المسار» إلى «غير محسوم». وتنشر السعودية مقياسًا رسميًا مختلفًا هو معدل الوفيات بالأمراض غير المعدية، الذي انخفض من 558 إلى 366 بين 2019 و2024 (انظر قسم تدقيق البيانات).</p></details>
     </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
@@ -498,6 +519,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       <p class="n" lang="en">Share of all years of life lost (%), top 10 causes, <span data-draw="cyr">2023</span>. The dark tick marks the high-income average for the same cause.</p>
       <p class="n" lang="ar">النسبة من إجمالي سنوات العمر المفقودة (%)، أهم 10 أسباب، <span data-draw="cyr">2023</span>. تشير العلامة الداكنة إلى متوسط الدول مرتفعة الدخل للسبب نفسه.</p>
       <div class="gx-chart dash-skeleton" data-draw="causebar"></div>
+      <p class="gx-see"><button type="button" data-tab="risk"><span lang="en">See also: blood pressure, diabetes and air pollution, in Risk factors →</span><span lang="ar">انظر أيضًا: ضغط الدم والسكري وتلوث الهواء، في قسم عوامل الخطر ←</span></button></p>
       <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO Global Health Estimates for both sexes and all ages. Years of life lost add up, for every death, the years remaining at that age on WHO's reference life table (about 92 years at birth). Causes are WHO's rankable causes, which count each death once; each bar is that cause's share of all years lost in the country that year.</p><p lang="ar">تقديرات الصحة العالمية لمنظمة الصحة العالمية للجنسين ولجميع الأعمار. تجمع سنوات العمر المفقودة، لكل وفاة، السنوات المتبقية عند ذلك العمر وفق جدول الحياة المرجعي للمنظمة (نحو 92 سنة عند الولادة). والأسباب هي الأسباب القابلة للترتيب لدى المنظمة، التي تحتسب كل وفاة مرة واحدة؛ ويمثل كل شريط نصيب السبب من إجمالي السنوات المفقودة في الدولة في تلك السنة.</p></details>
       <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Modelled estimates: WHO adjusts national death records where registration is incomplete or causes are poorly coded, and revises figures between editions. They cover all residents, including migrant workers. Gulf populations are young, so causes that kill infants and young adults carry more weight than in older high-income populations; compare rankings within a country more than shares across countries.</p><p lang="ar">تقديرات مُنمذجة: تعدّل المنظمة سجلات الوفيات الوطنية حيث يكون التسجيل غير مكتمل أو ترميز الأسباب ضعيفًا، وتراجع الأرقام بين الإصدارات. وتشمل جميع المقيمين، بمن فيهم العمالة الوافدة. وسكان الخليج شباب، لذا تحمل الأسباب التي تودي بحياة الرضّع والشباب وزنًا أكبر مما في الدول مرتفعة الدخل الأكبر سنًا؛ فالأجدى مقارنة الترتيب داخل الدولة أكثر من مقارنة النسب بين الدول.</p></details>
     </div>
@@ -520,11 +542,14 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       </div>
       <div class="gx-card" id="road">
         <h3><span lang="en">Road deaths per 100,000 people</span><span lang="ar">وفيات الطرق لكل 100,000 نسمة</span></h3>
+        <p class="n" lang="en">WHO cause-of-death estimates.</p>
+        <p class="n" lang="ar">تقديرات منظمة الصحة العالمية لأسباب الوفاة.</p>
         <p class="n" lang="en">Deaths from road injuries per 100,000 residents, <span data-draw="cyr" data-which="latest">2023</span>. The dark tick marks <span data-draw="cyr" data-which="base">2019</span>.</p>
         <p class="n" lang="ar">الوفيات بإصابات الطرق لكل 100,000 من السكان، <span data-draw="cyr" data-which="latest">2023</span>. تشير العلامة الداكنة إلى <span data-draw="cyr" data-which="base">2019</span>.</p>
         <div class="gx-chart short dash-skeleton" data-draw="ghebar" data-code="1530" data-field="dth_rate" data-unit=""></div>
+        <p class="gx-see"><button type="button" data-tab="official"><span lang="en">See also: WHO's road safety estimates against official figures, in Data check →</span><span lang="ar">انظر أيضًا: تقديرات المنظمة للسلامة على الطرق مقارنةً بالأرقام الرسمية، في قسم تدقيق البيانات ←</span></button></p>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO Global Health Estimates: road injury deaths per 100,000 residents (not age-adjusted), both sexes, latest year, with the pre-pandemic year marked.</p><p lang="ar">تقديرات الصحة العالمية لمنظمة الصحة العالمية: وفيات إصابات الطرق لكل 100,000 من السكان (غير معدّلة حسب العمر)، للجنسين، لأحدث سنة، مع الإشارة إلى سنة ما قبل الجائحة.</p></details>
-        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">WHO publishes two road death series. The road safety series used in National goals and Official vs international gives higher figures (Saudi Arabia: 35.9 in 2019, against 23.1 here). Both put Saudi Arabia well above the other Gulf states and high-income countries.</p><p lang="ar">تنشر منظمة الصحة العالمية سلسلتين لوفيات الطرق. وتعطي سلسلة السلامة على الطرق المستخدمة في قسمي الأهداف الوطنية والرسمي مقابل الدولي أرقامًا أعلى (السعودية: 35.9 في 2019 مقابل 23.1 هنا). وتضع السلسلتان السعودية أعلى بكثير من دول الخليج الأخرى والدول مرتفعة الدخل.</p></details>
+        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">WHO publishes two road death series. The road safety series used in Data check gives higher figures (Saudi Arabia: 35.9 in 2019, against 23.1 here). Both put Saudi Arabia well above the other Gulf states and high-income countries.</p><p lang="ar">تنشر منظمة الصحة العالمية سلسلتين لوفيات الطرق. وتعطي سلسلة السلامة على الطرق المستخدمة في قسم تدقيق البيانات أرقامًا أعلى (السعودية: 35.9 في 2019 مقابل 23.1 هنا). وتضع السلسلتان السعودية أعلى بكثير من دول الخليج الأخرى والدول مرتفعة الدخل.</p></details>
       </div>
     </div>
     <div class="gx-io">
@@ -540,11 +565,11 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       </div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_ghe,who_ghe_methods,wb_road"></ul></div>
-    <p class="gx-next"><button type="button" data-tab="risk"><span lang="en">Next: Chronic disease →</span><span lang="ar">التالي: الأمراض المزمنة ←</span></button></p>
+    <p class="gx-next"><button type="button" data-tab="risk"><span lang="en">Next: Risk factors →</span><span lang="ar">التالي: عوامل الخطر ←</span></button></p>
   </section>
 
   <section class="gx-sec" id="risk" hidden>
-    <h2><span class="gx-num" aria-hidden="true">5</span><span lang="en">Chronic disease risk</span><span lang="ar">عوامل خطر الأمراض المزمنة</span></h2>
+    <h2><span class="gx-num" aria-hidden="true">5</span><span lang="en">Risk factors</span><span lang="ar">عوامل الخطر</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> Four drivers of chronic disease, against world and high-income benchmarks: adult obesity, diabetes, high blood pressure (and how much of it is controlled) and fine-particle air pollution.</p>
       <p lang="ar"><b>ما الذي نعرضه.</b> أربعة محركات للأمراض المزمنة مقارنةً بالمتوسط العالمي والدول مرتفعة الدخل: السمنة لدى البالغين، والسكري، وارتفاع ضغط الدم (ونسبة السيطرة عليه)، والتلوث بالجسيمات الدقيقة.</p>
@@ -565,6 +590,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <p class="n" lang="en">Share of adults 20–79 with diabetes, latest year (International Diabetes Federation via World Bank).</p>
         <p class="n" lang="ar">نسبة البالغين بين 20 و79 عامًا المصابين بالسكري، لأحدث سنة (الاتحاد الدولي للسكري عبر البنك الدولي).</p>
         <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="diabetes_prev" data-source="latest"></div>
+      <p class="gx-see"><button type="button" data-tab="causes"><span lang="en">See also: deaths from diabetes and kidney disease, in Causes of death →</span><span lang="ar">انظر أيضًا: الوفيات بالسكري وأمراض الكلى، في قسم أسباب الوفاة ←</span></button></p>
       <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">International Diabetes Federation estimates of diabetes prevalence among adults aged 20–79, including undiagnosed cases, via the World Bank, latest year.</p><p lang="ar">تقديرات الاتحاد الدولي للسكري لانتشار السكري بين البالغين من 20 إلى 79 عامًا، بما في ذلك الحالات غير المشخّصة، عبر البنك الدولي، لأحدث سنة.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Modelled estimates from the International Diabetes Federation, updated every few years and including undiagnosed cases. They are not registry counts.</p><p lang="ar">تقديرات مُنمذجة من الاتحاد الدولي للسكري تُحدَّث كل بضع سنوات وتشمل الحالات غير المشخصة، وليست أعدادًا من السجلات.</p></details>
       </div>
@@ -575,6 +601,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <p class="n" lang="en">Share of adults 30–79 with hypertension, age-standardized, latest year (WHO).</p>
         <p class="n" lang="ar">نسبة البالغين بين 30 و79 عامًا المصابين بارتفاع ضغط الدم، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
         <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="hyp_prev" data-source="latest"></div>
+        <p class="gx-see"><button type="button" data-tab="causes"><span lang="en">See also: deaths from heart disease and stroke, in Causes of death →</span><span lang="ar">انظر أيضًا: الوفيات بأمراض القلب والسكتة الدماغية، في قسم أسباب الوفاة ←</span></button></p>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized share of adults aged 30–79 with hypertension: blood pressure of 140/90 mmHg or higher, or taking medicine for it.</p><p lang="ar">النسبة المعيارية حسب العمر من منظمة الصحة العالمية للبالغين بين 30 و79 عامًا المصابين بارتفاع ضغط الدم: ضغط دم 140/90 ملم زئبق أو أعلى، أو تناول دواء لعلاجه.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Modelled from national surveys of different years; the latest estimate is 2019 (WHO global report on hypertension, 2023).</p><p lang="ar">تقديرات مُنمذجة من مسوح وطنية لسنوات مختلفة، وأحدثها لعام 2019 (التقرير العالمي لمنظمة الصحة العالمية عن ارتفاع ضغط الدم، 2023).</p></details>
       </div>
@@ -704,11 +731,11 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       </div>
     </div>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_che,wb_chepc,wb_gov,wb_oop,sau_hstp25,uae_insurance,qat_opendata,kwt_dhaman,omn_dhamani,bhr_insurance,bhr_law"></ul></div>
-    <p class="gx-next"><button type="button" data-tab="workforce"><span lang="en">Next: Workforce and localization →</span><span lang="ar">التالي: القوى العاملة والتوطين ←</span></button></p>
+    <p class="gx-next"><button type="button" data-tab="workforce"><span lang="en">Next: Workforce and capacity →</span><span lang="ar">التالي: القوى العاملة والطاقة الاستيعابية ←</span></button></p>
   </section>
 
   <section class="gx-sec" id="workforce" hidden>
-    <h2><span class="gx-num" aria-hidden="true">7</span><span lang="en">Workforce and localization</span><span lang="ar">القوى العاملة والتوطين</span></h2>
+    <h2><span class="gx-num" aria-hidden="true">7</span><span lang="en">Workforce and capacity</span><span lang="ar">القوى العاملة والطاقة الاستيعابية</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> Physicians, nurses, midwives and hospital beds, the staffing standards nurses are judged against, and the share of physicians and nurses who are citizens.</p>
       <p lang="ar"><b>ما الذي نعرضه.</b> عدد الأطباء والممرضين والقابلات وأسرّة المستشفيات، ومعايير التوظيف التي تُقاس بها أعداد الممرضين، ونسبة المواطنين من الأطباء والممرضين.</p>
@@ -881,11 +908,11 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       </div>
     </details>
     <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="wb_proj,ssb_beddays,wb_beds,wb_nurse,wb_phys,who_obesity,wb_diab,abdullah2010,ada2023,omn_ncsi"></ul></div>
-    <p class="gx-next"><button type="button" data-tab="official"><span lang="en">Next: Official vs international →</span><span lang="ar">التالي: الرسمي مقابل الدولي ←</span></button></p>
+    <p class="gx-next"><button type="button" data-tab="official"><span lang="en">Next: Data check →</span><span lang="ar">التالي: تدقيق البيانات ←</span></button></p>
   </section>
 
   <section class="gx-sec" id="official" hidden>
-    <h2><span class="gx-num" aria-hidden="true">9</span><span lang="en">Official figures vs international estimates</span><span lang="ar">الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
+    <h2><span class="gx-num" aria-hidden="true">9</span><span lang="en">Data check: official figures vs international estimates</span><span lang="ar">تدقيق البيانات: الأرقام الرسمية مقابل التقديرات الدولية</span></h2>
     <div class="gx-ctx">
       <p lang="en"><b>What we're looking at.</b> Where a government's own figure differs from the World Bank or WHO estimate for the same measure, plus progress on Saudi Vision 2030's headline health indicators.</p>
       <p lang="ar"><b>ما الذي نعرضه.</b> المواضع التي يختلف فيها الرقم الحكومي عن تقدير البنك الدولي أو منظمة الصحة العالمية للمؤشر نفسه، إضافةً إلى التقدم في المؤشرات الصحية الرئيسية لرؤية السعودية 2030.</p>
@@ -930,10 +957,11 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
           <div><div class="t"><span lang="en">Official baseline</span><span lang="ar">خط الأساس الرسمي</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=road_deaths&amp;series=official&amp;year=2016" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=road_deaths&amp;series=official&amp;year=2016">—</div></div>
           <div><div class="t"><span lang="en">Official, same year as WHO</span><span lang="ar">الرسمي، سنة تقدير المنظمة</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=road_deaths&amp;series=official&amp;year=2019" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=road_deaths&amp;series=official&amp;year=2019">—</div></div>
           <div><div class="t"><span lang="en">Official, latest</span><span lang="ar">الرقم الرسمي الأحدث</span></div><div class="v" data-draw="vv" data-source="vision2030" data-field="value" data-where="kpi=road_deaths&amp;series=official&amp;year=2025" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="vision2030" data-field="year" data-where="kpi=road_deaths&amp;series=official&amp;year=2025">—</div></div>
-          <div><div class="t"><span lang="en">WHO estimate</span><span lang="ar">تقدير منظمة الصحة العالمية</span></div><div class="v" data-draw="vv" data-source="latest" data-field="value" data-where="iso3=SAU&amp;indicator=road_deaths" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="latest" data-field="year" data-where="iso3=SAU&amp;indicator=road_deaths">—</div></div>
+          <div><div class="t"><span lang="en">WHO road safety estimate</span><span lang="ar">تقدير المنظمة للسلامة على الطرق</span></div><div class="v" data-draw="vv" data-source="latest" data-field="value" data-where="iso3=SAU&amp;indicator=road_deaths" data-fmt=".1f">—</div><div class="y" data-draw="vy" data-source="latest" data-field="year" data-where="iso3=SAU&amp;indicator=road_deaths">—</div></div>
         </div>
         <p class="gx-note" lang="en">WHO models road deaths to correct for under-reporting in national registries, so its estimates usually run above official counts. The two series aren't directly comparable, and the WHO series in the World Bank's data stops at 2019.</p>
         <p class="gx-note" lang="ar">تُنمذج منظمة الصحة العالمية وفيات الطرق لتصحيح نقص الإبلاغ في السجلات الوطنية، لذا تأتي تقديراتها عادةً أعلى من الأرقام الرسمية. السلسلتان غير قابلتين للمقارنة المباشرة، وتتوقف سلسلة المنظمة في بيانات البنك الدولي عند عام 2019.</p>
+      <p class="gx-see"><button type="button" data-tab="causes"><span lang="en">See also: road deaths from WHO's cause-of-death estimates, 2019 and 2023, in Causes of death →</span><span lang="ar">انظر أيضًا: وفيات الطرق وفق تقديرات المنظمة لأسباب الوفاة، 2019 و2023، في قسم أسباب الوفاة ←</span></button></p>
       <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">Official road deaths per 100,000 people for 2016, 2019 and 2025 from the programme's reports, beside WHO's modelled estimate (latest 2019 in the World Bank's data).</p><p lang="ar">وفيات الطرق الرسمية لكل 100,000 نسمة لأعوام 2016 و2019 و2025 من تقارير البرنامج، بجانب تقدير منظمة الصحة العالمية المُنمذج (أحدثه 2019 في بيانات البنك الدولي).</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Compare like with like: for 2019 the official rate was 16.8, against WHO's 35.9. In 2016 the two were almost identical (28.4 and 28.7) and diverged afterwards. The official 2025 rate uses projected 2025 population.</p><p lang="ar">للمقارنة في السنة نفسها: بلغ المعدل الرسمي 16.8 في 2019 مقابل 35.9 لدى المنظمة. وكان الرقمان متقاربين جدًا في 2016 (28.4 و28.7) ثم تباعدا. ويستند المعدل الرسمي لعام 2025 إلى تقديرات السكان المتوقعة لذلك العام.</p></details>
       </div>
@@ -1219,7 +1247,7 @@ document.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click
   dash.setParams({tab: b.dataset.tab});
   // Bring the new section's top into view just under the sticky tab bar
   const y = document.querySelector('.gx-focus').getBoundingClientRect().bottom + scrollY;
-  if (scrollY > y || b.closest('.gx-next')) scrollTo({top: y});
+  if (scrollY > y || b.closest('.gx-next, .gx-see, .gx-tiles')) scrollTo({top: y});
 }));
 if (TABS.includes(location.hash.slice(1))) dash.setParams({tab: location.hash.slice(1)});
 dash.onData(() => {
@@ -1357,6 +1385,14 @@ dash.onData(() => {
 document.querySelectorAll('.gx-cy button').forEach((b) => b.addEventListener('click', () => dash.setParams({cy: b.dataset.cy})));
 
 // Top 10 causes for the focus country, with the high-income share of the same cause as a tick.
+dash.draw('leadc', (el) => {
+  if (!text(el, ['causes'])) return;
+  const {latest} = cyears(), [a, b] = ctop(focus(), latest, 2);
+  if (!a) { el.textContent = '—'; return; }
+  const h = crow('HIC', latest, a.code);
+  el.textContent = {name: causeName(a), share: T(`${pc1(a.yll_pct)} of years of life lost, ${latest}`, `${pc1(a.yll_pct)} من سنوات العمر المفقودة، ${latest}`),
+    hic: h ? pc1(h.yll_pct) : '—', second: b ? `${causeName(b)}, ${pc1(b.yll_pct)}` : '—'}[el.dataset.k];
+});
 dash.draw('causebar', (el) => {
   if (!box(el, ['causes'])) return;
   el.replaceChildren();
@@ -1999,7 +2035,7 @@ dash.draw('vy', (el) => {
 
   // Official vs international table
   const LBL = {life_exp: ['Life expectancy (years)', 'العمر المتوقع (سنة)'], physicians_1k: ['Physicians per 1,000', 'الأطباء لكل 1,000'],
-    nurses_1k: ['Nurses per 1,000', 'الممرضون لكل 1,000'], road_deaths: ['Road deaths per 100,000', 'وفيات الطرق لكل 100,000']};
+    nurses_1k: ['Nurses per 1,000', 'الممرضون لكل 1,000'], road_deaths: ['Road deaths per 100,000 (international: WHO road safety estimate)', 'وفيات الطرق لكل 100,000 (الدولي: تقدير المنظمة للسلامة على الطرق)']};
   dash.draw('offbody', (tb) => {
     tb.replaceChildren();
     if (nat().status !== 'ok' || dash.data('latest').status !== 'ok') return;
