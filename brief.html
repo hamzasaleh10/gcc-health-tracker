@@ -105,6 +105,19 @@
   </table></div>
   <p class="note"><span lang="en">International figures from the World Bank and WHO, latest year each was reported. Status compares the international figure with the high-income average; within 5% counts as near.</span><span lang="ar">الأرقام الدولية من البنك الدولي ومنظمة الصحة العالمية، لأحدث سنة متاحة. وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، ويُعد الفارق ضمن 5% قريبًا.</span></p>
 
+  <h2><span lang="en">Leading causes of years of life lost</span><span lang="ar">الأسباب الرئيسية لسنوات العمر المفقودة</span></h2>
+  <p data-draw="bcausesum"></p>
+  <div class="tw"><table>
+    <thead><tr>
+      <th><span lang="en">Cause</span><span lang="ar">السبب</span></th>
+      <th class="n" data-draw="bccol" data-which="latest">—</th>
+      <th class="n"><span lang="en"><span class="l1">High income</span><span class="l2" data-draw="bcyr" data-which="latest">—</span></span><span lang="ar"><span class="l1">الدول مرتفعة الدخل</span><span class="l2" data-draw="bcyr" data-which="latest">—</span></span></th>
+      <th class="n" data-draw="bccol" data-which="base">—</th>
+    </tr></thead>
+    <tbody data-draw="bcauses"></tbody>
+  </table></div>
+  <p class="note"><span lang="en">Share of all years of life lost (%), top 5 causes, WHO Global Health Estimates. Years of life lost weigh each death by how young it occurred. The earlier year shows the picture before the pandemic. Shares are not age-adjusted, and Gulf populations are young.</span><span lang="ar">النسبة من إجمالي سنوات العمر المفقودة (%)، أهم 5 أسباب، تقديرات الصحة العالمية لمنظمة الصحة العالمية. تزن سنوات العمر المفقودة كل وفاة بحسب العمر الذي وقعت فيه. وتعرض السنة الأقدم الصورة قبل الجائحة. والنسب غير معدّلة حسب العمر، وسكان الخليج شباب.</span></p>
+
   <h2><span lang="en">Outlook 2040</span><span lang="ar">آفاق 2040</span></h2>
   <p data-draw="boutlook"></p>
   <div class="tw"><table>
@@ -158,11 +171,12 @@
   const nat = () => dash.data('national').data;
 
   dash.calc('latest', {
-    inputs: ['wb', 'obesity', 'hale'],
-    fn: (wb, obesity, hale) => {
+    inputs: ['wb', 'obesity', 'hale', 'hyp'],
+    fn: (wb, obesity, hale, hyp) => {
       const rows = wb.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: +r.year, value: +r.value}))
         .concat(obesity.map((r) => ({iso3: r.iso3, indicator: 'obesity', year: +r.year, value: +r.value})))
-        .concat(hale.map((r) => ({iso3: r.iso3, indicator: 'hale', year: +r.year, value: +r.value})));
+        .concat(hale.map((r) => ({iso3: r.iso3, indicator: 'hale', year: +r.year, value: +r.value})))
+        .concat(hyp.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: +r.year, value: +r.value})));
       const best = new Map();
       rows.forEach((r) => { const k = r.iso3 + '|' + r.indicator; if (!best.has(k) || best.get(k).year < r.year) best.set(k, r); });
       return [...best.values()];
@@ -176,6 +190,9 @@
     ['ncd_mort_30_70', 'Premature chronic-disease deaths, ages 30–70', 'الوفيات المبكرة بالأمراض المزمنة، 30–70 عامًا', '%', 'low'],
     ['obesity', 'Adult obesity, age-standardized', 'السمنة لدى البالغين، معيارية حسب العمر', '%', 'low'],
     ['diabetes_prev', 'Diabetes, adults 20–79', 'السكري، البالغون بين 20 و79 عامًا', '%', 'low'],
+    ['hyp_prev', 'High blood pressure, adults 30–79, age-standardized', 'ارتفاع ضغط الدم، البالغون 30–79 عامًا، معيارية حسب العمر', '%', 'low'],
+    ['hyp_control', 'Blood pressure under control (% of those with high blood pressure)', 'ضغط الدم تحت السيطرة (% من المصابين)', '%', 'high'],
+    ['pm25', 'Fine-particle air pollution, PM2.5 (µg/m³)', 'التلوث بالجسيمات الدقيقة PM2.5 (ميكروغرام/م³)', '', 'low'],
     ['che_gdp', 'Health spending, % of GDP', 'الإنفاق الصحي، % من الناتج المحلي', '%', 'none'],
     ['physicians_1k', 'Physicians per 1,000 people', 'الأطباء لكل 1,000 نسمة', '', 'high'],
     ['nurses_1k', 'Nurses and midwives per 1,000 people', 'الممرضون والقابلات لكل 1,000 نسمة', '', 'high'],
@@ -189,7 +206,7 @@
     return (gap > 0) === (dir === 'high') ? ['st-met', T('Better than high income', 'أفضل من الدول مرتفعة الدخل'), 'better'] : ['st-far', T('Behind high income', 'متأخر عن الدول مرتفعة الدخل'), 'behind'];
   };
   const mname = (m) => (lang() === 'ar' ? m[2] : m[1]);
-  const SHORT = {life_exp: ['life expectancy', 'العمر المتوقع'], hale: ['healthy life expectancy', 'العمر الصحي المتوقع'], ncd_mort_30_70: ['premature chronic-disease deaths', 'الوفيات المبكرة بالأمراض المزمنة'], obesity: ['adult obesity', 'السمنة لدى البالغين'], diabetes_prev: ['diabetes', 'السكري'], che_gdp: ['health spending', 'الإنفاق الصحي'], physicians_1k: ['physicians per person', 'الأطباء لكل نسمة'], nurses_1k: ['nurses per person', 'الممرضين لكل نسمة']};
+  const SHORT = {life_exp: ['life expectancy', 'العمر المتوقع'], hale: ['healthy life expectancy', 'العمر الصحي المتوقع'], ncd_mort_30_70: ['premature chronic-disease deaths', 'الوفيات المبكرة بالأمراض المزمنة'], obesity: ['adult obesity', 'السمنة لدى البالغين'], diabetes_prev: ['diabetes', 'السكري'], che_gdp: ['health spending', 'الإنفاق الصحي'], physicians_1k: ['physicians per person', 'الأطباء لكل نسمة'], nurses_1k: ['nurses per person', 'الممرضين لكل نسمة'], hyp_prev: ['high blood pressure', 'ارتفاع ضغط الدم'], hyp_control: ['blood pressure control', 'السيطرة على ضغط الدم'], pm25: ['air pollution', 'تلوث الهواء']};
 
   dash.draw('bname', (e) => { e.textContent = name(focus()); });
   dash.draw('bcol', (e) => { e.textContent = name(focus()); });
@@ -226,6 +243,41 @@
     if (ob && wo) ul.appendChild(el('li', T(`Adult obesity is ${f1(ob.value)}%, ${f1(ob.value / wo.value)} times the world average.`, `تبلغ السمنة لدى البالغين ${f1(ob.value)}%، أي ${f1(ob.value / wo.value)} أضعاف المتوسط العالمي.`)));
   });
 
+  // Leading causes of years of life lost (WHO Global Health Estimates), as on the Monitor's Causes of death tab
+  const CAUSE = {1130: ['Ischaemic heart disease', 'مرض القلب الإقفاري'], 1140: ['Stroke', 'السكتة الدماغية'], 1120: ['Hypertensive heart disease', 'مرض القلب الناجم عن ارتفاع الضغط'], 800: ['Diabetes', 'السكري'], 1270: ['Kidney disease', 'أمراض الكلى'], 1530: ['Road injuries', 'إصابات الطرق'], 1400: ['Birth defects', 'العيوب الخلقية'], 500: ['Preterm birth complications', 'مضاعفات الولادة المبكرة'], 390: ['Lower respiratory infections', 'التهابات الجهاز التنفسي السفلي'], 1610: ['Self-harm', 'إيذاء النفس'], 650: ['Bowel cancer', 'سرطان القولون والمستقيم'], 700: ['Breast cancer', 'سرطان الثدي'], 680: ['Lung cancer', 'سرطان الرئة'], 770: ['Leukaemia', 'سرطان الدم'], 751: ['Brain and nerve cancers', 'سرطانات الدماغ والأعصاب'], 760: ['Lymphoma and myeloma', 'الأورام اللمفاوية والنقوية'], 1180: ['COPD (chronic lung disease)', 'الانسداد الرئوي المزمن'], 1570: ['Drowning', 'الغرق'], 870: ['Drug use disorders', 'اضطرابات تعاطي المخدرات'], 1550: ['Falls', 'السقوط'], 395: ['COVID-19', 'كوفيد-19'], 1230: ['Liver cirrhosis', 'تليف الكبد'], 950: ['Dementia', 'الخرف'], 510: ['Birth asphyxia and trauma', 'الاختناق والإصابات عند الولادة'], 1620: ['Interpersonal violence', 'العنف بين الأشخاص'], 1150: ['Cardiomyopathy and myocarditis', 'اعتلال عضلة القلب والتهابها'], 30: ['Tuberculosis', 'السل']};
+  const cname = (r) => (CAUSE[r.code] ? CAUSE[r.code][lang() === 'ar' ? 1 : 0] : r.cause);
+  const cd = () => dash.data('causes').data;
+  const cyears = () => { const ys = [...new Set(cd().map((r) => r.year))].sort((a, b) => a - b); return {base: ys[0], latest: ys[ys.length - 1]}; };
+  const crow = (iso, y, code) => cd().find((r) => r.iso3 === iso && r.year === y && r.code === code);
+  const ctop = (iso, y, n) => cd().filter((r) => r.iso3 === iso && r.year === y && r.rankable).sort((a, b) => b.yll_pct - a.yll_pct).slice(0, n);
+  const pc1 = (v) => (v == null ? '—' : f1(v) + '%');
+  dash.draw('bcyr', (e) => { if (ok('causes')) e.textContent = String(cyears()[e.dataset.which]); });
+  dash.draw('bccol', (e) => { if (!ok('causes')) return; e.replaceChildren(el('span', name(focus()), 'l1'), el('span', String(cyears()[e.dataset.which]), 'l2')); });
+  dash.draw('bcauses', (tb) => {
+    tb.replaceChildren();
+    if (!ok('causes')) return;
+    const iso = focus(), {base, latest: ly} = cyears();
+    ctop(iso, ly, 5).forEach((r) => {
+      const h = crow('HIC', ly, r.code), b = crow(iso, base, r.code), tr = el('tr');
+      tr.append(el('td', cname(r)), el('td', pc1(r.yll_pct), 'n'), el('td', h ? pc1(h.yll_pct) : '—', 'n'), el('td', b ? pc1(b.yll_pct) : '—', 'n'));
+      tb.appendChild(tr);
+    });
+  });
+  dash.draw('bcausesum', (p) => {
+    p.replaceChildren();
+    if (!ok('causes')) return;
+    const iso = focus(), {base, latest: ly} = cyears(), [a, b] = ctop(iso, ly, 2), ha = crow('HIC', ly, a.code), hb = crow('HIC', ly, b.code);
+    const x = (r, h) => (h && h.yll_pct > 0 ? r.yll_pct / h.yll_pct : null);
+    const tx = (r, h) => { const k = x(r, h); return k == null ? '' : k >= 1.5 ? T(`, ${f1(k)} times the high-income share`, `، أي ${f1(k)} أضعاف نسبة الدول مرتفعة الدخل`) : ''; };
+    const rd = crow(iso, ly, 1530), rd0 = crow(iso, base, 1530), rh = crow('HIC', ly, 1530);
+    const lc = (t) => (/^[A-Z][a-z]/.test(t) ? t[0].toLowerCase() + t.slice(1) : t);
+    let t = T(`The leading cause of years of life lost is ${lc(cname(a))} (${pc1(a.yll_pct)} in ${ly}${tx(a, ha)}); second is ${lc(cname(b))} (${pc1(b.yll_pct)}${tx(b, hb)}).`,
+      `السبب الأول لسنوات العمر المفقودة: ${cname(a)} (${pc1(a.yll_pct)} في ${ly}${tx(a, ha)})؛ والثاني: ${cname(b)} (${pc1(b.yll_pct)}${tx(b, hb)}).`);
+    if (rd && rd0 && rh) t += ' ' + T(`Road deaths: ${f1(rd.dth_rate)} per 100,000 in ${ly} (${f1(rd0.dth_rate)} in ${base}), against ${f1(rh.dth_rate)} in high-income countries.`,
+      `وفيات الطرق: ${f1(rd.dth_rate)} لكل 100,000 في ${ly} (${f1(rd0.dth_rate)} في ${base})، مقابل ${f1(rh.dth_rate)} في الدول مرتفعة الدخل.`);
+    p.textContent = t;
+  });
+
   // Outlook 2040 (same method as the Monitor's Outlook tab)
   const popOf = (iso, y, ages) => dash.data('proj').data.reduce((a, r) => a + (r.iso3 === iso && r.year === y && (!ages || ages.includes(r.age)) ? r.pop : 0), 0);
   const useOf = (iso, y) => { const W = dash.data('outlook').data.age_weights.values; return dash.data('proj').data.reduce((a, r) => a + (r.iso3 === iso && r.year === y ? r.pop * W[r.age] : 0), 0); };
@@ -251,7 +303,7 @@
     });
   });
 
-  const ST = {met: ['st-met', 'Met', 'تحقق'], near: ['st-near', 'Close', 'قريب'], far: ['st-far', 'Far off', 'بعيد'], na: ['st-na', 'Not tracked numerically', 'لا يوجد قياس رقمي']};
+  const ST = {met: ['st-met', 'Met', 'تحقق'], near: ['st-near', 'Close', 'قريب'], far: ['st-far', 'Far off', 'بعيد'], na: ['st-far', 'Not tracked numerically', 'لا يوجد قياس رقمي']};
   dash.draw('bgoals', (ul) => {
     ul.replaceChildren();
     if (!ok('national')) return;
@@ -272,6 +324,11 @@
     if (L && L.phys != null) ul.appendChild(el('li', T(`Citizens are ${pc(L.phys)} of physicians and ${pc(L.nurse)} of nurses (${L.year}).`, `يشكل المواطنون ${pc(L.phys)} من الأطباء و${pc(L.nurse)} من الممرضين (${L.year}).`) +
       (L.nurse_private != null ? T(` In the private sector, ${pc(L.nurse_private)} of nurses are citizens.`, ` وفي القطاع الخاص يشكل المواطنون ${pc(L.nurse_private)} من الممرضين.`) : '')));
     else ul.appendChild(el('li', T('No breakdown of the health workforce by nationality is published.', 'لا يوجد توزيع منشور للقوى العاملة الصحية حسب الجنسية.')));
+    if (ok('nursemid')) {
+      const NMW = dash.data('nursemid').data, last = (k) => NMW.filter((r) => r.iso3 === iso && r.indicator === k).sort((x, y) => y.year - x.year)[0];
+      const nu = last('nurses'), mw = last('midwives'), n = d3.format(',');
+      if (nu) ul.appendChild(el('li', T(`Nurses: ${n(nu.value)} (${nu.year}); midwives: `, `الممرضون: ${n(nu.value)} (${nu.year})؛ القابلات: `) + (mw ? `${n(mw.value)} (${mw.year})` : T('not reported', 'غير منشور')) + T(' (WHO).', ' (منظمة الصحة العالمية).')));
+    }
     const b = nat().localization.regional_benchmark;
     ul.appendChild(el('li', T(`GCC average: citizens are ${b.share}% of nurses (${b.year}).`, `المتوسط الخليجي: يشكل المواطنون ${b.share}% من الممرضين (${b.year}).`)));
     if (I) ul.appendChild(el('li', T('Insurance: ', 'التأمين: ') + (ar ? I.scheme_ar : I.scheme_en) + T('. Status: ', '. الحالة: ') + (ar ? I.status_ar : I.status_en) + '.'));
@@ -283,8 +340,10 @@
     if (!ok('national')) return;
     const ar = lang() === 'ar';
     const add = (t, url) => { const li = el('li'), a = el('a', t); a.href = url; a.target = '_blank'; a.rel = 'noopener'; li.appendChild(a); ul.appendChild(li); };
-    add(T('World Bank World Development Indicators (outcomes, diabetes, spending, workforce)', 'مؤشرات التنمية العالمية للبنك الدولي (النتائج والسكري والإنفاق والقوى العاملة)'), 'https://data.worldbank.org/indicator');
+    add(T('World Bank World Development Indicators (outcomes, diabetes, spending, workforce, air pollution)', 'مؤشرات التنمية العالمية للبنك الدولي (النتائج والسكري والإنفاق والقوى العاملة وتلوث الهواء)'), 'https://data.worldbank.org/indicator');
     add(T('WHO Global Health Observatory (obesity, healthy life expectancy)', 'المرصد الصحي العالمي لمنظمة الصحة العالمية (السمنة والعمر الصحي المتوقع)'), 'https://www.who.int/data/gho');
+    add(T('WHO Global Health Estimates (causes of death and years of life lost)', 'تقديرات الصحة العالمية لمنظمة الصحة العالمية (أسباب الوفاة وسنوات العمر المفقودة)'), 'https://www.who.int/data/global-health-estimates');
+    add(T('WHO Global Health Observatory (hypertension prevalence and control)', 'المرصد الصحي العالمي لمنظمة الصحة العالمية (انتشار ارتفاع ضغط الدم والسيطرة عليه)'), 'https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/hypertension');
     add(T('World Bank population estimates and projections', 'تقديرات السكان وتوقعاتهم من البنك الدولي'), 'https://databank.worldbank.org/source/population-estimates-and-projections');
     SRC_BY[focus()].forEach((k) => { const s = nat().sources[k]; if (s) add(ar ? s.ar : s.en, s.url); });
   });
