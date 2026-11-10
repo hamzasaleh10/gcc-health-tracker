@@ -66,7 +66,7 @@
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="assets/runtime.js?v=20261110"></script>
+<script src="assets/runtime.js?v=20261110b"></script>
 </head>
 <body>
 <main class="site">
@@ -104,6 +104,19 @@
     <tbody data-draw="bmeasures"></tbody>
   </table></div>
   <p class="note"><span lang="en">International figures from the World Bank and WHO, latest year each was reported. Status compares the international figure with the high-income average; within 5% counts as near.</span><span lang="ar">الأرقام الدولية من البنك الدولي ومنظمة الصحة العالمية، لأحدث سنة متاحة. وتقارن الحالة الرقم الدولي بمتوسط الدول مرتفعة الدخل، ويُعد الفارق ضمن 5% قريبًا.</span></p>
+
+  <h2><span lang="en">Risk factors by sex</span><span lang="ar">عوامل الخطر حسب الجنس</span></h2>
+  <div class="tw"><table>
+    <thead><tr>
+      <th><span lang="en">Measure</span><span lang="ar">المؤشر</span></th>
+      <th class="n"><span lang="en">Men</span><span lang="ar">الرجال</span></th>
+      <th class="n"><span lang="en">Women</span><span lang="ar">النساء</span></th>
+      <th class="n"><span lang="en"><span class="l1">High income</span><span class="l2">men</span></span><span lang="ar"><span class="l1">الدول مرتفعة الدخل</span><span class="l2">الرجال</span></span></th>
+      <th class="n"><span lang="en"><span class="l1">High income</span><span class="l2">women</span></span><span lang="ar"><span class="l1">الدول مرتفعة الدخل</span><span class="l2">النساء</span></span></th>
+    </tr></thead>
+    <tbody data-draw="bsex"></tbody>
+  </table></div>
+  <p class="note"><span lang="en">WHO age-standardized estimates for men and women, latest year. Blood pressure under control is the share of people with high blood pressure whose blood pressure is controlled; higher is better.</span><span lang="ar">تقديرات منظمة الصحة العالمية المعيارية حسب العمر للرجال والنساء، لأحدث سنة. ضغط الدم تحت السيطرة هو نسبة المصابين بارتفاع ضغط الدم الذين يخضع ضغطهم للسيطرة؛ والأعلى أفضل.</span></p>
 
   <h2><span lang="en">Leading causes of years of life lost</span><span lang="ar">الأسباب الرئيسية لسنوات العمر المفقودة</span></h2>
   <p data-draw="bcausesum"></p>
@@ -177,7 +190,8 @@
       const rows = wb.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: +r.year, value: +r.value}))
         .concat(obesity.map((r) => ({iso3: r.iso3, indicator: 'obesity', year: +r.year, value: +r.value})))
         .concat(hale.map((r) => ({iso3: r.iso3, indicator: 'hale', year: +r.year, value: +r.value})))
-        .concat(hyp.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: +r.year, value: +r.value})));
+        .concat(hyp.map((r) => ({iso3: r.iso3, indicator: r.sex && r.sex !== 'both' ? r.indicator + '@' + r.sex : r.indicator, year: +r.year, value: +r.value})))
+        .concat(wb.filter((r) => r.indicator === 'smoke_m' || r.indicator === 'smoke_f').map((r) => ({iso3: r.iso3, indicator: 'smoke@' + r.indicator.slice(-1), year: +r.year, value: +r.value})));
       const best = new Map();
       rows.forEach((r) => { const k = r.iso3 + '|' + r.indicator; if (!best.has(k) || best.get(k).year < r.year) best.set(k, r); });
       return [...best.values()];
@@ -193,6 +207,8 @@
     ['diabetes_prev', 'Diabetes, adults 20–79', 'السكري، البالغون بين 20 و79 عامًا', '%', 'low'],
     ['hyp_prev', 'High blood pressure, adults 30–79, age-standardized', 'ارتفاع ضغط الدم، البالغون 30–79 عامًا، معيارية حسب العمر', '%', 'low'],
     ['hyp_control', 'Blood pressure under control (% of those with high blood pressure)', 'ضغط الدم تحت السيطرة (% من المصابين)', '%', 'high'],
+    ['smoke', 'Tobacco use, ages 15+, age-standardized', 'تعاطي التبغ، 15 عامًا فأكثر، معياري حسب العمر', '%', 'low'],
+    ['inactivity', 'Physical inactivity, adults 18+, age-standardized', 'الخمول البدني، البالغون 18+، معياري حسب العمر', '%', 'low'],
     ['pm25', 'Fine-particle air pollution, PM2.5 (µg/m³)', 'التلوث بالجسيمات الدقيقة PM2.5 (ميكروغرام/م³)', '', 'low'],
     ['che_gdp', 'Health spending, % of GDP', 'الإنفاق الصحي، % من الناتج المحلي', '%', 'none'],
     ['physicians_1k', 'Physicians per 1,000 people', 'الأطباء لكل 1,000 نسمة', '', 'high'],
@@ -207,7 +223,7 @@
     return (gap > 0) === (dir === 'high') ? ['st-met', T('Better than high income', 'أفضل من الدول مرتفعة الدخل'), 'better'] : ['st-far', T('Behind high income', 'متأخر عن الدول مرتفعة الدخل'), 'behind'];
   };
   const mname = (m) => (lang() === 'ar' ? m[2] : m[1]);
-  const SHORT = {life_exp: ['life expectancy', 'العمر المتوقع'], hale: ['healthy life expectancy', 'العمر الصحي المتوقع'], ncd_mort_30_70: ['premature chronic-disease deaths', 'الوفيات المبكرة بالأمراض المزمنة'], obesity: ['adult obesity', 'السمنة لدى البالغين'], diabetes_prev: ['diabetes', 'السكري'], che_gdp: ['health spending', 'الإنفاق الصحي'], physicians_1k: ['physicians per person', 'الأطباء لكل نسمة'], nurses_1k: ['nurses per person', 'الممرضين لكل نسمة'], hyp_prev: ['high blood pressure', 'ارتفاع ضغط الدم'], hyp_control: ['blood pressure control', 'السيطرة على ضغط الدم'], pm25: ['air pollution', 'تلوث الهواء']};
+  const SHORT = {life_exp: ['life expectancy', 'العمر المتوقع'], hale: ['healthy life expectancy', 'العمر الصحي المتوقع'], ncd_mort_30_70: ['premature chronic-disease deaths', 'الوفيات المبكرة بالأمراض المزمنة'], obesity: ['adult obesity', 'السمنة لدى البالغين'], diabetes_prev: ['diabetes', 'السكري'], che_gdp: ['health spending', 'الإنفاق الصحي'], physicians_1k: ['physicians per person', 'الأطباء لكل نسمة'], nurses_1k: ['nurses per person', 'الممرضين لكل نسمة'], hyp_prev: ['high blood pressure', 'ارتفاع ضغط الدم'], hyp_control: ['blood pressure control', 'السيطرة على ضغط الدم'], pm25: ['air pollution', 'تلوث الهواء'], smoke: ['tobacco use', 'تعاطي التبغ'], inactivity: ['physical inactivity', 'الخمول البدني']};
 
   dash.draw('bname', (e) => { e.textContent = name(focus()); });
   dash.draw('bcol', (e) => { e.textContent = name(focus()); });
@@ -245,12 +261,12 @@
   });
 
   // Leading causes of years of life lost (WHO Global Health Estimates), as on the Monitor's Causes of death tab
-  const CAUSE = {1130: ['Ischaemic heart disease', 'مرض القلب الإقفاري'], 1140: ['Stroke', 'السكتة الدماغية'], 1120: ['Hypertensive heart disease', 'مرض القلب الناجم عن ارتفاع الضغط'], 800: ['Diabetes', 'السكري'], 1270: ['Kidney disease', 'أمراض الكلى'], 1530: ['Road injuries', 'إصابات الطرق'], 1400: ['Birth defects', 'العيوب الخلقية'], 500: ['Preterm birth complications', 'مضاعفات الولادة المبكرة'], 390: ['Lower respiratory infections', 'التهابات الجهاز التنفسي السفلي'], 1610: ['Self-harm', 'إيذاء النفس'], 650: ['Bowel cancer', 'سرطان القولون والمستقيم'], 700: ['Breast cancer', 'سرطان الثدي'], 680: ['Lung cancer', 'سرطان الرئة'], 770: ['Leukaemia', 'سرطان الدم'], 751: ['Brain and nerve cancers', 'سرطانات الدماغ والأعصاب'], 760: ['Lymphoma and myeloma', 'الأورام اللمفاوية والنقوية'], 1180: ['COPD (chronic lung disease)', 'الانسداد الرئوي المزمن'], 1570: ['Drowning', 'الغرق'], 870: ['Drug use disorders', 'اضطرابات تعاطي المخدرات'], 1550: ['Falls', 'السقوط'], 395: ['COVID-19', 'كوفيد-19'], 1230: ['Liver cirrhosis', 'تليف الكبد'], 950: ['Dementia', 'الخرف'], 510: ['Birth asphyxia and trauma', 'الاختناق والإصابات عند الولادة'], 1620: ['Interpersonal violence', 'العنف بين الأشخاص'], 1150: ['Cardiomyopathy and myocarditis', 'اعتلال عضلة القلب والتهابها'], 30: ['Tuberculosis', 'السل']};
+  const CAUSE = {730: ['Ovarian cancer', 'سرطان المبيض'], 710: ['Cervical cancer', 'سرطان عنق الرحم'], 740: ['Prostate cancer', 'سرطان البروستاتا'], 1130: ['Ischaemic heart disease', 'مرض القلب الإقفاري'], 1140: ['Stroke', 'السكتة الدماغية'], 1120: ['Hypertensive heart disease', 'مرض القلب الناجم عن ارتفاع الضغط'], 800: ['Diabetes', 'السكري'], 1270: ['Kidney disease', 'أمراض الكلى'], 1530: ['Road injuries', 'إصابات الطرق'], 1400: ['Birth defects', 'العيوب الخلقية'], 500: ['Preterm birth complications', 'مضاعفات الولادة المبكرة'], 390: ['Lower respiratory infections', 'التهابات الجهاز التنفسي السفلي'], 1610: ['Self-harm', 'إيذاء النفس'], 650: ['Bowel cancer', 'سرطان القولون والمستقيم'], 700: ['Breast cancer', 'سرطان الثدي'], 680: ['Lung cancer', 'سرطان الرئة'], 770: ['Leukaemia', 'سرطان الدم'], 751: ['Brain and nerve cancers', 'سرطانات الدماغ والأعصاب'], 760: ['Lymphoma and myeloma', 'الأورام اللمفاوية والنقوية'], 1180: ['COPD (chronic lung disease)', 'الانسداد الرئوي المزمن'], 1570: ['Drowning', 'الغرق'], 870: ['Drug use disorders', 'اضطرابات تعاطي المخدرات'], 1550: ['Falls', 'السقوط'], 395: ['COVID-19', 'كوفيد-19'], 1230: ['Liver cirrhosis', 'تليف الكبد'], 950: ['Dementia', 'الخرف'], 510: ['Birth asphyxia and trauma', 'الاختناق والإصابات عند الولادة'], 1620: ['Interpersonal violence', 'العنف بين الأشخاص'], 1150: ['Cardiomyopathy and myocarditis', 'اعتلال عضلة القلب والتهابها'], 30: ['Tuberculosis', 'السل']};
   const cname = (r) => (CAUSE[r.code] ? CAUSE[r.code][lang() === 'ar' ? 1 : 0] : r.cause);
   const cd = () => dash.data('causes').data;
   const cyears = () => { const ys = [...new Set(cd().map((r) => r.year))].sort((a, b) => a - b); return {base: ys[0], latest: ys[ys.length - 1]}; };
-  const crow = (iso, y, code) => cd().find((r) => r.iso3 === iso && r.year === y && r.code === code);
-  const ctop = (iso, y, n) => cd().filter((r) => r.iso3 === iso && r.year === y && r.rankable).sort((a, b) => b.yll_pct - a.yll_pct).slice(0, n);
+  const crow = (iso, y, code, sx = 'both') => cd().find((r) => r.iso3 === iso && (r.sex || 'both') === sx && r.year === y && r.code === code);
+  const ctop = (iso, y, n, sx = 'both') => cd().filter((r) => r.iso3 === iso && (r.sex || 'both') === sx && r.year === y && r.rankable).sort((a, b) => b.yll_pct - a.yll_pct).slice(0, n);
   const pc1 = (v) => (v == null ? '—' : f1(v) + '%');
   dash.draw('bcyr', (e) => { if (ok('causes')) e.textContent = String(cyears()[e.dataset.which]); });
   dash.draw('bccol', (e) => { if (!ok('causes')) return; e.replaceChildren(el('span', name(focus()), 'l1'), el('span', String(cyears()[e.dataset.which]), 'l2')); });
@@ -276,7 +292,27 @@
       `السبب الأول لسنوات العمر المفقودة: ${cname(a)} (${pc1(a.yll_pct)} في ${ly}${tx(a, ha)})؛ والثاني: ${cname(b)} (${pc1(b.yll_pct)}${tx(b, hb)}).`);
     if (rd && rd0 && rh) t += ' ' + T(`Road deaths: ${f1(rd.dth_rate)} per 100,000 in ${ly} (${f1(rd0.dth_rate)} in ${base}), against ${f1(rh.dth_rate)} in high-income countries.`,
       `وفيات الطرق: ${f1(rd.dth_rate)} لكل 100,000 في ${ly} (${f1(rd0.dth_rate)} في ${base})، مقابل ${f1(rh.dth_rate)} في الدول مرتفعة الدخل.`);
+    const [am] = ctop(iso, ly, 1, 'm'), [af] = ctop(iso, ly, 1, 'f');
+    if (am && af) t += ' ' + T(`Among men the leading cause is ${lc(cname(am))} (${pc1(am.yll_pct)}); among women, ${lc(cname(af))} (${pc1(af.yll_pct)}).`,
+      `السبب الأول بين الرجال: ${cname(am)} (${pc1(am.yll_pct)})؛ وبين النساء: ${cname(af)} (${pc1(af.yll_pct)}).`);
     p.textContent = t;
+  });
+
+  // Risk factors by sex (WHO estimates; diabetes by sex uses WHO's adults 18+ series)
+  const SXM = [
+    ['obesity', 'Adult obesity', 'السمنة لدى البالغين'], ['diab_who', 'Diabetes, adults 18+ (WHO)', 'السكري، البالغون 18+ (منظمة الصحة العالمية)'],
+    ['hyp_prev', 'High blood pressure, adults 30–79', 'ارتفاع ضغط الدم، 30–79 عامًا'], ['hyp_control', 'Blood pressure under control', 'ضغط الدم تحت السيطرة'],
+    ['smoke', 'Tobacco use, ages 15+', 'تعاطي التبغ، 15 عامًا فأكثر'], ['inactivity', 'Physical inactivity, adults 18+', 'الخمول البدني، البالغون 18+'],
+  ];
+  dash.draw('bsex', (tb) => {
+    tb.replaceChildren();
+    if (!ok('latest')) return;
+    const iso = focus(), g = (i, k) => { const r = latest(i, k); return r ? f1(r.value) + '%' : '—'; };
+    SXM.forEach(([k, en, ar]) => {
+      const tr = el('tr'), yr = latest(iso, k + '@m');
+      tr.append(el('td', T(en, ar) + (yr ? ` (${yr.year})` : '')), el('td', g(iso, k + '@m'), 'n'), el('td', g(iso, k + '@f'), 'n'), el('td', g('HIC', k + '@m'), 'n'), el('td', g('HIC', k + '@f'), 'n'));
+      tb.appendChild(tr);
+    });
   });
 
   // Outlook 2040 (same method as the Monitor's Outlook tab)

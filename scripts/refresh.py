@@ -41,6 +41,7 @@ INDICATORS = {
     "SP.POP.65UP.TO.ZS": "pop65_share",    # Population ages 65+ (% of total)
     "EN.ATM.PM25.MC.M3": "pm25",           # Mean annual exposure to PM2.5 (micrograms per cubic metre)
     "SH.STA.AIRP.P5": "airpol_deaths",
+    "SH.PRV.SMOK": "smoke",                # Tobacco use, adults 15+, age-standardized (%) - WHO
     "SH.PRV.SMOK.MA": "smoke_m",           # Tobacco use, men 15+, age-standardized (%) - WHO
     "SH.PRV.SMOK.FE": "smoke_f",           # Tobacco use, women 15+, age-standardized (%) - WHO     # Deaths from household and ambient air pollution, per 100,000, age-standardized - WHO
 }
@@ -147,13 +148,33 @@ RISK_GHO = (("NCD_HYP_PREVALENCE_A", "hyp_prev"),        # hypertension, adults 
             ("NCD_CHOL_MEANNONHDL_A", "chol_nonhdl"))    # mean non-HDL cholesterol, age-standardized (mmol/L)
 
 
+SEX = {"SEX_BTSX": "both", "SEX_MLE": "m", "SEX_FMLE": "f"}
+ADULT_AGES = (None, "AGEGROUP_YEARS18-PLUS")  # whole-adult estimates only (no older age bands)
+
+
+def fetch_gho_sex(code, key, sexes=("both", "m", "f")):
+    """A WHO GHO indicator for both sexes, men and women, whole adult population only."""
+    rows = []
+    for d in get_json(f"https://ghoapi.azureedge.net/api/{code}")["value"]:
+        iso, sex = GHO_AREAS.get(d["SpatialDim"]), SEX.get(d.get("Dim1"))
+        if iso is None or sex not in sexes or d.get("Dim2") not in ADULT_AGES:
+            continue
+        if d.get("NumericValue") is None or int(d["TimeDim"]) < 2000:
+            continue
+        rows.append({"iso3": iso, "indicator": key, "sex": sex, "year": int(d["TimeDim"]), "value": round(float(d["NumericValue"]), 2)})
+    return rows
+
+
 def fetch_risk_who():
-    """WHO risk factors (age-standardized): hypertension and its control, physical inactivity,
-    and mean non-HDL cholesterol."""
+    """WHO risk factors (age-standardized) for both sexes, men and women: hypertension and its
+    control, physical inactivity and mean non-HDL cholesterol; plus obesity and diabetes (WHO,
+    adults 18+) by sex, for the men/women view (the both-sexes series stay in their own files)."""
     rows = []
     for code, key in RISK_GHO:
-        rows += [{**r, "indicator": key} for r in fetch_gho(code)]
-    return rows
+        rows += fetch_gho_sex(code, key)
+    rows += fetch_gho_sex("NCD_BMI_30A", "obesity", ("m", "f"))
+    rows += fetch_gho_sex("NCD_DIABETES_PREVALENCE_AGESTD", "diab_who")
+    return sorted(rows, key=lambda r: (r["iso3"], r["indicator"], r["sex"], r["year"]))
 
 
 SALT_GHO = (("NCD_CCS_SaltPol", "salt_policy"), ("NCD_CCS_SALT_TARGET", "salt_target"), ("NCD_CCS_SALT_SVY", "salt_survey"))
@@ -186,14 +207,15 @@ def ghe_latest_year():
 
 
 def fetch_causes():
-    """Leading causes of death and years of life lost, both sexes, all ages: the GCC states,
+    """Leading causes of death and years of life lost, for both sexes, men and women, all ages: the GCC states,
     the high-income group and the world, for the pre-pandemic year and the latest year.
     Keeps WHO's rankable causes (each death counted once) plus the broad groups (levels 1-2)."""
     latest = ghe_latest_year()
     rows = []
     for iso, (table, dim, code) in GHE_AREAS.items():
+      for sex, sexcode in (("both", "TOTAL"), ("m", "MALE"), ("f", "FEMALE")):
         for year in sorted({GHE_BASE_YEAR, latest}):
-            flt = (f"{dim} eq '{code}' and DIM_YEAR_CODE eq {year} and DIM_SEX_CODE eq 'TOTAL' "
+            flt = (f"{dim} eq '{code}' and DIM_YEAR_CODE eq {year} and DIM_SEX_CODE eq '{sexcode}' "
                    f"and DIM_AGEGROUP_CODE eq 'TOTAL'")
             url = GHE_URL.format(table=table) + "?" + requests.compat.urlencode({"$filter": flt, "$select": GHE_FIELDS})
             got = get_json(url)["value"]
@@ -204,16 +226,16 @@ def fetch_causes():
                 if not (lvl in (1, 2) or rank):
                     continue
                 yll_pct = 100 * r["VAL_YLL_COUNT_NUMERIC"] / yll0
-                if lvl > 2 and yll_pct < 0.1:
+                if lvl > 2 and yll_pct < (0.1 if sex == "both" else 0.2):
                     continue
-                rows.append({"iso3": iso, "year": year, "code": int(r["DIM_GHECAUSE_CODE"]),
+                rows.append({"iso3": iso, "sex": sex, "year": year, "code": int(r["DIM_GHECAUSE_CODE"]),
                              "cause": r["DIM_GHECAUSE_TITLE"], "level": lvl, "group": int(r["DIM_CAUSE_GROUP"]),
                              "rankable": rank, "yll_pct": round(yll_pct, 2),
                              "dth_pct": round(100 * r["VAL_DTHS_COUNT_NUMERIC"] / dth0, 2),
                              "yll_rate": round(r["VAL_YLL_RATE100K_NUMERIC"], 1),
                              "deaths": round(r["VAL_DTHS_COUNT_NUMERIC"]),
                              "dth_rate": round(r["VAL_DTHS_RATE100K_NUMERIC"], 2)})
-    return sorted(rows, key=lambda r: (r["iso3"], r["year"], -r["yll_pct"])), latest
+    return sorted(rows, key=lambda r: (r["iso3"], r["sex"], r["year"], -r["yll_pct"])), latest
 
 
 def fetch_le():
@@ -235,17 +257,19 @@ def validate(wb, ob, hale=None, proj=None, le=None, nm=None, hyp=None, causes=No
     if hyp is not None:
         for key in [k for _, k in RISK_GHO]:
             for iso in WHO_AREAS:
-                if not any(r["iso3"] == iso and r["indicator"] == key for r in hyp):
+                if not any(r["iso3"] == iso and r["indicator"] == key and r["sex"] == s for r in hyp for s in ("both", "m", "f")):
                     problems.append(f"WHO {key}: no rows for {iso}")
     if causes is not None:
         for iso in GHE_AREAS:
-            for y in {r["year"] for r in causes}:
-                n = sum(1 for r in causes if r["iso3"] == iso and r["year"] == y and r["rankable"])
-                if n < 40:
-                    problems.append(f"WHO causes of death: only {n} causes for {iso} {y}")
-                grp = sum(r["yll_pct"] for r in causes if r["iso3"] == iso and r["year"] == y and r["level"] == 1)
-                if abs(grp - 100) > 1:
-                    problems.append(f"WHO causes of death: groups sum to {grp:.1f}% for {iso} {y}")
+            for sex in ("both", "m", "f"):
+                for y in {r["year"] for r in causes}:
+                    sel = [r for r in causes if r["iso3"] == iso and r["sex"] == sex and r["year"] == y]
+                    n = sum(1 for r in sel if r["rankable"])
+                    if n < 30:
+                        problems.append(f"WHO causes of death: only {n} causes for {iso} {sex} {y}")
+                    grp = sum(r["yll_pct"] for r in sel if r["level"] == 1)
+                    if abs(grp - 100) > 1:
+                        problems.append(f"WHO causes of death: groups sum to {grp:.1f}% for {iso} {sex} {y}")
     if len(wb) < 2300:
         problems.append(f"World Bank: only {len(wb)} rows (expected 2,300+)")
     for iso in COUNTRIES:

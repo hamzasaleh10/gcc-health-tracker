@@ -173,6 +173,8 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
 .gx-heat .f{font-weight:700;box-shadow:inset 2px 0 0 var(--color-fg),inset -2px 0 0 var(--color-fg)}.gx-heat th.f{color:var(--color-fg)}.gx-heat td.r{color:var(--color-fg-muted)}
 .gx-heat tr.grp td{border-top:2px solid var(--color-border-line)}
 .gx-cy{margin:0 0 var(--cds-gap-sm)}
+.gx-sx{margin:0 0 var(--cds-gap-sm);flex-wrap:wrap}.gx-sxhelp{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-inline-start:var(--cds-gap-xs)}
+.gx-sxnote{margin:var(--cds-gap-xs) 0 0;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
 .gx-see{margin:var(--cds-gap-xs) 0 0}
 .gx-see button,.gx-seebtn{font:inherit;font-family:var(--gx-font);font-size:var(--cds-font-size-caption);font-weight:600;color:var(--chart-1);background:none;border:0;padding:0;cursor:pointer;text-align:start}
 .gx-see button:hover,.gx-seebtn:hover{text-decoration:underline}
@@ -213,7 +215,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
 [data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="assets/runtime.js?v=20261110"></script>
+<script src="assets/runtime.js?v=20261110b"></script>
 </head>
 <body>
 <main class="site">
@@ -515,10 +517,11 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       <p lang="ar"><b>لماذا يهم ذلك.</b> يضع احتساب السنوات المفقودة، لا الوفيات فقط، وفيات الشباب والأطفال (حوادث الطرق والعيوب الخلقية والولادة المبكرة) إلى جانب أمراض القلب والسكري في المراحل المتأخرة من العمر، ويبيّن أين تنقذ الوقاية أكبر قدر من سنوات الحياة.</p>
     </div>
     <div class="gx-ob gx-cy" role="group" aria-label="Year / السنة"><span class="lbl"><span lang="en">Year</span><span lang="ar">السنة</span></span><button type="button" data-cy="latest" aria-pressed="true"><span data-draw="cyr" data-which="latest">2023</span> <span lang="en">(latest)</span><span lang="ar">(الأحدث)</span></button><button type="button" data-cy="base" aria-pressed="false"><span data-draw="cyr" data-which="base">2019</span> <span lang="en">(before the pandemic)</span><span lang="ar">(قبل الجائحة)</span></button></div>
+    <div class="gx-ob gx-sx" role="group" aria-label="Sex / الجنس"><span class="lbl"><span lang="en">Show</span><span lang="ar">عرض</span></span><button type="button" data-sex="both" aria-pressed="true"><span lang="en">Both sexes</span><span lang="ar">الجنسان</span></button><button type="button" data-sex="m" aria-pressed="false"><span lang="en">Men</span><span lang="ar">الرجال</span></button><button type="button" data-sex="f" aria-pressed="false"><span lang="en">Women</span><span lang="ar">النساء</span></button><span class="gx-sxhelp" data-draw="sexhelp"></span></div>
     <div class="gx-card" id="causes-top">
-      <h3><span lang="en">Leading causes of years of life lost: </span><span lang="ar">الأسباب الرئيسية لسنوات العمر المفقودة: </span><span data-draw="focusname"></span></h3>
-      <p class="n" lang="en">Share of all years of life lost (%), top 10 causes, <span data-draw="cyr">2023</span>. The dark tick marks the high-income average for the same cause.</p>
-      <p class="n" lang="ar">النسبة من إجمالي سنوات العمر المفقودة (%)، أهم 10 أسباب، <span data-draw="cyr">2023</span>. تشير العلامة الداكنة إلى متوسط الدول مرتفعة الدخل للسبب نفسه.</p>
+      <h3><span lang="en">Leading causes of years of life lost: </span><span lang="ar">الأسباب الرئيسية لسنوات العمر المفقودة: </span><span data-draw="focusname"></span><span data-draw="sexname"></span></h3>
+      <p class="n" lang="en">Share of all years of life lost<span data-draw="sexlbl"></span> (%), top 10 causes, <span data-draw="cyr">2023</span>. The dark tick marks the high-income average for the same cause.</p>
+      <p class="n" lang="ar">النسبة من إجمالي سنوات العمر المفقودة<span data-draw="sexlbl"></span> (%)، أهم 10 أسباب، <span data-draw="cyr">2023</span>. تشير العلامة الداكنة إلى متوسط الدول مرتفعة الدخل للسبب نفسه.</p>
       <div class="gx-chart dash-skeleton" data-draw="causebar"></div>
       <p class="gx-see"><button type="button" data-tab="risk"><span lang="en">See also: blood pressure, diabetes and air pollution, in Risk factors →</span><span lang="ar">انظر أيضًا: ضغط الدم والسكري وتلوث الهواء، في قسم عوامل الخطر ←</span></button></p>
       <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO Global Health Estimates for both sexes and all ages. Years of life lost add up, for every death, the years remaining at that age on WHO's reference life table (about 92 years at birth). Causes are WHO's rankable causes, which count each death once; each bar is that cause's share of all years lost in the country that year.</p><p lang="ar">تقديرات الصحة العالمية لمنظمة الصحة العالمية للجنسين ولجميع الأعمار. تجمع سنوات العمر المفقودة، لكل وفاة، السنوات المتبقية عند ذلك العمر وفق جدول الحياة المرجعي للمنظمة (نحو 92 سنة عند الولادة). والأسباب هي الأسباب القابلة للترتيب لدى المنظمة، التي تحتسب كل وفاة مرة واحدة؛ ويمثل كل شريط نصيب السبب من إجمالي السنوات المفقودة في الدولة في تلك السنة.</p></details>
@@ -526,8 +529,8 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
     </div>
     <div class="gx-card" id="causes-gcc">
       <h3><span lang="en">Years of life lost by cause across the Gulf</span><span lang="ar">سنوات العمر المفقودة حسب السبب في دول الخليج</span></h3>
-      <p class="n" lang="en">Share of all years of life lost (%), <span data-draw="cyr">2023</span>. Heat-map colors run from pale yellow (lowest) to dark red (highest) within each row; the focus country is outlined.</p>
-      <p class="n" lang="ar">النسبة من إجمالي سنوات العمر المفقودة (%)، <span data-draw="cyr">2023</span>. تتدرج ألوان الخريطة الحرارية من الأصفر الفاتح (الأدنى) إلى الأحمر الداكن (الأعلى) ضمن كل صف، والدولة المختارة محاطة بإطار.</p>
+      <p class="n" lang="en">Share of all years of life lost<span data-draw="sexlbl"></span> (%), <span data-draw="cyr">2023</span>. Heat-map colors run from pale yellow (lowest) to dark red (highest) within each row; the focus country is outlined.</p>
+      <p class="n" lang="ar">النسبة من إجمالي سنوات العمر المفقودة<span data-draw="sexlbl"></span> (%)، <span data-draw="cyr">2023</span>. تتدرج ألوان الخريطة الحرارية من الأصفر الفاتح (الأدنى) إلى الأحمر الداكن (الأعلى) ضمن كل صف، والدولة المختارة محاطة بإطار.</p>
       <div class="gx-tablewrap dash-skeleton" data-draw="causeheat"></div>
       <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">The same WHO estimates. Rows are the causes that rank in the top 10 for at least two Gulf states, plus all cancers combined (WHO's cancer group), against the high-income and world estimates for the same year.</p><p lang="ar">تقديرات المنظمة نفسها. الصفوف هي الأسباب التي تقع ضمن أهم 10 أسباب في دولتين خليجيتين على الأقل، إضافةً إلى جميع السرطانات مجتمعةً (مجموعة السرطان لدى المنظمة)، مقارنةً بتقديرات الدول مرتفعة الدخل والعالم للسنة نفسها.</p></details>
       <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Cancers are ranked as separate types, so no single cancer tops the list, yet together they account for 11–39% of years lost in the Gulf (2023). Qatar's high cancer share partly reflects a young, largely working-age population with few deaths from the diseases of old age. Shares are not age-adjusted (see the note above).</p><p lang="ar">تُرتَّب السرطانات بأنواعها منفصلةً، فلا يتصدر أي نوع منها القائمة، لكنها مجتمعةً تمثل 11–39% من السنوات المفقودة في الخليج (2023). ويعكس ارتفاع نصيب السرطان في قطر جزئيًا سكانًا شبابًا معظمهم في سن العمل وقلة الوفيات بأمراض الشيخوخة. والنسب غير معدّلة حسب العمر (انظر الملاحظة أعلاه).</p></details>
@@ -535,8 +538,8 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
     <div class="gx-grid">
       <div class="gx-card" id="injuries">
         <h3><span lang="en">Injuries as a share of all deaths</span><span lang="ar">الإصابات بوصفها نسبة من إجمالي الوفيات</span></h3>
-        <p class="n" lang="en">Deaths from injuries of all kinds (road crashes, falls, drowning, self-harm, violence) as a % of all deaths, <span data-draw="cyr" data-which="latest">2023</span>. The dark tick marks <span data-draw="cyr" data-which="base">2019</span>.</p>
-        <p class="n" lang="ar">الوفيات بالإصابات بجميع أنواعها (حوادث الطرق والسقوط والغرق وإيذاء النفس والعنف) كنسبة % من إجمالي الوفيات، <span data-draw="cyr" data-which="latest">2023</span>. تشير العلامة الداكنة إلى <span data-draw="cyr" data-which="base">2019</span>.</p>
+        <p class="n" lang="en">Deaths from injuries of all kinds (road crashes, falls, drowning, self-harm, violence) as a % of all deaths<span data-draw="sexlbl"></span>, <span data-draw="cyr" data-which="latest">2023</span>. The dark tick marks <span data-draw="cyr" data-which="base">2019</span>.</p>
+        <p class="n" lang="ar">الوفيات بالإصابات بجميع أنواعها (حوادث الطرق والسقوط والغرق وإيذاء النفس والعنف) كنسبة % من إجمالي الوفيات<span data-draw="sexlbl"></span>، <span data-draw="cyr" data-which="latest">2023</span>. تشير العلامة الداكنة إلى <span data-draw="cyr" data-which="base">2019</span>.</p>
         <div class="gx-chart short dash-skeleton" data-draw="ghebar" data-code="1510" data-field="dth_pct" data-unit="%"></div>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO Global Health Estimates: deaths from WHO's injury group divided by deaths from all causes, both sexes and all ages, for the latest year, with the pre-pandemic year marked.</p><p lang="ar">تقديرات الصحة العالمية لمنظمة الصحة العالمية: الوفيات ضمن مجموعة الإصابات لدى المنظمة مقسومةً على الوفيات بجميع الأسباب، للجنسين ولجميع الأعمار، لأحدث سنة، مع الإشارة إلى سنة ما قبل الجائحة.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">A share, not a rate: it is high partly because young Gulf populations have relatively few deaths from the diseases of old age. Read it alongside the road death rate.</p><p lang="ar">نسبة وليست معدلًا: فهي مرتفعة جزئيًا لأن سكان الخليج الشباب يسجلون وفيات قليلة نسبيًا بأمراض الشيخوخة. ويُقرأ هذا المؤشر إلى جانب معدل وفيات الطرق.</p></details>
@@ -545,19 +548,19 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <h3><span lang="en">Road deaths per 100,000 people</span><span lang="ar">وفيات الطرق لكل 100,000 نسمة</span></h3>
         <p class="n" lang="en">WHO cause-of-death estimates.</p>
         <p class="n" lang="ar">تقديرات منظمة الصحة العالمية لأسباب الوفاة.</p>
-        <p class="n" lang="en">Deaths from road injuries per 100,000 residents, <span data-draw="cyr" data-which="latest">2023</span>. The dark tick marks <span data-draw="cyr" data-which="base">2019</span>.</p>
-        <p class="n" lang="ar">الوفيات بإصابات الطرق لكل 100,000 من السكان، <span data-draw="cyr" data-which="latest">2023</span>. تشير العلامة الداكنة إلى <span data-draw="cyr" data-which="base">2019</span>.</p>
+        <p class="n" lang="en">Deaths from road injuries per 100,000 residents<span data-draw="sexlbl"></span>, <span data-draw="cyr" data-which="latest">2023</span>. The dark tick marks <span data-draw="cyr" data-which="base">2019</span>.</p>
+        <p class="n" lang="ar">الوفيات بإصابات الطرق لكل 100,000 من السكان<span data-draw="sexlbl"></span>، <span data-draw="cyr" data-which="latest">2023</span>. تشير العلامة الداكنة إلى <span data-draw="cyr" data-which="base">2019</span>.</p>
         <div class="gx-chart short dash-skeleton" data-draw="ghebar" data-code="1530" data-field="dth_rate" data-unit=""></div>
         <p class="gx-see"><button type="button" data-tab="official"><span lang="en">See also: WHO's road safety estimates against official figures, in Data check →</span><span lang="ar">انظر أيضًا: تقديرات المنظمة للسلامة على الطرق مقارنةً بالأرقام الرسمية، في قسم تدقيق البيانات ←</span></button></p>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO Global Health Estimates: road injury deaths per 100,000 residents (not age-adjusted), both sexes, latest year, with the pre-pandemic year marked.</p><p lang="ar">تقديرات الصحة العالمية لمنظمة الصحة العالمية: وفيات إصابات الطرق لكل 100,000 من السكان (غير معدّلة حسب العمر)، للجنسين، لأحدث سنة، مع الإشارة إلى سنة ما قبل الجائحة.</p></details>
-        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">WHO publishes two road death series. The road safety series used in Data check gives higher figures (Saudi Arabia: 35.9 in 2019, against 23.1 here). Both put Saudi Arabia well above the other Gulf states and high-income countries.</p><p lang="ar">تنشر منظمة الصحة العالمية سلسلتين لوفيات الطرق. وتعطي سلسلة السلامة على الطرق المستخدمة في قسم تدقيق البيانات أرقامًا أعلى (السعودية: 35.9 في 2019 مقابل 23.1 هنا). وتضع السلسلتان السعودية أعلى بكثير من دول الخليج الأخرى والدول مرتفعة الدخل.</p></details>
+        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">WHO publishes two road death series. The road safety series used in Data check gives higher figures (Saudi Arabia: 35.9 in 2019, against 23.1 here). Both put Saudi Arabia well above the other Gulf states and high-income countries. By sex, WHO splits Bahrain's road deaths evenly between men and women, which looks implausible for its mostly male population; treat Bahrain's split with caution.</p><p lang="ar">تنشر منظمة الصحة العالمية سلسلتين لوفيات الطرق. وتعطي سلسلة السلامة على الطرق المستخدمة في قسم تدقيق البيانات أرقامًا أعلى (السعودية: 35.9 في 2019 مقابل 23.1 هنا). وتضع السلسلتان السعودية أعلى بكثير من دول الخليج الأخرى والدول مرتفعة الدخل. وحسب الجنس، تقسم المنظمة وفيات الطرق في البحرين بالتساوي بين الرجال والنساء، وهو ما يبدو غير معقول لسكان أغلبهم من الذكور؛ لذا يُتعامل مع هذا التقسيم بحذر.</p></details>
       </div>
     </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
         <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
-        <ul lang="en"><li>Ischaemic heart disease is the leading cause of years of life lost in Saudi Arabia, the UAE, Kuwait and Oman, and second in Qatar and Bahrain. In Kuwait it accounts for 23.6% of years lost, against 14.1% in high-income countries (2023).</li><li>Road injuries take 5.7–11.1% of years lost, against 2.1% in high-income countries. They are the leading cause in Qatar and second in Saudi Arabia, the UAE and Kuwait.</li><li>Saudi road deaths fell by about a third between 2019 and 2023, from 7,050 to 4,877, but the rate (14.7 per 100,000) is still well above the high-income 8.7.</li><li>Birth defects and preterm birth together cost 7–14% of years lost, led by Oman (14.3%), against 1.6% in high-income countries.</li><li>Diabetes is Bahrain's leading cause (10.7%, five times the high-income share). Kidney disease is higher in the UAE (5.2%) and Bahrain (4.6%), and hypertensive heart disease in Saudi Arabia (7.1%).</li></ul>
-        <ul lang="ar"><li>مرض القلب الإقفاري هو السبب الأول لسنوات العمر المفقودة في السعودية والإمارات والكويت وعُمان، والثاني في قطر والبحرين. وفي الكويت يمثل 23.6% من السنوات المفقودة مقابل 14.1% في الدول مرتفعة الدخل (2023).</li><li>تستحوذ إصابات الطرق على 5.7–11.1% من السنوات المفقودة مقابل 2.1% في الدول مرتفعة الدخل، وهي السبب الأول في قطر والثاني في السعودية والإمارات والكويت.</li><li>انخفضت وفيات الطرق في السعودية بنحو الثلث بين 2019 و2023، من 7,050 إلى 4,877، لكن المعدل (14.7 لكل 100,000) لا يزال أعلى بكثير من 8.7 في الدول مرتفعة الدخل.</li><li>تكلّف العيوب الخلقية والولادة المبكرة معًا 7–14% من السنوات المفقودة، وتتصدرها عُمان (14.3%)، مقابل 1.6% في الدول مرتفعة الدخل.</li><li>السكري هو السبب الأول في البحرين (10.7%، خمسة أضعاف نسبة الدول مرتفعة الدخل)، وترتفع أمراض الكلى في الإمارات (5.2%) والبحرين (4.6%)، ومرض القلب الناجم عن ارتفاع ضغط الدم في السعودية (7.1%).</li></ul>
+        <ul lang="en"><li>Ischaemic heart disease is the leading cause of years of life lost in Saudi Arabia, the UAE, Kuwait and Oman, and second in Qatar and Bahrain. In Kuwait it accounts for 23.6% of years lost, against 14.1% in high-income countries (2023).</li><li>Road injuries take 5.7–11.1% of years lost, against 2.1% in high-income countries. They are the leading cause in Qatar and second in Saudi Arabia, the UAE and Kuwait.</li><li>Saudi road deaths fell by about a third between 2019 and 2023, from 7,050 to 4,877, but the rate (14.7 per 100,000) is still well above the high-income 8.7.</li><li>Birth defects and preterm birth together cost 7–14% of years lost, led by Oman (14.3%), against 1.6% in high-income countries.</li><li>Diabetes is Bahrain's leading cause (10.7%, five times the high-income share). Kidney disease is higher in the UAE (5.2%) and Bahrain (4.6%), and hypertensive heart disease in Saudi Arabia (7.1%).</li><li>By sex: road injuries take 13.8% of men's years lost in Saudi Arabia and 13.6% in Qatar. Among women, birth defects lead in Oman, diabetes in Bahrain (12.2%) and breast cancer in Qatar (11.2%).</li></ul>
+        <ul lang="ar"><li>مرض القلب الإقفاري هو السبب الأول لسنوات العمر المفقودة في السعودية والإمارات والكويت وعُمان، والثاني في قطر والبحرين. وفي الكويت يمثل 23.6% من السنوات المفقودة مقابل 14.1% في الدول مرتفعة الدخل (2023).</li><li>تستحوذ إصابات الطرق على 5.7–11.1% من السنوات المفقودة مقابل 2.1% في الدول مرتفعة الدخل، وهي السبب الأول في قطر والثاني في السعودية والإمارات والكويت.</li><li>انخفضت وفيات الطرق في السعودية بنحو الثلث بين 2019 و2023، من 7,050 إلى 4,877، لكن المعدل (14.7 لكل 100,000) لا يزال أعلى بكثير من 8.7 في الدول مرتفعة الدخل.</li><li>تكلّف العيوب الخلقية والولادة المبكرة معًا 7–14% من السنوات المفقودة، وتتصدرها عُمان (14.3%)، مقابل 1.6% في الدول مرتفعة الدخل.</li><li>السكري هو السبب الأول في البحرين (10.7%، خمسة أضعاف نسبة الدول مرتفعة الدخل)، وترتفع أمراض الكلى في الإمارات (5.2%) والبحرين (4.6%)، ومرض القلب الناجم عن ارتفاع ضغط الدم في السعودية (7.1%).</li><li>حسب الجنس: تستحوذ إصابات الطرق على 13.8% من السنوات المفقودة للرجال في السعودية و13.6% في قطر. أما بين النساء فتتصدر العيوب الخلقية في عُمان، والسكري في البحرين (12.2%)، وسرطان الثدي في قطر (11.2%).</li></ul>
       </div>
       <div class="gx-io-col gx-io-opp">
         <h3><span lang="en">Opportunities/recommendations</span><span lang="ar">الفرص/التوصيات</span></h3>
@@ -577,6 +580,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       <p lang="en"><b>Why it matters.</b> These risks drive the heart disease, stroke, diabetes and kidney failure that lead the causes of premature death. They are the earliest signal of the demand heading toward hospitals, and the main target for prevention.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> تقف هذه المخاطر وراء أمراض القلب والسكتة الدماغية والسكري والفشل الكلوي التي تتصدر أسباب الوفاة المبكرة، وهي أبكر مؤشر على الطلب المتجه نحو المستشفيات، والهدف الرئيسي لبرامج الوقاية.</p>
     </div>
+    <div class="gx-ob gx-sx" role="group" aria-label="Sex / الجنس"><span class="lbl"><span lang="en">Show</span><span lang="ar">عرض</span></span><button type="button" data-sex="both" aria-pressed="true"><span lang="en">Both sexes</span><span lang="ar">الجنسان</span></button><button type="button" data-sex="m" aria-pressed="false"><span lang="en">Men</span><span lang="ar">الرجال</span></button><button type="button" data-sex="f" aria-pressed="false"><span lang="en">Women</span><span lang="ar">النساء</span></button><span class="gx-sxhelp" data-draw="sexhelp"></span></div>
     <div class="gx-grid">
       <div class="gx-card" id="obesity">
         <h3><span lang="en">Adult obesity</span><span lang="ar">السمنة لدى البالغين</span></h3>
@@ -634,24 +638,14 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
       </div>
     </div>
     <div class="gx-grid">
-      <div class="gx-card" id="smoke-men">
-        <h3><span lang="en">Tobacco use: men</span><span lang="ar">تعاطي التبغ: الرجال</span></h3>
-        <p class="n" lang="en">Share of men 15 and older who use tobacco, age-standardized, latest year (WHO).</p>
-        <p class="n" lang="ar">نسبة الرجال في سن 15 فأكثر الذين يتعاطون التبغ، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="smoke_m" data-source="latest"></div>
-        <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized estimates of current tobacco use (smoked or smokeless) among people 15 and older, from national surveys, via the World Bank.</p><p lang="ar">تقديرات منظمة الصحة العالمية المعيارية حسب العمر للتعاطي الحالي للتبغ (المدخَّن أو غير المدخَّن) بين من هم في سن 15 فأكثر، المستندة إلى مسوح وطنية، عبر البنك الدولي.</p></details>
-        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Surveys may undercount shisha (waterpipe) use, which is common in the region, and newer nicotine products. Men and women are shown separately because their rates differ so widely.</p><p lang="ar">قد تقلل المسوح من تقدير تدخين الشيشة (النرجيلة) الشائع في المنطقة ومنتجات النيكوتين الحديثة. ويُعرض الرجال والنساء منفصلين لاتساع الفارق بينهم.</p></details>
+      <div class="gx-card" id="tobacco">
+        <h3><span lang="en">Tobacco use</span><span lang="ar">تعاطي التبغ</span></h3>
+        <p class="n" lang="en">Share of people 15 and older who use tobacco, age-standardized, latest year (WHO). Rates differ sharply between men and women: use the switch above.</p>
+        <p class="n" lang="ar">نسبة من هم في سن 15 فأكثر الذين يتعاطون التبغ، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية). تختلف المعدلات كثيرًا بين الرجال والنساء: استخدم المفتاح أعلاه.</p>
+        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="smoke" data-source="latest"></div>
+        <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized estimates of current tobacco use (smoked or smokeless) among people 15 and older, from national surveys, via the World Bank, for both sexes and for men and women separately.</p><p lang="ar">تقديرات منظمة الصحة العالمية المعيارية حسب العمر للتعاطي الحالي للتبغ (المدخَّن أو غير المدخَّن) بين من هم في سن 15 فأكثر، المستندة إلى مسوح وطنية، عبر البنك الدولي، للجنسين معًا وللرجال والنساء كلٌّ على حدة.</p></details>
+        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Surveys may undercount shisha (waterpipe) use, which is common in the region, and newer nicotine products. Reported use among women is likely to be understated where it carries social stigma.</p><p lang="ar">قد تقلل المسوح من تقدير تدخين الشيشة (النرجيلة) الشائع في المنطقة ومنتجات النيكوتين الحديثة. ويُرجَّح أن يكون التعاطي المُبلَّغ عنه بين النساء أقل من الواقع حيث يرتبط بوصمة اجتماعية.</p></details>
       </div>
-      <div class="gx-card" id="smoke-women">
-        <h3><span lang="en">Tobacco use: women</span><span lang="ar">تعاطي التبغ: النساء</span></h3>
-        <p class="n" lang="en">Share of women 15 and older who use tobacco, age-standardized, latest year (WHO).</p>
-        <p class="n" lang="ar">نسبة النساء في سن 15 فأكثر اللواتي يتعاطين التبغ، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="smoke_f" data-source="latest"></div>
-        <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">Same WHO estimates as for men, for women 15 and older.</p><p lang="ar">تقديرات منظمة الصحة العالمية نفسها المستخدمة للرجال، للنساء في سن 15 فأكثر.</p></details>
-        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Reported tobacco use among women is likely to be understated where it carries social stigma.</p><p lang="ar">يُرجَّح أن يكون التعاطي المُبلَّغ عنه بين النساء أقل من الواقع حيث يرتبط بوصمة اجتماعية.</p></details>
-      </div>
-    </div>
-    <div class="gx-grid">
       <div class="gx-card" id="inactivity">
         <h3><span lang="en">Physical inactivity</span><span lang="ar">الخمول البدني</span></h3>
         <p class="n" lang="en">Share of adults 18 and older who are insufficiently active, age-standardized, latest year (WHO).</p>
@@ -660,6 +654,8 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized share of adults doing less than 150 minutes of moderate (or 75 minutes of vigorous) activity a week, modelled from national surveys.</p><p lang="ar">النسبة المعيارية حسب العمر من منظمة الصحة العالمية للبالغين الذين يمارسون أقل من 150 دقيقة من النشاط المعتدل (أو 75 دقيقة من النشاط الشديد) أسبوعيًا، المُنمذجة من مسوح وطنية.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Wide uncertainty: WHO's ranges for some Gulf states span 30 points or more. Summer heat limits outdoor activity for much of the year.</p><p lang="ar">عدم يقين واسع: تتجاوز نطاقات تقديرات المنظمة لبعض دول الخليج 30 نقطة. وتحدّ حرارة الصيف من النشاط في الهواء الطلق معظم العام.</p></details>
       </div>
+    </div>
+    <div class="gx-grid">
       <div class="gx-card" id="cholesterol">
         <h3><span lang="en">Cholesterol</span><span lang="ar">الكوليسترول</span></h3>
         <p class="n" lang="en">Mean non-HDL ("bad") cholesterol in adults, mmol/L, age-standardized, latest year (WHO).</p>
@@ -668,20 +664,20 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized mean non-HDL cholesterol (total minus HDL cholesterol), the measure most closely tied to heart disease risk, from population blood-test surveys.</p><p lang="ar">متوسط الكوليسترول غير عالي الكثافة (الكلي مطروحًا منه عالي الكثافة) المعياري حسب العمر من منظمة الصحة العالمية، وهو المقياس الأوثق ارتباطًا بخطر أمراض القلب، المستند إلى مسوح فحوص الدم السكانية.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">The latest estimate is 2018. A population average can hide a large group with high cholesterol.</p><p lang="ar">أحدث تقدير لعام 2018. وقد يُخفي المتوسط السكاني فئة كبيرة مرتفعة الكوليسترول.</p></details>
       </div>
-    </div>
-    <div class="gx-card" id="salt">
-      <h3><span lang="en">Salt reduction policies</span><span lang="ar">سياسات خفض الملح</span></h3>
-      <p class="n" lang="en">What each government reported to WHO, latest survey. No comparable estimates of salt intake exist for the Gulf.</p>
-      <p class="n" lang="ar">ما أبلغت به كل حكومة منظمة الصحة العالمية، وفق أحدث مسح. ولا توجد تقديرات قابلة للمقارنة لاستهلاك الملح في الخليج.</p>
-      <div class="gx-tablewrap dash-skeleton" data-draw="saltpol"></div>
-      <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's NCD country capacity survey, answered by health ministries: whether a policy to reduce population salt intake exists, whether there is a national salt target, and whether a recent national survey measured salt intake.</p><p lang="ar">مسح القدرات القُطرية للأمراض غير المعدية لمنظمة الصحة العالمية، الذي تجيب عنه وزارات الصحة: هل توجد سياسة لخفض استهلاك الملح، وهل يوجد هدف وطني للملح، وهل قاس مسح وطني حديث استهلاك الملح.</p></details>
-      <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Self-reported by governments; a "yes" says a policy exists, not how well it works. High salt intake raises blood pressure, so these policies support blood pressure control.</p><p lang="ar">بيانات تبلغ عنها الحكومات ذاتيًا؛ و«نعم» تعني وجود السياسة لا مدى فاعليتها. ويرفع الإفراط في الملح ضغط الدم، لذا تدعم هذه السياسات السيطرة على ضغط الدم.</p></details>
+      <div class="gx-card" id="salt">
+        <h3><span lang="en">Salt reduction policies</span><span lang="ar">سياسات خفض الملح</span></h3>
+        <p class="n" lang="en">What each government reported to WHO, latest survey. No comparable estimates of salt intake exist for the Gulf.</p>
+        <p class="n" lang="ar">ما أبلغت به كل حكومة منظمة الصحة العالمية، وفق أحدث مسح. ولا توجد تقديرات قابلة للمقارنة لاستهلاك الملح في الخليج.</p>
+        <div class="gx-tablewrap dash-skeleton" data-draw="saltpol"></div>
+        <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's NCD country capacity survey, answered by health ministries: whether a policy to reduce population salt intake exists, whether there is a national salt target, and whether a recent national survey measured salt intake.</p><p lang="ar">مسح القدرات القُطرية للأمراض غير المعدية لمنظمة الصحة العالمية، الذي تجيب عنه وزارات الصحة: هل توجد سياسة لخفض استهلاك الملح، وهل يوجد هدف وطني للملح، وهل قاس مسح وطني حديث استهلاك الملح.</p></details>
+        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Self-reported by governments; a "yes" says a policy exists, not how well it works. High salt intake raises blood pressure, so these policies support blood pressure control.</p><p lang="ar">بيانات تبلغ عنها الحكومات ذاتيًا؛ و«نعم» تعني وجود السياسة لا مدى فاعليتها. ويرفع الإفراط في الملح ضغط الدم، لذا تدعم هذه السياسات السيطرة على ضغط الدم.</p></details>
+      </div>
     </div>
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
         <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
-        <ul lang="en"><li>Every Gulf state sits far above the world average on both obesity and diabetes.</li><li>Obesity is above 40% in Qatar, Kuwait and Saudi Arabia, on a par with the United States.</li><li>Diabetes is more than double the high-income average in five of the six states.</li><li>High blood pressure is above the high-income average (32.0%) in all six states, led by Oman (45.6%), yet only 13.8% (Oman) to 30.8% (Kuwait) of those affected have their blood pressure under control, against 36.0% in high-income countries (2019).</li><li>Gulf residents breathe 3.6 to 8.3 times the high-income level of fine particles (46.9–107.8 against 13.0 µg/m³, 2023), and air pollution deaths run at 45–104 per 100,000 against 24 (2019).</li><li>Tobacco use among men is highest in Kuwait (36.4%, against 25.1% in high-income countries), with Saudi Arabia and Bahrain at about the high-income level; among women it is 0.4–5.9%, against 15.4% (2024).</li><li>38.6–66.1% of adults are insufficiently active, against 32.7% in high-income countries, led by the UAE and Kuwait (2022). Cholesterol, by contrast, is close to high-income levels (3.0–3.7 against 3.4 mmol/L, 2018).</li><li>All six states report a salt reduction policy, but only Kuwait, Oman and the UAE report a national salt target (2021).</li></ul>
-        <ul lang="ar"><li>تتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في السمنة والسكري معًا.</li><li>تتجاوز السمنة 40% في قطر والكويت والسعودية، على قدم المساواة مع الولايات المتحدة.</li><li>يزيد انتشار السكري على ضعف متوسط الدول مرتفعة الدخل في خمس من الدول الست.</li><li>يتجاوز ارتفاع ضغط الدم متوسط الدول مرتفعة الدخل (32.0%) في الدول الست جميعها، وتتصدرها عُمان (45.6%)، ومع ذلك لا يخضع للسيطرة إلا لدى 13.8% (عُمان) إلى 30.8% (الكويت) من المصابين، مقابل 36.0% في الدول مرتفعة الدخل (2019).</li><li>يتنفس سكان الخليج من 3.6 إلى 8.3 أضعاف مستوى الجسيمات الدقيقة في الدول مرتفعة الدخل (46.9–107.8 مقابل 13.0 ميكروغرام/م³، 2023)، وتبلغ الوفيات المرتبطة بتلوث الهواء 45–104 لكل 100,000 مقابل 24 (2019).</li><li>يبلغ تعاطي التبغ بين الرجال أعلاه في الكويت (36.4% مقابل 25.1% في الدول مرتفعة الدخل)، وتقارب السعودية والبحرين مستوى الدول مرتفعة الدخل؛ أما بين النساء فيتراوح بين 0.4% و5.9% مقابل 15.4% (2024).</li><li>يفتقر 38.6–66.1% من البالغين إلى النشاط البدني الكافي مقابل 32.7% في الدول مرتفعة الدخل، وتتصدر الإمارات والكويت (2022). أما الكوليسترول فقريب من مستوى الدول مرتفعة الدخل (3.0–3.7 مقابل 3.4 ملمول/لتر، 2018).</li><li>تُبلغ الدول الست جميعها عن سياسة لخفض الملح، لكن الكويت وعُمان والإمارات وحدها تُبلغ عن هدف وطني للملح (2021).</li></ul>
+        <ul lang="en"><li>Every Gulf state sits far above the world average on both obesity and diabetes.</li><li>Obesity is above 40% in Qatar, Kuwait and Saudi Arabia, on a par with the United States.</li><li>Diabetes is more than double the high-income average in five of the six states.</li><li>High blood pressure is above the high-income average (32.0%) in all six states, led by Oman (45.6%), yet only 13.8% (Oman) to 30.8% (Kuwait) of those affected have their blood pressure under control, against 36.0% in high-income countries (2019).</li><li>Gulf residents breathe 3.6 to 8.3 times the high-income level of fine particles (46.9–107.8 against 13.0 µg/m³, 2023), and air pollution deaths run at 45–104 per 100,000 against 24 (2019).</li><li>Tobacco use among men is highest in Kuwait (36.4%, against 25.1% in high-income countries), with Saudi Arabia and Bahrain at about the high-income level; among women it is 0.4–5.9%, against 15.4% (2024).</li><li>38.6–66.1% of adults are insufficiently active, against 32.7% in high-income countries, led by the UAE and Kuwait (2022). Cholesterol, by contrast, is close to high-income levels (3.0–3.7 against 3.4 mmol/L, 2018).</li><li>All six states report a salt reduction policy, but only Kuwait, Oman and the UAE report a national salt target (2021).</li><li>By sex, obesity is far higher among women (38.4–50.1%) than men (25.5–38.8%, 2024), and so is inactivity. Men have more high blood pressure and control it less often (11.3–27.2% of men with hypertension, against 19.9–38.6% of women, 2019).</li></ul>
+        <ul lang="ar"><li>تتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في السمنة والسكري معًا.</li><li>تتجاوز السمنة 40% في قطر والكويت والسعودية، على قدم المساواة مع الولايات المتحدة.</li><li>يزيد انتشار السكري على ضعف متوسط الدول مرتفعة الدخل في خمس من الدول الست.</li><li>يتجاوز ارتفاع ضغط الدم متوسط الدول مرتفعة الدخل (32.0%) في الدول الست جميعها، وتتصدرها عُمان (45.6%)، ومع ذلك لا يخضع للسيطرة إلا لدى 13.8% (عُمان) إلى 30.8% (الكويت) من المصابين، مقابل 36.0% في الدول مرتفعة الدخل (2019).</li><li>يتنفس سكان الخليج من 3.6 إلى 8.3 أضعاف مستوى الجسيمات الدقيقة في الدول مرتفعة الدخل (46.9–107.8 مقابل 13.0 ميكروغرام/م³، 2023)، وتبلغ الوفيات المرتبطة بتلوث الهواء 45–104 لكل 100,000 مقابل 24 (2019).</li><li>يبلغ تعاطي التبغ بين الرجال أعلاه في الكويت (36.4% مقابل 25.1% في الدول مرتفعة الدخل)، وتقارب السعودية والبحرين مستوى الدول مرتفعة الدخل؛ أما بين النساء فيتراوح بين 0.4% و5.9% مقابل 15.4% (2024).</li><li>يفتقر 38.6–66.1% من البالغين إلى النشاط البدني الكافي مقابل 32.7% في الدول مرتفعة الدخل، وتتصدر الإمارات والكويت (2022). أما الكوليسترول فقريب من مستوى الدول مرتفعة الدخل (3.0–3.7 مقابل 3.4 ملمول/لتر، 2018).</li><li>تُبلغ الدول الست جميعها عن سياسة لخفض الملح، لكن الكويت وعُمان والإمارات وحدها تُبلغ عن هدف وطني للملح (2021).</li><li>حسب الجنس، السمنة أعلى بكثير بين النساء (38.4–50.1%) منها بين الرجال (25.5–38.8%، 2024)، وكذلك الخمول البدني. أما الرجال فيعانون ارتفاع ضغط الدم أكثر ويسيطرون عليه أقل (11.3–27.2% من الرجال المصابين مقابل 19.9–38.6% من النساء، 2019).</li></ul>
       </div>
       <div class="gx-io-col gx-io-opp">
         <h3><span lang="en">Opportunities/recommendations</span><span lang="ar">الفرص/التوصيات</span></h3>
@@ -689,7 +685,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <ul lang="ar"><li>الوقاية على مستوى السكان: بيئات غذائية صحية أكثر، وبرامج في المدارس وأماكن العمل، وحملات توعية مستمرة.</li><li>الكشف المبكر والإدارة الرقمية لمرض السكري لمنع مضاعفاته مثل الفشل الكلوي وأمراض القلب.</li><li>التخطيط من الآن لطاقة الغسيل الكلوي وأمراض القلب والغدد الصماء لمواجهة الطلب الذي ستولده هذه المخاطر خلال 10–20 عامًا.</li><li>رفع نسبة السيطرة على ضغط الدم ببروتوكولات علاج موحدة وبسيطة، ومتابعة جماعية في الرعاية الأولية، وقياس الضغط في المنزل، كما في حزمة HEARTS لمنظمة الصحة العالمية.</li><li>خفض التلوث القابل للتحكم من المركبات والصناعة والبناء، وإصدار تنبيهات جودة الهواء لمرضى القلب والرئة.</li><li>التبغ: نصائح موجزة للإقلاع ودعم للإقلاع في الرعاية الأولية، وإنفاذ قوانين منع التدخين بما فيها الشيشة.</li><li>الخمول البدني: أماكن مغلقة ومظللة للنشاط خلال الصيف، وبرامج في أماكن العمل والمدارس، وأحياء ملائمة للمشي.</li><li>الملح: أهداف وطنية للملح واتفاقات لإعادة تركيب الأغذية في الدول الثلاث التي لا تملك هدفًا.</li></ul>
       </div>
     </div>
-    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_obesity,wb_diab,who_hyp,who_hearts,wb_pm25,wb_airpol,who_aqg,wb_smoke_m,wb_smoke_f,who_ncd_risk,who_ncd_ccs"></ul></div>
+    <div class="gx-src"><h3><span lang="en">Sources</span><span lang="ar">المصادر</span></h3><ul data-draw="srclist" data-keys="who_obesity,wb_diab,who_hyp,who_hearts,wb_pm25,wb_airpol,who_aqg,wb_smoke,wb_smoke_m,wb_smoke_f,who_ncd_risk,who_diab,who_ncd_ccs"></ul></div>
     <p class="gx-next"><button type="button" data-tab="financing"><span lang="en">Next: Financing and insurance →</span><span lang="ar">التالي: التمويل والتأمين ←</span></button></p>
   </section>
 
@@ -1202,13 +1198,14 @@ window.gx = (() => {
 // Calculations readers can inspect in Sources.
 dash.calc('latest', {
   title: 'Latest value per country',
-  description: 'Most recent reported year for each country and indicator, from the World Bank, WHO obesity, WHO healthy life expectancy and WHO hypertension files.',
+  description: 'Most recent reported year for each country and indicator, from the World Bank, WHO obesity, WHO healthy life expectancy and WHO risk-factor files; men and women are keyed indicator@m and indicator@f.',
   inputs: ['wb', 'obesity', 'hale', 'hyp'],
   fn: (wb, obesity, hale, hyp) => {
     const rows = wb.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: Number(r.year), value: Number(r.value)}))
       .concat(obesity.map((r) => ({iso3: r.iso3, indicator: 'obesity', year: Number(r.year), value: Number(r.value)})))
       .concat(hale.map((r) => ({iso3: r.iso3, indicator: 'hale', year: Number(r.year), value: Number(r.value)})))
-      .concat(hyp.map((r) => ({iso3: r.iso3, indicator: r.indicator, year: Number(r.year), value: Number(r.value)})));
+      .concat(hyp.map((r) => ({iso3: r.iso3, indicator: r.sex && r.sex !== 'both' ? r.indicator + '@' + r.sex : r.indicator, year: Number(r.year), value: Number(r.value)})))
+      .concat(wb.filter((r) => r.indicator === 'smoke_m' || r.indicator === 'smoke_f').map((r) => ({iso3: r.iso3, indicator: 'smoke@' + r.indicator.slice(-1), year: Number(r.year), value: Number(r.value)})));
     const best = new Map();
     rows.forEach((r) => { const k = r.iso3 + '|' + r.indicator; if (!best.has(k) || best.get(k).year < r.year) best.set(k, r); });
     return [...best.values()];
@@ -1319,6 +1316,9 @@ dash.draw('avg', (el) => {
   el.textContent = r ? d3.format('.1f')(r[el.dataset.field]) + '%' : '—';
 });
 
+const sexP = () => dash.params().sex || 'both';
+// Risk-factor charts that have men and women series (WHO); diabetes switches to WHO's estimates by sex.
+const SEXABLE = {obesity: 'obesity', diabetes_prev: 'diab_who', hyp_prev: 'hyp_prev', hyp_control: 'hyp_control', inactivity: 'inactivity', chol_nonhdl: 'chol_nonhdl', smoke: 'smoke'};
 const latestRow = (iso, ind) => dash.data('latest').data.find((r) => r.iso3 === iso && r.indicator === ind);
 dash.draw('tv', (el) => {
   el.dataset.where = `iso3=${focus()}&indicator=${el.dataset.ind}`;
@@ -1392,14 +1392,29 @@ dash.draw('hbar', (el) => {
   if (!box(el, ['latest'])) return;
   const ind = el.dataset.ind;
   const isos = [...GCC, 'USA', 'HIC', 'WLD'];
-  const rows = isos.map((iso) => { const r = latestRow(iso, ind); return r && {iso, name: NAME[iso], value: r.value, year: r.year}; }).filter(Boolean);
+  const u = el.dataset.unit != null ? el.dataset.unit : (ind === 'hale' ? '' : '%'), fm = (v) => d3.format('.1f')(v) + u;
+  const sx = el.closest('#risk') ? sexP() : 'both', base = SEXABLE[ind];
+  const other = sx === 'm' ? 'f' : 'm', SXN = {m: T('Men', 'الرجال'), f: T('Women', 'النساء')};
+  const bySex = sx !== 'both' && base;
+  const rows = isos.map((iso) => {
+    if (!bySex) { const r = latestRow(iso, ind); return r && {iso, name: NAME[iso], value: r.value, year: r.year}; }
+    const r = latestRow(iso, base + '@' + sx), o = latestRow(iso, base + '@' + other);
+    return r && {iso, name: NAME[iso], value: r.value, year: r.year, tick: o && o.value, tipRows: o ? [{name: SXN[other], value: fm(o.value)}] : []};
+  }).filter(Boolean);
   const g = rows.filter((r) => GCC.includes(r.iso)).sort((a, b) => b.value - a.value);
   const refs = rows.filter((r) => !GCC.includes(r.iso)).sort((a, b) => b.value - a.value);
-  const u = el.dataset.unit != null ? el.dataset.unit : (ind === 'hale' ? '' : '%');
-  hbar(el, g.concat(refs), (v) => d3.format('.1f')(v) + u);
+  hbar(el, g.concat(refs), fm);
+  if (sx !== 'both') {
+    const note = document.createElement('p'); note.className = 'gx-sxnote';
+    note.textContent = !base ? T('Not available by sex: both sexes shown.', 'غير متاح حسب الجنس: يُعرض الجنسان معًا.')
+      : T(`Bars: ${sx === 'm' ? 'men' : 'women'}. Dark tick: ${sx === 'm' ? 'women' : 'men'}.`, `الأشرطة: ${SXN[sx]}. العلامة الداكنة: ${SXN[other]}.`)
+        + (ind === 'diabetes_prev' ? T(' By sex, diabetes uses WHO estimates for adults 18+.', ' حسب الجنس، يستخدم السكري تقديرات منظمة الصحة العالمية للبالغين 18+.') : '');
+    el.appendChild(note);
+  }
 });
 // Causes of premature death: WHO Global Health Estimates (years of life lost by cause)
 const CAUSE = {
+  730: ['Ovarian cancer', 'سرطان المبيض'], 710: ['Cervical cancer', 'سرطان عنق الرحم'], 740: ['Prostate cancer', 'سرطان البروستاتا'],
   1130: ['Ischaemic heart disease', 'مرض القلب الإقفاري'], 1140: ['Stroke', 'السكتة الدماغية'],
   1120: ['Hypertensive heart disease', 'مرض القلب الناجم عن ارتفاع الضغط'], 800: ['Diabetes', 'السكري'],
   1270: ['Kidney disease', 'أمراض الكلى'], 610: ['All cancers', 'جميع السرطانات'], 1530: ['Road injuries', 'إصابات الطرق'],
@@ -1417,10 +1432,21 @@ const causeName = (r) => (CAUSE[r.code] ? CAUSE[r.code][lang() === 'ar' ? 1 : 0]
 const cdata = () => dash.data('causes').data;
 const cyears = () => { const ys = [...new Set(cdata().map((r) => r.year))].sort((a, b) => a - b); return {base: ys[0], latest: ys[ys.length - 1]}; };
 const cyear = () => cyears()[dash.params().cy === 'base' ? 'base' : 'latest'];
-const crow = (iso, year, code) => cdata().find((r) => r.iso3 === iso && r.year === year && r.code === code);
-const ctop = (iso, year, n) => cdata().filter((r) => r.iso3 === iso && r.year === year && r.rankable).sort((a, b) => b.yll_pct - a.yll_pct).slice(0, n);
+const crow = (iso, year, code, sx = sexP()) => cdata().find((r) => r.iso3 === iso && r.sex === sx && r.year === year && r.code === code);
+const ctop = (iso, year, n, sx = sexP()) => cdata().filter((r) => r.iso3 === iso && r.sex === sx && r.year === year && r.rankable).sort((a, b) => b.yll_pct - a.yll_pct).slice(0, n);
 const pc1 = (v) => (v == null ? '—' : d3.format('.1f')(v) + '%');
 
+dash.draw('sexlbl', (el) => { el.textContent = {both: '', m: T(' among men', ' بين الرجال'), f: T(' among women', ' بين النساء')}[sexP()]; });
+dash.draw('sexname', (el) => { el.textContent = {both: '', m: T(', men', '، الرجال'), f: T(', women', '، النساء')}[sexP()]; });
+dash.draw('sexhelp', (el) => {
+  const inRisk = !!el.closest('#risk');
+  el.textContent = sexP() === 'both' ? '' : inRisk ? T('Bars show the selected sex; the dark tick marks the other.', 'تعرض الأشرطة الجنس المختار، وتشير العلامة الداكنة إلى الجنس الآخر.')
+    : T('Each share is of that sex\'s own years of life lost.', 'كل نسبة من سنوات العمر المفقودة لذلك الجنس.');
+});
+dash.onData(() => {
+  document.querySelectorAll('.gx-sx button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.sex === sexP())));
+});
+document.querySelectorAll('.gx-sx button').forEach((b) => b.addEventListener('click', () => dash.setParams({sex: b.dataset.sex})));
 dash.draw('cyr', (el) => {
   if (!text(el, ['causes'])) return;
   el.textContent = String(cyears()[el.dataset.which || (dash.params().cy === 'base' ? 'base' : 'latest')]);
@@ -1450,9 +1476,9 @@ dash.draw('saltpol', (el) => {
 });
 dash.draw('leadc', (el) => {
   if (!text(el, ['causes'])) return;
-  const {latest} = cyears(), [a, b] = ctop(focus(), latest, 2);
+  const {latest} = cyears(), [a, b] = ctop(focus(), latest, 2, 'both');
   if (!a) { el.textContent = '—'; return; }
-  const h = crow('HIC', latest, a.code);
+  const h = crow('HIC', latest, a.code, 'both');
   el.textContent = {name: causeName(a), share: T(`${pc1(a.yll_pct)} of years of life lost, ${latest}`, `${pc1(a.yll_pct)} من سنوات العمر المفقودة، ${latest}`),
     hic: h ? pc1(h.yll_pct) : '—', second: b ? `${causeName(b)}, ${pc1(b.yll_pct)}` : '—'}[el.dataset.k];
 });
@@ -1664,9 +1690,11 @@ dash.draw('vy', (el) => {
     wb_phys: WB('SH.MED.PHYS.ZS', 'Physicians per 1,000 people (WHO)', 'الأطباء لكل 1,000 نسمة (منظمة الصحة العالمية)'),
     wb_nurse: WB('SH.MED.NUMW.P3', 'Nurses and midwives per 1,000 people (WHO)', 'الممرضون والقابلات لكل 1,000 نسمة (منظمة الصحة العالمية)'),
     wb_beds: WB('SH.MED.BEDS.ZS', 'Hospital beds per 1,000 people (WHO, OECD)', 'أسرّة المستشفيات لكل 1,000 نسمة (منظمة الصحة العالمية، منظمة التعاون الاقتصادي والتنمية)'),
+    wb_smoke: WB('SH.PRV.SMOK', 'Prevalence of current tobacco use (% of adults), WHO', 'انتشار تعاطي التبغ حاليًا (% من البالغين)، منظمة الصحة العالمية'),
     wb_smoke_m: WB('SH.PRV.SMOK.MA', 'Prevalence of current tobacco use, males (% of male adults), WHO', 'انتشار تعاطي التبغ حاليًا، الذكور (% من البالغين الذكور)، منظمة الصحة العالمية'),
     wb_smoke_f: WB('SH.PRV.SMOK.FE', 'Prevalence of current tobacco use, females (% of female adults), WHO', 'انتشار تعاطي التبغ حاليًا، الإناث (% من البالغات)، منظمة الصحة العالمية'),
     who_ncd_risk: {en: 'WHO Global Health Observatory: NCD risk factors (insufficient physical activity, cholesterol)', ar: 'المرصد الصحي العالمي لمنظمة الصحة العالمية: عوامل خطر الأمراض غير المعدية (الخمول البدني والكوليسترول)', url: 'https://www.who.int/data/gho/data/themes/topics/noncommunicable-diseases-risk-factors'},
+    who_diab: {en: 'WHO Global Health Observatory: Diabetes prevalence by sex, adults 18+, age-standardized (NCD-RisC)', ar: 'المرصد الصحي العالمي لمنظمة الصحة العالمية: انتشار السكري حسب الجنس، البالغون 18+، معياري حسب العمر', url: 'https://www.who.int/data/gho/data/themes/topics/noncommunicable-diseases-risk-factors'},
     who_ncd_ccs: {en: 'WHO Global Health Observatory: NCD country capacity survey (salt reduction policies)', ar: 'المرصد الصحي العالمي لمنظمة الصحة العالمية: مسح القدرات القُطرية للأمراض غير المعدية (سياسات خفض الملح)', url: 'https://www.who.int/data/gho/data/themes/topics/noncommunicable-diseases'},
     wb_pm25: WB('EN.ATM.PM25.MC.M3', 'PM2.5 air pollution, mean annual exposure', 'التلوث بالجسيمات الدقيقة PM2.5، متوسط التعرض السنوي'),
     wb_airpol: WB('SH.STA.AIRP.P5', 'Mortality attributed to household and ambient air pollution, age-standardized (WHO)', 'الوفيات المنسوبة إلى تلوث الهواء المنزلي والخارجي، معيارية حسب العمر (منظمة الصحة العالمية)'),
