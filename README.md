@@ -65,7 +65,7 @@ python -m http.server 8000          # then open http://localhost:8000
 | Health spending, government and out-of-pocket shares | World Bank WDI, from the WHO Global Health Expenditure Database |
 | Physicians, nurses and midwives, hospital beds | World Bank WDI, from WHO and OECD |
 | Causes of death and years of life lost, 2019 and latest year | [WHO Global Health Estimates](https://www.who.int/data/global-health-estimates) (xMart API), for the GCC, high-income countries and the world |
-| Hypertension prevalence and control (ages 30–79) | [WHO Global Health Observatory](https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/hypertension) (API) |
+| Hypertension prevalence and control (ages 30–79) | [WHO Global Health Observatory](https://data.who.int/indicators/i/608DE39) (API) |
 | PM2.5 exposure, air pollution deaths | World Bank WDI, from WHO and the Global Burden of Disease air quality models |
 | Adult obesity (age-standardized) | [WHO Global Health Observatory](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/prevalence-of-obesity-among-adults-bmi--30-(age-standardized-estimate)-(-)) (API) |
 | Life expectancy (WHO, for years in poor health) | [WHO Global Health Observatory](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/life-expectancy-at-birth-(years)) (API) |
