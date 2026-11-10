@@ -20,11 +20,13 @@
     outlook: 'data/outlook.json',
     meta: 'data/meta.json',
   };
-  const DEFAULTS = { focus: 'SAU', lang: 'en', tab: 'snapshot', ob: '4', em: 'AE', cy: 'latest', sex: 'both' };
+  const DEFAULTS = { focus: 'SAU', lang: 'en', tab: 'snapshot', ob: '4', em: 'AE', cy: 'latest', sex: 'both', bp: '50', rd: '50' };
   const ALLOWED = {
     tab: ['snapshot', 'outcomes', 'causes', 'risk', 'financing', 'workforce', 'goals', 'outlook', 'official'],
     cy: ['latest', 'base'],
     sex: ['both', 'm', 'f'],
+    bp: ['now', '36', '50'],
+    rd: ['0', '25', '50'],
     ob: ['0', '2', '4', '6', '8', '10'],
     em: ['AE', 'AE-AZ', 'AE-DU', 'AE-SH', 'AE-AJ', 'AE-UQ', 'AE-RK', 'AE-FJ'],
     focus: ['SAU', 'ARE', 'QAT', 'KWT', 'OMN', 'BHR'],

@@ -198,5 +198,33 @@
     "nur_em_2019": 90
    }
   }
+ },
+ "planner": {
+  "note": "What-if planner, Outlook tab. Effects are per year at the latest WHO death levels, once a target is reached.",
+  "bp_targets": [
+   36,
+   50
+  ],
+  "bp_targets_note": "36% = high-income average control rate (WHO, 2019); 50% = a level top performers such as Canada and South Korea exceed (WHO Global report on hypertension, 2023).",
+  "bp_src": "who_hyp_report2023",
+  "sbp_drop": 15,
+  "sbp_drop_note": "Assumed fall in systolic blood pressure (mmHg) when uncontrolled hypertension is brought under 140/90; conservative.",
+  "rr_per_10mmhg": {
+   "1130": 0.83,
+   "1140": 0.73,
+   "1120": 0.72
+  },
+  "rr_note": "Relative risk per 10 mmHg lower systolic pressure: coronary heart disease 0.83, stroke 0.73, heart failure 0.72 (applied to hypertensive heart disease).",
+  "rr_src": "ettehad2016",
+  "rr_uncontrolled": 2,
+  "rr_uncontrolled_note": "Death rates from stroke and ischaemic heart disease roughly double for each 20 mmHg higher usual systolic pressure; used as the excess risk of people with uncontrolled hypertension.",
+  "rr_uncontrolled_src": "lewington2002",
+  "road_targets": [
+   25,
+   50
+  ],
+  "road_src": "who_road_decade",
+  "pace_window": 6,
+  "pace_break": 0.3
  }
 }

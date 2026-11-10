@@ -130,6 +130,26 @@
    "en": "American Diabetes Association: Economic Costs of Diabetes in the U.S. in 2022 (2023)",
    "ar": "الجمعية الأمريكية للسكري: التكاليف الاقتصادية للسكري في الولايات المتحدة عام 2022 (2023)",
    "url": "https://diabetes.org/about-us/statistics/cost-diabetes"
+  },
+  "ettehad2016": {
+   "en": "Ettehad et al. (2016), blood pressure lowering for prevention of cardiovascular disease and death: meta-analysis, The Lancet",
+   "ar": "إتيهاد وآخرون (2016)، خفض ضغط الدم للوقاية من أمراض القلب والأوعية الدموية والوفاة: تحليل تلوي، ذا لانسيت",
+   "url": "https://doi.org/10.1016/S0140-6736(15)01225-8"
+  },
+  "lewington2002": {
+   "en": "Lewington et al. (2002), age-specific relevance of usual blood pressure to vascular mortality, The Lancet",
+   "ar": "لوينغتون وآخرون (2002)، علاقة ضغط الدم المعتاد بالوفيات الوعائية حسب العمر، ذا لانسيت",
+   "url": "https://doi.org/10.1016/S0140-6736(02)11911-8"
+  },
+  "who_hyp_report2023": {
+   "en": "WHO: Global report on hypertension: the race against a silent killer (2023)",
+   "ar": "منظمة الصحة العالمية: التقرير العالمي عن ارتفاع ضغط الدم: السباق مع قاتل صامت (2023)",
+   "url": "https://www.who.int/publications/i/item/9789240081062"
+  },
+  "who_road_decade": {
+   "en": "WHO: Decade of Action for Road Safety 2021–2030 (target: at least 50% fewer road deaths and injuries by 2030)",
+   "ar": "منظمة الصحة العالمية: عقد العمل من أجل السلامة على الطرق 2021–2030 (الهدف: خفض وفيات وإصابات الطرق 50% على الأقل بحلول 2030)",
+   "url": "https://www.who.int/teams/social-determinants-of-health/safety-and-mobility/decade-of-action-for-road-safety-2021-2030"
   }
  },
  "official_vs_international": [

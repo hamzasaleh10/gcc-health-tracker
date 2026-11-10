@@ -66,7 +66,7 @@
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="assets/runtime.js?v=20261110b"></script>
+<script src="assets/runtime.js?v=20261110c"></script>
 </head>
 <body>
 <main class="site">
@@ -139,11 +139,12 @@
       <th class="n"><span lang="en"><span class="l1">Current number</span><span class="l2">(estimated, 2024)</span></span><span lang="ar"><span class="l1">العدد الحالي</span><span class="l2">(تقديري، 2024)</span></span></th>
       <th class="n"><span lang="en"><span class="l1">Needed in 2030</span><span class="l2">(growth and ageing)</span></span><span lang="ar"><span class="l1">المطلوب في 2030</span><span class="l2">(النمو والشيخوخة)</span></span></th>
       <th class="n"><span lang="en"><span class="l1">Needed in 2040</span><span class="l2">(growth and ageing)</span></span><span lang="ar"><span class="l1">المطلوب في 2040</span><span class="l2">(النمو والشيخوخة)</span></span></th>
-      <th class="n"><span lang="en"><span class="l1">Additional</span><span class="l2">needed by 2040</span></span><span lang="ar"><span class="l1">الإضافي المطلوب</span><span class="l2">بحلول 2040</span></span></th>
+      <th class="n"><span lang="en"><span class="l1">Add each year</span><span class="l2">to 2030</span></span><span lang="ar"><span class="l1">يُضاف سنويًا</span><span class="l2">حتى 2030</span></span></th>
+      <th class="n"><span lang="en"><span class="l1">Recent pace</span><span class="l2">per year</span></span><span lang="ar"><span class="l1">الوتيرة الأخيرة</span><span class="l2">سنويًا</span></span></th>
     </tr></thead>
     <tbody data-draw="bneed"></tbody>
   </table></div>
-  <p class="note"><span lang="en">Same level of care per person as today, adjusted for population growth and ageing (World Bank projections; hospital use by age from Statistics Norway). Current numbers use World Bank ratios. Illustrative, not a forecast.</span><span lang="ar">بالمستوى الحالي نفسه من الرعاية للفرد، معدّلًا وفق نمو السكان وشيخوختهم (توقعات البنك الدولي؛ استخدام المستشفيات حسب العمر من هيئة الإحصاء النرويجية). وتستند الأعداد الحالية إلى نسب البنك الدولي. توضيحي وليس تنبؤًا.</span></p>
+  <p class="note"><span lang="en">Same level of care per person as today, adjusted for population growth and ageing (World Bank projections; hospital use by age from Statistics Norway). Current numbers use World Bank ratios. Add each year = the gap to 2030 spread over six years; recent pace = average yearly change in the latest five to six years of data (nurses: WHO counts), left blank where a series breaks. Illustrative, not a forecast.</span><span lang="ar">بالمستوى الحالي نفسه من الرعاية للفرد، معدّلًا وفق نمو السكان وشيخوختهم (توقعات البنك الدولي؛ استخدام المستشفيات حسب العمر من هيئة الإحصاء النرويجية). وتستند الأعداد الحالية إلى نسب البنك الدولي. ما يُضاف سنويًا = الفجوة حتى 2030 موزعة على ست سنوات؛ والوتيرة الأخيرة = متوسط التغير السنوي في آخر خمس إلى ست سنوات من البيانات (الممرضون: أعداد منظمة الصحة العالمية)، وتُترك فارغة حيث تنقطع السلسلة. توضيحي وليس تنبؤًا.</span></p>
 
   <div class="cols">
     <div>
@@ -328,6 +329,23 @@
     p.textContent = T(`Demand for care is set to grow by about ${Math.round((d.g * d.a - 1) * 100)}% by 2040: ${Math.round((d.g - 1) * 100)}% from population growth, plus an older age mix as residents aged 65 and over rise from ${f1(d.s0)}% to ${f1(d.s1)}% of the population.`,
       `يُتوقع أن ينمو الطلب على الرعاية بنحو ${Math.round((d.g * d.a - 1) * 100)}% بحلول 2040: ${Math.round((d.g - 1) * 100)}% من نمو السكان، إضافةً إلى تقدم التركيبة العمرية مع ارتفاع نسبة السكان بعمر 65 عامًا فأكثر من ${f1(d.s0)}% إلى ${f1(d.s1)}%.`);
   });
+  // Average yearly change over the latest years of data (same rules as the Monitor's yearly targets).
+  const recentPace = (iso, ind) => {
+    if (!ok('wb', 'nursemid', 'outlook')) return null;
+    const P = dash.data('outlook').data.planner, win = P.pace_window, brk = P.pace_break;
+    let pts;
+    if (ind === 'nurses_1k') pts = dash.data('nursemid').data.filter((r) => r.iso3 === iso && r.indicator === 'nurses').map((r) => ({y: +r.year, v: +r.value, ratio: +r.value}));
+    else {
+      const W = dash.data('wb').data, pop = new Map(W.filter((r) => r.iso3 === iso && r.indicator === 'population').map((r) => [+r.year, +r.value]));
+      pts = W.filter((r) => r.iso3 === iso && r.indicator === ind && pop.has(+r.year)).map((r) => ({y: +r.year, ratio: +r.value, v: +r.value * pop.get(+r.year) / 1000}));
+    }
+    pts.sort((a, b) => a.y - b.y);
+    if (!pts.length) return null;
+    const L = pts[pts.length - 1].y, w = pts.filter((q) => q.y >= L - win);
+    if (w.length < 3 || L - w[0].y < 3) return {v: null};
+    for (let i = 1; i < w.length; i++) if (Math.abs(w[i].ratio / w[i - 1].ratio - 1) > brk) return {v: null};
+    return {v: (w[w.length - 1].v - w[0].v) / (L - w[0].y), y0: w[0].y, y1: L};
+  };
   dash.draw('bneed', (tb) => {
     tb.replaceChildren();
     if (!ok('proj', 'outlook', 'latest', 'national')) return;
@@ -335,7 +353,10 @@
     [['beds_1k', T('Hospital beds', 'أسرّة المستشفيات')], ['nurses_1k', T('Nurses and midwives', 'الممرضون والقابلات')], ['physicians_1k', T('Physicians', 'الأطباء')]].forEach(([ind, label]) => {
       const r = ratioNow(iso, ind), tr = el('tr');
       const now = r == null ? null : r * p24 / 1000, need = now == null ? null : now * d.g * d.a, n30 = now == null ? null : now * d30.g * d30.a;
-      tr.append(el('td', label), el('td', rc(now), 'n'), el('td', rc(n30), 'n'), el('td', rc(need), 'n'), el('td', need == null ? '—' : '+' + rc(need - now), 'n'));
+      const pc = now == null ? null : recentPace(iso, ind), a30 = now == null ? null : (n30 - now) / 6;
+      const pv = !pc ? '—' : pc.v == null ? '—' : (pc.v >= 0 ? '+' : '−') + rc(Math.abs(pc.v)) + ' (' + pc.y0 + '–' + pc.y1 + ')';
+      const add = el('td', a30 == null ? '—' : '+' + rc(a30), 'n'); add.style.fontWeight = 600;
+      tr.append(el('td', label), el('td', rc(now), 'n'), el('td', rc(n30), 'n'), el('td', rc(need), 'n'), add, el('td', pv, 'n'));
       tb.appendChild(tr);
     });
   });
