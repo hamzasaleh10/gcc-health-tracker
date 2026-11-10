@@ -1,7 +1,7 @@
 """Refresh the GCC Health Systems Monitor data.
 
 Pulls World Bank World Development Indicators, WHO Global Health Observatory estimates
-(obesity, healthy life expectancy, hypertension, workforce) and WHO Global Health Estimates
+(obesity, healthy life expectancy, hypertension, physical inactivity, cholesterol, salt policy, workforce) and WHO Global Health Estimates
 (causes of death and years of life lost) for the six GCC states plus benchmarks, validates them,
 and writes the JSON files the site reads from /data.
 
@@ -40,7 +40,9 @@ INDICATORS = {
     "SP.POP.TOTL": "population",           # Population, total
     "SP.POP.65UP.TO.ZS": "pop65_share",    # Population ages 65+ (% of total)
     "EN.ATM.PM25.MC.M3": "pm25",           # Mean annual exposure to PM2.5 (micrograms per cubic metre)
-    "SH.STA.AIRP.P5": "airpol_deaths",     # Deaths from household and ambient air pollution, per 100,000, age-standardized - WHO
+    "SH.STA.AIRP.P5": "airpol_deaths",
+    "SH.PRV.SMOK.MA": "smoke_m",           # Tobacco use, men 15+, age-standardized (%) - WHO
+    "SH.PRV.SMOK.FE": "smoke_f",           # Tobacco use, women 15+, age-standardized (%) - WHO     # Deaths from household and ambient air pollution, per 100,000, age-standardized - WHO
 }
 # Aggregates come back without an ISO3 code; map the World Bank ids.
 AGGREGATE_IDS = {"XD": "HIC", "1W": "WLD"}
@@ -139,13 +141,34 @@ def fetch_nurse_midwife():
     return sorted(rows, key=lambda r: (r["iso3"], r["indicator"], r["year"]))
 
 
-def fetch_hypertension():
-    """WHO hypertension among adults 30-79 (age-standardized): prevalence, and the share of
-    people with hypertension whose blood pressure is controlled."""
+RISK_GHO = (("NCD_HYP_PREVALENCE_A", "hyp_prev"),        # hypertension, adults 30-79, age-standardized (%)
+            ("NCD_HYP_CONTROL_A", "hyp_control"),        # controlled, % of those with hypertension
+            ("NCD_PAA", "inactivity"),                   # insufficient physical activity, adults 18+, age-standardized (%)
+            ("NCD_CHOL_MEANNONHDL_A", "chol_nonhdl"))    # mean non-HDL cholesterol, age-standardized (mmol/L)
+
+
+def fetch_risk_who():
+    """WHO risk factors (age-standardized): hypertension and its control, physical inactivity,
+    and mean non-HDL cholesterol."""
     rows = []
-    for code, key in (("NCD_HYP_PREVALENCE_A", "hyp_prev"), ("NCD_HYP_CONTROL_A", "hyp_control")):
+    for code, key in RISK_GHO:
         rows += [{**r, "indicator": key} for r in fetch_gho(code)]
     return rows
+
+
+SALT_GHO = (("NCD_CCS_SaltPol", "salt_policy"), ("NCD_CCS_SALT_TARGET", "salt_target"), ("NCD_CCS_SALT_SVY", "salt_survey"))
+
+
+def fetch_salt_policy():
+    """WHO NCD country capacity survey: salt reduction policy, national salt target, and a recent
+    national survey of salt intake (Yes/No), GCC only. No comparable salt-intake estimates exist."""
+    rows = []
+    for code, key in SALT_GHO:
+        url = f"https://ghoapi.azureedge.net/api/{code}?$filter=" + "%20or%20".join(f"SpatialDim%20eq%20'{c}'" for c in GCC)
+        for d in get_json(url)["value"]:
+            if d.get("Value") in ("Yes", "No"):
+                rows.append({"iso3": d["SpatialDim"], "indicator": key, "year": int(d["TimeDim"]), "value": d["Value"]})
+    return sorted(rows, key=lambda r: (r["iso3"], r["indicator"], r["year"]))
 
 
 # WHO Global Health Estimates (xMart API): deaths and years of life lost by cause.
@@ -203,10 +226,14 @@ def fetch_hale():
     return fetch_gho("WHOSIS_000002")
 
 
-def validate(wb, ob, hale=None, proj=None, le=None, nm=None, hyp=None, causes=None):
+def validate(wb, ob, hale=None, proj=None, le=None, nm=None, hyp=None, causes=None, salt=None):
     problems = []
+    if salt is not None:
+        for iso in GCC:
+            if not any(r["iso3"] == iso and r["indicator"] == "salt_policy" for r in salt):
+                problems.append(f"WHO salt policy: no row for {iso}")
     if hyp is not None:
-        for key in ("hyp_prev", "hyp_control"):
+        for key in [k for _, k in RISK_GHO]:
             for iso in WHO_AREAS:
                 if not any(r["iso3"] == iso and r["indicator"] == key for r in hyp):
                     problems.append(f"WHO {key}: no rows for {iso}")
@@ -277,14 +304,18 @@ def main(out_dir):
     proj = fetch_projections()
     print(f"  {len(proj)} rows")
 
-    print("WHO hypertension (Global Health Observatory)")
-    hyp = fetch_hypertension()
+    print("WHO risk factors: hypertension, inactivity, cholesterol (Global Health Observatory)")
+    hyp = fetch_risk_who()
     print(f"  {len(hyp)} rows")
     print("WHO Global Health Estimates: causes of death and years of life lost")
     causes, ghe_year = fetch_causes()
     print(f"  {len(causes)} rows, years {GHE_BASE_YEAR} and {ghe_year}")
 
-    problems = validate(wb, ob, hale, proj, le, nm, hyp, causes)
+    print("WHO salt reduction policies (NCD country capacity survey)")
+    salt = fetch_salt_policy()
+    print(f"  {len(salt)} rows")
+
+    problems = validate(wb, ob, hale, proj, le, nm, hyp, causes, salt)
     if problems:
         print("Validation failed; no files written:\n  " + "\n  ".join(problems))
         sys.exit(1)
@@ -297,11 +328,12 @@ def main(out_dir):
     dump(le, "gcc_le_who.json")
     dump(nm, "gcc_nurse_midwife_who.json")
     dump(proj, "gcc_population_projections.json")
-    dump(hyp, "gcc_hypertension_who.json")
+    dump(hyp, "gcc_risk_who.json")
+    dump(salt, "gcc_salt_policy_who.json")
     dump(causes, "gcc_causes_who.json")
     dump({"refreshed_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
           "worldbank_last_updated": wb_updated,
-          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "le_who": len(le), "nurse_midwife": len(nm), "projections": len(proj), "hypertension": len(hyp), "causes": len(causes)}}, "meta.json")
+          "rows": {"worldbank": len(wb), "obesity": len(ob), "hale": len(hale), "le_who": len(le), "nurse_midwife": len(nm), "projections": len(proj), "risk_who": len(hyp), "salt_policy": len(salt), "causes": len(causes)}}, "meta.json")
     print(f"Wrote {len(wb)} World Bank rows and {len(ob)} obesity rows to {out_dir}/")
 
 
