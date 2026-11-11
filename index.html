@@ -216,7 +216,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
 [data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="assets/runtime.js?v=20261110c"></script>
+<script src="assets/runtime.js?v=20261110d"></script>
 </head>
 <body>
 <main class="site">
@@ -576,29 +576,28 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
   <section class="gx-sec" id="risk" hidden>
     <h2><span class="gx-num" aria-hidden="true">5</span><span lang="en">Risk factors</span><span lang="ar">عوامل الخطر</span></h2>
     <div class="gx-ctx">
-      <p lang="en"><b>What we're looking at.</b> The drivers of chronic disease, against world and high-income benchmarks: obesity, diabetes, high blood pressure (and how much of it is controlled), air pollution, tobacco use, physical inactivity, cholesterol and salt policy.</p>
-      <p lang="ar"><b>ما الذي نعرضه.</b> محركات الأمراض المزمنة مقارنةً بالمتوسط العالمي والدول مرتفعة الدخل: السمنة، والسكري، وارتفاع ضغط الدم (ونسبة السيطرة عليه)، وتلوث الهواء، وتعاطي التبغ، والخمول البدني، والكوليسترول، وسياسات خفض الملح.</p>
+      <p lang="en"><b>What we're looking at.</b> The drivers of chronic disease, for men and women side by side, against world and high-income benchmarks: obesity, diabetes, high blood pressure (and how much of it is controlled), air pollution, tobacco use, physical inactivity, cholesterol and salt policy.</p>
+      <p lang="ar"><b>ما الذي نعرضه.</b> محركات الأمراض المزمنة، للرجال والنساء جنبًا إلى جنب، مقارنةً بالمتوسط العالمي والدول مرتفعة الدخل: السمنة، والسكري، وارتفاع ضغط الدم (ونسبة السيطرة عليه)، وتلوث الهواء، وتعاطي التبغ، والخمول البدني، والكوليسترول، وسياسات خفض الملح.</p>
       <p lang="en"><b>Why it matters.</b> These risks drive the heart disease, stroke, diabetes and kidney failure that lead the causes of premature death. They are the earliest signal of the demand heading toward hospitals, and the main target for prevention.</p>
       <p lang="ar"><b>لماذا يهم ذلك.</b> تقف هذه المخاطر وراء أمراض القلب والسكتة الدماغية والسكري والفشل الكلوي التي تتصدر أسباب الوفاة المبكرة، وهي أبكر مؤشر على الطلب المتجه نحو المستشفيات، والهدف الرئيسي لبرامج الوقاية.</p>
     </div>
-    <div class="gx-ob gx-sx" role="group" aria-label="Sex / الجنس"><span class="lbl"><span lang="en">Show</span><span lang="ar">عرض</span></span><button type="button" data-sex="both" aria-pressed="true"><span lang="en">Both sexes</span><span lang="ar">الجنسان</span></button><button type="button" data-sex="m" aria-pressed="false"><span lang="en">Men</span><span lang="ar">الرجال</span></button><button type="button" data-sex="f" aria-pressed="false"><span lang="en">Women</span><span lang="ar">النساء</span></button><span class="gx-sxhelp" data-draw="sexhelp"></span></div>
     <div class="gx-grid">
       <div class="gx-card" id="obesity">
         <h3><span lang="en">Adult obesity</span><span lang="ar">السمنة لدى البالغين</span></h3>
         <p class="n" lang="en">Share of adults with BMI of 30 or more, age-standardized, latest year (WHO).</p>
         <p class="n" lang="ar">نسبة البالغين الذين يبلغ مؤشر كتلة الجسم لديهم 30 أو أكثر، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="obesity" data-source="latest"></div>
+        <div class="gx-chart dash-skeleton" data-draw="hbar2" data-ind="obesity" data-source="latest"></div>
       <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized share of adults (18+) with a body mass index of 30 or more, latest year, so countries with different age structures compare fairly.</p><p lang="ar">نسبة البالغين (18 عامًا فأكثر) الذين يبلغ مؤشر كتلة الجسم لديهم 30 فأكثر، معيارية حسب العمر من منظمة الصحة العالمية، لأحدث سنة، لتمكين المقارنة العادلة بين دول ذات تركيبات عمرية مختلفة.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Modelled WHO estimates built from national surveys of different years and methods. Age-standardization makes countries comparable but is not the literal share of today's adults.</p><p lang="ar">تقديرات مُنمذجة من منظمة الصحة العالمية مبنية على مسوح وطنية بسنوات ومنهجيات مختلفة. التوحيد المعياري حسب العمر يتيح المقارنة بين الدول لكنه لا يمثل حرفيًا نسبة البالغين الحاليين.</p></details>
       </div>
       <div class="gx-card" id="diabetes">
         <h3><span lang="en">Diabetes</span><span lang="ar">السكري</span></h3>
-        <p class="n" lang="en">Share of adults 20–79 with diabetes, latest year (International Diabetes Federation via World Bank).</p>
-        <p class="n" lang="ar">نسبة البالغين بين 20 و79 عامًا المصابين بالسكري، لأحدث سنة (الاتحاد الدولي للسكري عبر البنك الدولي).</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="diabetes_prev" data-source="latest"></div>
+        <p class="n" lang="en">Share of adults 18 and older with diabetes, men and women, age-standardized, latest year (WHO).</p>
+        <p class="n" lang="ar">نسبة البالغين في سن 18 فأكثر المصابين بالسكري، للرجال والنساء، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
+        <div class="gx-chart dash-skeleton" data-draw="hbar2" data-ind="diabetes_prev" data-source="latest"></div>
       <p class="gx-see"><button type="button" data-tab="causes"><span lang="en">See also: deaths from diabetes and kidney disease, in Causes of death →</span><span lang="ar">انظر أيضًا: الوفيات بالسكري وأمراض الكلى، في قسم أسباب الوفاة ←</span></button></p>
-      <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">International Diabetes Federation estimates of diabetes prevalence among adults aged 20–79, including undiagnosed cases, via the World Bank, latest year.</p><p lang="ar">تقديرات الاتحاد الدولي للسكري لانتشار السكري بين البالغين من 20 إلى 79 عامًا، بما في ذلك الحالات غير المشخّصة، عبر البنك الدولي، لأحدث سنة.</p></details>
-        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Modelled estimates from the International Diabetes Federation, updated every few years and including undiagnosed cases. They are not registry counts.</p><p lang="ar">تقديرات مُنمذجة من الاتحاد الدولي للسكري تُحدَّث كل بضع سنوات وتشمل الحالات غير المشخصة، وليست أعدادًا من السجلات.</p></details>
+      <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized estimates of diabetes among adults 18 and older (NCD Risk Factor Collaboration), for men and women, from population surveys with blood tests, so undiagnosed cases count.</p><p lang="ar">تقديرات منظمة الصحة العالمية المعيارية حسب العمر للسكري بين البالغين في سن 18 فأكثر (تعاون عوامل خطر الأمراض غير المعدية)، للرجال والنساء، المستندة إلى مسوح سكانية بفحوص الدم، لذا تُحتسب الحالات غير المشخصة.</p></details>
+        <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Modelled estimates, not registry counts. The At a glance tile and the Outlook use the International Diabetes Federation's figure for adults 20–79, which is not split by sex, so the numbers differ slightly.</p><p lang="ar">تقديرات مُنمذجة وليست أعدادًا من السجلات. وتستخدم بطاقة «نظرة سريعة» وقسم الآفاق رقم الاتحاد الدولي للسكري للبالغين 20–79 عامًا، غير المقسّم حسب الجنس، لذا تختلف الأرقام قليلًا.</p></details>
       </div>
     </div>
     <div class="gx-grid">
@@ -606,7 +605,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <h3><span lang="en">High blood pressure</span><span lang="ar">ارتفاع ضغط الدم</span></h3>
         <p class="n" lang="en">Share of adults 30–79 with hypertension, age-standardized, latest year (WHO).</p>
         <p class="n" lang="ar">نسبة البالغين بين 30 و79 عامًا المصابين بارتفاع ضغط الدم، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="hyp_prev" data-source="latest"></div>
+        <div class="gx-chart dash-skeleton" data-draw="hbar2" data-ind="hyp_prev" data-source="latest"></div>
         <p class="gx-see"><button type="button" data-tab="causes"><span lang="en">See also: deaths from heart disease and stroke, in Causes of death →</span><span lang="ar">انظر أيضًا: الوفيات بأمراض القلب والسكتة الدماغية، في قسم أسباب الوفاة ←</span></button></p>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized share of adults aged 30–79 with hypertension: blood pressure of 140/90 mmHg or higher, or taking medicine for it.</p><p lang="ar">النسبة المعيارية حسب العمر من منظمة الصحة العالمية للبالغين بين 30 و79 عامًا المصابين بارتفاع ضغط الدم: ضغط دم 140/90 ملم زئبق أو أعلى، أو تناول دواء لعلاجه.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Modelled from national surveys of different years; the latest estimate is 2019 (WHO global report on hypertension, 2023).</p><p lang="ar">تقديرات مُنمذجة من مسوح وطنية لسنوات مختلفة، وأحدثها لعام 2019 (التقرير العالمي لمنظمة الصحة العالمية عن ارتفاع ضغط الدم، 2023).</p></details>
@@ -615,7 +614,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <h3><span lang="en">Blood pressure under control</span><span lang="ar">ضغط الدم تحت السيطرة</span></h3>
         <p class="n" lang="en">Share of adults 30–79 with hypertension whose blood pressure is controlled, age-standardized, latest year (WHO).</p>
         <p class="n" lang="ar">نسبة البالغين بين 30 و79 عامًا المصابين بارتفاع ضغط الدم الذين يخضع ضغطهم للسيطرة، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="hyp_control" data-source="latest"></div>
+        <div class="gx-chart dash-skeleton" data-draw="hbar2" data-ind="hyp_control" data-source="latest"></div>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized share of people aged 30–79 with hypertension whose blood pressure is below 140/90 mmHg.</p><p lang="ar">النسبة المعيارية حسب العمر من منظمة الصحة العالمية للمصابين بارتفاع ضغط الدم بين 30 و79 عامًا الذين يقل ضغطهم عن 140/90 ملم زئبق.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Same surveys and year as the prevalence estimate. A higher share is better: control is what prevents the heart attacks, strokes and kidney failure in Causes of premature death.</p><p lang="ar">المسوح والسنة نفسها لتقدير الانتشار. والنسبة الأعلى أفضل: فالسيطرة على الضغط هي ما يمنع النوبات القلبية والسكتات والفشل الكلوي الواردة في قسم أسباب الوفاة المبكرة.</p></details>
       </div>
@@ -641,9 +640,9 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
     <div class="gx-grid">
       <div class="gx-card" id="tobacco">
         <h3><span lang="en">Tobacco use</span><span lang="ar">تعاطي التبغ</span></h3>
-        <p class="n" lang="en">Share of people 15 and older who use tobacco, age-standardized, latest year (WHO). Rates differ sharply between men and women: use the switch above.</p>
-        <p class="n" lang="ar">نسبة من هم في سن 15 فأكثر الذين يتعاطون التبغ، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية). تختلف المعدلات كثيرًا بين الرجال والنساء: استخدم المفتاح أعلاه.</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="smoke" data-source="latest"></div>
+        <p class="n" lang="en">Share of people 15 and older who use tobacco, men and women, age-standardized, latest year (WHO).</p>
+        <p class="n" lang="ar">نسبة من هم في سن 15 فأكثر الذين يتعاطون التبغ، للرجال والنساء، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
+        <div class="gx-chart dash-skeleton" data-draw="hbar2" data-ind="smoke" data-source="latest"></div>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized estimates of current tobacco use (smoked or smokeless) among people 15 and older, from national surveys, via the World Bank, for both sexes and for men and women separately.</p><p lang="ar">تقديرات منظمة الصحة العالمية المعيارية حسب العمر للتعاطي الحالي للتبغ (المدخَّن أو غير المدخَّن) بين من هم في سن 15 فأكثر، المستندة إلى مسوح وطنية، عبر البنك الدولي، للجنسين معًا وللرجال والنساء كلٌّ على حدة.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Surveys may undercount shisha (waterpipe) use, which is common in the region, and newer nicotine products. Reported use among women is likely to be understated where it carries social stigma.</p><p lang="ar">قد تقلل المسوح من تقدير تدخين الشيشة (النرجيلة) الشائع في المنطقة ومنتجات النيكوتين الحديثة. ويُرجَّح أن يكون التعاطي المُبلَّغ عنه بين النساء أقل من الواقع حيث يرتبط بوصمة اجتماعية.</p></details>
       </div>
@@ -651,7 +650,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <h3><span lang="en">Physical inactivity</span><span lang="ar">الخمول البدني</span></h3>
         <p class="n" lang="en">Share of adults 18 and older who are insufficiently active, age-standardized, latest year (WHO).</p>
         <p class="n" lang="ar">نسبة البالغين في سن 18 فأكثر غير النشطين بدنيًا بما يكفي، معيارية حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="inactivity" data-source="latest"></div>
+        <div class="gx-chart dash-skeleton" data-draw="hbar2" data-ind="inactivity" data-source="latest"></div>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized share of adults doing less than 150 minutes of moderate (or 75 minutes of vigorous) activity a week, modelled from national surveys.</p><p lang="ar">النسبة المعيارية حسب العمر من منظمة الصحة العالمية للبالغين الذين يمارسون أقل من 150 دقيقة من النشاط المعتدل (أو 75 دقيقة من النشاط الشديد) أسبوعيًا، المُنمذجة من مسوح وطنية.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">Wide uncertainty: WHO's ranges for some Gulf states span 30 points or more. Summer heat limits outdoor activity for much of the year.</p><p lang="ar">عدم يقين واسع: تتجاوز نطاقات تقديرات المنظمة لبعض دول الخليج 30 نقطة. وتحدّ حرارة الصيف من النشاط في الهواء الطلق معظم العام.</p></details>
       </div>
@@ -661,7 +660,7 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
         <h3><span lang="en">Cholesterol</span><span lang="ar">الكوليسترول</span></h3>
         <p class="n" lang="en">Mean non-HDL ("bad") cholesterol in adults, mmol/L, age-standardized, latest year (WHO).</p>
         <p class="n" lang="ar">متوسط الكوليسترول غير عالي الكثافة («الضار») لدى البالغين، ملمول/لتر، معياري حسب العمر، لأحدث سنة (منظمة الصحة العالمية).</p>
-        <div class="gx-chart short dash-skeleton" data-draw="hbar" data-ind="chol_nonhdl" data-source="latest" data-unit=""></div>
+        <div class="gx-chart dash-skeleton" data-draw="hbar2" data-ind="chol_nonhdl" data-source="latest" data-unit=""></div>
         <details class="gx-fold gx-fold-m"><summary><span lang="en">Click here for Methods</span><span lang="ar">انقر هنا لعرض المنهجية</span></summary><p lang="en">WHO's age-standardized mean non-HDL cholesterol (total minus HDL cholesterol), the measure most closely tied to heart disease risk, from population blood-test surveys.</p><p lang="ar">متوسط الكوليسترول غير عالي الكثافة (الكلي مطروحًا منه عالي الكثافة) المعياري حسب العمر من منظمة الصحة العالمية، وهو المقياس الأوثق ارتباطًا بخطر أمراض القلب، المستند إلى مسوح فحوص الدم السكانية.</p></details>
         <details class="gx-fold gx-fold-l"><summary><span lang="en">Click here for Notes</span><span lang="ar">انقر هنا لعرض الملاحظات</span></summary><p lang="en">The latest estimate is 2018. A population average can hide a large group with high cholesterol.</p><p lang="ar">أحدث تقدير لعام 2018. وقد يُخفي المتوسط السكاني فئة كبيرة مرتفعة الكوليسترول.</p></details>
       </div>
@@ -677,8 +676,8 @@ tr.is-focus td{font-weight:600;color:var(--color-fg)}
     <div class="gx-io">
       <div class="gx-io-col gx-io-ins">
         <h3><span lang="en">Key insights</span><span lang="ar">أبرز النتائج</span></h3>
-        <ul lang="en"><li>Every Gulf state sits far above the world average on both obesity and diabetes.</li><li>Obesity is above 40% in Qatar, Kuwait and Saudi Arabia, on a par with the United States.</li><li>Diabetes is more than double the high-income average in five of the six states.</li><li>High blood pressure is above the high-income average (32.0%) in all six states, led by Oman (45.6%), yet only 13.8% (Oman) to 30.8% (Kuwait) of those affected have their blood pressure under control, against 36.0% in high-income countries (2019).</li><li>Gulf residents breathe 3.6 to 8.3 times the high-income level of fine particles (46.9–107.8 against 13.0 µg/m³, 2023), and air pollution deaths run at 45–104 per 100,000 against 24 (2019).</li><li>Tobacco use among men is highest in Kuwait (36.4%, against 25.1% in high-income countries), with Saudi Arabia and Bahrain at about the high-income level; among women it is 0.4–5.9%, against 15.4% (2024).</li><li>38.6–66.1% of adults are insufficiently active, against 32.7% in high-income countries, led by the UAE and Kuwait (2022). Cholesterol, by contrast, is close to high-income levels (3.0–3.7 against 3.4 mmol/L, 2018).</li><li>All six states report a salt reduction policy, but only Kuwait, Oman and the UAE report a national salt target (2021).</li><li>By sex, obesity is far higher among women (38.4–50.1%) than men (25.5–38.8%, 2024), and so is inactivity. Men have more high blood pressure and control it less often (11.3–27.2% of men with hypertension, against 19.9–38.6% of women, 2019).</li></ul>
-        <ul lang="ar"><li>تتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في السمنة والسكري معًا.</li><li>تتجاوز السمنة 40% في قطر والكويت والسعودية، على قدم المساواة مع الولايات المتحدة.</li><li>يزيد انتشار السكري على ضعف متوسط الدول مرتفعة الدخل في خمس من الدول الست.</li><li>يتجاوز ارتفاع ضغط الدم متوسط الدول مرتفعة الدخل (32.0%) في الدول الست جميعها، وتتصدرها عُمان (45.6%)، ومع ذلك لا يخضع للسيطرة إلا لدى 13.8% (عُمان) إلى 30.8% (الكويت) من المصابين، مقابل 36.0% في الدول مرتفعة الدخل (2019).</li><li>يتنفس سكان الخليج من 3.6 إلى 8.3 أضعاف مستوى الجسيمات الدقيقة في الدول مرتفعة الدخل (46.9–107.8 مقابل 13.0 ميكروغرام/م³، 2023)، وتبلغ الوفيات المرتبطة بتلوث الهواء 45–104 لكل 100,000 مقابل 24 (2019).</li><li>يبلغ تعاطي التبغ بين الرجال أعلاه في الكويت (36.4% مقابل 25.1% في الدول مرتفعة الدخل)، وتقارب السعودية والبحرين مستوى الدول مرتفعة الدخل؛ أما بين النساء فيتراوح بين 0.4% و5.9% مقابل 15.4% (2024).</li><li>يفتقر 38.6–66.1% من البالغين إلى النشاط البدني الكافي مقابل 32.7% في الدول مرتفعة الدخل، وتتصدر الإمارات والكويت (2022). أما الكوليسترول فقريب من مستوى الدول مرتفعة الدخل (3.0–3.7 مقابل 3.4 ملمول/لتر، 2018).</li><li>تُبلغ الدول الست جميعها عن سياسة لخفض الملح، لكن الكويت وعُمان والإمارات وحدها تُبلغ عن هدف وطني للملح (2021).</li><li>حسب الجنس، السمنة أعلى بكثير بين النساء (38.4–50.1%) منها بين الرجال (25.5–38.8%، 2024)، وكذلك الخمول البدني. أما الرجال فيعانون ارتفاع ضغط الدم أكثر ويسيطرون عليه أقل (11.3–27.2% من الرجال المصابين مقابل 19.9–38.6% من النساء، 2019).</li></ul>
+        <ul lang="en"><li>Every Gulf state sits far above the world average on both obesity and diabetes.</li><li>Obesity is above 40% in Qatar, Kuwait and Saudi Arabia, on a par with the United States.</li><li>Diabetes affects 20–28% of both men and women in every state, more than double the high-income level of 8–11% (WHO, 2022).</li><li>High blood pressure is above the high-income average (32.0%) in all six states, led by Oman (45.6%), yet only 13.8% (Oman) to 30.8% (Kuwait) of those affected have their blood pressure under control, against 36.0% in high-income countries (2019).</li><li>Gulf residents breathe 3.6 to 8.3 times the high-income level of fine particles (46.9–107.8 against 13.0 µg/m³, 2023), and air pollution deaths run at 45–104 per 100,000 against 24 (2019).</li><li>Tobacco use among men is highest in Kuwait (36.4%, against 25.1% in high-income countries), with Saudi Arabia and Bahrain at about the high-income level; among women it is 0.4–5.9%, against 15.4% (2024).</li><li>38.6–66.1% of adults are insufficiently active, against 32.7% in high-income countries, led by the UAE and Kuwait (2022). Cholesterol, by contrast, is close to high-income levels (3.0–3.7 against 3.4 mmol/L, 2018).</li><li>All six states report a salt reduction policy, but only Kuwait, Oman and the UAE report a national salt target (2021).</li><li>By sex, obesity is far higher among women (38.4–50.1%) than men (25.5–38.8%, 2024), and so is inactivity. Men have more high blood pressure and control it less often (11.3–27.2% of men with hypertension, against 19.9–38.6% of women, 2019).</li></ul>
+        <ul lang="ar"><li>تتجاوز كل دولة خليجية المتوسط العالمي بفارق كبير في السمنة والسكري معًا.</li><li>تتجاوز السمنة 40% في قطر والكويت والسعودية، على قدم المساواة مع الولايات المتحدة.</li><li>يصيب السكري 20–28% من الرجال والنساء على حد سواء في كل دولة، أي أكثر من ضعف مستوى الدول مرتفعة الدخل البالغ 8–11% (منظمة الصحة العالمية، 2022).</li><li>يتجاوز ارتفاع ضغط الدم متوسط الدول مرتفعة الدخل (32.0%) في الدول الست جميعها، وتتصدرها عُمان (45.6%)، ومع ذلك لا يخضع للسيطرة إلا لدى 13.8% (عُمان) إلى 30.8% (الكويت) من المصابين، مقابل 36.0% في الدول مرتفعة الدخل (2019).</li><li>يتنفس سكان الخليج من 3.6 إلى 8.3 أضعاف مستوى الجسيمات الدقيقة في الدول مرتفعة الدخل (46.9–107.8 مقابل 13.0 ميكروغرام/م³، 2023)، وتبلغ الوفيات المرتبطة بتلوث الهواء 45–104 لكل 100,000 مقابل 24 (2019).</li><li>يبلغ تعاطي التبغ بين الرجال أعلاه في الكويت (36.4% مقابل 25.1% في الدول مرتفعة الدخل)، وتقارب السعودية والبحرين مستوى الدول مرتفعة الدخل؛ أما بين النساء فيتراوح بين 0.4% و5.9% مقابل 15.4% (2024).</li><li>يفتقر 38.6–66.1% من البالغين إلى النشاط البدني الكافي مقابل 32.7% في الدول مرتفعة الدخل، وتتصدر الإمارات والكويت (2022). أما الكوليسترول فقريب من مستوى الدول مرتفعة الدخل (3.0–3.7 مقابل 3.4 ملمول/لتر، 2018).</li><li>تُبلغ الدول الست جميعها عن سياسة لخفض الملح، لكن الكويت وعُمان والإمارات وحدها تُبلغ عن هدف وطني للملح (2021).</li><li>حسب الجنس، السمنة أعلى بكثير بين النساء (38.4–50.1%) منها بين الرجال (25.5–38.8%، 2024)، وكذلك الخمول البدني. أما الرجال فيعانون ارتفاع ضغط الدم أكثر ويسيطرون عليه أقل (11.3–27.2% من الرجال المصابين مقابل 19.9–38.6% من النساء، 2019).</li></ul>
       </div>
       <div class="gx-io-col gx-io-opp">
         <h3><span lang="en">Opportunities/recommendations</span><span lang="ar">الفرص/التوصيات</span></h3>
@@ -1413,7 +1412,7 @@ dash.draw('hbar', (el) => {
   const ind = el.dataset.ind;
   const isos = [...GCC, 'USA', 'HIC', 'WLD'];
   const u = el.dataset.unit != null ? el.dataset.unit : (ind === 'hale' ? '' : '%'), fm = (v) => d3.format('.1f')(v) + u;
-  const sx = el.closest('#risk') ? sexP() : 'both', base = SEXABLE[ind];
+  const sx = 'both', base = SEXABLE[ind];
   const other = sx === 'm' ? 'f' : 'm', SXN = {m: T('Men', 'الرجال'), f: T('Women', 'النساء')};
   const bySex = sx !== 'both' && base;
   const rows = isos.map((iso) => {
@@ -1432,6 +1431,53 @@ dash.draw('hbar', (el) => {
     el.appendChild(note);
   }
 });
+// Men and women side by side: two bars per country (WHO estimates by sex).
+dash.draw('hbar2', (el) => {
+  if (!box(el, [el.dataset.source || 'latest'])) return;
+  el.replaceChildren();
+  const ind = el.dataset.ind, base = SEXABLE[ind], u = el.dataset.unit != null ? el.dataset.unit : '%', fm = (v) => (v == null ? '—' : d3.format('.1f')(v) + u);
+  const SX = [['m', T('Men', 'الرجال'), 'var(--chart-1)'], ['f', T('Women', 'النساء'), 'var(--chart-2)']];
+  const val = (iso, k) => { const r = latestRow(iso, k); return r ? r.value : null; };
+  const yearOf = (iso) => { const r = latestRow(iso, base + '@m'); return r ? r.year : null; };
+  const rows = [...GCC, 'HIC', 'WLD'].map((iso) => ({iso, name: NAME[iso], m: val(iso, base + '@m'), f: val(iso, base + '@f'), both: val(iso, base), year: yearOf(iso)}))
+    .filter((r) => r.m != null || r.f != null);
+  const g = rows.filter((r) => GCC.includes(r.iso)).sort((a, b) => ((b.m + b.f) / 2) - ((a.m + a.f) / 2)), refs = rows.filter((r) => !GCC.includes(r.iso));
+  const all = g.concat(refs);
+  if (!all.length) return;
+  const W = Math.max(280, el.clientWidth), narrow = W < 520, bh = 9, inner = 2, lab = narrow ? 16 : 0, gap = 9, sepH = refs.length ? 10 : 0, legH = 24;
+  const rowH = lab + 2 * bh + inner + gap, H = legH + all.length * rowH + sepH;
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+    .attr('aria-label', T('Men and women by country', 'الرجال والنساء حسب الدولة'));
+  const ml = narrow ? 0 : measure(svg, all.map((r) => r.name)) + 12, mr = measure(svg, ['99.9' + u]) + 8;
+  const x = d3.scaleLinear([0, d3.max(all, (r) => Math.max(r.m || 0, r.f || 0)) || 1], [ml, W - mr]);
+  // legend
+  const lg = svg.append('g').attr('transform', `translate(${ml},4)`);
+  let off = 0;
+  SX.forEach(([, name, col]) => {
+    lg.append('rect').attr('x', off).attr('y', 1).attr('width', 12).attr('height', 10).attr('rx', 2).style('fill', col);
+    const t = lg.append('text').attr('x', off + 17).attr('y', 6).attr('dy', '0.32em').style('fill', 'var(--color-fg-muted)').text(name);
+    off += 17 + t.node().getComputedTextLength() + 18;
+  });
+  const yOf = (i) => legH + i * rowH + (i >= g.length ? sepH : 0);
+  if (refs.length) svg.append('line').attr('x1', 0).attr('x2', W).attr('y1', yOf(g.length) - sepH / 2 - gap / 2).attr('y2', yOf(g.length) - sepH / 2 - gap / 2).style('stroke', 'var(--color-border-line)');
+  const G = svg.selectAll('g.r').data(all).join('g').attr('class', 'r').attr('transform', (r, i) => `translate(0,${yOf(i)})`);
+  G.filter((r) => r.iso === focus()).append('rect').attr('x', 0).attr('y', -4).attr('width', W).attr('height', lab + 2 * bh + inner + 8).attr('rx', 4).style('fill', 'var(--color-border-line)').style('opacity', 0.45);
+  G.append('text').attr('x', narrow ? 0 : ml - 8).attr('y', narrow ? lab - 4 : bh + inner / 2).attr('dy', narrow ? 0 : '0.32em').attr('text-anchor', narrow ? 'start' : 'end')
+    .style('fill', 'var(--color-fg)').style('font-weight', (r) => (r.iso === focus() ? 700 : 400)).text((r) => r.name);
+  SX.forEach(([k, , col], j) => {
+    const y0 = lab + j * (bh + inner);
+    G.filter((r) => r[k] != null).append('rect').attr('x', ml).attr('y', y0).attr('height', bh).attr('width', (r) => Math.max(1, x(r[k]) - ml)).attr('rx', 2).style('fill', col)
+      .style('opacity', (r) => (GCC.includes(r.iso) ? 1 : 0.55));
+    G.filter((r) => r[k] != null).append('text').attr('x', (r) => x(r[k]) + 4).attr('y', y0 + bh / 2).attr('dy', '0.32em')
+      .style('fill', 'var(--color-fg)').style('font-size', '0.75rem').style('font-variant-numeric', 'tabular-nums').text((r) => fm(r[k]));
+  });
+  const tt = tip(el);
+  G.on('pointermove', (ev, r) => {
+    const [mx, my] = d3.pointer(ev, el);
+    tt.show(mx, my, r.name + (r.year ? ', ' + r.year : ''), [{color: SX[0][2], name: SX[0][1], value: fm(r.m)}, {color: SX[1][2], name: SX[1][1], value: fm(r.f)}, {name: T('Both sexes', 'الجنسان'), value: fm(r.both)}]);
+  }).on('pointerleave', () => tt.hide());
+});
+
 // Causes of premature death: WHO Global Health Estimates (years of life lost by cause)
 const CAUSE = {
   730: ['Ovarian cancer', 'سرطان المبيض'], 710: ['Cervical cancer', 'سرطان عنق الرحم'], 740: ['Prostate cancer', 'سرطان البروستاتا'],
