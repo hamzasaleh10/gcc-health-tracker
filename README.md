@@ -1,6 +1,6 @@
 # GCC Health Systems Monitor
 
-*Benchmarks, national goals and the outlook to 2040*
+*National benchmarks, priorities and capacity planning to 2040*
 
 **Live site: [hamzasaleh10.github.io/gcc-health-tracker](https://hamzasaleh10.github.io/gcc-health-tracker/)** · [العربية](https://hamzasaleh10.github.io/gcc-health-tracker/?lang=ar)
 
